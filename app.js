@@ -1,6 +1,46 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+/* ---------- Dados ao vivo ----------
+   data/live.js é gerado de tempos em tempos pelo GitHub Actions (scripts/update-data.mjs) e traz
+   classificação, vencedores, horários e textos do líder. Aqui ele é aplicado por cima dos dados fixos. */
+(function applyLive() {
+  const L = window.LIVE;
+  if (!L) return;
+  const when = L.generated ? new Date(L.generated) : null;
+  const stamp = when ? ` Dados atualizados automaticamente em ${when.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })}, ${when.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.` : "";
+  for (const [id, live] of Object.entries(L)) {
+    const s = SERIES[id];
+    if (!s || !live || typeof live !== "object") continue;
+    const keyOf = d => String(d.n);
+    const byKey = new Map((live.drivers || []).filter(d => d.key != null).map(d => [String(d.key), d]));
+    for (const d of s.drivers) {
+      const x = byKey.get(keyOf(d));
+      if (x) Object.assign(d, { pos: x.pos, pts: x.pts, ...(x.wins != null ? { wins: x.wins } : {}) });
+      else if (live.drivers?.length) Object.assign(d, { pos: null, pts: null });
+    }
+    for (const t of s.teams) {
+      const x = (live.teams || []).find(y => y.id === t.id);
+      if (x) Object.assign(t, { pos: x.pos, pts: x.pts });
+    }
+    // a ordem de cards e listas segue a classificação nova
+    s.drivers.sort((a, b) => (a.pos || 99) - (b.pos || 99));
+    (live.standings || []).forEach((rows, i) => {
+      const tab = s.standings[i];
+      if (!tab || !rows?.length) return;
+      const subOf = team => tab.rows.find(r => r.team === team)?.sub;
+      tab.rows = rows.map(r => ({ ...r, sub: r.sub ?? (i ? subOf(r.team) : undefined) }));
+    });
+    for (const [r, x] of Object.entries(live.calendar || {})) {
+      const race = s.calendar.find(c => String(c.r) === r);
+      if (race) Object.assign(race, x);
+    }
+    if (live.hero) Object.assign(s.hero, live.hero);
+    if (live.status) s.status = live.status;
+    if (live.updated) s.updated = live.updated + stamp;
+  }
+})();
+
 /* ---------- Campeonatos agrupados por tipo de competição ---------- */
 const CATEGORIES = [
   { id: "monopostos", name: "Monopostos", lede: "Carros de roda descoberta: do híbrido de 1.000 cv ao 100% elétrico.", series: ["f1", "formulae"] },

@@ -1,0 +1,38 @@
+name: Atualizar dados
+
+# Busca classificação, vencedores e horários nas fontes oficiais e publica data/live.js.
+# Roda de hora em hora; só faz commit quando algum número muda.
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-data
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Buscar dados
+        run: node scripts/update-data.mjs
+      - name: Publicar se mudou
+        run: |
+          if git diff --quiet -- data/live.js; then
+            echo "Nada mudou."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/live.js
+          git commit -m "Dados atualizados automaticamente"
+          git push

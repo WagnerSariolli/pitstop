@@ -20,3 +20,16 @@ Projeto de fã, sem vínculo com os campeonatos.
 - Imagens oficiais: Formula One World Championship Limited, Formula E Operations, Dorna Sports, FIA WEC / ACO.
 - Fotos da Wikimedia Commons: autor e licença indicados em cada foto da galeria.
 - Vídeos: canais oficiais no YouTube, incorporados pelo player do YouTube.
+
+## Dados sempre atualizados
+
+O workflow `.github/workflows/update-data.yml` roda de hora em hora no GitHub Actions e executa
+`scripts/update-data.mjs`, que busca classificação, vencedores e horários de largada e grava `data/live.js`.
+O site aplica esse arquivo por cima dos dados fixos de `data/<campeonato>.js`. O commit só acontece quando algum número muda.
+
+- F1: API Jolpica-F1 (api.jolpi.ca)
+- MotoGP: API de resultados do site oficial (api.motogp.pulselive.com)
+- WEC: tabelas da página da temporada na Wikipedia (o WEC não tem API pública)
+- Fórmula E: temporada encerrada; a próxima precisa de dados novos (equipes, carros, calendário)
+
+Para rodar na mão: `node scripts/update-data.mjs`. Também dá para disparar pela aba Actions ("Run workflow").
