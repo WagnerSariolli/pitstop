@@ -33,3 +33,13 @@ O site aplica esse arquivo por cima dos dados fixos de `data/<campeonato>.js`. O
 - Fórmula E: temporada encerrada; a próxima precisa de dados novos (equipes, carros, calendário)
 
 Para rodar na mão: `node scripts/update-data.mjs`. Também dá para disparar pela aba Actions ("Run workflow").
+
+## Boletim por e-mail
+
+Visitantes se inscrevem pelo formulário do site (página inicial e rodapé). Os e-mails são enviados pelo
+[Buttondown](https://buttondown.com), que guarda a lista, pede a confirmação da inscrição e cuida do descadastro.
+
+- `scripts/newsletter.mjs` roda no mesmo workflow de hora em hora. Manda um e-mail quando aparece um vencedor novo
+  e, às quintas-feiras, a agenda do fim de semana. O que já foi avisado fica em `data/newsletter-state.json`.
+- Configuração: nome de usuário do Buttondown em `data/newsletter.js` e a chave da API no segredo
+  `BUTTONDOWN_API_KEY` do repositório (Settings → Secrets and variables → Actions). Sem a chave, nada é enviado.

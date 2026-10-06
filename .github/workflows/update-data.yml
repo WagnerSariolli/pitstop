@@ -1,6 +1,7 @@
 name: Atualizar dados
 
-# Busca classificação, vencedores e horários nas fontes oficiais e publica data/live.js.
+# Busca classificação, vencedores e horários nas fontes oficiais, publica data/live.js
+# e manda o boletim por e-mail quando há resultado novo (e a agenda às quintas).
 # Roda de hora em hora; só faz commit quando algum número muda.
 on:
   schedule:
@@ -25,14 +26,19 @@ jobs:
           node-version: 20
       - name: Buscar dados
         run: node scripts/update-data.mjs
+      - name: Boletim por e-mail
+        # sem o segredo BUTTONDOWN_API_KEY o boletim só aparece no log, nada é enviado
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+        run: node scripts/newsletter.mjs
       - name: Publicar se mudou
         run: |
-          if git diff --quiet -- data/live.js; then
+          if git diff --quiet -- data/live.js data/newsletter-state.json; then
             echo "Nada mudou."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live.js
+          git add data/live.js data/newsletter-state.json
           git commit -m "Dados atualizados automaticamente"
           git push

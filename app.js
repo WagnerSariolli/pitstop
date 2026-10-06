@@ -224,8 +224,80 @@ function renderLobby() {
           <a href="${venueOf(s, r) ? `?pista=${venueOf(s, r)}` : `?c=${s.id}#temporada`}" aria-label="${venueOf(s, r) ? `Guia da pista: ${esc(r.circuit)}` : `Ver calendário: ${esc(s.name)}`}"></a>
         </li>`).join("")}
       </ol>
-    </section>` : ""}`;
+    </section>` : ""}
+
+    ${newsletterSection()}`;
   $("#footerText").textContent = "Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.";
+}
+
+/* ---------- Boletim por e-mail (Buttondown) ---------- */
+function nlForm(id) {
+  const user = window.NEWSLETTER?.buttondown || "";
+  return `
+    <form class="nl-form" action="https://buttondown.com/api/emails/embed-subscribe/${esc(user)}" method="post" target="_blank" novalidate>
+      <label class="sr-only" for="${id}">Seu e-mail</label>
+      <div class="nl-row">
+        <input id="${id}" type="email" name="email" placeholder="seu@email.com" autocomplete="email" inputmode="email" required>
+        <button class="btn btn-solid" type="submit">Assinar</button>
+      </div>
+      <p class="nl-msg" role="status" aria-live="polite"></p>
+      <p class="nl-fine">Usamos seu e-mail só para o boletim. A inscrição vale depois que você confirma pelo link que chega na caixa de entrada, e dá para sair com um clique em qualquer e-mail.</p>
+    </form>`;
+}
+
+function newsletterSection() {
+  // o exemplo mostra o resultado real mais recente
+  const last = ORDER.filter(id => !SERIES[id].seasonOver).flatMap(id => SERIES[id].calendar.filter(r => r.winner).map(r => ({ s: SERIES[id], r, d: raceDate(r) })))
+    .sort((a, b) => b.d - a.d)[0];
+  const top = last && (last.s.standings[0]?.rows || []).slice(0, 3);
+  return `
+    <section class="newsletter" id="boletim" aria-labelledby="nl-title">
+      <div class="nl-copy">
+        <p class="kicker">Boletim Pitstop</p>
+        <h2 id="nl-title">A bandeirada no seu e-mail</h2>
+        <p class="nl-lede">O resultado de cada corrida assim que ela termina, com a classificação atualizada, e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só.</p>
+        <ul class="nl-points">
+          <li><b>Depois de cada corrida</b><span>Vencedor, top 5 e quem lidera o campeonato.</span></li>
+          <li><b>Toda quinta-feira</b><span>As corridas do fim de semana, no horário de Brasília.</span></li>
+          <li><b>Só corrida</b><span>Nada de propaganda. Cancelamento com um clique.</span></li>
+        </ul>
+        ${nlForm("nlEmail")}
+      </div>
+      ${last ? `
+      <figure class="nl-sample" aria-label="Exemplo de boletim" style="--c:${last.s.accent}">
+        <figcaption>Exemplo, com o último resultado</figcaption>
+        <div class="nl-mail">
+          <p class="nl-from"><b>Pitstop</b><span>Boletim</span></p>
+          <p class="nl-subject">${esc(last.s.short)} · ${esc(last.r.gp)}: vitória de ${esc(last.r.winner)}</p>
+          <p class="nl-head">${esc(last.s.name)} · Etapa ${esc(last.r.r)}</p>
+          <p><b>Vitória de ${esc(last.r.winner)}</b> em ${esc(last.r.circuit)}, ${esc(last.r.date)}.</p>
+          <ol>${top.map(x => `<li><span>${x.pos}. ${esc(x.name)}</span><b>${x.pts} pts</b></li>`).join("")}</ol>
+          <p class="nl-more">Ver a temporada no Pitstop ›</p>
+        </div>
+      </figure>` : ""}
+    </section>`;
+}
+
+function initNewsletter() {
+  // nas páginas internas, uma versão compacta no rodapé
+  if (!$("#boletim")) $("#newsletterFoot").innerHTML = `
+    <div class="nl-foot"><div><b>Boletim Pitstop</b><span>Resultados de cada corrida e a agenda do fim de semana no seu e-mail.</span></div>${nlForm("nlEmailFoot")}</div>`;
+  document.querySelectorAll(".nl-form").forEach(form => form.addEventListener("submit", async e => {
+    e.preventDefault();
+    const input = form.querySelector("input"), btn = form.querySelector("button"), msg = form.querySelector(".nl-msg");
+    const email = input.value.trim(), user = window.NEWSLETTER?.buttondown;
+    const say = (t, ok) => { msg.textContent = t; msg.className = `nl-msg ${ok ? "ok" : "err"}`; };
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say("Confira o e-mail: parece que falta alguma coisa.", false); input.focus(); return; }
+    if (!user) { say("O boletim está sendo configurado. Volte em alguns dias para assinar.", false); return; }
+    btn.disabled = true;
+    try {
+      await fetch(form.action, { method: "POST", mode: "no-cors", body: new URLSearchParams({ email, embed: "1" }) });
+      say(`Quase lá: mandamos um e-mail para ${email}. Clique no link de confirmação para começar a receber.`, true);
+      form.classList.add("done");
+    } catch (err) {
+      form.submit(); // sem conexão direta: abre a página de inscrição do Buttondown numa aba nova
+    } finally { btn.disabled = false; }
+  }));
 }
 
 const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
@@ -676,6 +748,7 @@ function initSectionNav() {
 /* ---------- Início ---------- */
 renderTopbar();
 renderPill();
+queueMicrotask(initNewsletter);
 setInterval(renderPill, 30000);
 initMediaModal();
 if (GUIDE) {

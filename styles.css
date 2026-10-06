@@ -1028,3 +1028,74 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
   .ct-sheet div { grid-template-columns: 1fr; gap: 2px; }
 }
 
+
+/* ======================================================================
+   BOLETIM POR E-MAIL
+   ====================================================================== */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
+.newsletter {
+  display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, .9fr); gap: clamp(32px, 6vw, 88px); align-items: center;
+  border-top: 1px solid var(--kerb);
+  background: radial-gradient(60% 80% at 85% 50%, rgba(225, 6, 0, .08), transparent 70%);
+}
+.nl-copy { display: grid; gap: 18px; max-width: 620px; }
+.newsletter h2 { font-size: clamp(48px, 6.4vw, 92px); text-transform: uppercase; text-wrap: balance; }
+.nl-lede { color: #c9ced6; font-size: 18px; max-width: 54ch; }
+.nl-points { list-style: none; margin: 4px 0 6px; padding: 0; display: grid; gap: 10px; }
+.nl-points li { display: grid; grid-template-columns: 14px 1fr; column-gap: 12px; }
+.nl-points li::before {
+  content: ""; grid-row: span 2; width: 14px; height: 14px; margin-top: 4px; border-radius: 2px;
+  background: conic-gradient(var(--chalk) 25%, #e10600 0 50%, var(--chalk) 0 75%, #e10600 0) 0 0 / 7px 7px;
+}
+.nl-points b { font-weight: 600; }
+.nl-points span { color: var(--mute); font-size: 15px; }
+
+.nl-form { display: grid; gap: 10px; }
+.nl-row { display: flex; gap: 8px; }
+.nl-row input {
+  flex: 1; min-width: 0; padding: 14px 16px; border-radius: var(--r-sm); border: 1px solid var(--line);
+  background: #101216; color: var(--chalk); font: inherit; font-size: 16px;
+}
+.nl-row input::placeholder { color: #6b7280; }
+.nl-row input:focus { outline: 2px solid var(--chalk); outline-offset: 1px; border-color: transparent; }
+.nl-row .btn { --team: #e10600; --on-team: #fff; border: 0; cursor: pointer; }
+.nl-row .btn:disabled { opacity: .6; cursor: progress; }
+.nl-msg:empty { display: none; }
+.nl-msg { font-size: 15px; padding: 10px 12px; border-radius: 8px; }
+.nl-msg.ok { background: rgba(46, 204, 113, .12); color: #8ff0b6; }
+.nl-msg.err { background: rgba(255, 194, 26, .1); color: var(--amber); }
+.nl-form.done .nl-row { opacity: .5; }
+.nl-fine { color: var(--mute); font-size: 13px; max-width: 60ch; }
+
+.nl-sample { margin: 0; display: grid; gap: 10px; }
+.nl-sample figcaption { color: var(--mute); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; }
+.nl-mail {
+  display: grid; gap: 10px; padding: 22px 22px 18px; border-radius: var(--r-lg);
+  background: #f4f5f7; color: #16181d; box-shadow: 0 30px 60px rgba(0,0,0,.45);
+  transform: rotate(-1.5deg); border-top: 6px solid var(--c);
+}
+.nl-mail p { margin: 0; }
+.nl-from { display: flex; justify-content: space-between; font-size: 13px; color: #5b6270; padding-bottom: 8px; border-bottom: 1px solid #dde0e5; }
+.nl-from b { color: #16181d; }
+.nl-subject { font: 800 24px/1.05 var(--display); text-transform: uppercase; }
+.nl-head { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--c); filter: brightness(.85); }
+.nl-mail ol { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; font-size: 14px; }
+.nl-mail li { display: flex; justify-content: space-between; padding: 6px 10px; border-radius: 6px; background: #e8eaee; font-variant-numeric: tabular-nums; }
+.nl-more { font-size: 13px; font-weight: 600; color: #b00500; }
+
+.nl-foot {
+  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 16px 40px; align-items: start;
+  padding-bottom: 28px; margin-bottom: 24px; border-bottom: 1px solid var(--kerb); color: var(--chalk);
+}
+.nl-foot > div:first-child { display: grid; gap: 4px; }
+.nl-foot b { font: 800 26px/1 var(--display); text-transform: uppercase; }
+.nl-foot span { color: var(--mute); font-size: 15px; }
+
+@media (max-width: 860px) {
+  .newsletter, .nl-foot { grid-template-columns: 1fr; }
+  .nl-mail { transform: none; }
+}
+@media (max-width: 560px) {
+  .nl-row { flex-direction: column; }
+  .nl-row .btn { justify-content: center; }
+}
