@@ -124,6 +124,17 @@ async function send({ subject, body }) {
   return true;
 }
 
+/* ---------- conferência da conta (só leitura, não envia nada) ---------- */
+if (KEY) {
+  try {
+    const r = await fetch("https://api.buttondown.com/v1/subscribers?type=regular", {
+      headers: { Authorization: `Token ${KEY}`, "X-API-Version": "2026-04-01" },
+    });
+    if (r.ok) { const j = await r.json(); console.log(`Buttondown conectado: ${j.count ?? "?"} assinante(s) confirmado(s).`); }
+    else console.error(`Buttondown: a chave foi recusada (${r.status}). Confira o segredo BUTTONDOWN_API_KEY.`);
+  } catch (e) { console.error(`Buttondown fora do ar: ${e.message}`); }
+}
+
 /* ---------- execução ---------- */
 const now = process.env.PITSTOP_NOW ? new Date(process.env.PITSTOP_NOW) : new Date(); // PITSTOP_NOW: só para testes
 let changed = firstRun;
