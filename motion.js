@@ -268,102 +268,11 @@ function tilt(el, { max = 8, glare = true } = {}) {
 }
 
 /* ======================================================================
-   Lobby: largada de verdade. Cinco luzes acendem uma a uma com o bipe,
-   seguram um instante e apagam juntas: a tela abre e o site aparece.
+   Lobby: só o relevo vivo no fundo (sem animação de entrada)
    ====================================================================== */
-let audio = null;
-function beep(freq = 1046, dur = 0.17, vol = 0.22) {
-  try {
-    audio ||= new (window.AudioContext || window.webkitAudioContext)();
-    if (audio.state === "suspended") audio.resume();
-    const t = audio.currentTime, o = audio.createOscillator(), f = audio.createBiquadFilter(), g = audio.createGain();
-    o.type = "square"; o.frequency.value = freq;
-    f.type = "lowpass"; f.frequency.value = 2600;
-    g.gain.setValueAtTime(0, t);
-    g.gain.linearRampToValueAtTime(vol, t + 0.008);
-    g.gain.setValueAtTime(vol, t + dur - 0.03);
-    g.gain.linearRampToValueAtTime(0, t + dur);
-    o.connect(f).connect(g).connect(audio.destination);
-    o.start(t); o.stop(t + dur + 0.02);
-  } catch (e) { /* sem áudio: a largada segue só com as luzes */ }
-}
-
-function startLights(hero, { onGo }) {
-  const el = document.createElement("div");
-  el.className = "start";
-  el.setAttribute("role", "dialog");
-  el.setAttribute("aria-modal", "true");
-  el.setAttribute("aria-label", "Largada");
-  el.innerHTML = `
-    <div class="start-grid" aria-hidden="true"></div>
-    <div class="start-rig" aria-hidden="true">
-      <div class="start-beam"></div>
-      <div class="start-pods">${Array.from({ length: 5 }, (_, i) => `<div class="pod" style="--i:${i}"><i></i><i></i><i class="red"></i><i class="red"></i></div>`).join("")}</div>
-    </div>
-    <p class="start-status" aria-live="polite">Luzes de largada</p>
-    <div class="start-actions">
-      <button class="start-go" type="button"><span>Largar</span><small>com som</small></button>
-      <button class="start-skip" type="button">Pular</button>
-    </div>`;
-  document.body.append(el);
-  lenis?.stop();
-  root.classList.add("start-open");
-  const pods = $$(".pod", el), status = $(".start-status", el), go = $(".start-go", el);
-  const timers = [];
-  let done = false;
-  requestAnimationFrame(() => el.classList.add("in"));
-  setTimeout(() => go.focus({ preventScroll: true }), 400);
-
-  const open = () => {
-    if (done) return;
-    done = true;
-    timers.forEach(clearTimeout);
-    el.classList.add("open");
-    root.classList.remove("start-open");
-    lenis?.start();
-    onGo();
-    setTimeout(() => el.remove(), 1400);
-  };
-  const run = () => {
-    el.classList.add("running");
-    status.textContent = "";
-    // uma luz por segundo, cada uma com o bipe
-    pods.forEach((p, i) => timers.push(setTimeout(() => { p.classList.add("lit"); beep(); }, 500 + i * 1000)));
-    // depois da quinta, um tempo de espera aleatório (como na F1) e as luzes apagam juntas
-    const hold = 500 + 4 * 1000 + 700 + Math.random() * 1800;
-    timers.push(setTimeout(() => {
-      pods.forEach(p => p.classList.remove("lit"));
-      el.classList.add("out");
-      status.textContent = "Luzes apagadas";
-      timers.push(setTimeout(open, 380));
-    }, hold));
-  };
-  go.addEventListener("click", run, { once: true });
-  $(".start-skip", el).addEventListener("click", open);
-  el.addEventListener("keydown", e => { if (e.key === "Escape") open(); });
-}
-
 function lobbyIntro() {
   const hero = $(".lobby-hero");
-  if (!hero) return;
-  contours(hero, { getColor: () => "#eceef1", alpha: 0.075, levels: 10 });
-
-  // a palavra PITSTOP letra por letra
-  const wm = $(".wordmark", hero);
-  wm.innerHTML = [...wm.textContent].map((ch, i) => `<span style="--i:${i}">${ch}</span>`).join("");
-  wm.setAttribute("aria-label", "Pitstop");
-
-  if (reduce) { hero.classList.add("go"); return; }
-  const go = () => { hero.classList.remove("go"); void hero.offsetWidth; hero.classList.add("go"); };
-  const replay = $(".replay-start", hero);
-  replay.hidden = false;
-  replay.addEventListener("click", () => { scrollTo(0, 0); hero.classList.remove("go"); startLights(hero, { onGo: go }); });
-
-  // a largada aparece na primeira visita da sessão; depois o lobby já abre direto
-  let seen = false;
-  try { seen = sessionStorage.getItem("pitstop-start") === "1"; sessionStorage.setItem("pitstop-start", "1"); } catch (e) { /* sem armazenamento */ }
-  if (seen) { go(); return; }
-  startLights(hero, { onGo: go });
+  if (hero) contours(hero, { getColor: () => "#eceef1", alpha: 0.075, levels: 10 });
 }
 
 /* ======================================================================

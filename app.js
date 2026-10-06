@@ -143,7 +143,7 @@ function renderLobby() {
             <span class="slot-label"><b>${esc(s.short)}</b>${esc(t.name)} ${esc(t.car)}</span>
           </a>`; }).join("")}
       </div>
-      <h1 class="wordmark" id="lobby-title">Pitstop</h1>
+      <h1 class="wordmark" id="lobby-title" aria-label="Pitstop">${document.querySelector(".brand .logo-mark")?.outerHTML.replace('id="LM"', 'id="LM2"').replace("url(#LM)", "url(#LM2)") || ""}<span>Pit<b>stop</b></span></h1>
       <p class="lobby-lede">Carros, pilotos, fichas técnicas e a temporada de ${all.length} campeonatos, com dados atualizados e fotos oficiais.</p>
       <dl class="lobby-stats">
         <div><dt>Campeonatos</dt><dd>${all.length}</dd></div>
@@ -153,7 +153,6 @@ function renderLobby() {
       </dl>
       <div class="lobby-cta">
         <a class="btn btn-solid" href="#campeonatos">Escolher campeonato</a>
-        <button class="btn btn-ghost replay-start" type="button" hidden>Rever a largada</button>
       </div>
     </section>
 
