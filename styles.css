@@ -1099,3 +1099,72 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
   .nl-row { flex-direction: column; }
   .nl-row .btn { justify-content: center; }
 }
+
+/* ---------- convite ao boletim: janela ao sair ---------- */
+.nl-modal {
+  width: min(560px, calc(100vw - 32px)); padding: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  background: var(--pitwall); color: var(--chalk); box-shadow: 0 40px 90px rgba(0,0,0,.6);
+}
+.nl-modal::backdrop { background: rgba(5,6,8,.72); backdrop-filter: blur(6px); }
+.nl-modal[open] { animation: nlIn .45s cubic-bezier(.16, 1, .3, 1); }
+@keyframes nlIn { from { opacity: 0; transform: translateY(24px) scale(.97); } }
+.nlm-band {
+  height: 18px;
+  background: conic-gradient(var(--chalk) 25%, #0b0d10 0 50%, var(--chalk) 0 75%, #0b0d10 0) 0 0 / 18px 18px;
+  mask: linear-gradient(90deg, #000 0 35%, transparent 95%);
+}
+.nlm-body { display: grid; gap: 14px; padding: 26px 28px 22px; }
+.nl-modal h2 { font-size: clamp(36px, 6vw, 52px); text-transform: uppercase; text-wrap: balance; }
+.nlm-lede { color: #c9ced6; }
+.nlm-next { display: flex; align-items: center; gap: 10px; padding: 10px 14px; border-radius: 10px; background: #15171c; border: 1px solid var(--kerb); font-size: 15px; }
+.nlm-next i { flex: none; width: 9px; height: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px color-mix(in srgb, var(--amber) 22%, transparent); }
+.nlm-next em { margin-left: auto; font-style: normal; font-weight: 700; color: var(--amber); white-space: nowrap; font-variant-numeric: tabular-nums; }
+.nlm-no { justify-self: center; border: 0; background: none; color: var(--mute); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+.nlm-no:hover { color: var(--chalk); }
+.nl-modal .modal-close { z-index: 2; }
+
+/* ---------- convite ao boletim: balão no canto ---------- */
+.nl-bubble {
+  position: fixed; right: 20px; bottom: calc(20px + env(safe-area-inset-bottom, 0px)); z-index: 70;
+  display: grid; justify-items: end; gap: 10px; max-width: min(360px, calc(100vw - 32px));
+  opacity: 0; transform: translateY(20px); transition: opacity .4s ease, transform .5s cubic-bezier(.16, 1, .3, 1);
+  pointer-events: none;
+}
+.nl-bubble.in { opacity: 1; transform: none; pointer-events: auto; }
+.nl-bubble.in.away { opacity: 0; transform: translateY(20px); pointer-events: none; }
+.nlb-row { display: flex; align-items: center; gap: 6px; }
+.nlb-toggle {
+  display: flex; align-items: center; gap: 10px; padding: 8px 16px 8px 8px; border: 1px solid var(--line); border-radius: 999px;
+  background: #101216; color: var(--chalk); text-align: left; font-size: 14px; font-weight: 600; line-height: 1.25;
+  box-shadow: 0 16px 40px rgba(0,0,0,.5);
+}
+.nlb-toggle:hover { border-color: #e10600; }
+.nlb-icon {
+  flex: none; display: grid; place-items: center; width: 40px; height: 40px; border-radius: 50%;
+  background: #e10600; color: #fff; animation: nlPing 2.6s ease-out 1s 3;
+}
+.nlb-icon svg { width: 22px; height: 22px; }
+@keyframes nlPing { 0% { box-shadow: 0 0 0 0 rgba(225, 6, 0, .55); } 70%, 100% { box-shadow: 0 0 0 14px rgba(225, 6, 0, 0); } }
+.nl-bubble.open .nlb-text { display: none; }
+.nl-bubble.open .nlb-toggle { padding-right: 8px; }
+.nlb-close {
+  flex: none; width: 30px; height: 30px; border-radius: 50%; border: 1px solid var(--line);
+  background: #101216; color: var(--mute); font-size: 18px; line-height: 1;
+}
+.nlb-close:hover { color: var(--chalk); }
+.nlb-panel {
+  display: grid; gap: 8px; width: min(360px, calc(100vw - 32px)); padding: 18px; border-radius: 16px;
+  background: var(--pitwall); border: 1px solid var(--line); box-shadow: 0 24px 60px rgba(0,0,0,.55);
+  animation: nlIn .35s cubic-bezier(.16, 1, .3, 1);
+}
+.nlb-panel b { font: 800 24px/1 var(--display); text-transform: uppercase; }
+.nlb-panel > p { color: var(--mute); font-size: 14px; }
+.nlb-panel .nl-row { flex-direction: column; }
+.nlb-panel .nl-row .btn { justify-content: center; }
+.nlb-panel .nl-fine { font-size: 12px; }
+@media (max-width: 560px) {
+  .nl-bubble { right: 12px; bottom: calc(12px + env(safe-area-inset-bottom, 0px)); }
+  .nlb-toggle { font-size: 13px; }
+  .nlm-body { padding: 22px 20px 18px; }
+}
+@media (prefers-reduced-motion: reduce) { .nlb-icon { animation: none; } }

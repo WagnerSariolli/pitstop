@@ -278,11 +278,21 @@ function newsletterSection() {
     </section>`;
 }
 
+// preferências do visitante sobre o boletim (só neste navegador)
+const nlPref = {
+  get(k) { try { return JSON.parse(localStorage.getItem("pitstop-nl") || "{}")[k]; } catch (e) { return undefined; } },
+  set(k, v) { try { const o = JSON.parse(localStorage.getItem("pitstop-nl") || "{}"); o[k] = v; localStorage.setItem("pitstop-nl", JSON.stringify(o)); } catch (e) { /* sem armazenamento */ } },
+};
+const DAY = 864e5;
+
 function initNewsletter() {
   // nas páginas internas, uma versão compacta no rodapé
   if (!$("#boletim")) $("#newsletterFoot").innerHTML = `
     <div class="nl-foot"><div><b>Boletim Pitstop</b><span>Resultados de cada corrida e a agenda do fim de semana no seu e-mail.</span></div>${nlForm("nlEmailFoot")}</div>`;
-  document.querySelectorAll(".nl-form").forEach(form => form.addEventListener("submit", async e => {
+  // um só tratador para todos os formulários, inclusive os que aparecem depois (janela e balão)
+  document.addEventListener("submit", async e => {
+    const form = e.target.closest?.(".nl-form");
+    if (!form) return;
     e.preventDefault();
     const input = form.querySelector("input"), btn = form.querySelector("button"), msg = form.querySelector(".nl-msg");
     const email = input.value.trim(), user = window.NEWSLETTER?.buttondown;
@@ -294,10 +304,123 @@ function initNewsletter() {
       await fetch(form.action, { method: "POST", mode: "no-cors", body: new URLSearchParams({ email, embed: "1" }) });
       say(`Quase lá: mandamos um e-mail para ${email}. Clique no link de confirmação para começar a receber.`, true);
       form.classList.add("done");
+      nlPref.set("subscribed", Date.now());
+      document.dispatchEvent(new CustomEvent("pitstop:subscribed"));
     } catch (err) {
       form.submit(); // sem conexão direta: abre a página de inscrição do Buttondown numa aba nova
     } finally { btn.disabled = false; }
-  }));
+  });
+  initNudges();
+}
+
+/* ---------- Convites para o boletim: janela ao sair e balão no canto ----------
+   Nunca aparecem para quem já assinou. A janela aparece no máximo uma vez por sessão e some por 7 dias
+   se o visitante recusar; o balão some por 3 dias se for dispensado. */
+function initNudges() {
+  if (!window.NEWSLETTER?.buttondown || nlPref.get("subscribed")) return;
+  const since = k => Date.now() - (nlPref.get(k) || 0);
+  // fala da próxima corrida do campeonato ou do circuito da página; no resto, da próxima de qualquer campeonato
+  const own = S && nextOf(S);
+  const venue = params.get("pista");
+  const atVenue = venue && window.Guide?.racesAt(venue).find(x => !x.r.winner && !x.s.seasonOver && x.d >= Date.now() - DAY);
+  const n = own ? { s: S, r: own, d: raceDate(own) } : atVenue || upcoming()[0];
+  const flagIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 21V4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M6 4h13l-2.5 4.5L19 13H6z" fill="currentColor"/><path d="M9 4h3v3H9zM15 4h3v3h-3zM12 7h3v3h-3zM9 10h3v3H9zM15 10h2.4l-.4 3H15z" fill="#0b0d10" opacity=".8"/></svg>`;
+
+  /* ----- janela ao sair ----- */
+  const modal = document.createElement("dialog");
+  modal.className = "nl-modal";
+  modal.setAttribute("aria-labelledby", "nlmTitle");
+  modal.innerHTML = `
+    <button class="modal-close" type="button" aria-label="Fechar">×</button>
+    <div class="nlm-band" aria-hidden="true"></div>
+    <div class="nlm-body">
+      <p class="kicker">Boletim Pitstop</p>
+      <h2 id="nlmTitle">Antes de sair, leve a bandeirada com você</h2>
+      <p class="nlm-lede">O resultado de cada corrida assim que ela termina e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só, grátis e sem propaganda.</p>
+      ${n ? `<p class="nlm-next"><i></i><span>Próxima largada: <b>${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)}</b></span><em>${countdown(n.d)}</em></p>` : ""}
+      ${nlForm("nlEmailModal")}
+      <button class="nlm-no" type="button">Agora não</button>
+    </div>`;
+  document.body.append(modal);
+  modal.querySelector(".modal-close").onclick = () => modal.close();
+  modal.querySelector(".nlm-no").onclick = () => modal.close();
+  modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+  modal.addEventListener("close", () => { if (!nlPref.get("subscribed")) nlPref.set("modalDismissed", Date.now()); });
+
+  let modalShown = false;
+  try { modalShown = sessionStorage.getItem("pitstop-nl-modal") === "1"; } catch (e) { /* sem armazenamento */ }
+  const canModal = () => !modalShown && !nlPref.get("subscribed") && since("modalDismissed") > 7 * DAY && !document.querySelector("dialog[open]");
+  const showModal = () => {
+    if (!canModal()) return;
+    modalShown = true;
+    try { sessionStorage.setItem("pitstop-nl-modal", "1"); } catch (e) { /* sem armazenamento */ }
+    bubble?.classList.add("away");
+    modal.showModal();
+    setTimeout(() => modal.querySelector("input").focus({ preventScroll: true }), 60);
+  };
+
+  // intenção de sair: no computador, o mouse sobe para fora da janela (rumo às abas ou ao "fechar");
+  // no celular, uma rolagem rápida para cima depois de ter lido boa parte da página
+  const armedAt = Date.now() + 6000;
+  document.addEventListener("mouseout", e => {
+    if (e.relatedTarget || e.clientY > 8 || Date.now() < armedAt) return;
+    showModal();
+  });
+  if (matchMedia("(hover: none)").matches) {
+    let lastY = scrollY, lastT = performance.now(), deepest = 0;
+    addEventListener("scroll", () => {
+      const now = performance.now(), y = scrollY;
+      deepest = Math.max(deepest, y / Math.max(1, document.documentElement.scrollHeight - innerHeight));
+      const speed = (lastY - y) / Math.max(1, now - lastT);           // px/ms; positivo = subindo
+      if (deepest > 0.5 && speed > 2.2 && Date.now() > armedAt) showModal();
+      lastY = y; lastT = now;
+    }, { passive: true });
+  }
+
+  /* ----- balão no canto ----- */
+  let bubble = null;
+  if (since("bubbleDismissed") < 3 * DAY) return;
+  bubble = document.createElement("aside");
+  bubble.className = "nl-bubble";
+  bubble.setAttribute("aria-label", "Boletim Pitstop");
+  bubble.hidden = true;
+  const pitch = n ? `Quer o resultado de ${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)} no seu e-mail?` : "Quer os resultados das corridas no seu e-mail?";
+  bubble.innerHTML = `
+    <div class="nlb-panel" id="nlbPanel" hidden>
+      <b>Boletim Pitstop</b>
+      <p>Resultado de cada corrida e a agenda do fim de semana. Grátis.</p>
+      ${nlForm("nlEmailBubble")}
+    </div>
+    <div class="nlb-row">
+      <button class="nlb-toggle" type="button" aria-expanded="false" aria-controls="nlbPanel"><span class="nlb-icon">${flagIcon}</span><span class="nlb-text">${pitch}</span></button>
+      <button class="nlb-close" type="button" aria-label="Dispensar">×</button>
+    </div>`;
+  document.body.append(bubble);
+  const panel = bubble.querySelector(".nlb-panel"), toggle = bubble.querySelector(".nlb-toggle");
+  toggle.onclick = () => {
+    const open = panel.hidden;
+    panel.hidden = !open;
+    toggle.setAttribute("aria-expanded", open);
+    bubble.classList.toggle("open", open);
+    bubble.classList.remove("away");
+    if (open) panel.querySelector("input").focus({ preventScroll: true });
+  };
+  bubble.querySelector(".nlb-close").onclick = () => { nlPref.set("bubbleDismissed", Date.now()); bubble.remove(); };
+  document.addEventListener("pitstop:subscribed", () => setTimeout(() => bubble.remove(), 4000));
+
+  // recolhe enquanto o formulário da própria página está à vista
+  const io = new IntersectionObserver(es => {
+    es.forEach(en => { en.target._nlIn = en.isIntersecting; });
+    const onScreen = [...document.querySelectorAll("#boletim, .nl-foot")].some(x => x._nlIn);
+    bubble.classList.toggle("away", onScreen && !bubble.classList.contains("open"));
+  });
+  document.querySelectorAll("#boletim, .nl-foot").forEach(x => io.observe(x));
+  // aparece depois de 15 s ou de um pouco de leitura
+  const reveal = () => { if (bubble.hidden) { bubble.hidden = false; requestAnimationFrame(() => bubble.classList.add("in")); } };
+  setTimeout(reveal, 15000);
+  addEventListener("scroll", function onScroll() {
+    if (scrollY > innerHeight * 1.2) { reveal(); removeEventListener("scroll", onScroll); }
+  }, { passive: true });
 }
 
 const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
