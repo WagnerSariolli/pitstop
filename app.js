@@ -143,9 +143,6 @@ function renderLobby() {
             <span class="slot-label"><b>${esc(s.short)}</b>${esc(t.name)} ${esc(t.car)}</span>
           </a>`; }).join("")}
       </div>
-      <div class="gantry" aria-label="Campeonatos">
-        ${all.map((s, i) => `<a class="light" href="?c=${s.id}" style="--c:${s.accent};--i:${i}"><span class="bulb"></span><b>${esc(s.short)}</b></a>`).join("")}
-      </div>
       <h1 class="wordmark" id="lobby-title">Pitstop</h1>
       <p class="lobby-lede">Carros, pilotos, fichas técnicas e a temporada de ${all.length} campeonatos, com dados atualizados e fotos oficiais.</p>
       <dl class="lobby-stats">
@@ -154,7 +151,10 @@ function renderLobby() {
         <div><dt>Pilotos</dt><dd>${drivers}</dd></div>
         ${next[0] ? `<div><dt>Próxima largada</dt><dd>${countdown(next[0].d)}</dd><small>${esc(next[0].s.short)}: ${esc(next[0].r.pill || next[0].r.gp)}</small></div>` : ""}
       </dl>
-      <a class="btn btn-solid lobby-cta" href="#campeonatos">Escolher campeonato</a>
+      <div class="lobby-cta">
+        <a class="btn btn-solid" href="#campeonatos">Escolher campeonato</a>
+        <button class="btn btn-ghost replay-start" type="button" hidden>Rever a largada</button>
+      </div>
     </section>
 
     <div class="ticker" aria-label="Últimos vencedores">

@@ -268,8 +268,81 @@ function tilt(el, { max = 8, glare = true } = {}) {
 }
 
 /* ======================================================================
-   Lobby: luzes de largada → apagam juntas → largada
+   Lobby: largada de verdade. Cinco luzes acendem uma a uma com o bipe,
+   seguram um instante e apagam juntas: a tela abre e o site aparece.
    ====================================================================== */
+let audio = null;
+function beep(freq = 1046, dur = 0.17, vol = 0.22) {
+  try {
+    audio ||= new (window.AudioContext || window.webkitAudioContext)();
+    if (audio.state === "suspended") audio.resume();
+    const t = audio.currentTime, o = audio.createOscillator(), f = audio.createBiquadFilter(), g = audio.createGain();
+    o.type = "square"; o.frequency.value = freq;
+    f.type = "lowpass"; f.frequency.value = 2600;
+    g.gain.setValueAtTime(0, t);
+    g.gain.linearRampToValueAtTime(vol, t + 0.008);
+    g.gain.setValueAtTime(vol, t + dur - 0.03);
+    g.gain.linearRampToValueAtTime(0, t + dur);
+    o.connect(f).connect(g).connect(audio.destination);
+    o.start(t); o.stop(t + dur + 0.02);
+  } catch (e) { /* sem áudio: a largada segue só com as luzes */ }
+}
+
+function startLights(hero, { onGo }) {
+  const el = document.createElement("div");
+  el.className = "start";
+  el.setAttribute("role", "dialog");
+  el.setAttribute("aria-modal", "true");
+  el.setAttribute("aria-label", "Largada");
+  el.innerHTML = `
+    <div class="start-grid" aria-hidden="true"></div>
+    <div class="start-rig" aria-hidden="true">
+      <div class="start-beam"></div>
+      <div class="start-pods">${Array.from({ length: 5 }, (_, i) => `<div class="pod" style="--i:${i}"><i></i><i></i><i class="red"></i><i class="red"></i></div>`).join("")}</div>
+    </div>
+    <p class="start-status" aria-live="polite">Luzes de largada</p>
+    <div class="start-actions">
+      <button class="start-go" type="button"><span>Largar</span><small>com som</small></button>
+      <button class="start-skip" type="button">Pular</button>
+    </div>`;
+  document.body.append(el);
+  lenis?.stop();
+  root.classList.add("start-open");
+  const pods = $$(".pod", el), status = $(".start-status", el), go = $(".start-go", el);
+  const timers = [];
+  let done = false;
+  requestAnimationFrame(() => el.classList.add("in"));
+  setTimeout(() => go.focus({ preventScroll: true }), 400);
+
+  const open = () => {
+    if (done) return;
+    done = true;
+    timers.forEach(clearTimeout);
+    el.classList.add("open");
+    root.classList.remove("start-open");
+    lenis?.start();
+    onGo();
+    setTimeout(() => el.remove(), 1400);
+  };
+  const run = () => {
+    el.classList.add("running");
+    status.textContent = "";
+    // uma luz por segundo, cada uma com o bipe
+    pods.forEach((p, i) => timers.push(setTimeout(() => { p.classList.add("lit"); beep(); }, 500 + i * 1000)));
+    // depois da quinta, um tempo de espera aleatório (como na F1) e as luzes apagam juntas
+    const hold = 500 + 4 * 1000 + 700 + Math.random() * 1800;
+    timers.push(setTimeout(() => {
+      pods.forEach(p => p.classList.remove("lit"));
+      el.classList.add("out");
+      status.textContent = "Luzes apagadas";
+      timers.push(setTimeout(open, 380));
+    }, hold));
+  };
+  go.addEventListener("click", run, { once: true });
+  $(".start-skip", el).addEventListener("click", open);
+  el.addEventListener("keydown", e => { if (e.key === "Escape") open(); });
+}
+
 function lobbyIntro() {
   const hero = $(".lobby-hero");
   if (!hero) return;
@@ -280,14 +353,17 @@ function lobbyIntro() {
   wm.innerHTML = [...wm.textContent].map((ch, i) => `<span style="--i:${i}">${ch}</span>`).join("");
   wm.setAttribute("aria-label", "Pitstop");
 
-  const lights = $$(".light", hero), gantry = $(".gantry", hero);
-  if (reduce) { hero.classList.add("go"); gantry.classList.add("ready"); return; }
-  hero.classList.add("pre");
-  const ON = 420;
-  lights.forEach((l, i) => setTimeout(() => l.classList.add("lit"), 250 + i * ON));
-  const out = 250 + lights.length * ON + 650;            // segura um instante com tudo aceso…
-  setTimeout(() => { gantry.classList.add("out"); hero.classList.add("go"); }, out); // …e apaga: largada
-  setTimeout(() => { gantry.classList.remove("out"); gantry.classList.add("ready"); hero.classList.remove("pre"); }, out + 1500);
+  if (reduce) { hero.classList.add("go"); return; }
+  const go = () => { hero.classList.remove("go"); void hero.offsetWidth; hero.classList.add("go"); };
+  const replay = $(".replay-start", hero);
+  replay.hidden = false;
+  replay.addEventListener("click", () => { scrollTo(0, 0); hero.classList.remove("go"); startLights(hero, { onGo: go }); });
+
+  // a largada aparece na primeira visita da sessão; depois o lobby já abre direto
+  let seen = false;
+  try { seen = sessionStorage.getItem("pitstop-start") === "1"; sessionStorage.setItem("pitstop-start", "1"); } catch (e) { /* sem armazenamento */ }
+  if (seen) { go(); return; }
+  startLights(hero, { onGo: go });
 }
 
 /* ======================================================================
@@ -330,7 +406,6 @@ function garage() {
   const g = $("#garagem");
   if (!g || $("#series").hidden) return;
   contours(g, { getColor: () => getComputedStyle(g).getPropertyValue("--team"), alpha: 0.07, levels: 8, scale: 0.0019 });
-  tilt($("#stageMedia"), { max: 6, glare: false });
 }
 
 /** chamado pelo app a cada troca de equipe na garagem */
@@ -372,6 +447,7 @@ function ticker() {
    Início
    ====================================================================== */
 function init() {
+  clearTimeout(window.__motionFailsafe);
   root.classList.add("motion-ready");
   lobbyIntro();
   ticker();
@@ -391,7 +467,7 @@ function init() {
   reveal(".driver-card", { stagger: 45, max: 10 });
   reveal(".panel, .rules-explain article, .fact-list li, .garage-info, .gallery", { stagger: 70 });
   $$(".hero-stats dd, .lobby-stats dd, .ct-stats dd:not(.sm), .car-rank span, #standLists .table .val").forEach(el => countIO.observe(el));
-  $$(".driver-card, .series-card, .slot, .c-card").forEach(el => tilt(el, { max: 7 }));
+  $$(".driver-card, .series-card, .c-card").forEach(el => tilt(el, { max: 7 }));
 }
 
 window.Motion = { onTeamChange, countUp, reduce };
