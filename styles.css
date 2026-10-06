@@ -1168,3 +1168,6 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
   .nlm-body { padding: 22px 20px 18px; }
 }
 @media (prefers-reduced-motion: reduce) { .nlb-icon { animation: none; } }
+
+.footer-links { display: flex; gap: 10px; margin-top: 10px; font-size: 14px; }
+.footer-links a, .nl-fine a { color: var(--chalk); }

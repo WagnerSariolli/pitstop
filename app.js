@@ -241,7 +241,7 @@ function nlForm(id) {
         <button class="btn btn-solid" type="submit">Assinar</button>
       </div>
       <p class="nl-msg" role="status" aria-live="polite"></p>
-      <p class="nl-fine">Usamos seu e-mail só para o boletim. A inscrição vale depois que você confirma pelo link que chega na caixa de entrada, e dá para sair com um clique em qualquer e-mail.</p>
+      <p class="nl-fine">Usamos seu e-mail só para o boletim. A inscrição vale depois que você confirma pelo link que chega na caixa de entrada, e dá para sair com um clique em qualquer e-mail. <a href="privacidade.html">Privacidade</a></p>
     </form>`;
 }
 
@@ -550,6 +550,7 @@ function selectTeam(i, { scrollChip = true } = {}) {
 
   renderStage();
   renderGallery(t);
+  if (document.readyState === "complete") preloadNeighbors(); else addEventListener("load", preloadNeighbors, { once: true });
   const ghost = $("#stageGhost");
   ghost.textContent = t.ghost || t.car;
   ghost.classList.remove("swap"); void ghost.offsetWidth; ghost.classList.add("swap");
@@ -718,8 +719,17 @@ function initGarage() {
     const b = e.target.closest("[data-k]");
     if (b) openDriver(+b.dataset.k);
   });
-  window.addEventListener("load", () => setTimeout(() =>
-    S.teams.forEach(t => teamViews(t).forEach(v => { new Image().src = v.img; })), 1500));
+}
+
+// adianta só as fotos das equipes vizinhas (as setas levam a elas), e nada em conexão lenta ou modo econômico
+const preloaded = new Set();
+function preloadNeighbors() {
+  const c = navigator.connection;
+  if (c && (c.saveData || /2g/.test(c.effectiveType || ""))) return;
+  [current - 1, current + 1].forEach(i => {
+    const t = S.teams[(i + S.teams.length) % S.teams.length], v = teamViews(t).find(x => x.id === viewId) || teamViews(t)[0];
+    if (v && !preloaded.has(v.img)) { preloaded.add(v.img); new Image().src = v.img; }
+  });
 }
 
 /* ---------- Pilotos ---------- */
