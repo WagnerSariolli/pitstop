@@ -156,6 +156,11 @@ function renderLobby() {
       <a class="btn btn-solid lobby-cta" href="#campeonatos">Escolher campeonato</a>
     </section>
 
+    <div class="ticker" aria-label="Últimos vencedores">
+      <ul class="ticker-track">${all.flatMap(s => s.calendar.filter(r => r.winner).slice(-4).reverse()
+        .map(r => `<li style="--c:${s.accent}"><b>${esc(s.short)}</b>${esc(r.gp)}<span>${esc(r.winner)}</span></li>`)).join("")}</ul>
+    </div>
+
     <section class="lobby-series" id="campeonatos" aria-labelledby="series-title">
       <div class="section-head"><h2 id="series-title">Campeonatos</h2></div>
       ${CATEGORIES.filter(c => c.series.length).map(c => `
@@ -264,7 +269,7 @@ function renderStage() {
   const v = views.find(x => x.id === viewId) || views[0];
   viewId = v.id;
   const media = $("#stageMedia");
-  media.className = `stage-media swap view-${v.id}`;
+  media.className = `stage-media view-${v.id} ${swapDir < 0 ? "drive-l" : "drive-r"}`;
   media.innerHTML = `<img class="stage-car" src="${v.img}" ${v.srcset ? `srcset="${v.srcset}" sizes="(max-width: 1500px) 100vw, 1500px"` : ""} alt="${esc(t.car)}, ${labels().vehicle} da ${esc(t.name)}: ${esc(v.label.toLowerCase())}">`;
   void media.offsetWidth;
 
@@ -274,8 +279,11 @@ function renderStage() {
   $("#viewNote").textContent = missing.length ? `Sem foto oficial publicada: ${missing.join(", ").toLowerCase()}.` : "";
 }
 
+let swapDir = 1;
 function selectTeam(i, { scrollChip = true } = {}) {
+  swapDir = i < current ? -1 : 1;
   current = (i + S.teams.length) % S.teams.length;
+  if (scrollChip) window.Motion?.onTeamChange(swapDir);
   const t = S.teams[current];
   setTeamColor($("#garagem"), t.color);
 
@@ -286,7 +294,9 @@ function selectTeam(i, { scrollChip = true } = {}) {
 
   renderStage();
   renderGallery(t);
-  $("#stageGhost").textContent = t.ghost || t.car;
+  const ghost = $("#stageGhost");
+  ghost.textContent = t.ghost || t.car;
+  ghost.classList.remove("swap"); void ghost.offsetWidth; ghost.classList.add("swap");
   const logo = $("#teamLogo");
   logo.hidden = !t.logo;
   if (t.logo) { logo.src = t.logo; logo.alt = `Logo ${t.name}`; }
@@ -301,7 +311,7 @@ function selectTeam(i, { scrollChip = true } = {}) {
     <div class="rating-row">
       <span>${S.ratingLabels[k]}</span><strong>${v}</strong>
       <div class="bar" role="meter" aria-label="${S.ratingLabels[k]}" aria-valuenow="${v}" aria-valuemin="0" aria-valuemax="100">
-        ${Array.from({ length: 20 }, (_, s) => `<i class="${s < Math.round(v / 5) ? "on" : ""}"></i>`).join("")}
+        ${Array.from({ length: 20 }, (_, s) => `<i class="${s < Math.round(v / 5) ? "on" : ""}" style="--k:${s}"></i>`).join("")}
       </div>
     </div>`).join("");
   $("#overall").textContent = Math.round(entries.reduce((a, [, v]) => a + v, 0) / entries.length);

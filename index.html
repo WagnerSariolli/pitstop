@@ -9,6 +9,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+  <script>
+    // liga a camada de movimento (e seus estados "antes") só quando o sistema não pede movimento reduzido;
+    // se motion.js não carregar, em 4 s tudo aparece pronto
+    if (!matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      document.documentElement.classList.add("js-motion");
+      setTimeout(() => document.documentElement.classList.add("motion-failsafe"), 4500);
+    }
+  </script>
 </head>
 <body>
   <header class="topbar">
@@ -173,5 +181,6 @@
   <script src="data/wec.js"></script>
   <script src="data/media.js"></script>
   <script src="app.js"></script>
+  <script type="module" src="motion.js"></script>
 </body>
 </html>
