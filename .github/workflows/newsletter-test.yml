@@ -1,0 +1,21 @@
+name: Testar boletim
+
+# Manda os modelos do boletim (resultado e agenda) só para o e-mail do segredo NEWSLETTER_TEST_TO.
+# Não envia para os assinantes e não altera nada no site.
+on:
+  workflow_dispatch:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Enviar teste
+        env:
+          BUTTONDOWN_API_KEY: ${{ secrets.BUTTONDOWN_API_KEY }}
+          NEWSLETTER_TEST_TO: ${{ secrets.NEWSLETTER_TEST_TO }}
+        run: node scripts/newsletter.mjs

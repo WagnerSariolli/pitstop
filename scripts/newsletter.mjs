@@ -135,6 +135,27 @@ if (KEY) {
   } catch (e) { console.error(`Buttondown fora do ar: ${e.message}`); }
 }
 
+/* ---------- modo de teste: manda os modelos só para NEWSLETTER_TEST_TO, sem tocar na lista nem no estado ---------- */
+const TEST_TO = process.env.NEWSLETTER_TEST_TO || "";
+if (TEST_TO) {
+  const latest = ORDER.filter(id => !SERIES[id].seasonOver).map(id => {
+    const done = SERIES[id].calendar.filter(r => r.winner);
+    return done.length ? { s: SERIES[id], r: done.at(-1) } : null;
+  }).filter(Boolean);
+  const newest = Math.max(...latest.map(x => raceDate(x.r)));
+  const mails = [resultsEmail(latest.filter(x => raceDate(x.r) >= newest - 2 * 864e5)), agendaEmail(new Date())].filter(Boolean);
+  for (const m of mails) {
+    const h = { Authorization: `Token ${KEY}`, "Content-Type": "application/json", "X-API-Version": "2026-04-01" };
+    const d = await fetch("https://api.buttondown.com/v1/emails", { method: "POST", headers: h, body: JSON.stringify({ subject: `[Teste] ${m.subject}`, body: m.body, status: "draft" }) });
+    if (!d.ok) { console.error(`Rascunho recusado (${d.status}): ${await d.text()}`); process.exit(1); }
+    const { id } = await d.json();
+    const r = await fetch(`https://api.buttondown.com/v1/emails/${id}/send-draft`, { method: "POST", headers: h, body: JSON.stringify({ recipients: [TEST_TO] }) });
+    console.log(r.ok ? `Teste enviado: ${m.subject}` : `Envio do teste recusado (${r.status}): ${await r.text()}`);
+    if (!r.ok) process.exit(1);
+  }
+  process.exit(0);
+}
+
 /* ---------- execução ---------- */
 const now = process.env.PITSTOP_NOW ? new Date(process.env.PITSTOP_NOW) : new Date(); // PITSTOP_NOW: só para testes
 let changed = firstRun;
