@@ -4,11 +4,11 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pitstop</title>
-  <meta name="description" content="Carros, pilotos, fichas técnicas, classificação e curiosidades de Fórmula 1, Fórmula E, MotoGP e WEC.">
+  <meta name="description" content="Carros, pilotos, fichas técnicas, classificação, guia de pistas e curiosidades de Fórmula 1, Fórmula E, MotoGP e WEC.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20261006c">
   <script>
     // liga a camada de movimento (e seus estados "antes") só quando o sistema não pede movimento reduzido;
     // se motion.js não carregar, em 4 s tudo aparece pronto
@@ -32,6 +32,8 @@
   </header>
 
   <main id="lobby"></main>
+
+  <main id="guide" hidden></main>
 
   <main id="series" hidden>
     <section class="hero" id="hero"></section>
@@ -175,12 +177,14 @@
   </dialog>
 
   <script>window.SERIES = {};</script>
-  <script src="data/f1.js"></script>
-  <script src="data/formulae.js"></script>
-  <script src="data/motogp.js"></script>
-  <script src="data/wec.js"></script>
-  <script src="data/media.js"></script>
-  <script src="app.js"></script>
-  <script type="module" src="motion.js"></script>
+  <script src="data/f1.js?v=20261006c"></script>
+  <script src="data/formulae.js?v=20261006c"></script>
+  <script src="data/motogp.js?v=20261006c"></script>
+  <script src="data/wec.js?v=20261006c"></script>
+  <script src="data/media.js?v=20261006c"></script>
+  <script src="data/circuits.js?v=20261006c"></script>
+  <script src="guide.js?v=20261006c"></script>
+  <script src="app.js?v=20261006c"></script>
+  <script type="module" src="motion.js?v=20261006c"></script>
 </body>
 </html>

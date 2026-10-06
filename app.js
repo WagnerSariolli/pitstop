@@ -13,6 +13,7 @@ const categoryOf = id => CATEGORIES.find(c => c.series.includes(id));
 
 const params = new URLSearchParams(location.search);
 const S = SERIES[params.get("c")] || null; // sem ?c= → lobby
+const GUIDE = !S && !!window.Guide?.isRoute(); // ?c=pistas ou ?pista=<id> → guia de pistas
 
 /* ---------- Datas e contagem regressiva ---------- */
 const MONTHS = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7, set: 8, out: 9, nov: 10, dez: 11 };
@@ -67,7 +68,7 @@ function renderTopbar() {
             <i></i><span><b>${esc(s.name)}</b><small>${esc(s.status)}</small></span></a>`;
         }).join("")}
       </div>
-    </div>`).join("");
+    </div>`).join("") + `<a class="cat-link${GUIDE ? " is-active" : ""}" href="?c=pistas"${GUIDE ? ' aria-current="page"' : ""}>Pistas</a>`;
 
   const cats = [...document.querySelectorAll(".cat")];
   const closeAll = except => cats.forEach(c => {
@@ -170,6 +171,8 @@ function renderLobby() {
         </div>`).join("")}
     </section>
 
+    ${window.Guide ? guideTeaser() : ""}
+
     ${next.length ? `
     <section class="agenda" aria-labelledby="agenda-title">
       <div class="section-head"><h2 id="agenda-title">Próximas corridas</h2><p>Todas as categorias, em ordem de data.</p></div>
@@ -179,11 +182,30 @@ function renderLobby() {
           <span class="ag-series">${esc(s.short)}</span>
           <span class="ag-gp"><b>${esc(r.gp)}</b><small>${esc(r.circuit)}</small></span>
           <span class="ag-when">${countdown(d)}</span>
-          <a href="?c=${s.id}#temporada" aria-label="Ver calendário: ${esc(s.name)}"></a>
+          <a href="${venueOf(s, r) ? `?pista=${venueOf(s, r)}` : `?c=${s.id}#temporada`}" aria-label="${venueOf(s, r) ? `Guia da pista: ${esc(r.circuit)}` : `Ver calendário: ${esc(s.name)}`}"></a>
         </li>`).join("")}
       </ol>
     </section>` : ""}`;
   $("#footerText").textContent = "Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.";
+}
+
+const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
+
+// lobby: as próximas pistas, com o traçado desenhado
+function guideTeaser() {
+  const G = window.Guide, list = G.venues().filter(x => x.up).slice(0, 4);
+  if (!list.length) return "";
+  return `
+    <section class="lobby-guide" aria-labelledby="lg-title">
+      <div class="section-head"><h2 id="lg-title">Guia de pistas</h2><p>Traçado, ficha, recorde, fotos e mapa de satélite de todos os circuitos do ano.</p></div>
+      <div class="c-grid">${list.map(({ c, up }) => `
+        <a class="c-card" href="?pista=${c.id}" style="--c:${up.s.accent}">
+          <span class="c-art">${G.outline(c)}<span class="c-next">${esc(up.s.short)} · ${esc(up.r.date)}</span></span>
+          <span class="c-body"><b class="c-name">${esc(c.name)}</b><small class="c-place">${esc(c.city)}, ${esc(c.country)}${G.kmOf(c) ? ` · ${G.kmOf(c)}` : ""}</small></span>
+        </a>`).join("")}
+      </div>
+      <a class="btn btn-ghost lg-cta" href="?c=pistas">Abrir o guia de pistas</a>
+    </section>`;
 }
 
 function seriesCard(s) {
@@ -413,8 +435,22 @@ async function openMedia(i, step = 1) {
   });
 }
 
-function initGallery() {
+function initMediaModal() {
   const modal = $("#mediaModal");
+  $("#mediaPrev").onclick = () => openMedia(galIndex - 1, -1);
+  $("#mediaNext").onclick = () => openMedia(galIndex + 1, 1);
+  $("#mediaClose").onclick = () => modal.close();
+  modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
+  modal.addEventListener("keydown", e => {
+    if (e.key === "ArrowRight") openMedia(galIndex + 1, 1);
+    if (e.key === "ArrowLeft") openMedia(galIndex - 1, -1);
+  });
+  // fechar a janela para o vídeo (e o som) imediatamente
+  modal.addEventListener("close", () => { stopPlayer(); $("#mediaStage").innerHTML = ""; });
+}
+window.openGallery = (list, i = 0) => { galList = list; openMedia(i); };
+
+function initGallery() {
   $("#galleryTabs").addEventListener("click", e => {
     const b = e.target.closest("[data-f]");
     if (b) { galFilter = b.dataset.f; renderGallery(S.teams[current]); }
@@ -427,16 +463,6 @@ function initGallery() {
     galFilter = "all"; renderGallery(S.teams[current]);
     openMedia(galList.findIndex(x => x.engine && !x.ext));
   });
-  $("#mediaPrev").onclick = () => openMedia(galIndex - 1, -1);
-  $("#mediaNext").onclick = () => openMedia(galIndex + 1, 1);
-  $("#mediaClose").onclick = () => modal.close();
-  modal.addEventListener("click", e => { if (e.target === modal) modal.close(); });
-  modal.addEventListener("keydown", e => {
-    if (e.key === "ArrowRight") openMedia(galIndex + 1, 1);
-    if (e.key === "ArrowLeft") openMedia(galIndex - 1, -1);
-  });
-  // fechar a janela para o vídeo (e o som) imediatamente
-  modal.addEventListener("close", () => { stopPlayer(); $("#mediaStage").innerHTML = ""; });
 }
 
 function initGarage() {
@@ -568,7 +594,8 @@ function renderStandings() {
   };
 
   $("#calendarNote").textContent = S.calendarNote || `${S.calendar.length} etapas.`;
-  $("#calendar").innerHTML = S.calendar.map(r => {
+  const venues = window.VENUES?.[S.id] || [];
+  $("#calendar").innerHTML = S.calendar.map((r, i) => {
     const cls = r.winner ? "done" : r === next ? "next" : "";
     const c = r.winner ? colorOf(r.team) : "";
     const res = r.winner
@@ -576,7 +603,7 @@ function renderStandings() {
       : r === next ? `<b>Próxima</b><small>${esc(r.date)}</small>` : `<small>${esc(r.date)}</small>`;
     return `<li class="${cls}"${c ? ` style="--c:${c}"` : ""}>
       <span class="rnd">${esc(r.r)}</span>
-      <span class="gp"><b>${esc(r.gp)}</b><small>${esc(r.circuit)}</small></span>
+      <span class="gp"><b>${esc(r.gp)}</b>${venues[i] ? `<a class="to-track" href="?pista=${venues[i]}">${esc(r.circuit)} <span aria-hidden="true">›</span></a>` : `<small>${esc(r.circuit)}</small>`}</span>
       <span class="res">${res}</span>
     </li>`;
   }).join("");
@@ -611,7 +638,12 @@ function initSectionNav() {
 renderTopbar();
 renderPill();
 setInterval(renderPill, 30000);
-if (S) {
+initMediaModal();
+if (GUIDE) {
+  $("#lobby").hidden = true;
+  Guide.render();
+  initSectionNav();
+} else if (S) {
   teamById = Object.fromEntries(S.teams.map(t => [t.id, t]));
   colorOf = id => (teamById[id] || {}).color || "#888";
   $("#lobby").hidden = true;

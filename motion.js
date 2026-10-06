@@ -17,7 +17,7 @@ if (!reduce) {
   lenis = new Lenis({
     lerp: 0.11,
     anchors: { offset: -124 },
-    prevent: node => !!node.closest?.("dialog, .gallery-strip, .team-picker, .section-nav, .cat-panel, .series-nav"),
+    prevent: node => !!node.closest?.("dialog, .gallery-strip, .team-picker, .section-nav, .cat-panel, .series-nav, .leaflet-container"),
   });
   const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
@@ -346,6 +346,18 @@ function onTeamChange(dir = 1) {
 }
 
 /* ======================================================================
+   Guia de pistas: relevo atrás do traçado, na cor do campeonato
+   ====================================================================== */
+function guidePage() {
+  const g = $("#guide");
+  if (!g || g.hidden) return;
+  const hero = $(".g-hero, .ct-hero", g);
+  if (hero) contours(hero, { getColor: () => getComputedStyle(hero).getPropertyValue("--c"), alpha: 0.1, levels: 9 });
+  const loc = $(".ct-local", g);
+  if (loc) contours(loc, { getColor: () => "#eceef1", alpha: 0.05, levels: 7, scale: 0.0018 });
+}
+
+/* ======================================================================
    Faixa de últimos vencedores (lobby)
    ====================================================================== */
 function ticker() {
@@ -365,6 +377,7 @@ function init() {
   ticker();
   seriesHero();
   garage();
+  guidePage();
 
   // faixas quadriculadas: antes do rodapé e (no campeonato) entre o hero e a garagem
   const accent = () => getComputedStyle(root).getPropertyValue("--series").trim() || "#e10600";
@@ -374,10 +387,11 @@ function init() {
 
   $$(".section-head h2, .cat-block h3").forEach(splitWords);
   reveal(".section-head p, .series-card, .agenda-list li, .cat-block header p");
+  reveal(".c-card, .race-list li, .ph-tile", { stagger: 50, max: 10 });
   reveal(".driver-card", { stagger: 45, max: 10 });
   reveal(".panel, .rules-explain article, .fact-list li, .garage-info, .gallery", { stagger: 70 });
-  $$(".hero-stats dd, .lobby-stats dd, .car-rank span, #standLists .table .val").forEach(el => countIO.observe(el));
-  $$(".driver-card, .series-card, .slot").forEach(el => tilt(el, { max: 7 }));
+  $$(".hero-stats dd, .lobby-stats dd, .ct-stats dd:not(.sm), .car-rank span, #standLists .table .val").forEach(el => countIO.observe(el));
+  $$(".driver-card, .series-card, .slot, .c-card").forEach(el => tilt(el, { max: 7 }));
 }
 
 window.Motion = { onTeamChange, countUp, reduce };
