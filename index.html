@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pitstop</title>
+  <meta name="description" content="Carros, pilotos, fichas técnicas, classificação e curiosidades de Fórmula 1, Fórmula E, MotoGP e WEC.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar-row">
+      <a class="brand" href="./" aria-label="Pitstop, página inicial">PITSTOP</a>
+      <nav class="cat-nav" id="catNav" aria-label="Campeonatos por categoria"></nav>
+      <div class="next-pill" id="nextPill"></div>
+    </div>
+    <div class="subbar" id="subbar" hidden>
+      <div class="crumb" id="crumb"></div>
+      <nav class="section-nav" id="sectionNav" aria-label="Seções"></nav>
+    </div>
+  </header>
+
+  <main id="lobby"></main>
+
+  <main id="series" hidden>
+    <section class="hero" id="hero"></section>
+
+    <section class="garage" id="garagem" aria-labelledby="garage-title">
+      <div class="section-head">
+        <h2 id="garage-title"></h2>
+        <p id="garage-lede"></p>
+      </div>
+      <div class="team-picker" role="tablist" aria-label="Equipes" id="teamPicker"></div>
+
+      <div class="stage" id="stage">
+        <div class="stage-ghost" id="stageGhost" aria-hidden="true"></div>
+        <button class="stage-arrow prev" id="prevTeam" aria-label="Equipe anterior">‹</button>
+        <div class="stage-media" id="stageMedia"></div>
+        <button class="stage-arrow next" id="nextTeam" aria-label="Próxima equipe">›</button>
+        <div class="stage-floor" aria-hidden="true"></div>
+      </div>
+      <div class="view-bar">
+        <div class="view-row">
+          <div class="view-switch" id="viewSwitch" role="group" aria-label="Ângulo da foto"></div>
+          <button class="engine-btn" id="engineBtn" hidden><span aria-hidden="true"></span>Ouvir o motor</button>
+        </div>
+        <p class="view-note" id="viewNote"></p>
+      </div>
+
+      <div class="gallery" id="gallery">
+        <div class="gallery-head">
+          <h4 id="galleryTitle">Galeria</h4>
+          <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="Filtrar galeria"></div>
+        </div>
+        <div class="gallery-strip" id="galleryStrip"></div>
+        <p class="gallery-note" id="galleryNote"></p>
+      </div>
+
+      <div class="garage-info">
+        <div class="car-title">
+          <img class="team-logo" id="teamLogo" alt="">
+          <div>
+            <h3 id="carName"></h3>
+            <p id="teamFull"></p>
+          </div>
+          <div class="car-rank">
+            <span id="teamPos"></span>
+            <small id="teamPts"></small>
+          </div>
+        </div>
+        <p class="car-note" id="carNote"></p>
+
+        <div class="garage-grid">
+          <div class="panel">
+            <h4>Desempenho</h4>
+            <p class="panel-sub">Estimativa Pitstop, de 0 a 100, com base nos resultados da temporada</p>
+            <div id="ratings" class="ratings"></div>
+            <div class="overall"><span>Geral</span><strong id="overall"></strong></div>
+          </div>
+          <div class="panel">
+            <h4>Ficha técnica</h4>
+            <dl class="specs" id="specs"></dl>
+          </div>
+          <div class="panel panel-drivers">
+            <h4 id="teamDriversTitle">Pilotos</h4>
+            <div id="teamDrivers" class="team-drivers"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="drivers" id="pilotos" aria-labelledby="drivers-title">
+      <div class="section-head">
+        <h2 id="drivers-title"></h2>
+        <p id="drivers-lede"></p>
+      </div>
+      <div class="driver-grid" id="driverGrid"></div>
+    </section>
+
+    <section class="season" id="temporada" aria-labelledby="season-title">
+      <div class="section-head">
+        <h2 id="season-title"></h2>
+        <p id="updated"></p>
+      </div>
+      <div class="standings">
+        <div class="panel">
+          <div class="panel-tabs" role="tablist" id="standTabs"></div>
+          <div id="standLists"></div>
+        </div>
+        <div class="panel">
+          <h4>Calendário</h4>
+          <p class="panel-sub" id="calendarNote"></p>
+          <ol class="calendar" id="calendar"></ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="rules" id="regras" aria-labelledby="rules-title">
+      <div class="section-head">
+        <h2 id="rules-title"></h2>
+        <p id="rules-lede"></p>
+      </div>
+      <div class="rules-grid">
+        <div class="panel" id="rulesTable">
+          <table class="compare">
+            <thead id="rulesHead"></thead>
+            <tbody id="rulesBody"></tbody>
+          </table>
+        </div>
+        <div class="rules-explain" id="rulesCards"></div>
+      </div>
+    </section>
+
+    <section class="facts" id="curiosidades" aria-labelledby="facts-title">
+      <div class="section-head">
+        <h2 id="facts-title">Curiosidades</h2>
+      </div>
+      <ul class="fact-list" id="facts"></ul>
+    </section>
+
+    <section class="others" aria-labelledby="others-title">
+      <div class="section-head">
+        <h2 id="others-title">Outros campeonatos</h2>
+      </div>
+      <div class="series-cards" id="otherSeries"></div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <p id="footerText"></p>
+  </footer>
+
+  <dialog class="driver-modal" id="driverModal" aria-labelledby="modalName">
+    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <div class="modal-body" id="modalBody"></div>
+  </dialog>
+
+  <dialog class="media-modal" id="mediaModal" aria-label="Galeria">
+    <button class="modal-close" id="mediaClose" aria-label="Fechar">×</button>
+    <button class="mm-nav prev" id="mediaPrev" aria-label="Anterior">‹</button>
+    <div class="mm-stage" id="mediaStage"></div>
+    <button class="mm-nav next" id="mediaNext" aria-label="Próximo">›</button>
+    <p class="mm-caption" id="mediaCaption"></p>
+  </dialog>
+
+  <script>window.SERIES = {};</script>
+  <script src="data/f1.js"></script>
+  <script src="data/formulae.js"></script>
+  <script src="data/motogp.js"></script>
+  <script src="data/wec.js"></script>
+  <script src="data/media.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
