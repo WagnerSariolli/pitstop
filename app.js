@@ -131,7 +131,8 @@ function renderTopbar() {
     $("#subbar").hidden = false;
     $("#subbar").style.setProperty("--series", S.accent);
     $("#crumb").innerHTML = `<a href="./">${esc(cat.name)}</a><span aria-hidden="true">/</span><b>${esc(S.name)}</b><small>${esc(S.season)}</small>`;
-    $("#sectionNav").innerHTML = [["garagem", L.garage], ["pilotos", L.people], ["temporada", L.season], ["regras", L.rules], ["curiosidades", L.facts]]
+    const hasHl = window.HL && Object.keys(window.HIGHLIGHTS?.[S.id] || {}).length;
+    $("#sectionNav").innerHTML = [["garagem", L.garage], ["pilotos", L.people], ...(hasHl ? [["destaques", "Destaques"]] : []), ["temporada", L.season], ["regras", L.rules], ["curiosidades", L.facts]]
       .map(([id, l]) => `<a href="#${id}">${esc(l)}</a>`).join("");
   }
 }
@@ -209,6 +210,8 @@ function renderLobby() {
           <div class="series-cards">${c.series.map(id => seriesCard(SERIES[id])).join("")}</div>
         </div>`).join("")}
     </section>
+
+    ${window.HL ? HL.lobbySection() : ""}
 
     ${window.Guide ? guideTeaser() : ""}
 
@@ -848,7 +851,7 @@ function renderStandings() {
     return `<li class="${cls}"${c ? ` style="--c:${c}"` : ""}>
       <span class="rnd">${esc(r.r)}</span>
       <span class="gp"><b>${esc(r.gp)}</b>${venues[i] ? `<a class="to-track" href="?pista=${venues[i]}">${esc(r.circuit)} <span aria-hidden="true">›</span></a>` : `<small>${esc(r.circuit)}</small>`}</span>
-      <span class="res">${res}</span>
+      <span class="res">${res}${r.winner && window.HL?.has(S.id, r.r) ? `<a class="to-hl" href="#destaques" data-hl="${r.r}">▶ Destaques</a>` : ""}</span>
     </li>`;
   }).join("");
 }
@@ -898,6 +901,7 @@ if (GUIDE) {
   initGarage();
   renderDrivers();
   initModal();
+  window.HL?.seriesSection(S);
   renderStandings();
   renderRules();
   initSectionNav();

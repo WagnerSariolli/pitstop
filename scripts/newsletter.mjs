@@ -19,11 +19,13 @@ const SEASON = 2026;
 const ctx = { window: {}, SERIES: {} };
 ctx.window.SERIES = ctx.SERIES;
 vm.createContext(ctx);
-for (const f of ["f1", "formulae", "motogp", "wec", "live", "circuits"]) {
+for (const f of ["f1", "formulae", "motogp", "wec", "live", "circuits", "highlights"]) {
   const file = path.join(ROOT, "data", `${f}.js`);
   if (existsSync(file)) vm.runInContext(readFileSync(file, "utf8"), ctx);
 }
-const SERIES = ctx.SERIES, LIVE = ctx.window.LIVE || {}, VENUES = ctx.window.VENUES || {};
+const SERIES = ctx.SERIES, LIVE = ctx.window.LIVE || {}, VENUES = ctx.window.VENUES || {}, HL = ctx.window.HIGHLIGHTS || {};
+// o vídeo de melhores momentos da corrida, quando o canal oficial já publicou
+const raceVideo = (s, r) => (HL[s.id]?.[r.r]?.videos || []).find(v => v.kind === "race" || v.kind === "moments");
 const ORDER = ["f1", "formulae", "motogp", "wec"].filter(id => SERIES[id]);
 for (const [id, live] of Object.entries(LIVE)) {
   const s = SERIES[id];
@@ -71,8 +73,9 @@ function resultsEmail(items) {
       `**Vitória de ${r.winner}**${teamName(s, r.team) ? ` (${teamName(s, r.team)})` : ""} em ${r.circuit}, ${r.date}.`,
       s.hero?.lede ? s.hero.lede : "",
       `**Classificação depois de ${done} de ${total} etapas**\n\n${table}`,
+      raceVideo(s, r) ? `▶ **[Assista aos melhores momentos](https://www.youtube.com/watch?v=${raceVideo(s, r).id})** (vídeo oficial de ${raceVideo(s, r).ch})` : "",
       next ? `**Próxima etapa:** ${next.gp}, ${next.date} (${next.circuit}).` : `**Fim de temporada.**`,
-      `[Ver a temporada no Pitstop](${SITE}?c=${s.id}#temporada)${link ? ` · [Guia da pista](${link})` : ""}`,
+      `[Todos os destaques da etapa](${SITE}?c=${s.id}&r=${r.r}#destaques) · [Ver a temporada no Pitstop](${SITE}?c=${s.id}#temporada)${link ? ` · [Guia da pista](${link})` : ""}`,
     ].filter(Boolean).join("\n\n");
   });
   const subject = items.length === 1
@@ -161,11 +164,16 @@ const now = process.env.PITSTOP_NOW ? new Date(process.env.PITSTOP_NOW) : new Da
 let changed = firstRun;
 if (firstRun) console.log("Primeira execução: registrando os resultados atuais, sem enviar nada.");
 
+// resultado novo: espera até 3 h pelo vídeo de melhores momentos, para o e-mail já sair com ele
+state.waiting ||= {};
 const fresh = ORDER.flatMap(id => SERIES[id].calendar
   .filter(r => r.winner && !(state.notified[id] || []).includes(r.r))
   .map(r => ({ s: SERIES[id], r })));
-if (fresh.length && await send(resultsEmail(fresh))) {
-  for (const { s, r } of fresh) (state.notified[s.id] ||= []).push(r.r);
+for (const { s, r } of fresh) if (!state.waiting[`${s.id}:${r.r}`]) { state.waiting[`${s.id}:${r.r}`] = now.toISOString(); changed = true; }
+const ready = fresh.filter(({ s, r }) => raceVideo(s, r) || now - Date.parse(state.waiting[`${s.id}:${r.r}`]) >= 3 * 36e5);
+if (ready.length < fresh.length) console.log(`Aguardando o vídeo de melhores momentos: ${fresh.filter(x => !ready.includes(x)).map(({ s, r }) => `${s.short} ${r.gp}`).join(", ")}`);
+if (ready.length && await send(resultsEmail(ready))) {
+  for (const { s, r } of ready) { (state.notified[s.id] ||= []).push(r.r); delete state.waiting[`${s.id}:${r.r}`]; }
   changed = true;
 }
 

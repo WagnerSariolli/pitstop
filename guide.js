@@ -664,14 +664,14 @@ window.Guide = (() => {
 
   function raceRow({ s, r, d }, isNext) {
     const team = s.teams.find(t => t.id === r.team);
-    const res = r.winner ? `<b>${esc(r.winner)}</b><small>Vencedor${team ? ` · ${esc(team.name)}` : ""}</small>`
+    const res = r.winner ? `<b>${esc(r.winner)}</b><small>Vencedor${team ? ` · ${esc(team.name)}` : ""}</small>${window.HL?.has(s.id, r.r) ? `<em class="rl-hl">▶ Ver destaques</em>` : ""}`
       : isNext ? `<b class="nx">Próxima</b><small>em ${countdown(d)}</small>` : `<small>A disputar</small>`;
     return `
       <li style="--c:${s.accent}">
         <time datetime="${d.toISOString().slice(0, 10)}"><b>${d.getDate()}</b>${esc(String(r.date).replace(/^\d+\s*/, ""))}</time>
         <span class="rl-gp"><i>${esc(s.short)} · Etapa ${esc(r.r)}</i><b>${esc(r.gp)}</b></span>
         <span class="rl-res">${res}</span>
-        <a href="?c=${s.id}#temporada" aria-label="Calendário de ${esc(s.name)}"></a>
+        <a href="${r.winner && window.HL?.has(s.id, r.r) ? `?c=${s.id}&r=${r.r}#destaques` : `?c=${s.id}#temporada`}" aria-label="${r.winner && window.HL?.has(s.id, r.r) ? `Destaques da etapa: ${esc(r.gp)}` : `Calendário de ${esc(s.name)}`}"></a>
       </li>`;
   }
 

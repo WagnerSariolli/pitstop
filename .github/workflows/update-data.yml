@@ -26,6 +26,8 @@ jobs:
           node-version: 20
       - name: Buscar dados
         run: node scripts/update-data.mjs
+      - name: Destaques (vídeos e fotos)
+        run: node scripts/highlights.mjs
       - name: Boletim por e-mail
         # sem o segredo BUTTONDOWN_API_KEY o boletim só aparece no log, nada é enviado
         env:
@@ -33,12 +35,12 @@ jobs:
         run: node scripts/newsletter.mjs
       - name: Publicar se mudou
         run: |
-          if git diff --quiet -- data/live.js data/newsletter-state.json; then
+          if git diff --quiet -- data/live.js data/newsletter-state.json data/highlights.js; then
             echo "Nada mudou."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/live.js data/newsletter-state.json
+          git add data/live.js data/newsletter-state.json data/highlights.js
           git commit -m "Dados atualizados automaticamente"
           git push

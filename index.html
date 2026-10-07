@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261006o">
+  <link rel="stylesheet" href="styles.css?v=20261006q">
   <script>
     // liga a camada de movimento (e seus estados "antes") só quando o sistema não pede movimento reduzido;
     // se motion.js não carregar, em 4 s tudo aparece pronto
@@ -125,6 +125,16 @@
       <div class="driver-grid" id="driverGrid"></div>
     </section>
 
+    <section class="highlights" id="destaques" aria-labelledby="hl-title" hidden>
+      <div class="section-head">
+        <h2 id="hl-title">Destaques</h2>
+        <p id="hl-lede"></p>
+      </div>
+      <div class="hl-races" id="hlRaces" role="tablist" aria-label="Etapas"></div>
+      <div class="hl-stage" id="hlStage"></div>
+      <p class="gallery-note" id="hlNote"></p>
+    </section>
+
     <section class="season" id="temporada" aria-labelledby="season-title">
       <div class="section-head">
         <h2 id="season-title"></h2>
@@ -194,16 +204,18 @@
   </dialog>
 
   <script>window.SERIES = {};</script>
-  <script src="data/f1.js?v=20261006o"></script>
-  <script src="data/formulae.js?v=20261006o"></script>
-  <script src="data/motogp.js?v=20261006o"></script>
-  <script src="data/wec.js?v=20261006o"></script>
-  <script src="data/media.js?v=20261006o"></script>
+  <script src="data/f1.js?v=20261006q"></script>
+  <script src="data/formulae.js?v=20261006q"></script>
+  <script src="data/motogp.js?v=20261006q"></script>
+  <script src="data/wec.js?v=20261006q"></script>
+  <script src="data/media.js?v=20261006q"></script>
   <script src="data/live.js"></script>
-  <script src="data/newsletter.js?v=20261006o"></script>
-  <script src="data/circuits.js?v=20261006o"></script>
-  <script src="guide.js?v=20261006o"></script>
-  <script src="app.js?v=20261006o"></script>
-  <script type="module" src="motion.js?v=20261006o"></script>
+  <script src="data/newsletter.js?v=20261006q"></script>
+  <script src="data/circuits.js?v=20261006q"></script>
+  <script src="data/highlights.js"></script>
+  <script src="destaques.js?v=20261006q"></script>
+  <script src="guide.js?v=20261006q"></script>
+  <script src="app.js?v=20261006q"></script>
+  <script type="module" src="motion.js?v=20261006q"></script>
 </body>
 </html>

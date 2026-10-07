@@ -43,3 +43,11 @@ Visitantes se inscrevem pelo formulário do site (página inicial e rodapé). Os
   e, às quintas-feiras, a agenda do fim de semana. O que já foi avisado fica em `data/newsletter-state.json`.
 - Configuração: nome de usuário do Buttondown em `data/newsletter.js` e a chave da API no segredo
   `BUTTONDOWN_API_KEY` do repositório (Settings → Secrets and variables → Actions). Sem a chave, nada é enviado.
+
+## Destaques das corridas
+
+`scripts/highlights.mjs` (no mesmo workflow de hora em hora) junta os vídeos oficiais de cada etapa
+pelos feeds RSS dos canais da F1, Fórmula E, MotoGP e FIA WEC no YouTube, e fotos com licença livre das
+categorias da temporada na Wikimedia Commons. Grava `data/highlights.js`, que alimenta a seção "Destaques"
+de cada campeonato, os "Momentos épicos" da página inicial e o link de vídeo no boletim.
+O canal da F1 bloqueia a exibição fora do YouTube, então os vídeos dele abrem lá.
