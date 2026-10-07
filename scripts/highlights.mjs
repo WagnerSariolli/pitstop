@@ -14,6 +14,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import vm from "node:vm";
+import { execFile } from "node:child_process";
 import path from "node:path";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -130,14 +131,7 @@ function matchCreator(cr, v) {
   }
   return null;
 }
-async function creatorFeed(cr) {
-  const r = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${cr.ch}`, { headers: UA, signal: AbortSignal.timeout(30000) });
-  if (!r.ok) throw new Error(`RSS ${cr.name}: ${r.status}`);
-  const xml = await r.text();
-  const un = s => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-  return [...xml.matchAll(/<yt:videoId>(.*?)<\/yt:videoId>[\s\S]*?<title>(.*?)<\/title>[\s\S]*?<published>(.*?)<\/published>/g)]
-    .map(m => ({ id: m[1], title: un(m[2]), published: m[3] }));
-}
+const creatorFeed = cr => channelVideos(cr.ch, { lang: cr.lang });
 // preenchimento do passado: arquivos "id<TAB>aaaammdd<TAB>título" por canal, em --creators=pasta
 const creatorsDir = (process.argv.find(a => a.startsWith("--creators=")) || "").split("=")[1];
 const creatorTsv = cr => {
@@ -199,13 +193,35 @@ function classify(id, title) {
 }
 
 /* ---------- fontes de vídeos ---------- */
-async function rss(id) {
-  const r = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${CHANNELS[id]}`, { headers: UA, signal: AbortSignal.timeout(30000) });
-  if (!r.ok) throw new Error(`RSS ${id}: ${r.status}`);
-  const xml = await r.text();
-  const unescape = s => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
-  return [...xml.matchAll(/<yt:videoId>(.*?)<\/yt:videoId>[\s\S]*?<title>(.*?)<\/title>/g)].map(m => ({ id: m[1], title: unescape(m[2]) }));
+// O feed RSS do YouTube anda instável (404/500 intermitentes): tenta algumas vezes e, se não der,
+// lê a lista do canal com o yt-dlp (instalado no workflow). Devolve [{ id, title, published, approx }].
+const unescapeXml = s => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+async function channelVideos(ch, { lang = "en" } = {}) {
+  for (let a = 0; a < 4; a++) {
+    try {
+      const r = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${ch}`, { headers: UA, signal: AbortSignal.timeout(30000) });
+      if (r.ok) {
+        const xml = await r.text();
+        return [...xml.matchAll(/<yt:videoId>(.*?)<\/yt:videoId>[\s\S]*?<title>(.*?)<\/title>[\s\S]*?<published>(.*?)<\/published>/g)]
+          .map(m => ({ id: m[1], title: unescapeXml(m[2]), published: m[3] }));
+      }
+    } catch (e) { /* tenta de novo */ }
+    await new Promise(res => setTimeout(res, 2000 * 2 ** a));
+  }
+  // plano B: yt-dlp, só a lista (sem baixar nada)
+  const args = ["-m", "yt_dlp", "--flat-playlist", "--playlist-end", "40", "--print", "%(id)s\t%(upload_date)s\t%(title)s",
+    "--extractor-args", `youtube:lang=${lang}`, "--extractor-args", "youtubetab:approximate_date", `https://www.youtube.com/channel/${ch}/videos`];
+  const out = await new Promise((res, rej) => execFile(process.env.PYTHON || "python3", args, { timeout: 180000, maxBuffer: 8e6, env: { ...process.env, PYTHONIOENCODING: "utf-8" } },
+    (err, stdout) => (err && !stdout ? rej(new Error(`yt-dlp: ${String(err.message).slice(0, 120)}`)) : res(stdout))));
+  const now = new Date().toISOString();
+  const list = out.split(/\r?\n/).filter(l => l.includes("\t")).map(l => {
+    const [id, d, ...t] = l.split("\t");
+    return { id, title: t.join("\t"), published: /^\d{8}$/.test(d) ? `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}T12:00:00Z` : now, approx: true };
+  });
+  if (!list.length) throw new Error("feed e yt-dlp sem resposta");
+  return list;
 }
+const rss = id => channelVideos(CHANNELS[id]);
 const tsvArgs = Object.fromEntries(process.argv.slice(2).filter(a => a.includes("=") && !a.startsWith("--")).map(a => a.split("=")));
 const fromTsv = id => tsvArgs[id] ? readFileSync(tsvArgs[id], "utf8").split(/\r?\n/).filter(Boolean).map(l => { const [vid, ...t] = l.split("\t"); return { id: vid, title: t.join("\t") }; }) : [];
 

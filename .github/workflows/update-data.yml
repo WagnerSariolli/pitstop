@@ -26,6 +26,8 @@ jobs:
           node-version: 20
       - name: Buscar dados
         run: node scripts/update-data.mjs
+      - name: Ferramenta de reserva para listar vídeos (yt-dlp)
+        run: python3 -m pip install --quiet --user yt-dlp
       - name: Destaques (vídeos e fotos)
         run: node scripts/highlights.mjs
       - name: Boletim por e-mail
