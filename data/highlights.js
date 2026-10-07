@@ -2852,6 +2852,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-10-07T00:24:49.234Z"
+  },
+  "17": {
+   "videos": [
+    {
+     "id": "7X3td0E5PVE",
+     "kind": "epic",
+     "prio": 4,
+     "title": "It's time for the 2026 Indonesian GP 🇮🇩",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
   }
  },
  "wec": {
