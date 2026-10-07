@@ -426,6 +426,51 @@ function initNudges() {
   }, { passive: true });
 }
 
+/* ---------- Aviso antes de levar o visitante ao YouTube ----------
+   Alguns canais (o da F1, por exemplo) só deixam assistir no YouTube. Antes de abrir, o site explica e
+   oferece ficar; o vídeo abre numa aba nova, e esta página continua exatamente onde estava. */
+function initLeaveNotice() {
+  const dlg = document.createElement("dialog");
+  dlg.className = "leave-modal";
+  dlg.setAttribute("aria-labelledby", "leaveTitle");
+  dlg.innerHTML = `
+    <button class="modal-close" type="button" aria-label="Fechar">×</button>
+    <div class="lv-media"><img alt=""><span class="lv-yt" aria-hidden="true"><svg viewBox="0 0 28 20"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg></span></div>
+    <div class="lv-body">
+      <p class="kicker">Indo para o YouTube</p>
+      <h2 id="leaveTitle">Este vídeo abre no YouTube</h2>
+      <p class="lv-video"></p>
+      <p class="lv-why">O canal oficial só permite assistir a este vídeo no YouTube. Ele vai abrir numa nova aba, e o Pitstop continua aqui do jeito que você deixou: é só voltar para esta aba quando terminar.</p>
+      <div class="lv-actions">
+        <a class="btn btn-solid lv-go" target="_blank" rel="noopener">Abrir no YouTube ↗</a>
+        <button class="btn btn-ghost lv-stay" type="button">Ficar no Pitstop</button>
+      </div>
+      <label class="lv-skip"><input type="checkbox"> Não mostrar este aviso de novo</label>
+    </div>`;
+  document.body.append(dlg);
+  const skipKey = "pitstop-leave-skip";
+  const skipped = () => { try { return localStorage.getItem(skipKey) === "1"; } catch (e) { return false; } };
+  const close = () => dlg.close();
+  dlg.querySelector(".modal-close").onclick = close;
+  dlg.querySelector(".lv-stay").onclick = close;
+  dlg.addEventListener("click", e => { if (e.target === dlg) close(); });
+  dlg.querySelector(".lv-go").addEventListener("click", () => {
+    if (dlg.querySelector(".lv-skip input").checked) { try { localStorage.setItem(skipKey, "1"); } catch (e) { /* sem armazenamento */ } }
+    setTimeout(close, 150);
+  });
+  document.addEventListener("click", e => {
+    const a = e.target.closest("a[data-leave]");
+    if (!a || skipped() || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    e.preventDefault();
+    dlg.querySelector(".lv-go").href = a.href;
+    dlg.querySelector(".lv-media img").src = a.dataset.thumb || "";
+    dlg.querySelector(".lv-video").textContent = a.dataset.title || "";
+    dlg.querySelector(".lv-skip input").checked = false;
+    dlg.showModal();
+    dlg.querySelector(".lv-go").focus();
+  });
+}
+
 const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
 
 // lobby: as próximas pistas, com o traçado desenhado
@@ -606,7 +651,7 @@ function renderGallery(t) {
   galList = galItems.filter(x => galFilter === "all" || x.t === galFilter);
   $("#galleryStrip").innerHTML = galList.map((x, i) => {
     if (x.t === "v" && x.ext) return `
-    <a class="g-tile is-ext" href="${ytWatch(x.id)}" target="_blank" rel="noopener">
+    <a class="g-tile is-ext" href="${ytWatch(x.id)}" target="_blank" rel="noopener" data-leave data-title="${esc(x.title)}" data-thumb="${ytThumb(x.id)}">
       <span class="g-thumb"><img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span>${x.engine ? `<span class="g-badge">Som do motor</span>` : ""}<span class="g-ext">Só no YouTube ↗</span></span>
       <span class="g-cap"><b>${esc(x.title)}</b><small>Vídeo · ${esc(x.ch)} · abre no YouTube</small></span>
     </a>`;
@@ -646,7 +691,7 @@ function blockedCard(x) {
     <img src="${ytThumb(x.id)}" alt="">
     <div><b>Este vídeo só pode ser assistido no YouTube</b>
     <p>O dono do vídeo bloqueou a exibição em outros sites.</p>
-    <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener">Assistir no YouTube</a></div>
+    <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener">Assistir no YouTube ↗</a></div>
   </div>`;
 }
 
@@ -887,6 +932,7 @@ renderPill();
 queueMicrotask(initNewsletter);
 setInterval(renderPill, 30000);
 initMediaModal();
+initLeaveNotice();
 if (GUIDE) {
   $("#lobby").hidden = true;
   Guide.render();

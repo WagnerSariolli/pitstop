@@ -1236,3 +1236,27 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
 .hl-feature { cursor: pointer; }
 .hl-ext { right: auto; left: clamp(16px, 3vw, 32px); top: clamp(14px, 3vw, 24px); bottom: auto; font-size: 13px; padding: 4px 12px; }
 .hl-races { scrollbar-color: var(--line) transparent; }
+
+/* ---------- aviso antes de ir ao YouTube ---------- */
+.leave-modal {
+  width: min(520px, calc(100vw - 32px)); padding: 0; border: 1px solid var(--line); border-radius: 18px; overflow: hidden;
+  background: var(--pitwall); color: var(--chalk); box-shadow: 0 40px 90px rgba(0,0,0,.6);
+}
+.leave-modal::backdrop { background: rgba(5,6,8,.72); backdrop-filter: blur(6px); }
+.leave-modal[open] { animation: nlIn .35s cubic-bezier(.16, 1, .3, 1); }
+.leave-modal .modal-close { z-index: 2; }
+.lv-media { position: relative; aspect-ratio: 16 / 9; background: #000; }
+.lv-media img { width: 100%; height: 100%; object-fit: cover; opacity: .75; }
+.lv-media img[src=""] { display: none; }
+.lv-yt { position: absolute; left: 50%; top: 50%; translate: -50% -50%; width: 68px; filter: drop-shadow(0 6px 16px rgba(0,0,0,.5)); }
+.lv-yt svg { width: 100%; display: block; }
+.lv-body { display: grid; gap: 12px; padding: 22px 24px 20px; }
+.leave-modal h2 { font-size: clamp(30px, 5vw, 40px); text-transform: uppercase; text-wrap: balance; }
+.lv-video { font-weight: 600; }
+.lv-video:empty { display: none; }
+.lv-why { color: #c9ced6; font-size: 15px; }
+.lv-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 4px; }
+.lv-actions .btn-solid { --team: #ff0000; --on-team: #fff; }
+.lv-skip { display: flex; align-items: center; gap: 8px; color: var(--mute); font-size: 13px; cursor: pointer; }
+.lv-skip input { accent-color: var(--chalk); }
+@media (max-width: 560px) { .lv-actions .btn { flex: 1 1 100%; justify-content: center; } }

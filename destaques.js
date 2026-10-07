@@ -1,4 +1,4 @@
-// Pitstop · destaques: os momentos mais épicos de cada corrida (vídeos oficiais, de criadores selecionados e fotos livres).
+// Pitstop · destaques: os momentos mais épicos de cada corrida (vídeos oficiais e fotos livres).
 // Os dados vêm de data/highlights.js, que o robô (scripts/highlights.mjs) atualiza depois de cada corrida.
 // Carregado antes de app.js; as funções usam SERIES, ORDER, raceDate, esc, $ e openGallery na hora em que rodam.
 window.HL = (() => {
@@ -7,9 +7,7 @@ window.HL = (() => {
     race: "Melhores momentos da corrida", moments: "Momentos épicos", extended: "Melhores momentos estendidos",
     overtakes: "Ultrapassagens", qualifying: "Classificação", onboard: "Top 10 câmeras onboard", sprint: "Sprint",
     replay: "Corrida completa", start: "A largada", radio: "Rádio das equipes", react: "Reação dos pilotos", epic: "Lance da corrida",
-    creator: "Análise",
   };
-  const LANG = { pt: "em português", en: "em inglês" };
   // ordem de exibição: primeiro o que toca dentro do site (o vídeo grande nunca manda o visitante embora)
   const ordered = h => [...h.videos.filter(v => !v.ext), ...h.videos.filter(v => v.ext)];
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
@@ -24,7 +22,7 @@ window.HL = (() => {
   const itemsOf = (sid, r) => {
     const h = H[sid]?.[r.r] || { videos: [], photos: [] };
     return [
-      ...ordered(h).map(v => ({ t: "v", id: v.id, title: v.kind === "creator" ? v.title : `${KIND[v.kind] || ""}${KIND[v.kind] ? ": " : ""}${v.title}`, ch: v.ch, ext: v.ext })),
+      ...ordered(h).map(v => ({ t: "v", id: v.id, title: `${KIND[v.kind] || ""}${KIND[v.kind] ? ": " : ""}${v.title}`, ch: v.ch, ext: v.ext })),
       ...(h.photos || []).map(p => ({ t: "p", ...p })),
     ];
   };
@@ -41,7 +39,7 @@ window.HL = (() => {
     let cur = races.find(r => String(r.r) === want) || races[0];
     const host = $("#destaques");
     host.hidden = false;
-    $("#hl-lede").textContent = `Os momentos mais épicos de cada etapa: vídeos oficiais, análises de criadores selecionados em português e inglês e fotos da Wikimedia Commons, com autor e licença.`;
+    $("#hl-lede").textContent = `Os momentos mais épicos de cada etapa: vídeos oficiais dos campeonatos no YouTube e fotos da Wikimedia Commons, com autor e licença.`;
     $("#hlRaces").innerHTML = races.map(r => `
       <button role="tab" data-r="${r.r}" aria-selected="${r === cur}">
         <small>Etapa ${esc(r.r)} · ${esc(r.date)}</small><b>${esc(r.gp)}</b><span>${esc(r.winner)}</span>
@@ -53,22 +51,21 @@ window.HL = (() => {
       const team = S.teams.find(t => t.id === cur.team);
       $("#hlStage").innerHTML = `
         ${first ? `
-        <${first.ext ? `a href="https://www.youtube.com/watch?v=${first.id}" target="_blank" rel="noopener"` : `button data-i="0"`} class="hl-feature">
+        <${first.ext ? `a href="https://www.youtube.com/watch?v=${first.id}" target="_blank" rel="noopener" data-leave data-title="${esc(first.title)}" data-thumb="${thumb(first.id)}"` : `button data-i="0"`} class="hl-feature">
           <img src="${thumb(first.id, "maxresdefault")}" ${fallback} alt="">
           <span class="hl-shade" aria-hidden="true"></span>
           <span class="g-play" aria-hidden="true"></span>
           <span class="hl-meta">
-            <i>${first.kind === "creator" ? `${esc(first.ch)} · ${esc(LANG[first.lang] || "")}` : esc(KIND[first.kind] || "Vídeo")} · Etapa ${esc(cur.r)}</i>
+            <i>${esc(KIND[first.kind] || "Vídeo")} · Etapa ${esc(cur.r)}</i>
             <b>${esc(cur.gp)}</b>
             <small>Vitória de ${esc(cur.winner)}${team ? ` · ${esc(team.name)}` : ""} · ${esc(cur.date)}</small>
           </span>
           ${first.ext ? `<span class="g-ext hl-ext">Assistir no YouTube ↗</span>` : ""}
         </${first.ext ? "a" : "button"}>` : ""}
         ${rest.length ? `<div class="hl-grid">${rest.map((x, k) => tile(x, k + (first ? 1 : 0), h)).join("")}</div>` : ""}`;
-      const nOff = h.videos.filter(v => v.kind !== "creator").length, nCr = h.videos.length - nOff;
+      const nOff = h.videos.length;
       $("#hlNote").textContent = [
         nOff && `${nOff} ${nOff > 1 ? "vídeos oficiais" : "vídeo oficial"}`,
-        nCr && `${nCr} ${nCr > 1 ? "análises de criadores selecionados" : "análise de criador selecionado"}`,
         h.photos?.length && `${h.photos.length} ${h.photos.length > 1 ? "fotos" : "foto"} da Wikimedia Commons`,
       ].filter(Boolean).join(" · ") + (h.videos.some(v => v.ext) ? ". Os marcados com “Só no YouTube” abrem no YouTube, porque o canal bloqueia a exibição em outros sites." : ".");
     };
@@ -79,10 +76,10 @@ window.HL = (() => {
           <span class="g-cap"><b>${esc(x.title)}</b><small>Foto · ${esc(x.credit)}</small></span>
         </button>`;
       const v = H[S.id][cur.r].videos.find(y => y.id === x.id);
-      const label = v.kind === "creator" ? `${v.ch}` : KIND[v.kind] || "Vídeo";
-      const sub = v.kind === "creator" ? `Criador · ${LANG[v.lang] || ""}` : `Vídeo oficial · ${v.ch}`;
+      const label = KIND[v.kind] || "Vídeo";
+      const sub = `Vídeo oficial · ${v.ch}`;
       return v.ext ? `
-        <a class="g-tile is-ext" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
+        <a class="g-tile is-ext" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-leave data-title="${esc(v.title)}" data-thumb="${thumb(v.id)}">
           <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-ext">Só no YouTube ↗</span></span>
           <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(KIND[v.kind] || "Vídeo")} · ${esc(v.ch)} · abre no YouTube</small></span>
         </a>` : `
@@ -128,7 +125,7 @@ window.HL = (() => {
         <div class="section-head"><h2 id="lhl-title">Momentos épicos</h2><p>Os melhores momentos da última corrida de cada campeonato, com os vídeos oficiais.</p></div>
         <div class="lhl-grid">${cards.map(({ s, r, v }) => `
           <article class="lhl-card" style="--c:${s.accent}">
-            <${v.ext ? `a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener"` : `button data-hls="${s.id}" data-hlr="${r.r}"`} class="lhl-media" aria-label="Assistir: ${esc(KIND[v.kind] || "vídeo")} de ${esc(s.short)} ${esc(r.gp)}${v.ext ? " (abre no YouTube)" : ""}">
+            <${v.ext ? `a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-leave data-title="${esc(v.title)}" data-thumb="${thumb(v.id)}"` : `button data-hls="${s.id}" data-hlr="${r.r}"`} class="lhl-media" aria-label="Assistir: ${esc(KIND[v.kind] || "vídeo")} de ${esc(s.short)} ${esc(r.gp)}${v.ext ? " (abre no YouTube)" : ""}">
               <img src="${thumb(v.id, "maxresdefault")}" ${fallback} alt="" loading="lazy">
               <span class="g-play" aria-hidden="true"></span>
               <span class="lhl-badge">${esc(s.short)}</span>
