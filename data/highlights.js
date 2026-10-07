@@ -12,6 +12,33 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "C8tPaXPvOS8",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "What divisive Australian GP exposed about F1's 2026 cars",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "zktkD2VHoRc",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "What we've learned already at F1's Australian GP",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "aGAoTikvRYU",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "2026 F1 Australian GP race analysis by Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
+    },
+    {
      "id": "sUtOWS7yM-Y",
      "kind": "epic",
      "prio": 4,
@@ -121,6 +148,33 @@ window.HIGHLIGHTS = {
      "title": "Race Highlights | 2026 Chinese Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "qekPZ2hk9yA",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "'You don't know racing': Verstappen's fiery Chinese GP claim explained",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "w2abOQMPbrQ",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Max Verstappen’s fresh anger and what we learned from F1 China Saturday",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "24S3jNg4UOU",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "2026 F1 Chinese GP race analysis by Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
     },
     {
      "id": "5AfCJjVNXQs",
@@ -234,6 +288,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "ZzbFtOXesr4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "🧠 F1 2026 NO JAPÃO: ANTONELLI COMEÇA A MEXER COM CABEÇA DE RUSSELL",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "VSZYzs5X9q8",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "The major F1 2026 safety flaw exposed by scary Japanese GP crash",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "gbjnPsuU6Z0",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Max Verstappen's extraordinary media ban + what we learned on day 1 at F1's Japanese GP",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "zluznywjBzY",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "WHY did OSCAR stop so early? Suzuka F1 analysis with Mark Slade and Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
+    },
+    {
      "id": "MhWkelz3-sw",
      "kind": "onboard",
      "prio": 5,
@@ -345,6 +435,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "zujYViqHjqI",
+     "kind": "creator",
+     "prio": 3,
+     "title": "DO ESTELAR ANTONELLI AO APAGADO HAMILTON, OS 7 PERSONAGENS DO GP DE MIAMI",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "Pv4d1yRAtbs",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Six things Miami GP revealed about F1 2026",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "bJ29QZObpyo",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Why Mercedes is suddenly struggling in Miami",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "0EoJVdC92Sg",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "2026 F1 MIAMI GP race analysis by Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
+    },
+    {
      "id": "3XPArI7pgJU",
      "kind": "onboard",
      "prio": 5,
@@ -399,6 +525,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "9vtdUnbcpao",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Mercedes em PÉ DE GUERRA após CANADÁ? RUSSELL x ANTONELLI pode PEGAR FOGO?",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "5h_iiJ6TamA",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FERRARI x MCLAREN x RED BULL: Como fica o ‘SEGUNDO PELOTÃO’ pós-Canadá?",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "io3i2jVhrDg",
+     "kind": "creator",
+     "prio": 3,
+     "title": "RUSSELL GANHA SÁBADO NO CANADÁ, MAS ANTONELLI GANHA LIÇÃO PRA VIDA",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "0TXBx6hTIoQ",
+     "kind": "creator",
+     "prio": 3,
+     "title": "CANADÁ MOSTRA POTENCIAL PARA TER PRIMEIRA BRIGA REAL NA MERCEDES",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
      "id": "lIqWLLL8RCA",
      "kind": "onboard",
      "prio": 5,
@@ -451,6 +613,42 @@ window.HIGHLIGHTS = {
      "title": "Race Highlights | 2026 Monaco Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "t1SSIi4AuRg",
+     "kind": "creator",
+     "prio": 3,
+     "title": "A FARSA do GP 1000? A matemática ESTRANHA da MCLAREN para o GP de Mônaco",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "VMEu2EOj0qY",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FERRARI VOA EM MÔNACO COM POUCAS ASAS, MAS E AS DEMAIS?",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "DD7tdFeqZPE",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "McLaren's bizarre penalty and Monaco struggle explained",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "6nw-TkMQjAo",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Leclerc's surprise deal and Ferrari Monaco F1 favourite status explained",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
     },
     {
      "id": "g6nv7anVzrU",
@@ -559,6 +757,42 @@ window.HIGHLIGHTS = {
      "title": "Race Highlights | 2026 Austrian Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "Q0WkzpLoKtU",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MOLINA avalia REAÇÃO de RUSSELL com P1 na Áustria e DUELO com KIMI na Mercedes",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "9VntrvufLlI",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MOLINA comenta ESTRATÉGIA ESTRANHA da FERRARI na Áustria e HAMILTON em 2026: é CANDIDATO AO TÍTULO?",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "jhRUVhdCGq4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "PIASTRI ABRE PORTAS PARA VERSTAPPEN E QUER SEU LUGAR NA RED BULL",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "K5ewhxkZ_Us",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Max Verstappen’s anger at ‘super dangerous’ Red Bull problem explained",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
     },
     {
      "id": "C61r_lD0Hok",
@@ -670,6 +904,33 @@ window.HIGHLIGHTS = {
      "title": "Race Highlights | 2026 British Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "MEMxfDDdfug",
+     "kind": "creator",
+     "prio": 3,
+     "title": "A PERFORMANCE de BORTOLETO em SILVERSTONE e no campeonato",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "IHjQlGJqoSI",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Why Silverstone will bring out the worst of F1 2026",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "-Tt8vjcS49k",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "2026 F1 BRITISH GP race analysis by Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
     },
     {
      "id": "Ec2SJgw5sK4",
@@ -894,6 +1155,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "tLEzjMOpWSA",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Que dizer de BORTOLETO na F1 2026 após o GP da HUNGRIA?",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "1vWaIm47Etc",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Verstappen \"PARA ALÉM DO DESESPERO\" com a RBR, mesmo com P2 na Hungria",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "YE41ZbhTeWU",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Everything Ferrari did wrong in its wasted Hungarian GP",
+     "ch": "The Race",
+     "chId": "UCaTxfj0BzL-MaCy-YUqPRoQ",
+     "lang": "en"
+    },
+    {
+     "id": "EntX4ZJFtNU",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "2026 F1 Hungarian GP race analysis by Peter Windsor",
+     "ch": "Peter Windsor",
+     "chId": "UCPwy2q7BNjdLYu1kM_OEJVw",
+     "lang": "en"
+    },
+    {
      "id": "5qSfrZFhVpU",
      "kind": "onboard",
      "prio": 5,
@@ -1010,6 +1307,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "rUX_3d9fgQM",
+     "kind": "creator",
+     "prio": 3,
+     "title": "ITÁLIA SE CURVA A ANTONELLI (F-GOMES, GP DA ITÁLIA, DIA #3)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "fLwO33TU2Z8",
+     "kind": "creator",
+     "prio": 3,
+     "title": "GASLY LAVA A ALMA DA F-1 (F-GOMES, GP DA ITÁLIA, DIA #2)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "J0A_NcuKejg",
+     "kind": "creator",
+     "prio": 3,
+     "title": "KIMI já começou a ser FAVORECIDO vs GEORGE a partir de Monza? Lewis TEM RAZÃO sobre LECLERC/Ferrari?",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "6DfEscVNux4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MOLINA dá o veredito sobre TRETA entre Hamilton e Leclerc em Monza",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
      "id": "FxOsiO6o4Wg",
      "kind": "epic",
      "prio": 4,
@@ -1093,6 +1426,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "MWJv3gkbFmQ",
+     "kind": "creator",
+     "prio": 3,
+     "title": "KIMI VENCE O GP MAIS CHATO (F-GOMES, GP DA ESPANHA, DIA #3)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "OS_lQzAkzVg",
+     "kind": "creator",
+     "prio": 3,
+     "title": "NORRIS CRAVA TODO MUNDO! (F-GOMES, GP DA ESPANHA, DIA #2)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "G266CNpBo_k",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MADRI é a PIOR pista da F1? Quais MERECEM ficar? Contas para ANTONELLI e Bortoleto | FELIPE MOTTA",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "wViqdzI02KE",
+     "kind": "creator",
+     "prio": 3,
+     "title": "A estreia de MADRI(BO)RING e a MONOTONIA do GP da Espanha",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
      "id": "R_TJxCk9I9M",
      "kind": "onboard",
      "prio": 5,
@@ -1145,6 +1514,42 @@ window.HIGHLIGHTS = {
      "title": "Race Highlights | 2026 Azerbaijan Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "uJc9f1a2pgs",
+     "kind": "creator",
+     "prio": 3,
+     "title": "SE SALVA, GEORGE! (F-GOMES, GP DO AZERBAIJÃO, DIA #2)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "SiOp5t43l80",
+     "kind": "creator",
+     "prio": 3,
+     "title": "RUSSELL AINDA RESPIRA (F-GOMES, GP DO AZERBAIJÃO, DIA #1)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "YQRlBm6ypP4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Dupla da Red Bull DÁ SHOW com PÓDIO duplo em Baku",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "5ZMTBku0q4Q",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Bortoleto ZERA, Hulk quase PONTUA e Audi SOFRE em Baku",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
     },
     {
      "id": "i2wjxnR6ZJA",
@@ -1258,6 +1663,42 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "ot9Ad4HG2ys",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MAX VOLTA AO JOGO (F-GOMES, GP DO BAHREIN/MALÁSIA, DIA #3)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "IxMngIJvtRc",
+     "kind": "creator",
+     "prio": 3,
+     "title": "A PRIMEIRA COM A FORD (F-GOMES, GP DO BAHREIN/MALÁSIA, DIA #2)",
+     "ch": "Flavio Gomes",
+     "chId": "UCepUf0u6f8JS3yq4NPXHW3g",
+     "lang": "pt"
+    },
+    {
+     "id": "Olzqf5v-JQc",
+     "kind": "creator",
+     "prio": 3,
+     "title": "O ERRO de BORTOLETO na MALÁSIA e a FASE do brasileiro na F1 2026",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "TTDDSjCi48g",
+     "kind": "creator",
+     "prio": 3,
+     "title": "VEXAME da FIA na MALÁSIA, CÂMARA mais próximo da HAAS! E agora RUSSELL? SINGAPURA, PORSCHE e +",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
      "id": "-vk6HV7dwVw",
      "kind": "epic",
      "prio": 4,
@@ -1360,6 +1801,24 @@ window.HIGHLIGHTS = {
      "ch": "Formula E"
     },
     {
+     "id": "pYnlfyTNnWo",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MELHORES MOMENTOS | FÓRMULA E 2025/2026 | eP DA CIDADE DO MÉXICO | 2ª ETAPA",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "bhgbkZpVGH4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "ÚLTIMA VOLTA ALUCINANTE no eP DA CIDADE DO MÉXICO DA FÓRMULA E 2025/26",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
      "id": "ET1Yo65spkQ",
      "kind": "epic",
      "prio": 4,
@@ -1405,6 +1864,15 @@ window.HIGHLIGHTS = {
      "prio": 1,
      "title": "Race Highlights | 2026 Miami E-Prix Round 3",
      "ch": "Formula E"
+    },
+    {
+     "id": "Yo_tz2WLEKI",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FÓRMULA E 2025/2026: MELHORES MOMENTOS DO eP DE MIAMI | 3ª ETAPA",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
     },
     {
      "id": "cSxcDyT29ps",
@@ -1548,6 +2016,15 @@ window.HIGHLIGHTS = {
      "ch": "Formula E"
     },
     {
+     "id": "z7rlMSX_c1A",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FÓRMULA E 2025/2026: MELHORES MOMENTOS DO eP DE MADRI | 6ª ETAPA",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
      "id": "lO77BmILr-k",
      "kind": "epic",
      "prio": 4,
@@ -1682,6 +2159,24 @@ window.HIGHLIGHTS = {
      "ch": "Formula E"
     },
     {
+     "id": "TWTOm80Bk1k",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FÓRMULA E 2025/2026: MELHORES MOMENTOS DO eP DE MÔNACO | 9ª E 10ª ETAPAS",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "7ryKEvi7c6I",
+     "kind": "creator",
+     "prio": 3,
+     "title": "DRUGOVICH COLOCA BRASIL NO PÓDIO DA FÓRMULA E EM MÔNACO!",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
      "id": "aVVcbFnKnIs",
      "kind": "epic",
      "prio": 4,
@@ -1767,6 +2262,15 @@ window.HIGHLIGHTS = {
      "prio": 1,
      "title": "Race Highlights | 2026 Lianxin Sanya E-Prix | Round 11",
      "ch": "Formula E"
+    },
+    {
+     "id": "FbhNqLpTNSA",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FÓRMULA E 2025/2026: MELHORES MOMENTOS DO eP DE SANYA | 11ª ETAPA",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
     },
     {
      "id": "b4eqLh3zo0k",
@@ -1867,6 +2371,15 @@ window.HIGHLIGHTS = {
   },
   "14": {
    "videos": [
+    {
+     "id": "d8f73KAJFX4",
+     "kind": "creator",
+     "prio": 3,
+     "title": "FÓRMULA E 2025/2026: MELHORES MOMENTOS DO eP DE TÓQUIO | 14ª E 15ª ETAPAS",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
     {
      "id": "b-WidP0NIOo",
      "kind": "epic",
@@ -2078,6 +2591,15 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "RdfeBAK30v4",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Who's to blame for Brazil MotoGP chaos?",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
+    },
+    {
      "id": "ZwDXvReFdQ8",
      "kind": "epic",
      "prio": 4,
@@ -2174,6 +2696,24 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "BCGmR04oY-A",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Aprilia v. Ducati, Marquez and rain chaos: Our MotoGP learnings from Jerez",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
+    },
+    {
+     "id": "08c5QzY6w-Y",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "Where Marc Marquez's Jerez crash leaves his MotoGP title defence",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
+    },
+    {
      "id": "bvAWGFUqeCI",
      "kind": "epic",
      "prio": 4,
@@ -2237,6 +2777,15 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "M0pSiPtIArI",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Ducati 'DÁ PRAZO' para renovação de Márquez, Liberty IMPÕE 'estilo F1' à MotoGP, GP da FRANÇA e mais",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
      "id": "FGUlU5498aM",
      "kind": "epic",
      "prio": 4,
@@ -2283,6 +2832,15 @@ window.HIGHLIGHTS = {
      "prio": 2,
      "title": "Best MotoGP Moments | 2026 Catalan GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "9kHDsenVxoU",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "What MotoGP must learn from terrifying Catalan GP crashes",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
     },
     {
      "id": "znSFQZ1cC-Q",
@@ -2427,6 +2985,15 @@ window.HIGHLIGHTS = {
      "prio": 2,
      "title": "Best MotoGP Moments 🔥 🇨🇿 | 2026 Czech GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "ol6U0lq-_9k",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MOREIRA GANHA IMPORTÂNCIA INÉDITA na MotoGP em Brno! MÁRQUEZ x Bezzecchi, WSBK, Bê Tibúrcio e mais!",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
     },
     {
      "id": "_4NTGcC8Elo",
@@ -2623,6 +3190,24 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "pcGgCzGBUGc",
+     "kind": "creator",
+     "prio": 3,
+     "title": "MotoGP DE VOLTA! Martín, Bezzecchi e cia NO ALVO de Márquez e TRETA Viñales-KTM: Silverstone vem aí!",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "SKJ0WHjuJ4M",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "What MotoGP needs to fix British GP at Silverstone",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
+    },
+    {
      "id": "Z28cM_8UNmQ",
      "kind": "epic",
      "prio": 4,
@@ -2669,6 +3254,24 @@ window.HIGHLIGHTS = {
      "prio": 2,
      "title": "Best MotoGP Moments 🐜 | 2026 Aragon GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "PM9LxglB_6E",
+     "kind": "creator",
+     "prio": 3,
+     "title": "Aragón é a GRANDE CHANCE de MÁRQUEZ? ACOSTA 'de volta' e MERCADO da MotoGP! MXGP, SERTÕES e +",
+     "ch": "Motorsport Brasil",
+     "chId": "UCvm40-L5lbzlxQSbVnfX8pQ",
+     "lang": "pt"
+    },
+    {
+     "id": "MVLOSDoMJJI",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "What Marquez and Acosta's Aragon fight means for MotoGP",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
     },
     {
      "id": "Y8Kmg-Yg8oY",
@@ -2815,6 +3418,15 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "sXpyNLa9zfw",
+     "kind": "creator",
+     "prio": 3.5,
+     "title": "MotoGP's Motegi title swing explained",
+     "ch": "The Race MotoGP",
+     "chId": "UC2Wp_LL33dbMKBOZtuXPPhA",
+     "lang": "en"
+    },
+    {
      "id": "pb8T2B-EolA",
      "kind": "epic",
      "prio": 4,
@@ -2877,6 +3489,24 @@ window.HIGHLIGHTS = {
      "prio": 3,
      "title": "Extended Highlights | 6 Hours of Imola 2026",
      "ch": "FIA WEC"
+    },
+    {
+     "id": "lC0MoIt7zyg",
+     "kind": "creator",
+     "prio": 3,
+     "title": "ASSISTA AOS MELHORES MOMENTOS DAS 6 HORAS DE ÍMOLA | FIA WEC 2026 HIGHLIGHTS",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
+    },
+    {
+     "id": "V3ZphtlXQ9g",
+     "kind": "creator",
+     "prio": 3,
+     "title": "A ESTREIA DO GENESIS GMR-001 HYUNDAI: ASSISTA À ON-BOARD EM ÍMOLA | FIA WEC 2026",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
     },
     {
      "id": "iIyLMqt2Vl8",
@@ -3245,6 +3875,15 @@ window.HIGHLIGHTS = {
      "prio": 3,
      "title": "Extended Highlights | 6 Hours of Fuji 2026",
      "ch": "FIA WEC"
+    },
+    {
+     "id": "CWQHbZPNwcY",
+     "kind": "creator",
+     "prio": 3,
+     "title": "AUGUSTO FARFUS VENCE AS 6H DE FUJI NO WEC! Confira última volta",
+     "ch": "Grande Prêmio",
+     "chId": "UC9OlHEgxoaY6QY6nWPoiqQg",
+     "lang": "pt"
     },
     {
      "id": "ogRx4WZbHxU",

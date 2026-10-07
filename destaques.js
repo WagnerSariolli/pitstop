@@ -1,4 +1,4 @@
-// Pitstop · destaques: os momentos mais épicos de cada corrida (vídeos oficiais e fotos livres).
+// Pitstop · destaques: os momentos mais épicos de cada corrida (vídeos oficiais, de criadores selecionados e fotos livres).
 // Os dados vêm de data/highlights.js, que o robô (scripts/highlights.mjs) atualiza depois de cada corrida.
 // Carregado antes de app.js; as funções usam SERIES, ORDER, raceDate, esc, $ e openGallery na hora em que rodam.
 window.HL = (() => {
@@ -7,7 +7,11 @@ window.HL = (() => {
     race: "Melhores momentos da corrida", moments: "Momentos épicos", extended: "Melhores momentos estendidos",
     overtakes: "Ultrapassagens", qualifying: "Classificação", onboard: "Top 10 câmeras onboard", sprint: "Sprint",
     replay: "Corrida completa", start: "A largada", radio: "Rádio das equipes", react: "Reação dos pilotos", epic: "Lance da corrida",
+    creator: "Análise",
   };
+  const LANG = { pt: "em português", en: "em inglês" };
+  // ordem de exibição: primeiro o que toca dentro do site (o vídeo grande nunca manda o visitante embora)
+  const ordered = h => [...h.videos.filter(v => !v.ext), ...h.videos.filter(v => v.ext)];
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
   // a capa em alta às vezes não existe: cai para a padrão
   const fallback = `onerror="if(!this.dataset.f){this.dataset.f=1;this.src=this.src.replace(/maxresdefault|sddefault/,'hqdefault')}"`;
@@ -20,7 +24,7 @@ window.HL = (() => {
   const itemsOf = (sid, r) => {
     const h = H[sid]?.[r.r] || { videos: [], photos: [] };
     return [
-      ...h.videos.map(v => ({ t: "v", id: v.id, title: `${KIND[v.kind] || ""}${KIND[v.kind] ? ": " : ""}${v.title}`, ch: v.ch, ext: v.ext })),
+      ...ordered(h).map(v => ({ t: "v", id: v.id, title: v.kind === "creator" ? v.title : `${KIND[v.kind] || ""}${KIND[v.kind] ? ": " : ""}${v.title}`, ch: v.ch, ext: v.ext })),
       ...(h.photos || []).map(p => ({ t: "p", ...p })),
     ];
   };
@@ -37,7 +41,7 @@ window.HL = (() => {
     let cur = races.find(r => String(r.r) === want) || races[0];
     const host = $("#destaques");
     host.hidden = false;
-    $("#hl-lede").textContent = `Os momentos mais épicos de cada etapa: vídeos oficiais do canal ${H[S.id][races[0].r].videos[0]?.ch || S.name} no YouTube e fotos da Wikimedia Commons, com autor e licença.`;
+    $("#hl-lede").textContent = `Os momentos mais épicos de cada etapa: vídeos oficiais, análises de criadores selecionados em português e inglês e fotos da Wikimedia Commons, com autor e licença.`;
     $("#hlRaces").innerHTML = races.map(r => `
       <button role="tab" data-r="${r.r}" aria-selected="${r === cur}">
         <small>Etapa ${esc(r.r)} · ${esc(r.date)}</small><b>${esc(r.gp)}</b><span>${esc(r.winner)}</span>
@@ -45,7 +49,7 @@ window.HL = (() => {
 
     const draw = () => {
       const items = itemsOf(S.id, cur), h = H[S.id][cur.r];
-      const first = h.videos[0], rest = items.slice(first ? 1 : 0);
+      const first = ordered(h)[0], rest = items.slice(first ? 1 : 0);
       const team = S.teams.find(t => t.id === cur.team);
       $("#hlStage").innerHTML = `
         ${first ? `
@@ -54,15 +58,17 @@ window.HL = (() => {
           <span class="hl-shade" aria-hidden="true"></span>
           <span class="g-play" aria-hidden="true"></span>
           <span class="hl-meta">
-            <i>${esc(KIND[first.kind] || "Vídeo")} · Etapa ${esc(cur.r)}</i>
+            <i>${first.kind === "creator" ? `${esc(first.ch)} · ${esc(LANG[first.lang] || "")}` : esc(KIND[first.kind] || "Vídeo")} · Etapa ${esc(cur.r)}</i>
             <b>${esc(cur.gp)}</b>
             <small>Vitória de ${esc(cur.winner)}${team ? ` · ${esc(team.name)}` : ""} · ${esc(cur.date)}</small>
           </span>
           ${first.ext ? `<span class="g-ext hl-ext">Assistir no YouTube ↗</span>` : ""}
         </${first.ext ? "a" : "button"}>` : ""}
         ${rest.length ? `<div class="hl-grid">${rest.map((x, k) => tile(x, k + (first ? 1 : 0), h)).join("")}</div>` : ""}`;
+      const nOff = h.videos.filter(v => v.kind !== "creator").length, nCr = h.videos.length - nOff;
       $("#hlNote").textContent = [
-        h.videos.length && `${h.videos.length} ${h.videos.length > 1 ? "vídeos oficiais" : "vídeo oficial"}`,
+        nOff && `${nOff} ${nOff > 1 ? "vídeos oficiais" : "vídeo oficial"}`,
+        nCr && `${nCr} ${nCr > 1 ? "análises de criadores selecionados" : "análise de criador selecionado"}`,
         h.photos?.length && `${h.photos.length} ${h.photos.length > 1 ? "fotos" : "foto"} da Wikimedia Commons`,
       ].filter(Boolean).join(" · ") + (h.videos.some(v => v.ext) ? ". Os marcados com “Só no YouTube” abrem no YouTube, porque o canal bloqueia a exibição em outros sites." : ".");
     };
@@ -73,15 +79,16 @@ window.HL = (() => {
           <span class="g-cap"><b>${esc(x.title)}</b><small>Foto · ${esc(x.credit)}</small></span>
         </button>`;
       const v = H[S.id][cur.r].videos.find(y => y.id === x.id);
-      const label = KIND[v.kind] || "Vídeo";
+      const label = v.kind === "creator" ? `${v.ch}` : KIND[v.kind] || "Vídeo";
+      const sub = v.kind === "creator" ? `Criador · ${LANG[v.lang] || ""}` : `Vídeo oficial · ${v.ch}`;
       return v.ext ? `
         <a class="g-tile is-ext" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener">
           <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-ext">Só no YouTube ↗</span></span>
-          <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(label)} · ${esc(v.ch)}</small></span>
+          <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(KIND[v.kind] || "Vídeo")} · ${esc(v.ch)} · abre no YouTube</small></span>
         </a>` : `
         <button class="g-tile" data-i="${i}">
           <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-badge hl-kind">${esc(label)}</span></span>
-          <span class="g-cap"><b>${esc(v.title)}</b><small>Vídeo · ${esc(v.ch)}</small></span>
+          <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(sub)}</small></span>
         </button>`;
     }
     draw();
@@ -112,7 +119,7 @@ window.HL = (() => {
   function lobbySection() {
     const cards = ORDER.filter(id => !SERIES[id].seasonOver).map(id => {
       const r = racesWith(id)[0];
-      const v = r && H[id][r.r].videos[0];
+      const v = r && ordered(H[id][r.r])[0];
       return r && v ? { s: SERIES[id], r, v } : null;
     }).filter(Boolean).sort((a, b) => raceDate(b.r) - raceDate(a.r));
     if (!cards.length) return "";

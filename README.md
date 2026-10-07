@@ -51,3 +51,12 @@ pelos feeds RSS dos canais da F1, Fórmula E, MotoGP e FIA WEC no YouTube, e fot
 categorias da temporada na Wikimedia Commons. Grava `data/highlights.js`, que alimenta a seção "Destaques"
 de cada campeonato, os "Momentos épicos" da página inicial e o link de vídeo no boletim.
 O canal da F1 bloqueia a exibição fora do YouTube, então os vídeos dele abrem lá.
+
+### Criadores e moderação
+
+Além dos canais oficiais, entram vídeos de uma lista fechada de canais confiáveis (em `CREATORS`, no começo de
+`scripts/highlights.mjs`): Flavio Gomes, Motorsport Brasil, Grande Prêmio, The Race, The Race MotoGP, Peter Windsor
+e Sky Sports F1. Só vídeos ligados a uma etapa pelo título e pela data; ficam de fora transmissões ao vivo, corridas
+completas republicadas, jogos, podcasts e prévias. Para tirar um vídeo ou um canal, use `scripts/moderation.json`.
+O vídeo grande de cada etapa é sempre um que toca dentro do site; os oficiais da F1 (bloqueados fora do YouTube)
+aparecem como atalhos.

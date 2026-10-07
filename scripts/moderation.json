@@ -1,0 +1,5 @@
+{
+  "_como_usar": "Lista de moderação dos vídeos de criadores. Para tirar um vídeo do site, ponha o ID dele (o código depois de watch?v=) em blockVideos. Para parar de puxar um canal inteiro, ponha o ID do canal (começa com UC) em blockChannels. Depois rode o workflow 'Atualizar dados' ou espere a próxima hora.",
+  "blockVideos": [],
+  "blockChannels": []
+}

@@ -6,6 +6,9 @@
 // Para preencher o passado de uma vez: node scripts/highlights.mjs --tsv f1=lista.tsv ...
 // (arquivos "id<TAB>título", por exemplo gerados com yt-dlp --flat-playlist).
 //
+// Criadores: além dos canais oficiais, entram vídeos de uma lista fechada de canais confiáveis (moderação por
+// lista), só os ligados a uma etapa pelo título e pela data. scripts/moderation.json bloqueia vídeos ou canais.
+//
 // Fotos: categorias da temporada na Wikimedia Commons (licença livre, com autor). Elas costumam
 // aparecer dias depois da corrida, então cada etapa é consultada de novo por até 30 dias.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -71,6 +74,81 @@ const CHANNEL_NAME = { f1: "FORMULA 1", formulae: "Formula E", motogp: "MotoGP",
 // o canal da F1 bloqueia a exibição dos vídeos fora do YouTube (erro 150 do player, testado em out/2026): abrem lá
 const CHANNEL_EXT = { f1: true };
 
+/* ---------- criadores: canais confiáveis (moderação por lista) ---------- */
+const CREATORS = [
+  { ch: "UCepUf0u6f8JS3yq4NPXHW3g", name: "Flavio Gomes", lang: "pt", series: ["f1"] },
+  { ch: "UCvm40-L5lbzlxQSbVnfX8pQ", name: "Motorsport Brasil", lang: "pt", series: ["f1", "motogp"] },
+  { ch: "UC9OlHEgxoaY6QY6nWPoiqQg", name: "Grande Prêmio", lang: "pt", series: ["f1", "motogp", "wec", "formulae"] },
+  { ch: "UCaTxfj0BzL-MaCy-YUqPRoQ", name: "The Race", lang: "en", series: ["f1"] },
+  { ch: "UC2Wp_LL33dbMKBOZtuXPPhA", name: "The Race MotoGP", lang: "en", series: ["motogp"] },
+  { ch: "UCPwy2q7BNjdLYu1kM_OEJVw", name: "Peter Windsor", lang: "en", series: ["f1"] },
+  { ch: "UC3kxJQ9RfaS5CKeYbbFMi4Q", name: "Sky Sports F1", lang: "en", series: ["f1"] },
+];
+// fora: transmissões ao vivo, corridas inteiras republicadas, jogos, podcasts longos e assuntos que não são a corrida
+const CREATOR_SKIP = /(ao vivo|\blive\b|livestream|#shorts|\bshorts?\b|complet[oa]\b|full race|watchalong|podcast|\bf1 2\d\b|simulador|sim racing|gameplay|merdinhas|\bbets?\b|preview|pr[ée]via|antevis[aã]o|friday|sexta|treino livre|\bfp[123]\b|qualifying|classifica[cç][aã]o|quali\b)/i;
+const CREATOR_SKIP_MORE = /(members'? video|membros|audio version|vers[aã]o em [aá]udio|camchat)/i;
+// a categoria pelo título: um vídeo que fala de outra categoria não entra só porque a pista tem o mesmo nome
+const SERIES_WORDS = {
+  f1: /\b(f-?1|f[oó]rmula 1|formula one|grand prix|\bgp\b)/i,
+  formulae: /(f[oó]rmula e\b|e-?prix|\bep\b)/i,
+  motogp: /(motogp|moto ?gp)/i,
+  wec: /(\bwec\b|horas de|hours of|hypercar|le mans)/i,
+};
+const OTHER_SERIES = /(\belms\b|gtwc|gt world|stock car|indy|nascar|wsbk|superbike|mxgp|imsa|\bf2\b|\bf3\b|porsche cup|turismo|dtm|rally|wrc|kart)/i;
+const MAX_CREATORS = 4, MAX_PER_CHANNEL = 2;
+const MOD = (() => { const f = path.join(ROOT, "scripts", "moderation.json"); return existsSync(f) ? JSON.parse(readFileSync(f, "utf8")) : {}; })();
+const blockedVideo = new Set(MOD.blockVideos || []), blockedChannel = new Set(MOD.blockChannels || []);
+const fold = s => String(s).normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase();
+const STOP = new Set(["grande", "premio", "horas", "circuito", "circuit", "internacional", "international", "autodromo", "street", "park", "ring"]);
+// palavras que identificam a etapa: nome do GP, circuito e cidade (em português) + o padrão em inglês
+function raceWords(id, r) {
+  const words = new Set(fold(`${r.gp} ${r.circuit}`).split(/[^a-z0-9]+/).filter(w => w.length >= 4 && !STOP.has(w)));
+  const en = id === "formulae" ? NAMES.formulae[r.r - 1]?.[1] : NAMES[id]?.[r.r - 1]?.[0];
+  return { words: [...words], en: en ? new RegExp(`\\b(${en})\\b`, "i") : null };
+}
+const dayOf = r => { const m = String(r.date).match(/(\d{1,2})\s+([a-z]{3})/i); const M = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7, set: 8, out: 9, nov: 10, dez: 11 }; return m ? Date.UTC(SEASON, M[m[2].toLowerCase()], +m[1]) : NaN; };
+function matchCreator(cr, v) {
+  if (blockedVideo.has(v.id) || blockedChannel.has(cr.ch) || CREATOR_SKIP.test(v.title) || CREATOR_SKIP_MORE.test(v.title)) return null;
+  const t = fold(v.title), pub = Date.parse(v.published);
+  if (!pub) return null;
+  // datas aproximadas (preenchimento do passado) ganham mais folga
+  const slack = v.approx ? Math.max(5, (Date.now() - pub) / 864e5 * 0.15) : 0;
+  for (const id of cr.series) {
+    const s = SERIES[id];
+    if (!s) continue;
+    // fala de outra categoria (e não desta)? fica de fora
+    const others = Object.entries(SERIES_WORDS).filter(([k]) => k !== id).some(([, re]) => re.test(v.title)) || OTHER_SERIES.test(v.title);
+    if (others && !SERIES_WORDS[id].test(v.title)) continue;
+    // canais que cobrem várias categorias precisam dizer qual é no título
+    if (cr.series.length > 1 && !SERIES_WORDS[id].test(v.title) && id !== "f1") continue;
+    for (const r of s.calendar.filter(x => x.winner)) {
+      const d = dayOf(r), after = (pub - d) / 864e5;
+      if (after < -1 - slack || after > 5 + slack) continue;
+      const { words, en } = raceWords(id, r);
+      if (words.some(w => new RegExp(`\\b${w}\\b`).test(t)) || (en && en.test(v.title))) return { id, round: r.r };
+    }
+  }
+  return null;
+}
+async function creatorFeed(cr) {
+  const r = await fetch(`https://www.youtube.com/feeds/videos.xml?channel_id=${cr.ch}`, { headers: UA, signal: AbortSignal.timeout(30000) });
+  if (!r.ok) throw new Error(`RSS ${cr.name}: ${r.status}`);
+  const xml = await r.text();
+  const un = s => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
+  return [...xml.matchAll(/<yt:videoId>(.*?)<\/yt:videoId>[\s\S]*?<title>(.*?)<\/title>[\s\S]*?<published>(.*?)<\/published>/g)]
+    .map(m => ({ id: m[1], title: un(m[2]), published: m[3] }));
+}
+// preenchimento do passado: arquivos "id<TAB>aaaammdd<TAB>título" por canal, em --creators=pasta
+const creatorsDir = (process.argv.find(a => a.startsWith("--creators=")) || "").split("=")[1];
+const creatorTsv = cr => {
+  const f = creatorsDir && path.join(creatorsDir, `${cr.ch}.tsv`);
+  if (!f || !existsSync(f)) return [];
+  return readFileSync(f, "utf8").split(/\r?\n/).filter(Boolean).map(l => {
+    const [id, d, ...t] = l.split("\t");
+    return /^\d{8}$/.test(d) ? { id, title: t.join("\t"), published: `${d.slice(0, 4)}-${d.slice(4, 6)}-${d.slice(6)}T12:00:00Z`, approx: true } : null;
+  }).filter(Boolean);
+};
+
 // tipo de vídeo → prioridade (menor aparece antes). A ordem importa: o primeiro padrão que casar define o tipo.
 const KINDS = [
   ["react", /drivers?'? react(?! after (qualifying|sprint))/i, 8],
@@ -128,7 +206,7 @@ async function rss(id) {
   const unescape = s => s.replace(/&amp;/g, "&").replace(/&quot;/g, '"').replace(/&#39;/g, "'").replace(/&lt;/g, "<").replace(/&gt;/g, ">");
   return [...xml.matchAll(/<yt:videoId>(.*?)<\/yt:videoId>[\s\S]*?<title>(.*?)<\/title>/g)].map(m => ({ id: m[1], title: unescape(m[2]) }));
 }
-const tsvArgs = Object.fromEntries(process.argv.slice(2).filter(a => a.includes("=")).map(a => a.split("=")));
+const tsvArgs = Object.fromEntries(process.argv.slice(2).filter(a => a.includes("=") && !a.startsWith("--")).map(a => a.split("=")));
 const fromTsv = id => tsvArgs[id] ? readFileSync(tsvArgs[id], "utf8").split(/\r?\n/).filter(Boolean).map(l => { const [vid, ...t] = l.split("\t"); return { id: vid, title: t.join("\t") }; }) : [];
 
 /* ---------- fotos (Wikimedia Commons) ---------- */
@@ -180,7 +258,8 @@ for (const id of ["f1", "formulae", "motogp", "wec"]) {
     if (race.videos.some(x => x.id === v.id)) continue;
     race.videos.push({ id: v.id, kind: hit.kind, prio: hit.prio, title: hit.title, ch: CHANNEL_NAME[id], ...(CHANNEL_EXT[id] ? { ext: true } : {}) });
     race.videos.sort((a, b) => a.prio - b.prio);
-    race.videos = race.videos.slice(0, MAX_VIDEOS);
+    const official = race.videos.filter(x => x.kind !== "creator").slice(0, MAX_VIDEOS);
+    race.videos = [...official, ...race.videos.filter(x => x.kind === "creator")].sort((a, b) => a.prio - b.prio);
     if (race.videos.some(x => x.id === v.id)) { added++; changed = true; }
   }
 
@@ -204,6 +283,38 @@ for (const id of ["f1", "formulae", "motogp", "wec"]) {
   const rounds = Object.keys(bucket).length;
   report.push(`${id}: ${added} vídeo(s) novo(s), ${photosAdded} foto(s) nova(s); ${rounds} etapa(s) com destaques`);
 }
+
+/* ---------- vídeos dos criadores ---------- */
+let creatorsAdded = 0;
+for (const cr of CREATORS) {
+  let list = creatorTsv(cr);
+  try { list = list.concat(await creatorFeed(cr)); } catch (e) { report.push(`${cr.name}: feed indisponível (${e.message})`); }
+  for (const v of list) {
+    const hit = matchCreator(cr, v);
+    if (!hit) continue;
+    const race = (store[hit.id] ||= {})[hit.round] ||= { videos: [], photos: [] };
+    if (race.videos.some(x => x.id === v.id)) continue;
+    const mine = race.videos.filter(x => x.kind === "creator");
+    if (mine.filter(x => x.chId === cr.ch).length >= MAX_PER_CHANNEL) continue;
+    const item = { id: v.id, kind: "creator", prio: cr.lang === "pt" ? 3 : 3.5, title: v.title.trim(), ch: cr.name, chId: cr.ch, lang: cr.lang };
+    if (mine.length >= MAX_CREATORS) {
+      // lista cheia: só entra se for em português no lugar de um em inglês
+      const en = mine.find(x => x.lang !== "pt");
+      if (cr.lang !== "pt" || !en) continue;
+      race.videos.splice(race.videos.indexOf(en), 1);
+    }
+    race.videos.push(item);
+    race.videos.sort((a, b) => a.prio - b.prio);
+    creatorsAdded++; changed = true;
+  }
+}
+// moderação também vale para o que já estava guardado
+for (const bucket of Object.values(store)) for (const race of Object.values(bucket)) {
+  const before = race.videos.length;
+  race.videos = race.videos.filter(v => !blockedVideo.has(v.id) && !blockedChannel.has(v.chId));
+  if (race.videos.length !== before) changed = true;
+}
+report.push(`criadores: ${creatorsAdded} vídeo(s) novo(s)`);
 
 if (changed) {
   writeFileSync(FILE, "// Gerado automaticamente por scripts/highlights.mjs. Não edite à mão.\n" +
