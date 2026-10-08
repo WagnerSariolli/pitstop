@@ -93,37 +93,12 @@ function teamViews(t) {
 }
 
 /* ---------- Cabeçalho: categorias com seus campeonatos ---------- */
-const CHEVRON = `<svg viewBox="0 0 12 12" aria-hidden="true"><path d="M2 4.5 6 8.5 10 4.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg>`;
-
 function renderTopbar() {
-  const activeCat = S && categoryOf(S.id);
-  $("#catNav").innerHTML = CATEGORIES.filter(c => c.series.length).map(c => `
-    <div class="cat${c === activeCat ? " is-active" : ""}">
-      <button class="cat-btn" aria-expanded="false" aria-controls="panel-${c.id}"${c.short ? ` aria-label="${esc(c.name)}"` : ""}><span class="long">${esc(c.name)}</span>${c.short ? `<span class="short">${esc(c.short)}</span>` : ""}${CHEVRON}</button>
-      <div class="cat-panel" id="panel-${c.id}">
-        <p>${esc(c.lede)}</p>
-        ${c.series.map(id => {
-          const s = SERIES[id];
-          return `<a href="?c=${id}" style="--c:${s.accent}"${s === S ? ' aria-current="page"' : ""}>
-            <i></i><span><b>${esc(s.name)}</b><small>${esc(s.status)}</small></span></a>`;
-        }).join("")}
-      </div>
-    </div>`).join("") + `<a class="cat-link${GUIDE ? " is-active" : ""}" href="?c=pistas"${GUIDE ? ' aria-current="page"' : ""}>Pistas</a>`;
-
-  const cats = [...document.querySelectorAll(".cat")];
-  const closeAll = except => cats.forEach(c => {
-    if (c === except) return;
-    c.classList.remove("open");
-    c.querySelector(".cat-btn").setAttribute("aria-expanded", "false");
-  });
-  cats.forEach(c => c.querySelector(".cat-btn").addEventListener("click", () => {
-    const open = !c.classList.contains("open");
-    closeAll(c);
-    c.classList.toggle("open", open);
-    c.querySelector(".cat-btn").setAttribute("aria-expanded", open);
-  }));
-  document.addEventListener("click", e => { if (!e.target.closest(".cat")) closeAll(); });
-  document.addEventListener("keydown", e => { if (e.key === "Escape") closeAll(); });
+  // os campeonatos direto no menu, um clique só, na ordem das categorias
+  $("#catNav").innerHTML = ORDER.map(id => {
+    const s = SERIES[id], on = s === S;
+    return `<a class="cat-link series-link${on ? " is-active" : ""}" href="?c=${id}" style="--c:${s.accent}" title="${esc(s.name)}: ${esc(s.status)}"${on ? ' aria-current="page"' : ""}><i aria-hidden="true"></i>${esc(s.short)}</a>`;
+  }).join("") + `<span class="nav-sep" aria-hidden="true"></span><a class="cat-link${GUIDE ? " is-active" : ""}" href="?c=pistas"${GUIDE ? ' aria-current="page"' : ""}>Pistas</a>`;
 
   if (S) {
     const cat = categoryOf(S.id);

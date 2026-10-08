@@ -1260,3 +1260,16 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
 .lv-skip { display: flex; align-items: center; gap: 8px; color: var(--mute); font-size: 13px; cursor: pointer; }
 .lv-skip input { accent-color: var(--chalk); }
 @media (max-width: 560px) { .lv-actions .btn { flex: 1 1 100%; justify-content: center; } }
+
+/* ---------- menu: campeonatos direto, sem submenus ---------- */
+.cat-nav { align-items: center; }
+.series-link { display: inline-flex; align-items: center; gap: 7px; white-space: nowrap; }
+.series-link i { width: 8px; height: 8px; border-radius: 50%; background: var(--c); box-shadow: 0 0 0 3px color-mix(in srgb, var(--c) 22%, transparent); }
+.series-link:hover { background: color-mix(in srgb, var(--c) 14%, transparent); }
+.series-link.is-active::after { background: var(--c); }
+.nav-sep { width: 1px; height: 20px; margin: 0 6px; background: var(--line); }
+@media (max-width: 560px) {
+  .series-link { gap: 5px; }
+  .series-link i { width: 6px; height: 6px; box-shadow: none; }
+  .nav-sep { margin: 0 2px; }
+}
