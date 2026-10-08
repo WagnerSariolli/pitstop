@@ -23,7 +23,49 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261007e">
+  <link rel="stylesheet" href="styles.css?v=20261007g">
+  <script>
+    // esqueleto de carregamento padrão para TODAS as imagens: enquanto a imagem não chega, ela mostra um bloco
+    // com brilho; quando carrega, entra com um fade. Vale também para as imagens criadas depois pelo JavaScript.
+    (() => {
+      // imagem que só ganha tamanho depois de carregar (altura 0): o brilho vai no espaço onde ela fica (o pai),
+      // desde que esse espaço seja um bloco de mídia, e não uma seção inteira da página
+      const host = img => {
+        const box = img.getBoundingClientRect(), p = img.parentElement;
+        if (!p || box.height > 8) return;
+        const pb = p.getBoundingClientRect();
+        if (pb.width * pb.height > innerWidth * innerHeight * 0.45 || pb.height < 16) return;
+        p.classList.add("sk-host");
+        img._skHost = p;
+      };
+      const done = img => {
+        img.classList.remove("is-loading");
+        img.classList.add(img.naturalWidth ? "is-loaded" : "is-broken");
+        const p = img._skHost;
+        if (p && !p.querySelector("img.is-loading")) p.classList.remove("sk-host");
+      };
+      const watch = img => {
+        if (img.dataset.sk) return;
+        img.dataset.sk = "1";
+        if (!img.getAttribute("src") && !img.srcset) return;   // sem imagem ainda: nada a esperar
+        if (img.complete) { if (!img.naturalWidth) img.classList.add("is-broken"); return; }   // já resolvida (cache)
+        img.classList.add("is-loading");
+        setTimeout(() => { if (img.classList.contains("is-loading")) host(img); }, 30);
+      };
+      // load e error não sobem pela árvore; na fase de captura dá para ouvir todos de uma vez
+      addEventListener("load", e => { if (e.target.tagName === "IMG") { e.target.classList.remove("is-broken"); done(e.target); } }, true);
+      addEventListener("error", e => { if (e.target.tagName === "IMG") done(e.target); }, true);
+      new MutationObserver(list => {
+        for (const m of list) {
+          if (m.type === "attributes") { const img = m.target; if (img.tagName === "IMG" && img.getAttribute("src") && !img.complete) { img.classList.remove("is-loaded", "is-broken"); img.classList.add("is-loading"); setTimeout(() => host(img), 30); } continue; }
+          for (const n of m.addedNodes) {
+            if (n.nodeType !== 1) continue;
+            if (n.tagName === "IMG") watch(n); else n.querySelectorAll?.("img").forEach(watch);
+          }
+        }
+      }).observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ["src"] });
+    })();
+  </script>
   <script>
     // liga a camada de movimento (e seus estados "antes") só quando o sistema não pede movimento reduzido;
     // se motion.js não carregar, em 4 s tudo aparece pronto
@@ -204,18 +246,18 @@
   </dialog>
 
   <script>window.SERIES = {};</script>
-  <script src="data/f1.js?v=20261007e"></script>
-  <script src="data/formulae.js?v=20261007e"></script>
-  <script src="data/motogp.js?v=20261007e"></script>
-  <script src="data/wec.js?v=20261007e"></script>
-  <script src="data/media.js?v=20261007e"></script>
+  <script src="data/f1.js?v=20261007g"></script>
+  <script src="data/formulae.js?v=20261007g"></script>
+  <script src="data/motogp.js?v=20261007g"></script>
+  <script src="data/wec.js?v=20261007g"></script>
+  <script src="data/media.js?v=20261007g"></script>
   <script src="data/live.js"></script>
-  <script src="data/newsletter.js?v=20261007e"></script>
-  <script src="data/circuits.js?v=20261007e"></script>
+  <script src="data/newsletter.js?v=20261007g"></script>
+  <script src="data/circuits.js?v=20261007g"></script>
   <script src="data/highlights.js"></script>
-  <script src="destaques.js?v=20261007e"></script>
-  <script src="guide.js?v=20261007e"></script>
-  <script src="app.js?v=20261007e"></script>
-  <script type="module" src="motion.js?v=20261007e"></script>
+  <script src="destaques.js?v=20261007g"></script>
+  <script src="guide.js?v=20261007g"></script>
+  <script src="app.js?v=20261007g"></script>
+  <script type="module" src="motion.js?v=20261007g"></script>
 </body>
 </html>

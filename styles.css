@@ -1311,3 +1311,28 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
 .series-row .sc-body { display: flex; flex-direction: column; }
 .series-row .sc-cta { margin-top: auto; align-self: flex-start; }
 .series-row .sc-next { min-height: 2.4em; }
+
+/* ======================================================================
+   ESQUELETO DE CARREGAMENTO DAS IMAGENS (script no <head> do index.html)
+   ====================================================================== */
+:root { --sk-base: #1f2228; --sk-shine: #2c3039; }
+img.is-loading {
+  color: transparent;                       /* esconde o texto alternativo enquanto carrega */
+  background: linear-gradient(100deg, var(--sk-base) 35%, var(--sk-shine) 50%, var(--sk-base) 65%) 0 0 / 300% 100% var(--sk-base);
+  animation: skShine 1.3s linear infinite;
+}
+/* espaço de mídia esperando uma imagem sem tamanho próprio */
+.sk-host {
+  background-image: linear-gradient(100deg, transparent 35%, rgba(236, 238, 241, .07) 50%, transparent 65%) !important;
+  background-size: 300% 100% !important; background-repeat: no-repeat !important;
+  animation: skShine 1.3s linear infinite;
+}
+img.is-loaded { animation: imgIn .5s cubic-bezier(.16, 1, .3, 1) both; }
+img.is-broken { color: transparent; background: var(--sk-base); }
+@keyframes skShine { from { background-position: 100% 0; } to { background-position: -50% 0; } }
+@keyframes imgIn { from { opacity: 0; filter: blur(8px); } }
+@media (prefers-reduced-motion: reduce) {
+  img.is-loading { animation: none !important; }
+  img.is-loaded { animation: none !important; }
+  .sk-host { animation: none !important; }
+}
