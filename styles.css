@@ -1400,3 +1400,18 @@ img.is-broken { color: transparent; background: var(--sk-base); }
 .mm-extcard-body p { color: #dfe3e8; font-size: 15px; }
 .mm-extcard-body .btn-solid { --team: #ff0000; --on-team: #fff; }
 @media (max-width: 560px) { .mm-s { width: 150px; } }
+
+/* setas da fileira de próximos */
+.mm-strip-wrap { position: relative; }
+.mm-strip-arrow {
+  position: absolute; top: calc((190px * 9 / 16) / 2); translate: 0 -50%; z-index: 2;
+  width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line);
+  background: rgba(16, 18, 22, .92); color: var(--chalk); font-size: 24px; line-height: 1; display: grid; place-items: center;
+  box-shadow: 0 8px 20px rgba(0,0,0,.5); transition: background .15s, border-color .15s;
+}
+.mm-strip-arrow:hover { background: var(--kerb); border-color: var(--chalk); }
+.mm-strip-arrow.prev { left: -6px; }
+.mm-strip-arrow.next { right: -6px; }
+@media (max-width: 560px) {
+  .mm-strip-arrow { top: calc((150px * 9 / 16) / 2); width: 34px; height: 34px; font-size: 20px; }
+}

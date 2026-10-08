@@ -724,7 +724,15 @@ function renderStrip() {
       <span class="mm-s-thumb"><img src="${x.t === "v" ? ytThumb(x.id) : x.thumb}" alt="" loading="lazy">${x.t === "v" ? `<span class="g-play" aria-hidden="true"></span>` : ""}${x.ext ? `<span class="g-ext">YouTube ↗</span>` : ""}</span>
       <span class="mm-s-cap">${esc(x.title)}</span>
     </button>`).join("");
-  row.querySelector(".is-on")?.scrollIntoView({ block: "nearest", inline: "center" });
+  const on = row.querySelector(".is-on");
+  if (on) row.scrollTo({ left: on.offsetLeft - (row.clientWidth - on.clientWidth) / 2, behavior: "smooth" });
+  setTimeout(stripArrows, 400);
+}
+// setas da fileira de próximos: somem quando não há mais nada daquele lado
+function stripArrows() {
+  const row = $("#mediaStripRow"), max = row.scrollWidth - row.clientWidth - 2;
+  $("#mediaStripPrev").hidden = row.scrollLeft <= 2;
+  $("#mediaStripNext").hidden = row.scrollLeft >= max;
 }
 
 function blockedCard(x) {
@@ -777,6 +785,11 @@ function initMediaModal() {
     const b = e.target.closest("[data-k]");
     if (b) openMedia(+b.dataset.k);
   });
+  const slide = dir => { const row = $("#mediaStripRow"); row.scrollBy({ left: dir * row.clientWidth * 0.8, behavior: "smooth" }); };
+  $("#mediaStripPrev").onclick = () => slide(-1);
+  $("#mediaStripNext").onclick = () => slide(1);
+  $("#mediaStripRow").addEventListener("scroll", stripArrows, { passive: true });
+  addEventListener("resize", () => { if (!$("#mediaStrip").hidden) stripArrows(); });
 }
 window.openGallery = (list, i = 0, opts = {}) => { galList = list; stripMode = !!opts.strip; openMedia(i); };
 
