@@ -135,7 +135,7 @@ section { padding: clamp(64px, 9vw, 120px) var(--gutter); }
    LOBBY
    ====================================================================== */
 .lobby-hero {
-  position: relative; min-height: calc(100svh - 61px); overflow: hidden; isolation: isolate;
+  position: relative; min-height: calc(100svh - 61px - 50px); overflow: hidden; isolation: isolate;
   display: flex; flex-direction: column; justify-content: center; gap: 28px;
   padding-top: 48px; padding-bottom: 72px;
   background:
@@ -1273,3 +1273,23 @@ html.js-motion .ct-map, html.js-motion .g-feature { animation-delay: 200ms; anim
   .series-link i { width: 6px; height: 6px; box-shadow: none; }
   .nav-sep { margin: 0 2px; }
 }
+
+/* ---------- faixa do topo do lobby: próximas largadas e últimos vencedores ---------- */
+.ticker { padding-block: 0; border-top: 0; }
+.ticker li { padding-inline: 0; }
+.ticker li::before { display: none; }
+.ticker li a {
+  display: flex; align-items: center; gap: 10px; padding: 13px 22px; color: var(--mute); text-decoration: none;
+  transition: background .15s, color .15s;
+}
+.ticker li a::before { content: ""; width: 6px; height: 6px; transform: rotate(45deg); background: var(--c); margin-right: 4px; }
+.ticker li a:hover, .ticker li a:focus-visible { background: color-mix(in srgb, var(--c) 14%, transparent); color: var(--chalk); }
+.ticker li em { font-style: normal; font: 700 15px/1 var(--body); color: var(--amber); font-variant-numeric: tabular-nums; }
+.ticker .tk-next span { display: none; }
+.tk-head {
+  align-self: center; margin-inline: 18px 4px; padding: 4px 10px; border-radius: 999px;
+  font: 700 11px/1 var(--body) !important; letter-spacing: .1em; text-transform: uppercase; color: var(--chalk) !important;
+  background: var(--kerb);
+}
+.tk-head::before { display: none; }
+@media (prefers-reduced-motion: reduce) { .ticker { overflow-x: auto; mask: none; } }

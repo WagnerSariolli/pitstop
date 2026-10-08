@@ -149,7 +149,22 @@ function renderLobby() {
     return { t: s.teams[0], v: teamViews(s.teams[0])[0] };
   };
 
+  // faixa do topo: as próximas largadas de todos os campeonatos e os últimos vencedores; cada item leva para lá
+  const venue = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
+  const comingUp = next.slice(0, 8).map(({ s, r, d }) => `
+        <li class="tk-next" style="--c:${s.accent}"><a href="${venue(s, r) ? `?pista=${venue(s, r)}` : `?c=${s.id}#temporada`}"><b>${esc(s.short)}</b>${esc(r.gp)}<em>${countdown(d)}</em></a></li>`).join("");
+  const winners = all.filter(s => !s.seasonOver).flatMap(s => s.calendar.filter(r => r.winner).slice(-2).reverse().map(r => ({ s, r })))
+    .sort((a, b) => raceDate(b.r) - raceDate(a.r)).map(({ s, r }) => `
+        <li style="--c:${s.accent}"><a href="?c=${s.id}${window.HL?.has(s.id, r.r) ? `&r=${r.r}#destaques` : "#temporada"}"><b>${esc(s.short)}</b>${esc(r.gp)}<span>${esc(r.winner)}</span></a></li>`).join("");
+
   $("#lobby").innerHTML = `
+    <nav class="ticker" aria-label="Próximas largadas e últimos vencedores">
+      <ul class="ticker-track">
+        ${comingUp ? `<li class="tk-head">Próximas largadas</li>${comingUp}` : ""}
+        ${winners ? `<li class="tk-head">Últimos vencedores</li>${winners}` : ""}
+      </ul>
+    </nav>
+
     <section class="lobby-hero" aria-labelledby="lobby-title">
       <div class="grid-slots" aria-label="Grid de largada dos campeonatos">
         ${all.map((s, i) => { const { t, v } = slot(s); return `
@@ -171,11 +186,6 @@ function renderLobby() {
         <a class="btn btn-solid" href="#campeonatos">Escolher campeonato</a>
       </div>
     </section>
-
-    <div class="ticker" aria-label="Últimos vencedores">
-      <ul class="ticker-track">${all.flatMap(s => s.calendar.filter(r => r.winner).slice(-4).reverse()
-        .map(r => `<li style="--c:${s.accent}"><b>${esc(s.short)}</b>${esc(r.gp)}<span>${esc(r.winner)}</span></li>`)).join("")}</ul>
-    </div>
 
     <section class="lobby-series" id="campeonatos" aria-labelledby="series-title">
       <div class="section-head"><h2 id="series-title">Campeonatos</h2></div>

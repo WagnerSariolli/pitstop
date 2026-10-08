@@ -349,7 +349,11 @@ function ticker() {
   if (!t) return;
   // duplica o conteúdo para o laço infinito sem emenda
   t.innerHTML += t.innerHTML;
-  t.querySelectorAll("li").forEach((li, i) => { if (i >= t.children.length / 2) li.setAttribute("aria-hidden", "true"); });
+  // a cópia é só visual: fora do leitor de tela e da navegação por teclado
+  [...t.children].slice(t.children.length / 2).forEach(li => {
+    li.setAttribute("aria-hidden", "true");
+    li.querySelectorAll("a").forEach(a => a.setAttribute("tabindex", "-1"));
+  });
 }
 
 /* ======================================================================
