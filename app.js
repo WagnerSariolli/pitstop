@@ -200,7 +200,9 @@ function renderLobby() {
     ${next.length ? `
     <section class="agenda" aria-labelledby="agenda-title">
       <div class="section-head"><h2 id="agenda-title">Próximas corridas</h2><p>Todas as categorias, em ordem de data.</p></div>
-      <ol class="agenda-list">${next.slice(0, 8).map(({ s, r, d }) => `
+      <div class="agenda-wrap">
+      ${agendaFeature(next[0])}
+      <ol class="agenda-list">${next.slice(1, 9).map(({ s, r, d }) => `
         <li style="--c:${s.accent}">
           <time datetime="${d.toISOString().slice(0, 10)}"><b>${d.getDate()}</b>${esc(r.date.replace(/^\d+\s*/, ""))}</time>
           <span class="ag-series">${esc(s.short)}</span>
@@ -209,9 +211,11 @@ function renderLobby() {
           <a href="${venueOf(s, r) ? `?pista=${venueOf(s, r)}` : `?c=${s.id}#temporada`}" aria-label="${venueOf(s, r) ? `Guia da pista: ${esc(r.circuit)}` : `Ver calendário: ${esc(s.name)}`}"></a>
         </li>`).join("")}
       </ol>
+      </div>
     </section>` : ""}
 
     ${newsletterSection()}`;
+  tickAgenda();
   $("#footerText").textContent = "Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.";
 }
 
@@ -452,6 +456,37 @@ function initLeaveNotice() {
     dlg.querySelector(".lv-go").focus();
   });
 }
+
+// destaque da próxima largada ao lado da lista: traçado, contagem regressiva ao vivo e horário de Brasília
+function agendaFeature({ s, r, d }) {
+  const v = venueOf(s, r), c = v && window.CIRCUITS?.[v];
+  const when = r.start
+    ? `${d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", weekday: "long", day: "numeric", month: "long" })} · ${d.toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit" })} (horário de Brasília)`
+    : `${d.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}`;
+  return `
+      <aside class="ag-feature" style="--c:${s.accent}" aria-label="Próxima largada">
+        <p class="ag-f-kicker"><i></i>Próxima largada · ${esc(s.short)}</p>
+        <h3>${esc(r.pill || r.gp)}</h3>
+        <p class="ag-f-place">${esc(r.circuit)}${c ? ` · ${esc(c.city)}, ${esc(c.country)}` : ""}</p>
+        ${c && window.Guide ? `<a class="c-art ag-f-art" href="?pista=${v}" aria-label="Guia da pista: ${esc(c.name)}">${Guide.outline(c)}</a>` : ""}
+        <div class="ag-f-count" data-start="${d.toISOString()}" aria-live="off">
+          ${["dias", "horas", "min", "seg"].map(u => `<span><b data-u="${u}">--</b><small>${u}</small></span>`).join("")}
+        </div>
+        <p class="ag-f-when">${esc(when)}</p>
+        <div class="ag-f-actions">
+          ${v ? `<a class="btn btn-solid" href="?pista=${v}">Guia da pista</a>` : ""}
+          <a class="btn btn-ghost" href="?c=${s.id}#temporada">Ver ${esc(s.short)}</a>
+        </div>
+      </aside>`;
+}
+function tickAgenda() {
+  document.querySelectorAll(".ag-f-count").forEach(el => {
+    let t = Math.max(0, Date.parse(el.dataset.start) - Date.now()) / 1000;
+    const parts = { dias: Math.floor(t / 86400), horas: Math.floor(t / 3600) % 24, min: Math.floor(t / 60) % 60, seg: Math.floor(t) % 60 };
+    el.querySelectorAll("[data-u]").forEach(b => { b.textContent = String(parts[b.dataset.u]).padStart(2, "0"); });
+  });
+}
+setInterval(tickAgenda, 1000);
 
 const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
 

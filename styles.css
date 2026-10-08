@@ -1343,3 +1343,36 @@ img.is-broken { color: transparent; background: var(--sk-base); }
 .g-cap { min-width: 0; }
 /* etiquetas da faixa do topo: o espaçamento lateral delas não pode ser zerado pela regra geral dos itens */
 .ticker .tk-head { padding: 5px 12px; line-height: 1; white-space: nowrap; }
+
+/* ---------- próximas corridas: lista + destaque da próxima largada ---------- */
+.agenda-wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 400px); gap: 24px; align-items: start; }
+.agenda-wrap .agenda-list { max-width: none; grid-column: 1; grid-row: 1; }
+.ag-feature {
+  --c: #888; grid-column: 2; grid-row: 1; position: sticky; top: 130px;
+  display: grid; gap: 12px; padding: 22px; border-radius: var(--r-lg);
+  background: radial-gradient(90% 60% at 50% 0%, color-mix(in srgb, var(--c) 22%, transparent), transparent 70%), var(--pitwall);
+  border: 1px solid var(--kerb); border-top: 4px solid var(--c);
+}
+.ag-f-kicker { display: flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--amber); }
+.ag-f-kicker i { width: 9px; height: 9px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 0 4px color-mix(in srgb, var(--amber) 22%, transparent); animation: agPulse 1.8s ease-in-out infinite; }
+@keyframes agPulse { 50% { box-shadow: 0 0 0 7px color-mix(in srgb, var(--amber) 0%, transparent); } }
+.ag-feature h3 { font-size: clamp(32px, 3vw, 44px); text-transform: uppercase; }
+.ag-f-place { color: var(--mute); font-size: 15px; margin-top: -6px; }
+.ag-f-art { display: grid; border-radius: 12px; border: 1px solid var(--kerb); aspect-ratio: 16 / 10; text-decoration: none; }
+.ag-f-art .o-run { stroke-dasharray: 1 1; animation: agDraw 2.6s cubic-bezier(.45, 0, .25, 1) .3s both; }
+@keyframes agDraw { from { stroke-dashoffset: 1; } to { stroke-dashoffset: 0; } }
+.ag-f-count { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; }
+.ag-f-count span { display: grid; justify-items: center; padding: 10px 4px 8px; border-radius: 10px; background: var(--asphalt); border: 1px solid var(--kerb); }
+.ag-f-count b { font: 900 34px/1 var(--display); font-variant-numeric: tabular-nums; color: var(--chalk); }
+.ag-f-count small { font-size: 11px; color: var(--mute); text-transform: uppercase; letter-spacing: .08em; margin-top: 2px; }
+.ag-f-when { font-size: 14px; color: #c9ced6; }
+.ag-f-when::first-letter { text-transform: uppercase; }
+.ag-f-actions { display: flex; flex-wrap: wrap; gap: 8px; }
+.ag-f-actions .btn { padding: 11px 16px; font-size: 15px; }
+.ag-f-actions .btn-solid { --team: var(--c); --on-team: #fff; }
+@media (max-width: 1100px) {
+  .agenda-wrap { grid-template-columns: 1fr; }
+  .ag-feature { grid-column: 1; position: static; }
+  .agenda-wrap .agenda-list { grid-row: 2; }
+}
+@media (prefers-reduced-motion: reduce) { .ag-f-art .o-run { animation: none; } .ag-f-kicker i { animation: none; } }
