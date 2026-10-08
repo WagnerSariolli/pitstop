@@ -1336,3 +1336,8 @@ img.is-broken { color: transparent; background: var(--sk-base); }
   img.is-loaded { animation: none !important; }
   .sk-host { animation: none !important; }
 }
+
+/* cards de vídeo/foto: a capa ocupa a largura do card, não a largura natural da imagem */
+.g-tile { grid-template-columns: minmax(0, 1fr); min-width: 0; }
+.g-thumb { width: 100%; min-width: 0; }
+.g-cap { min-width: 0; }
