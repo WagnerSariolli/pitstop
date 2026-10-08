@@ -1415,3 +1415,9 @@ img.is-broken { color: transparent; background: var(--sk-base); }
 @media (max-width: 560px) {
   .mm-strip-arrow { top: calc((150px * 9 / 16) / 2); width: 34px; height: 34px; font-size: 20px; }
 }
+/* miniatura ativa: a borda fica por dentro da capa (por fora ela era cortada pela fileira com rolagem) */
+.mm-s-thumb { outline: 0 !important; }
+.mm-s-thumb::after { content: ""; position: absolute; inset: 0; z-index: 1; border-radius: inherit; border: 2px solid transparent; pointer-events: none; transition: border-color .15s; }
+.mm-s.is-on .mm-s-thumb::after { border-color: var(--series, #e10600); }
+.mm-s:focus-visible { outline: none; }
+.mm-s:focus-visible .mm-s-thumb::after { border-color: var(--chalk); }
