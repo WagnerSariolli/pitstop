@@ -655,7 +655,8 @@ function selectTeam(i, { scrollChip = true } = {}) {
 let galItems = [], galFilter = "all", galList = [], galIndex = 0, ytPlayer = null, ytReady = null;
 const ytThumb = id => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 const ytWatch = id => `https://www.youtube.com/watch?v=${id}`;
-const inModal = x => !(x.t === "v" && x.ext); // vídeos bloqueados fora do YouTube abrem direto lá
+let stripMode = false; // janela de destaques: um vídeo grande e os próximos em miniaturas embaixo
+const inModal = x => stripMode || !(x.t === "v" && x.ext); // fora desse modo, vídeos bloqueados fora do YouTube abrem direto lá
 
 function renderGallery(t) {
   galItems = (window.MEDIA?.[S.id]?.[t.id]) || [];
@@ -703,6 +704,29 @@ function loadYT() {
   });
 }
 function stopPlayer() { try { ytPlayer?.destroy(); } catch (e) { /* já removido */ } ytPlayer = null; }
+// vídeo que só toca no YouTube, mostrado na janela de destaques: capa grande e o botão que leva até lá (com o aviso)
+function extCard(x) {
+  return `<div class="mm-extcard">
+    <img src="https://i.ytimg.com/vi/${x.id}/maxresdefault.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${ytThumb(x.id)}'}" alt="">
+    <div class="mm-extcard-body">
+      <b>Este vídeo abre no YouTube</b>
+      <p>O canal oficial só permite assistir lá. O Pitstop continua aberto nesta aba.</p>
+      <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener" data-leave data-title="${esc(x.title)}" data-thumb="${ytThumb(x.id)}">Assistir no YouTube ↗</a>
+    </div>
+  </div>`;
+}
+function renderStrip() {
+  const row = $("#mediaStripRow");
+  $("#mediaStrip").hidden = !stripMode || galList.length < 2;
+  if ($("#mediaStrip").hidden) return;
+  row.innerHTML = galList.map((x, k) => `
+    <button class="mm-s${k === galIndex ? " is-on" : ""}" data-k="${k}" aria-label="${esc(x.title)}"${k === galIndex ? ' aria-current="true"' : ""}>
+      <span class="mm-s-thumb"><img src="${x.t === "v" ? ytThumb(x.id) : x.thumb}" alt="" loading="lazy">${x.t === "v" ? `<span class="g-play" aria-hidden="true"></span>` : ""}${x.ext ? `<span class="g-ext">YouTube ↗</span>` : ""}</span>
+      <span class="mm-s-cap">${esc(x.title)}</span>
+    </button>`).join("");
+  row.querySelector(".is-on")?.scrollIntoView({ block: "nearest", inline: "center" });
+}
+
 function blockedCard(x) {
   return `<div class="mm-blocked">
     <img src="${ytThumb(x.id)}" alt="">
@@ -723,7 +747,9 @@ async function openMedia(i, step = 1) {
     : `<b>${esc(x.title)}</b> <span><a href="${x.link}" target="_blank" rel="noopener">${esc(x.credit)}</a> · ${pos} de ${shown.length}</span>`;
   const modal = $("#mediaModal");
   if (!modal.open) modal.showModal();
+  renderStrip();
   if (x.t !== "v") { $("#mediaStage").innerHTML = `<img src="${x.src}" alt="${esc(x.title)}">`; return; }
+  if (x.ext) { $("#mediaStage").innerHTML = extCard(x); return; }
 
   $("#mediaStage").innerHTML = `<div class="mm-video"><div id="ytHost"></div></div>`;
   await loadYT();
@@ -746,9 +772,13 @@ function initMediaModal() {
     if (e.key === "ArrowLeft") openMedia(galIndex - 1, -1);
   });
   // fechar a janela para o vídeo (e o som) imediatamente
-  modal.addEventListener("close", () => { stopPlayer(); $("#mediaStage").innerHTML = ""; });
+  modal.addEventListener("close", () => { stopPlayer(); $("#mediaStage").innerHTML = ""; stripMode = false; $("#mediaStrip").hidden = true; });
+  $("#mediaStripRow").addEventListener("click", e => {
+    const b = e.target.closest("[data-k]");
+    if (b) openMedia(+b.dataset.k);
+  });
 }
-window.openGallery = (list, i = 0) => { galList = list; openMedia(i); };
+window.openGallery = (list, i = 0, opts = {}) => { galList = list; stripMode = !!opts.strip; openMedia(i); };
 
 function initGallery() {
   $("#galleryTabs").addEventListener("click", e => {
@@ -913,7 +943,7 @@ function renderStandings() {
     return `<li class="${cls}"${c ? ` style="--c:${c}"` : ""}>
       <span class="rnd">${esc(r.r)}</span>
       <span class="gp"><b>${esc(r.gp)}</b>${venues[i] ? `<a class="to-track" href="?pista=${venues[i]}">${esc(r.circuit)} <span aria-hidden="true">›</span></a>` : `<small>${esc(r.circuit)}</small>`}</span>
-      <span class="res">${res}${r.winner && window.HL?.has(S.id, r.r) ? `<a class="to-hl" href="#destaques" data-hl="${r.r}">▶ Destaques</a>` : ""}</span>
+      <span class="res">${res}${r.winner && window.HL?.has(S.id, r.r) ? `<a class="to-hl" href="?c=${S.id}&r=${r.r}#destaques" data-hl="${r.r}">▶ Destaques</a>` : ""}</span>
     </li>`;
   }).join("");
 }

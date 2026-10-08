@@ -26,9 +26,9 @@ window.HL = (() => {
       ...(h.photos || []).map(p => ({ t: "p", ...p })),
     ];
   };
-  const open = (sid, round, i = 0) => {
+  const open = (sid, round, i = 0, opts = { strip: true }) => {
     const r = SERIES[sid].calendar.find(x => String(x.r) === String(round));
-    if (r) window.openGallery(itemsOf(sid, r), i);
+    if (r) window.openGallery(itemsOf(sid, r), i, opts);
   };
 
   /* ---------- página do campeonato: seção "Destaques" ---------- */
@@ -102,13 +102,14 @@ window.HL = (() => {
       if (!b) return;
       open(S.id, cur.r, +b.dataset.i);
     });
-    // links do calendário escolhem a etapa sem recarregar a página
+    // links "▶ Destaques" do calendário: abrem a janela com o primeiro vídeo e os próximos embaixo, sem rolar a página
     document.addEventListener("click", e => {
       const a = e.target.closest("a[data-hl]");
-      if (!a) return;
-      const b = $(`#hlRaces [data-r="${a.dataset.hl}"]`);
-      if (b) { b.click(); b.scrollIntoView({ block: "nearest", inline: "center" }); }
-    });
+      if (!a || e.ctrlKey || e.metaKey || e.shiftKey) return;
+      e.preventDefault();
+      e.stopPropagation();
+      open(S.id, a.dataset.hl, 0, { strip: true });
+    }, true);
     return true;
   }
 

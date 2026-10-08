@@ -1376,3 +1376,27 @@ img.is-broken { color: transparent; background: var(--sk-base); }
   .agenda-wrap .agenda-list { grid-row: 2; }
 }
 @media (prefers-reduced-motion: reduce) { .ag-f-art .o-run { animation: none; } .ag-f-kicker i { animation: none; } }
+
+/* ---------- janela de destaques: vídeo grande + próximos em miniaturas ---------- */
+.mm-strip { margin-top: 14px; }
+.mm-strip > p { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--mute); margin-bottom: 8px; }
+.mm-strip-row { display: flex; gap: 10px; overflow-x: auto; padding-bottom: 8px; scroll-snap-type: x proximity; scrollbar-color: var(--line) transparent; scrollbar-width: thin; }
+.mm-s {
+  flex: none; width: 190px; display: grid; gap: 6px; padding: 0; border: 0; background: none; text-align: left; color: var(--chalk);
+  scroll-snap-align: start; opacity: .72; transition: opacity .15s;
+}
+.mm-s:hover, .mm-s.is-on { opacity: 1; }
+.mm-s-thumb { position: relative; display: block; aspect-ratio: 16 / 9; border-radius: 8px; overflow: hidden; background: var(--pitwall); outline: 2px solid transparent; outline-offset: 2px; }
+.mm-s.is-on .mm-s-thumb { outline-color: var(--series, #e10600); }
+.mm-s-thumb img { width: 100%; height: 100%; object-fit: cover; }
+.mm-s-thumb .g-play { width: 34px; height: 34px; }
+.mm-s-thumb .g-play::after { left: 12px; top: 8px; border-left-width: 11px; border-top-width: 7px; border-bottom-width: 7px; }
+.mm-s-thumb .g-ext { font-size: 10px; padding: 1px 6px; right: 6px; bottom: 6px; }
+.mm-s-cap { font-size: 12px; line-height: 1.3; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.mm-extcard { position: relative; width: min(100%, 1100px); aspect-ratio: 16 / 9; max-height: calc(100svh - 330px); border-radius: 12px; overflow: hidden; background: #000; }
+.mm-extcard img { width: 100%; height: 100%; object-fit: cover; opacity: .55; }
+.mm-extcard-body { position: absolute; inset: auto 0 0; display: grid; gap: 8px; justify-items: start; padding: clamp(16px, 3vw, 32px); background: linear-gradient(transparent, rgba(0,0,0,.85)); }
+.mm-extcard-body b { font: 800 clamp(24px, 3vw, 36px)/1 var(--display); text-transform: uppercase; }
+.mm-extcard-body p { color: #dfe3e8; font-size: 15px; }
+.mm-extcard-body .btn-solid { --team: #ff0000; --on-team: #fff; }
+@media (max-width: 560px) { .mm-s { width: 150px; } }
