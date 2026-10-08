@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261007g">
+  <link rel="stylesheet" href="styles.css?v=20261007h">
   <script>
     // esqueleto de carregamento padrão para TODAS as imagens: enquanto a imagem não chega, ela mostra um bloco
     // com brilho; quando carrega, entra com um fade. Vale também para as imagens criadas depois pelo JavaScript.
@@ -31,6 +31,7 @@
       // imagem que só ganha tamanho depois de carregar (altura 0): o brilho vai no espaço onde ela fica (o pai),
       // desde que esse espaço seja um bloco de mídia, e não uma seção inteira da página
       const host = img => {
+        if (!img.classList.contains("is-loading")) return;      // já carregou nesse meio-tempo
         const box = img.getBoundingClientRect(), p = img.parentElement;
         if (!p || box.height > 8) return;
         const pb = p.getBoundingClientRect();
@@ -52,9 +53,15 @@
         img.classList.add("is-loading");
         setTimeout(() => { if (img.classList.contains("is-loading")) host(img); }, 30);
       };
-      // load e error não sobem pela árvore; na fase de captura dá para ouvir todos de uma vez
-      addEventListener("load", e => { if (e.target.tagName === "IMG") { e.target.classList.remove("is-broken"); done(e.target); } }, true);
-      addEventListener("error", e => { if (e.target.tagName === "IMG") done(e.target); }, true);
+      // load e error não sobem pela árvore; na fase de captura do document dá para ouvir todos de uma vez
+      // (no window não: o load das imagens não passa por ele)
+      document.addEventListener("load", e => { if (e.target.tagName === "IMG") { e.target.classList.remove("is-broken"); done(e.target); } }, true);
+      document.addEventListener("error", e => { if (e.target.tagName === "IMG") done(e.target); }, true);
+      // rede de segurança: a cada 1,5 s confere se alguma imagem já resolvida ficou marcada como carregando
+      setInterval(() => {
+        document.querySelectorAll("img.is-loading").forEach(img => { if (img.complete) done(img); });
+        document.querySelectorAll(".sk-host").forEach(p => { if (!p.querySelector("img.is-loading")) p.classList.remove("sk-host"); });
+      }, 1500);
       new MutationObserver(list => {
         for (const m of list) {
           if (m.type === "attributes") { const img = m.target; if (img.tagName === "IMG" && img.getAttribute("src") && !img.complete) { img.classList.remove("is-loaded", "is-broken"); img.classList.add("is-loading"); setTimeout(() => host(img), 30); } continue; }
@@ -246,18 +253,18 @@
   </dialog>
 
   <script>window.SERIES = {};</script>
-  <script src="data/f1.js?v=20261007g"></script>
-  <script src="data/formulae.js?v=20261007g"></script>
-  <script src="data/motogp.js?v=20261007g"></script>
-  <script src="data/wec.js?v=20261007g"></script>
-  <script src="data/media.js?v=20261007g"></script>
+  <script src="data/f1.js?v=20261007h"></script>
+  <script src="data/formulae.js?v=20261007h"></script>
+  <script src="data/motogp.js?v=20261007h"></script>
+  <script src="data/wec.js?v=20261007h"></script>
+  <script src="data/media.js?v=20261007h"></script>
   <script src="data/live.js"></script>
-  <script src="data/newsletter.js?v=20261007g"></script>
-  <script src="data/circuits.js?v=20261007g"></script>
+  <script src="data/newsletter.js?v=20261007h"></script>
+  <script src="data/circuits.js?v=20261007h"></script>
   <script src="data/highlights.js"></script>
-  <script src="destaques.js?v=20261007g"></script>
-  <script src="guide.js?v=20261007g"></script>
-  <script src="app.js?v=20261007g"></script>
-  <script type="module" src="motion.js?v=20261007g"></script>
+  <script src="destaques.js?v=20261007h"></script>
+  <script src="guide.js?v=20261007h"></script>
+  <script src="app.js?v=20261007h"></script>
+  <script type="module" src="motion.js?v=20261007h"></script>
 </body>
 </html>
