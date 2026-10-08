@@ -16,7 +16,6 @@ let lenis = null;
 if (!reduce) {
   lenis = new Lenis({
     lerp: 0.11,
-    anchors: { offset: -124 },
     prevent: node => !!node.closest?.("dialog, .gallery-strip, .team-picker, .section-nav, .cat-panel, .series-nav, .leaflet-container"),
   });
   const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
@@ -383,5 +382,5 @@ function init() {
   $$(".driver-card, .series-card, .c-card").forEach(el => tilt(el, { max: 7 }));
 }
 
-window.Motion = { onTeamChange, countUp, reduce };
+window.Motion = { onTeamChange, countUp, reduce, lenis };
 init();

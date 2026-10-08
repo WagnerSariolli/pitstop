@@ -488,6 +488,39 @@ function tickAgenda() {
 }
 setInterval(tickAgenda, 1000);
 
+/* ---------- Links internos (#garagem, #pilotos…) ----------
+   As seções têm um respiro grande em cima; rolar até a borda da seção deixava esse vazio sob o menu.
+   O destino passa a ser o título da seção, logo abaixo do menu fixo. */
+function anchorTarget(id) {
+  const el = id && document.getElementById(id);
+  if (!el || el.closest("[hidden]")) return null;
+  return el.querySelector(":scope > .section-head") || el;
+}
+function scrollToAnchor(id, smooth = true) {
+  const t = anchorTarget(id);
+  if (!t) return false;
+  const head = $(".topbar").getBoundingClientRect().height;
+  const y = Math.max(0, t.getBoundingClientRect().top + scrollY - head - 24);
+  const lenis = window.Motion?.lenis;
+  if (lenis) lenis.scrollTo(y, { immediate: !smooth, duration: 1.1 });
+  else scrollTo({ top: y, behavior: smooth && !matchMedia("(prefers-reduced-motion: reduce)").matches ? "smooth" : "auto" });
+  return true;
+}
+function initAnchors() {
+  document.addEventListener("click", e => {
+    const a = e.target.closest('a[href^="#"]');
+    const id = a && decodeURIComponent(a.getAttribute("href").slice(1));
+    if (!id || e.ctrlKey || e.metaKey || e.shiftKey) return;
+    if (scrollToAnchor(id)) { e.preventDefault(); e.stopPropagation(); history.replaceState(null, "", `#${id}`); }
+  }, true);
+  // chegou com #seção no endereço (vindo de outra página): corrige a posição depois que tudo se monta
+  if (location.hash.length > 1) {
+    const id = decodeURIComponent(location.hash.slice(1));
+    // duas passadas: a segunda corrige o que fontes e imagens tardias empurraram
+    addEventListener("load", () => { setTimeout(() => scrollToAnchor(id, false), 60); setTimeout(() => scrollToAnchor(id), 800); }, { once: true });
+  }
+}
+
 const venueOf = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
 
 // lobby: as próximas pistas, com o traçado desenhado
@@ -993,6 +1026,7 @@ queueMicrotask(initNewsletter);
 setInterval(renderPill, 30000);
 initMediaModal();
 initLeaveNotice();
+initAnchors();
 if (GUIDE) {
   $("#lobby").hidden = true;
   Guide.render();

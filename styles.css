@@ -16,7 +16,7 @@
 }
 
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 124px; }
+html { scroll-behavior: smooth; scroll-padding-top: 140px; }
 body {
   margin: 0;
   background: var(--asphalt);
