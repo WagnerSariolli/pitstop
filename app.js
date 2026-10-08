@@ -87,7 +87,11 @@ function setTeamColor(el, hex) {
 }
 
 const leaderOf = s => s.drivers.find(d => d.pos === 1) || s.drivers[0];
-const vehicleOf = s => teamViews(s.teams[0])[0];
+// o veículo de lado (como no banner do lobby); na MotoGP, a vista de três quartos em vez da de frente
+function vehicleOf(s) {
+  for (const t of s.teams) { const v = teamViews(t).find(x => x.id !== "front"); if (v) return v; }
+  return teamViews(s.teams[0])[0];
+}
 function teamViews(t) {
   return t.views || (t.img ? [{ id: "right", label: "Lateral direita", img: t.img, srcset: t.srcset }] : []);
 }
@@ -144,10 +148,7 @@ function renderLobby() {
   const teams = all.reduce((n, s) => n + s.teams.length, 0);
 
   // grid de largada: o veículo de lado de cada campeonato (na MotoGP, a vista de três quartos)
-  const slot = s => {
-    for (const t of s.teams) { const v = teamViews(t).find(x => x.id !== "front"); if (v) return { t, v }; }
-    return { t: s.teams[0], v: teamViews(s.teams[0])[0] };
-  };
+  const slot = s => { const v = vehicleOf(s); return { t: s.teams.find(t => teamViews(t).includes(v)) || s.teams[0], v }; };
 
   // faixa do topo: as próximas largadas de todos os campeonatos e os últimos vencedores; cada item leva para lá
   const venue = (s, r) => window.VENUES?.[s.id]?.[s.calendar.indexOf(r)];
