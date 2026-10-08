@@ -1134,7 +1134,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-07T00:24:32.718Z"
+   "photosChecked": "2026-10-08T06:05:34.620Z"
   },
   "15": {
    "videos": [
@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-07T00:24:33.890Z"
+   "photosChecked": "2026-10-08T06:05:35.503Z"
   },
   "16": {
    "videos": [
@@ -1298,8 +1298,16 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": [],
-   "photosChecked": "2026-10-07T00:24:34.711Z"
+   "photos": [
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg/1920px-2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/74/2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg/500px-2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg",
+     "title": "2026 Bahrain GP - Ferrari - Lewis Hamilton - Qualifying",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg"
+    }
+   ],
+   "photosChecked": "2026-10-08T06:05:36.143Z"
   }
  },
  "formulae": {
@@ -2755,7 +2763,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-07T00:24:47.587Z"
+   "photosChecked": "2026-10-08T06:06:07.984Z"
   },
   "15": {
    "videos": [
@@ -2803,7 +2811,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-07T00:24:48.414Z"
+   "photosChecked": "2026-10-08T06:06:08.588Z"
   },
   "16": {
    "videos": [
@@ -2851,7 +2859,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-07T00:24:49.234Z"
+   "photosChecked": "2026-10-08T06:06:09.208Z"
   },
   "17": {
    "videos": [
@@ -3267,7 +3275,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-07T00:25:02.163Z"
+   "photosChecked": "2026-10-08T06:06:41.491Z"
   }
  }
 };
