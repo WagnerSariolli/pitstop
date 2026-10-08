@@ -189,11 +189,7 @@ function renderLobby() {
 
     <section class="lobby-series" id="campeonatos" aria-labelledby="series-title">
       <div class="section-head"><h2 id="series-title">Campeonatos</h2></div>
-      ${CATEGORIES.filter(c => c.series.length).map(c => `
-        <div class="cat-block">
-          <header><h3>${esc(c.name)}</h3><p>${esc(c.lede)}</p></header>
-          <div class="series-cards">${c.series.map(id => seriesCard(SERIES[id])).join("")}</div>
-        </div>`).join("")}
+      <div class="series-cards series-row">${ORDER.map(id => seriesCard(SERIES[id])).join("")}</div>
     </section>
 
     ${window.HL ? HL.lobbySection() : ""}
