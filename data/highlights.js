@@ -1343,6 +1343,19 @@ window.HIGHLIGHTS = {
     }
    ],
    "photosChecked": "2026-10-09T07:23:49.979Z"
+  },
+  "17": {
+   "videos": [
+    {
+     "id": "JB84kCTCR0c",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Max Verstappen's Sprint Pole Lap | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    }
+   ],
+   "photos": []
   }
  },
  "formulae": {
