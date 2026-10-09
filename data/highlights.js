@@ -1134,7 +1134,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-08T06:05:34.620Z"
+   "photosChecked": "2026-10-09T07:23:48.818Z"
   },
   "15": {
    "videos": [
@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-08T06:05:35.503Z"
+   "photosChecked": "2026-10-09T07:23:49.400Z"
   },
   "16": {
    "videos": [
@@ -1305,9 +1305,44 @@ window.HIGHLIGHTS = {
      "title": "2026 Bahrain GP - Ferrari - Lewis Hamilton - Qualifying",
      "credit": "Liauzh · CC BY-SA 4.0",
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Ferrari_-_Lewis_Hamilton_-_Qualifying.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_Race.jpg/1920px-2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5a/2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_Race.jpg/500px-2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_Race.jpg",
+     "title": "2026 Bahrain GP - McLaren - Oscar Piastri - Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/2026_Bahrain_GP_-_Haas_-_Esteban_Ocon_-_Race.jpg/1920px-2026_Bahrain_GP_-_Haas_-_Esteban_Ocon_-_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/06/2026_Bahrain_GP_-_Haas_-_Esteban_Ocon_-_Race.jpg/500px-2026_Bahrain_GP_-_Haas_-_Esteban_Ocon_-_Race.jpg",
+     "title": "2026 Bahrain GP - Haas - Esteban Ocon - Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Haas_-_Esteban_Ocon_-_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/2026_Bahrain_GP_-_Mercedes_-_Kimi_Antonelli_-_Race.jpg/1920px-2026_Bahrain_GP_-_Mercedes_-_Kimi_Antonelli_-_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/ce/2026_Bahrain_GP_-_Mercedes_-_Kimi_Antonelli_-_Race.jpg/500px-2026_Bahrain_GP_-_Mercedes_-_Kimi_Antonelli_-_Race.jpg",
+     "title": "2026 Bahrain GP - Mercedes - Kimi Antonelli - Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Mercedes_-_Kimi_Antonelli_-_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/2026_Bahrain_GP_-_Red_Bull_-_Isack_Hadjar_-_Race.jpg/1920px-2026_Bahrain_GP_-_Red_Bull_-_Isack_Hadjar_-_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/2026_Bahrain_GP_-_Red_Bull_-_Isack_Hadjar_-_Race.jpg/500px-2026_Bahrain_GP_-_Red_Bull_-_Isack_Hadjar_-_Race.jpg",
+     "title": "2026 Bahrain GP - Red Bull - Isack Hadjar - Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Isack_Hadjar_-_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg/1920px-2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/54/2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg/500px-2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg",
+     "title": "2026 Bahrain GP - Red Bull - Max Verstappen - FP2",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
     }
    ],
-   "photosChecked": "2026-10-08T06:05:36.143Z"
+   "photosChecked": "2026-10-09T07:23:49.979Z"
   }
  },
  "formulae": {
@@ -2763,7 +2798,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-08T06:06:07.984Z"
+   "photosChecked": "2026-10-09T07:23:50.594Z"
   },
   "15": {
    "videos": [
@@ -2811,7 +2846,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-08T06:06:08.588Z"
+   "photosChecked": "2026-10-09T07:23:51.107Z"
   },
   "16": {
    "videos": [
@@ -2859,7 +2894,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-08T06:06:09.208Z"
+   "photosChecked": "2026-10-09T07:23:51.622Z"
   },
   "17": {
    "videos": [
@@ -2868,6 +2903,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "It's time for the 2026 Indonesian GP 🇮🇩",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "AcmYTjGNN7E",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Chatting all things with Toprak in Inside The Paddock | 2026 Indonesian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3275,7 +3317,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-08T06:06:41.491Z"
+   "photosChecked": "2026-10-09T07:23:52.261Z"
   }
  }
 };
