@@ -1134,7 +1134,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-09T07:23:48.818Z"
+   "photosChecked": "2026-10-10T13:42:11.789Z"
   },
   "15": {
    "videos": [
@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-09T07:23:49.400Z"
+   "photosChecked": "2026-10-10T13:42:12.552Z"
   },
   "16": {
    "videos": [
@@ -1342,10 +1342,26 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
     }
    ],
-   "photosChecked": "2026-10-09T07:23:49.979Z"
+   "photosChecked": "2026-10-10T13:42:13.237Z"
   },
   "17": {
    "videos": [
+    {
+     "id": "oNNyZWon8OE",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Drivers React After Sprint | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "Rf7NEIpm5vI",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Sprint Highlights | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
     {
      "id": "JB84kCTCR0c",
      "kind": "qualifying",
@@ -2811,7 +2827,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-09T07:23:50.594Z"
+   "photosChecked": "2026-10-10T13:42:13.899Z"
   },
   "15": {
    "videos": [
@@ -2859,7 +2875,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-09T07:23:51.107Z"
+   "photosChecked": "2026-10-10T13:42:14.560Z"
   },
   "16": {
    "videos": [
@@ -2907,7 +2923,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-09T07:23:51.622Z"
+   "photosChecked": "2026-10-10T13:42:15.200Z"
   },
   "17": {
    "videos": [
@@ -2933,6 +2949,13 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "MH1VF4PF9Q4",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Full Turn 1 chaos + Fernandez, Bezzecchi, Marquez and Diggia's reactions! 💥🗣️ | 2026 Indonesian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "B0anImKorHA",
      "kind": "sprint",
      "prio": 6,
@@ -2940,10 +2963,10 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
-     "id": "Jz3tcNNTt-I",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Lap record DESTROYED in the last 5 minutes of MotoGP Practice 🤯 | 2026 Indonesian GP",
+     "id": "C9CdoxBbe_Y",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Top 3 Tissot Sprint moments😲 | 2026 Indonesian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3351,7 +3374,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-09T07:23:52.261Z"
+   "photosChecked": "2026-10-10T13:42:16.031Z"
   }
  }
 };
