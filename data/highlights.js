@@ -2926,6 +2926,20 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "Fq6uOV6_4RU",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Brivio and Zarco are our special guests of Inside The Paddock | 2026 Indonesian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "B0anImKorHA",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Tissot Sprint Build Up | 2026 Indonesian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "Jz3tcNNTt-I",
      "kind": "qualifying",
      "prio": 9,
