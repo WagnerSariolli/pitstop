@@ -1369,6 +1369,30 @@ window.HIGHLIGHTS = {
      "title": "Max Verstappen's Sprint Pole Lap | 2026 Singapore Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "WP-QSzJIURw",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Max Verstappen & Charles Leclerc's Ghost Car Comparison Laps! | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "m0ft7GE4PXo",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Drivers React After Qualifying | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "mQmE1m5Vz2c",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Max Verstappen's Pole Lap | 2026 Singapore Grand Prix | Pirelli",
+     "ch": "FORMULA 1",
+     "ext": true
     }
    ],
    "photos": []
