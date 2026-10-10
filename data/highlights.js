@@ -2924,6 +2924,13 @@ window.HIGHLIGHTS = {
      "prio": 4,
      "title": "Chatting all things with Toprak in Inside The Paddock | 2026 Indonesian GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "Jz3tcNNTt-I",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Lap record DESTROYED in the last 5 minutes of MotoGP Practice 🤯 | 2026 Indonesian GP",
+     "ch": "MotoGP"
     }
    ],
    "photos": []
