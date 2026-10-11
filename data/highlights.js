@@ -2980,21 +2980,22 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
-     "id": "B0anImKorHA",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Tissot Sprint Build Up | 2026 Indonesian GP",
+     "id": "mTFcMnhyvCo",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Grand Prix Build Up | 2026 Indonesian GP",
      "ch": "MotoGP"
     },
     {
-     "id": "C9CdoxBbe_Y",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Top 3 Tissot Sprint moments😲 | 2026 Indonesian GP",
+     "id": "QVwY9girQmQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Rider Parade | 2026 Indonesian GP",
      "ch": "MotoGP"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-10-11T08:51:18.758Z"
   }
  },
  "wec": {
