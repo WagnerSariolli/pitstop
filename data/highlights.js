@@ -1371,6 +1371,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "LXUtsQ6fYsU",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React After the Race | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "JB84kCTCR0c",
      "kind": "qualifying",
      "prio": 9,
@@ -1385,17 +1393,10 @@ window.HIGHLIGHTS = {
      "title": "Max Verstappen & Charles Leclerc's Ghost Car Comparison Laps! | 2026 Singapore Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
-    },
-    {
-     "id": "m0ft7GE4PXo",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Drivers React After Qualifying | 2026 Singapore Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-10-11T20:17:26.641Z"
   }
  },
  "formulae": {
