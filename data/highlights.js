@@ -1134,7 +1134,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-10T13:42:11.789Z"
+   "photosChecked": "2026-10-11T15:41:26.189Z"
   },
   "15": {
    "videos": [
@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-10T13:42:12.552Z"
+   "photosChecked": "2026-10-11T15:41:26.812Z"
   },
   "16": {
    "videos": [
@@ -1342,10 +1342,18 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
     }
    ],
-   "photosChecked": "2026-10-10T13:42:13.237Z"
+   "photosChecked": "2026-10-11T15:41:27.393Z"
   },
   "17": {
    "videos": [
+    {
+     "id": "ohgEehLtucc",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
     {
      "id": "oNNyZWon8OE",
      "kind": "sprint",
@@ -1383,14 +1391,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Drivers React After Qualifying | 2026 Singapore Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "mQmE1m5Vz2c",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Max Verstappen's Pole Lap | 2026 Singapore Grand Prix | Pirelli",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -2851,7 +2851,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-10T13:42:13.899Z"
+   "photosChecked": "2026-10-11T15:41:27.936Z"
   },
   "15": {
    "videos": [
@@ -2899,7 +2899,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-10T13:42:14.560Z"
+   "photosChecked": "2026-10-11T15:41:28.496Z"
   },
   "16": {
    "videos": [
@@ -2947,10 +2947,17 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-10T13:42:15.200Z"
+   "photosChecked": "2026-10-11T15:41:29.039Z"
   },
   "17": {
    "videos": [
+    {
+     "id": "BNdINLkDUvQ",
+     "kind": "moments",
+     "prio": 2,
+     "title": "Best MotoGP Moments 🟣 | 2026 Indonesian GP",
+     "ch": "MotoGP"
+    },
     {
      "id": "7X3td0E5PVE",
      "kind": "epic",
@@ -2984,13 +2991,6 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Grand Prix Build Up | 2026 Indonesian GP",
-     "ch": "MotoGP"
-    },
-    {
-     "id": "QVwY9girQmQ",
-     "kind": "epic",
-     "prio": 4,
-     "title": "Rider Parade | 2026 Indonesian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3399,7 +3399,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-10T13:42:16.031Z"
+   "photosChecked": "2026-10-11T15:41:29.612Z"
   }
  }
 };
