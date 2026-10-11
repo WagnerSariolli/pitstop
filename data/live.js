@@ -1,13 +1,13 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-10T13:42:07.193Z",
+ "generated": "2026-10-11T01:53:53.032Z",
  "f1": {
-  "round": 16,
+  "round": 17,
   "drivers": [
    {
     "key": 12,
     "pos": 1,
-    "pts": 320,
+    "pts": 325,
     "wins": 8,
     "name": "Kimi Antonelli",
     "team": "mercedes"
@@ -23,7 +23,7 @@ window.LIVE = {
    {
     "key": 44,
     "pos": 3,
-    "pts": 214,
+    "pts": 221,
     "wins": 1,
     "name": "Lewis Hamilton",
     "team": "ferrari"
@@ -31,26 +31,26 @@ window.LIVE = {
    {
     "key": 16,
     "pos": 4,
-    "pts": 191,
+    "pts": 197,
     "wins": 1,
     "name": "Charles Leclerc",
     "team": "ferrari"
    },
    {
-    "key": 1,
-    "pos": 5,
-    "pts": 188,
-    "wins": 2,
-    "name": "Lando Norris",
-    "team": "mclaren"
-   },
-   {
     "key": 3,
-    "pos": 6,
-    "pts": 188,
+    "pos": 5,
+    "pts": 196,
     "wins": 1,
     "name": "Max Verstappen",
     "team": "redbullracing"
+   },
+   {
+    "key": 1,
+    "pos": 6,
+    "pts": 189,
+    "wins": 2,
+    "name": "Lando Norris",
+    "team": "mclaren"
    },
    {
     "key": 81,
@@ -71,7 +71,7 @@ window.LIVE = {
    {
     "key": 30,
     "pos": 9,
-    "pts": 65,
+    "pts": 69,
     "wins": 0,
     "name": "Liam Lawson",
     "team": "racingbulls"
@@ -103,7 +103,7 @@ window.LIVE = {
    {
     "key": 87,
     "pos": 13,
-    "pts": 20,
+    "pts": 23,
     "wins": 0,
     "name": "Oliver Bearman",
     "team": "haasf1team"
@@ -119,7 +119,7 @@ window.LIVE = {
    {
     "key": 27,
     "pos": 15,
-    "pts": 7,
+    "pts": 9,
     "wins": 0,
     "name": "Nico Hülkenberg",
     "team": "audi"
@@ -193,27 +193,27 @@ window.LIVE = {
    {
     "id": "mercedes",
     "pos": 1,
-    "pts": 556
+    "pts": 561
    },
    {
     "id": "ferrari",
     "pos": 2,
-    "pts": 405
+    "pts": 418
    },
    {
     "id": "mclaren",
     "pos": 3,
-    "pts": 316
+    "pts": 317
    },
    {
     "id": "redbullracing",
     "pos": 4,
-    "pts": 298
+    "pts": 306
    },
    {
     "id": "racingbulls",
     "pos": 5,
-    "pts": 90
+    "pts": 94
    },
    {
     "id": "alpine",
@@ -223,12 +223,12 @@ window.LIVE = {
    {
     "id": "haasf1team",
     "pos": 7,
-    "pts": 27
+    "pts": 30
    },
    {
     "id": "audi",
     "pos": 8,
-    "pts": 17
+    "pts": 19
    },
    {
     "id": "williams",
@@ -334,16 +334,32 @@ window.LIVE = {
    }
   },
   "hero": {
-   "kicker": "Líder do campeonato · após 16 de 23 etapas"
+   "kicker": "Líder do campeonato · após 17 de 23 etapas",
+   "stats": [
+    [
+     "Pontos",
+     "325"
+    ],
+    [
+     "Vitórias",
+     "8"
+    ],
+    [
+     "Vantagem",
+     "+89"
+    ]
+   ],
+   "lede": "Kimi Antonelli lidera o campeonato com 325 pontos e 89 pontos de vantagem sobre George Russell, depois de 17 de 23 etapas."
   },
-  "updated": "Atualizado após a etapa 16: Bahrein (em Sepang), 04 out.",
+  "status": "Antonelli lidera com 89 pts de vantagem",
+  "updated": "Atualizado após a etapa 17: Singapura, 11 out.",
   "standings": [
    [
     {
      "pos": 1,
      "name": "Kimi Antonelli",
      "team": "mercedes",
-     "pts": 320
+     "pts": 325
     },
     {
      "pos": 2,
@@ -355,25 +371,25 @@ window.LIVE = {
      "pos": 3,
      "name": "Lewis Hamilton",
      "team": "ferrari",
-     "pts": 214
+     "pts": 221
     },
     {
      "pos": 4,
      "name": "Charles Leclerc",
      "team": "ferrari",
-     "pts": 191
+     "pts": 197
     },
     {
      "pos": 5,
-     "name": "Lando Norris",
-     "team": "mclaren",
-     "pts": 188
+     "name": "Max Verstappen",
+     "team": "redbullracing",
+     "pts": 196
     },
     {
      "pos": 6,
-     "name": "Max Verstappen",
-     "team": "redbullracing",
-     "pts": 188
+     "name": "Lando Norris",
+     "team": "mclaren",
+     "pts": 189
     },
     {
      "pos": 7,
@@ -391,7 +407,7 @@ window.LIVE = {
      "pos": 9,
      "name": "Liam Lawson",
      "team": "racingbulls",
-     "pts": 65
+     "pts": 69
     },
     {
      "pos": 10,
@@ -415,7 +431,7 @@ window.LIVE = {
      "pos": 13,
      "name": "Oliver Bearman",
      "team": "haasf1team",
-     "pts": 20
+     "pts": 23
     },
     {
      "pos": 14,
@@ -427,7 +443,7 @@ window.LIVE = {
      "pos": 15,
      "name": "Nico Hülkenberg",
      "team": "audi",
-     "pts": 7
+     "pts": 9
     },
     {
      "pos": 16,
@@ -483,31 +499,31 @@ window.LIVE = {
      "pos": 1,
      "name": "Mercedes",
      "team": "mercedes",
-     "pts": 556
+     "pts": 561
     },
     {
      "pos": 2,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 405
+     "pts": 418
     },
     {
      "pos": 3,
      "name": "McLaren",
      "team": "mclaren",
-     "pts": 316
+     "pts": 317
     },
     {
      "pos": 4,
      "name": "Red Bull Racing",
      "team": "redbullracing",
-     "pts": 298
+     "pts": 306
     },
     {
      "pos": 5,
      "name": "Racing Bulls",
      "team": "racingbulls",
-     "pts": 90
+     "pts": 94
     },
     {
      "pos": 6,
@@ -519,13 +535,13 @@ window.LIVE = {
      "pos": 7,
      "name": "Haas",
      "team": "haasf1team",
-     "pts": 27
+     "pts": 30
     },
     {
      "pos": 8,
      "name": "Audi",
      "team": "audi",
-     "pts": 17
+     "pts": 19
     },
     {
      "pos": 9,
