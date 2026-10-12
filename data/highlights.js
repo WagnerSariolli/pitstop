@@ -1134,7 +1134,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T15:41:26.189Z"
+   "photosChecked": "2026-10-12T17:54:38.680Z"
   },
   "15": {
    "videos": [
@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-11T15:41:26.812Z"
+   "photosChecked": "2026-10-12T17:54:39.616Z"
   },
   "16": {
    "videos": [
@@ -1342,7 +1342,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
     }
    ],
-   "photosChecked": "2026-10-11T15:41:27.393Z"
+   "photosChecked": "2026-10-12T17:54:40.311Z"
   },
   "17": {
    "videos": [
@@ -1371,6 +1371,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "dJ2PpO7NL6I",
+     "kind": "radio",
+     "prio": 7,
+     "title": "Radio Rewind | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "LXUtsQ6fYsU",
      "kind": "react",
      "prio": 8,
@@ -1383,14 +1391,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Max Verstappen's Sprint Pole Lap | 2026 Singapore Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "WP-QSzJIURw",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Max Verstappen & Charles Leclerc's Ghost Car Comparison Laps! | 2026 Singapore Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -2852,7 +2852,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T15:41:27.936Z"
+   "photosChecked": "2026-10-12T17:54:41.102Z"
   },
   "15": {
    "videos": [
@@ -2900,7 +2900,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T15:41:28.496Z"
+   "photosChecked": "2026-10-12T17:54:41.735Z"
   },
   "16": {
    "videos": [
@@ -2948,7 +2948,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T15:41:29.039Z"
+   "photosChecked": "2026-10-12T17:54:42.365Z"
   },
   "17": {
    "videos": [
@@ -2996,7 +2996,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T08:51:18.758Z"
+   "photosChecked": "2026-10-12T17:54:43.018Z"
   }
  },
  "wec": {
@@ -3400,7 +3400,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-11T15:41:29.612Z"
+   "photosChecked": "2026-10-12T17:54:43.818Z"
   }
  }
 };
