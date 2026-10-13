@@ -1395,8 +1395,16 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": [],
-   "photosChecked": "2026-10-11T20:17:26.641Z"
+   "photos": [
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Nico_H%C3%BClkenberg_Audi_R26_2026.jpg/1920px-Nico_H%C3%BClkenberg_Audi_R26_2026.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1e/Nico_H%C3%BClkenberg_Audi_R26_2026.jpg/500px-Nico_H%C3%BClkenberg_Audi_R26_2026.jpg",
+     "title": "Nico Hülkenberg Audi R26 2026",
+     "credit": "Grunty89 · CC BY 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
+    }
+   ],
+   "photosChecked": "2026-10-13T00:40:30.063Z"
   }
  },
  "formulae": {
