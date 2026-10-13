@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-12T17:54:39.616Z"
+   "photosChecked": "2026-10-13T21:15:01.385Z"
   },
   "16": {
    "videos": [
@@ -1342,7 +1342,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
     }
    ],
-   "photosChecked": "2026-10-12T17:54:40.311Z"
+   "photosChecked": "2026-10-13T21:15:01.998Z"
   },
   "17": {
    "videos": [
@@ -2908,7 +2908,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-12T17:54:41.735Z"
+   "photosChecked": "2026-10-13T21:15:02.578Z"
   },
   "16": {
    "videos": [
@@ -2956,7 +2956,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-12T17:54:42.365Z"
+   "photosChecked": "2026-10-13T21:15:03.115Z"
   },
   "17": {
    "videos": [
@@ -3004,7 +3004,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-12T17:54:43.018Z"
+   "photosChecked": "2026-10-13T21:15:03.678Z"
   }
  },
  "wec": {
@@ -3408,7 +3408,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-12T17:54:43.818Z"
+   "photosChecked": "2026-10-13T21:15:04.372Z"
   }
  }
 };
