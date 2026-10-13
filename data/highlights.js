@@ -1355,6 +1355,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "qZ1dpuwQTog",
+     "kind": "onboard",
+     "prio": 5,
+     "title": "Top 10 Onboards | 2026 Singapore Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "oNNyZWon8OE",
      "kind": "sprint",
      "prio": 6,
@@ -1383,14 +1391,6 @@ window.HIGHLIGHTS = {
      "kind": "react",
      "prio": 8,
      "title": "Drivers React After the Race | 2026 Singapore Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "JB84kCTCR0c",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Max Verstappen's Sprint Pole Lap | 2026 Singapore Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
