@@ -16,7 +16,12 @@ let lenis = null;
 if (!reduce) {
   lenis = new Lenis({
     lerp: 0.11,
-    prevent: node => !!node.closest?.("dialog, .gallery-strip, .team-picker, .section-nav, .cat-panel, .series-nav, .leaflet-container"),
+    // fileiras que rolam para os lados (equipes, galeria, menus): a rodinha vertical continua rolando a página
+    // com o Lenis, sem tranco; o gesto horizontal (touchpad, Shift + rodinha) rola a própria fileira.
+    // Os mapas não dão zoom pela rodinha (scrollWheelZoom: false em guide.js), então também ficam com o Lenis;
+    // arrastar e os botões + e − continuam funcionando
+    allowNestedScroll: true,
+    prevent: node => !!node.closest?.("dialog, .cat-panel, .series-nav"),
   });
   const raf = t => { lenis.raf(t); requestAnimationFrame(raf); };
   requestAnimationFrame(raf);
