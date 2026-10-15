@@ -359,8 +359,8 @@ section { padding: clamp(64px, 9vw, 120px) var(--gutter); }
   display: inline-flex; align-items: center; gap: 10px; padding: 10px 18px 10px 12px; border-radius: 999px;
   border: 1px solid var(--team); background: color-mix(in srgb, var(--team) 14%, var(--pitwall)); font-weight: 600; font-size: 14px;
 }
-.engine-btn span { width: 22px; height: 22px; border-radius: 50%; background: var(--team); position: relative; }
-.engine-btn span::after { content: ""; position: absolute; left: 8px; top: 6px; border-left: 8px solid var(--on-team, #0b0d10); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
+.engine-btn > span[aria-hidden="true"] { width: 22px; height: 22px; border-radius: 50%; background: var(--team); position: relative; }
+.engine-btn > span[aria-hidden="true"]::after { content: ""; position: absolute; left: 8px; top: 6px; border-left: 8px solid var(--on-team, #0b0d10); border-top: 5px solid transparent; border-bottom: 5px solid transparent; }
 .engine-btn:hover { background: color-mix(in srgb, var(--team) 26%, var(--pitwall)); }
 
 /* galeria do veículo */
