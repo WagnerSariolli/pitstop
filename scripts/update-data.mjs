@@ -1,6 +1,7 @@
 // Pitstop · atualização automática dos dados da temporada.
 // Roda no GitHub Actions (veja .github/workflows/update-data.yml) e grava data/live.js,
 // que o site aplica por cima dos dados fixos de data/<campeonato>.js.
+// Os textos (líder, destaque, "atualizado após") saem em português e, no bloco "en", em inglês.
 //
 // Fontes:
 //   F1      → API Jolpica-F1 (sucessora da Ergast), api.jolpi.ca
@@ -24,6 +25,17 @@ ctx.window.SERIES = ctx.SERIES;
 vm.createContext(ctx);
 for (const f of ["f1", "formulae", "motogp", "wec"]) vm.runInContext(readFileSync(path.join(ROOT, "data", `${f}.js`), "utf8"), ctx);
 const SERIES = ctx.SERIES;
+
+// os mesmos dados em inglês (data/en/*.js por cima, como no site), para os nomes das etapas nos textos em inglês
+const ctxEn = { SERIES: {}, EN: {}, __LANG: "en" };
+ctxEn.window = ctxEn;
+vm.createContext(ctxEn);
+const runEn = f => vm.runInContext(readFileSync(path.join(ROOT, f), "utf8"), ctxEn);
+runEn("i18n.js");
+for (const f of ["f1", "formulae", "motogp", "wec"]) runEn(`data/${f}.js`);
+for (const f of ["f1", "formulae", "motogp", "wec"]) runEn(`data/en/${f}.js`);
+ctxEn.I18N.localize();
+const SERIES_EN = ctxEn.SERIES;
 
 const LIVE_FILE = path.join(ROOT, "data", "live.js");
 const previous = (() => {
@@ -50,14 +62,16 @@ const MONTHS = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7,
 const dateOf = r => { const m = String(r.date).match(/(\d{1,2})\s+([a-z]{3})/i); return m ? Date.UTC(SEASON, MONTHS[m[2].toLowerCase()], +m[1]) : NaN; };
 const near = (a, b, days = 3) => Math.abs(a - b) <= days * 864e5;
 const pts = (n, w = "ponto") => `${n} ${Math.abs(n) === 1 ? w : `${w}s`}`;
+const ptsEn = n => pts(n, "point");
 // nome curto como no calendário: sobrenome, ou inicial + sobrenome quando dois pilotos têm o mesmo
 function shortName(s, d) {
   const twins = s.drivers.filter(x => x.last === d.last).length > 1;
   return twins ? `${d.first[0]}. ${d.last}` : d.last;
 }
 
-/** textos que dependem da classificação: só substituem os escritos à mão quando os números mudam */
-function narrative(s, live, { leaderName, secondName, heroFrom, statsFor, isCrew = false }) {
+/** textos que dependem da classificação: só substituem os escritos à mão quando os números mudam.
+    Devolve os de português e, em "en", os mesmos em inglês. */
+function narrative(s, live, { leaderName, secondName, leaderNameEn = leaderName, secondNameEn = secondName, heroFrom, statsFor, isCrew = false }) {
   const done = live.round, total = s.calendar.length;
   const rows = live.drivers.filter(d => d.pos).sort((a, b) => a.pos - b.pos);
   const [p1, p2] = rows;
@@ -69,22 +83,38 @@ function narrative(s, live, { leaderName, secondName, heroFrom, statsFor, isCrew
   const out = {};
   const over = done >= total;
   out.kicker = over ? `${isCrew ? "Campeões" : "Campeão"} ${s.season}` : `${isCrew ? "Líderes" : "Líder"} do campeonato · após ${done} de ${total} etapas`;
-  if (same) return { hero: { kicker: out.kicker } };
+  const en = { kicker: over ? `${s.season} ${isCrew ? "champions" : "champion"}` : `Championship ${isCrew ? "leaders" : "leader"} · after ${done} of ${total} rounds` };
+  if (same) return { hero: { kicker: out.kicker }, en: { hero: en } };
   const lead = leaderName(leader), sec = second && secondName(second);
+  const leadEn = leaderNameEn(leader), secEn = second && secondNameEn(second);
   out.stats = stats;
   out.lede = over
     ? `${lead} ${isCrew ? "conquistaram" : "conquistou"} o título de ${s.season} com ${pts(p1.pts)}${sec ? `, ${pts(gap)} à frente de ${sec}` : ""}.`
     : `${lead} ${isCrew ? "lideram" : "lidera"} o campeonato com ${pts(p1.pts)}${sec ? ` e ${pts(gap)} de vantagem sobre ${sec}` : ""}, depois de ${done} de ${total} etapas.`;
-  if (s.hero.number !== String(leader.n)) Object.assign(out, leader.hero);
+  en.lede = over
+    ? `${leadEn} won the ${s.season} title with ${ptsEn(p1.pts)}${secEn ? `, ${ptsEn(gap)} ahead of ${secEn}` : ""}.`
+    : `${leadEn} ${isCrew ? "lead" : "leads"} the championship with ${ptsEn(p1.pts)}${secEn ? `, ${ptsEn(gap)} clear of ${secEn}` : ""}, after ${done} of ${total} rounds.`;
+  if (s.hero.number !== String(leader.n)) {
+    Object.assign(out, leader.hero);
+    Object.assign(en, { first: leader.hero.first, alt: leader.hero.alt }, leader.heroEn);
+  }
   return {
     hero: out,
     status: over ? `${leader.short} é campeão de ${s.season}` : `${leader.short} lidera com ${gap} pts de vantagem`,
+    en: {
+      hero: en,
+      status: over ? `${leader.short} ${isCrew ? "are the" : "is the"} ${s.season} ${isCrew ? "champions" : "champion"}` : `${leader.short} ${isCrew ? "lead" : "leads"} by ${gap} pts`,
+    },
   };
 }
 
 function updatedText(s, round, suffix = "") {
   const r = s.calendar.find(x => x.r === round);
   return r ? `Atualizado após a etapa ${round}: ${r.gp}, ${r.date}.${suffix}` : "";
+}
+function updatedTextEn(s, round, suffix = "") {
+  const r = SERIES_EN[s.id].calendar.find(x => x.r === round);
+  return r ? `Updated after round ${round}: ${r.gp}, ${r.date}.${suffix}` : "";
 }
 
 /* ======================================================================
@@ -138,7 +168,7 @@ async function f1() {
     statsFor: (p, gap) => [["Pontos", String(p.pts)], ["Vitórias", String(p.wins)], ["Vantagem", `+${gap}`]],
   });
   return {
-    ...live, ...nar, updated: updatedText(s, round),
+    ...live, ...nar, updated: updatedText(s, round), en: { ...nar.en, updated: updatedTextEn(s, round) },
     standings: [
       drivers.map(d => ({ pos: d.pos, name: d.name, team: d.team, pts: d.pts })),
       teams.map(t => ({ pos: t.pos, name: teamOf(t.id)?.name || t.id, team: t.id, pts: t.pts })),
@@ -203,7 +233,7 @@ async function motogp() {
     statsFor: (p, gap) => [["Pontos", String(p.pts)], ["Pódios", String(p.podiums)], ["Vantagem", `+${gap}`]],
   });
   return {
-    ...live, ...nar, updated: updatedText(s, round),
+    ...live, ...nar, updated: updatedText(s, round), en: { ...nar.en, updated: updatedTextEn(s, round) },
     standings: [
       drivers.map(d => ({ pos: d.pos, name: d.name, team: d.team, pts: d.pts })),
       teams.map(t => ({ pos: t.pos, name: teamOf(t.id)?.name || t.id, team: t.id, pts: t.pts, sub: teamOf(t.id) ? `${teamOf(t.id).ghost} ${teamOf(t.id).car}` : "" })),
@@ -288,18 +318,22 @@ async function wec() {
       const d = carOf(row.key) || {};
       const t = s.teams.find(t => t.id === d.team) || {};
       const names = String(d.first).split(/,\s*/);
+      const join = and => (names.length > 1 ? `${names.slice(0, -1).join(", ")} ${and} ${names.at(-1)}` : names[0]);
       return { n: d.n, short: d.last,
-        names: names.length > 1 ? `${names.slice(0, -1).join(", ")} e ${names.at(-1)}` : names[0], car: d.last,
-        hero: { number: String(d.n), first: names.length > 1 ? `${names.slice(0, -1).join(", ")} e ${names.at(-1)}` : names[0], last: d.last,
-          color: t.color, img: t.views?.[0]?.img || t.img, alt: `${t.name} ${t.car}, visto de lado` } };
+        names: join("e"), namesEn: join("and"), car: d.last,
+        hero: { number: String(d.n), first: join("e"), last: d.last,
+          color: t.color, img: t.views?.[0]?.img || t.img, alt: `${t.name} ${t.car}, visto de lado` },
+        heroEn: { first: join("and"), alt: `${t.name} ${t.car}, side view` } };
     },
     leaderName: l => `${l.names}, do ${l.car},`,
     secondName: l => `o ${l.car}`,
+    leaderNameEn: l => `${l.namesEn} (${l.car})`,
+    secondNameEn: l => `the ${l.car}`,
     statsFor: (p, gap) => [["Pontos", String(p.pts)], ["Vitórias", String(drivers.find(d => d.key === p.key)?.wins ?? 0)], ["Vantagem", `+${gap}`]],
   });
   const teamOf = id => s.teams.find(t => t.id === id);
   return {
-    ...live, ...nar, updated: updatedText(s, round, " Classe Hypercar."),
+    ...live, ...nar, updated: updatedText(s, round, " Classe Hypercar."), en: { ...nar.en, updated: updatedTextEn(s, round, " Hypercar class.") },
     standings: [
       groups.slice(0, 10).map(g => ({ pos: g.pos, team: g.crew.d.team, pts: g.pts, sub: g.crew.d.last,
         name: g.members.length > 1 ? g.members.map(m => g.crew.raw[m.k]).join(" / ") : g.members[0].name })),

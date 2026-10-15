@@ -1,6 +1,11 @@
 const $ = (s, el = document) => el.querySelector(s);
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 
+/* ---------- Idioma: em inglês, o conteúdo de data/en/*.js entra por cima dos dados (veja i18n.js) ---------- */
+const T = I18N.T;
+I18N.localize();
+I18N.applyStatic();
+
 /* ---------- Dados ao vivo ----------
    data/live.js é gerado de tempos em tempos pelo GitHub Actions (scripts/update-data.mjs) e traz
    classificação, vencedores, horários e textos do líder. Aqui ele é aplicado por cima dos dados fixos. */
@@ -8,7 +13,9 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "
   const L = window.LIVE;
   if (!L) return;
   const when = L.generated ? new Date(L.generated) : null;
-  const stamp = when ? ` Dados atualizados automaticamente em ${when.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })}, ${when.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.` : "";
+  const stamp = !when ? "" : T(
+    ` Dados atualizados automaticamente em ${when.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" })}, ${when.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" })}.`,
+    ` Data updated automatically on ${when.toLocaleDateString("en-GB", { day: "numeric", month: "short" })}, ${when.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit" })}.`);
   for (const [id, live] of Object.entries(L)) {
     const s = SERIES[id];
     if (!s || !live || typeof live !== "object") continue;
@@ -35,17 +42,23 @@ const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "
       const race = s.calendar.find(c => String(c.r) === r);
       if (race) Object.assign(race, x);
     }
-    if (live.hero) Object.assign(s.hero, live.hero);
-    if (live.status) s.status = live.status;
-    if (live.updated) s.updated = live.updated + stamp;
+    // os textos do robô vêm nos dois idiomas; em inglês, os de português nunca substituem os traduzidos
+    const L = I18N.en ? live.en || {} : live;
+    if (live.hero) {
+      const { kicker, lede, alt, ...rest } = live.hero;
+      Object.assign(s.hero, I18N.en ? rest : live.hero, I18N.en ? L.hero : {});
+      s.hero.stats = s.hero.stats.map(([k, v]) => [I18N.term(k), v]);
+    }
+    if (L.status) s.status = L.status;
+    if (L.updated) s.updated = L.updated + stamp;
   }
 })();
 
 /* ---------- Campeonatos agrupados por tipo de competição ---------- */
 const CATEGORIES = [
-  { id: "monopostos", name: "Monopostos", lede: "Carros de roda descoberta: do híbrido de 1.000 cv ao 100% elétrico.", series: ["f1", "formulae"] },
-  { id: "motos", name: "Motovelocidade", short: "Motos", lede: "As motos de corrida mais rápidas do planeta.", series: ["motogp"] },
-  { id: "endurance", name: "Endurance", lede: "Protótipos que aguentam até 24 horas de corrida sem parar.", series: ["wec"] },
+  { id: "monopostos", name: T("Monopostos", "Single-seaters"), lede: T("Carros de roda descoberta: do híbrido de 1.000 cv ao 100% elétrico.", "Open-wheel cars: from the 1,000 hp hybrid to the all-electric."), series: ["f1", "formulae"] },
+  { id: "motos", name: T("Motovelocidade", "Motorcycle racing"), short: T("Motos", "Bikes"), lede: T("As motos de corrida mais rápidas do planeta.", "The fastest racing bikes on the planet."), series: ["motogp"] },
+  { id: "endurance", name: "Endurance", lede: T("Protótipos que aguentam até 24 horas de corrida sem parar.", "Prototypes built to race for up to 24 hours non-stop."), series: ["wec"] },
 ];
 CATEGORIES.forEach(c => { c.series = c.series.filter(id => SERIES[id]); });
 const ORDER = CATEGORIES.flatMap(c => c.series);
@@ -56,7 +69,8 @@ const S = SERIES[params.get("c")] || null; // sem ?c= → lobby
 const GUIDE = !S && !!window.Guide?.isRoute(); // ?c=pistas ou ?pista=<id> → guia de pistas
 
 /* ---------- Datas e contagem regressiva ---------- */
-const MONTHS = { jan: 0, fev: 1, mar: 2, abr: 3, mai: 4, jun: 5, jul: 6, ago: 7, set: 8, out: 9, nov: 10, dez: 11 };
+// "08 mar" nos dados; "8 Mar" depois da tradução para o inglês
+const MONTHS = { jan: 0, fev: 1, feb: 1, mar: 2, abr: 3, apr: 3, mai: 4, may: 4, jun: 5, jul: 6, ago: 7, aug: 7, set: 8, sep: 8, out: 9, oct: 9, nov: 10, dez: 11, dec: 11 };
 function raceDate(r) {
   if (r.start) return new Date(r.start);
   const m = String(r.date).match(/(\d{1,2})\s+([a-z]{3})/i);
@@ -64,7 +78,7 @@ function raceDate(r) {
 }
 function countdown(date) {
   const diff = date - Date.now();
-  if (diff <= 0) return "hoje";
+  if (diff <= 0) return T("hoje", "today");
   const d = Math.floor(diff / 864e5), h = Math.floor(diff / 36e5) % 24, m = Math.floor(diff / 6e4) % 60;
   return d > 0 ? `${d}d ${h}h` : `${h}h ${String(m).padStart(2, "0")}min`;
 }
@@ -93,7 +107,7 @@ function vehicleOf(s) {
   return teamViews(s.teams[0])[0];
 }
 function teamViews(t) {
-  return t.views || (t.img ? [{ id: "right", label: "Lateral direita", img: t.img, srcset: t.srcset }] : []);
+  return t.views || (t.img ? [{ id: "right", label: T("Lateral direita", "Right side"), img: t.img, srcset: t.srcset }] : []);
 }
 
 /* ---------- Cabeçalho: categorias com seus campeonatos ---------- */
@@ -102,7 +116,7 @@ function renderTopbar() {
   $("#catNav").innerHTML = ORDER.map(id => {
     const s = SERIES[id], on = s === S;
     return `<a class="cat-link series-link${on ? " is-active" : ""}" href="?c=${id}" style="--c:${s.accent}" title="${esc(s.name)}: ${esc(s.status)}"${on ? ' aria-current="page"' : ""}><i aria-hidden="true"></i>${esc(s.short)}</a>`;
-  }).join("") + `<span class="nav-sep" aria-hidden="true"></span><a class="cat-link${GUIDE ? " is-active" : ""}" href="?c=pistas"${GUIDE ? ' aria-current="page"' : ""}>Pistas</a>`;
+  }).join("") + `<span class="nav-sep" aria-hidden="true"></span><a class="cat-link${GUIDE ? " is-active" : ""}" href="?c=pistas"${GUIDE ? ' aria-current="page"' : ""}>${T("Pistas", "Circuits")}</a>`;
 
   if (S) {
     const cat = categoryOf(S.id);
@@ -111,7 +125,7 @@ function renderTopbar() {
     $("#subbar").style.setProperty("--series", S.accent);
     $("#crumb").innerHTML = `<a href="./">${esc(cat.name)}</a><span aria-hidden="true">/</span><b>${esc(S.name)}</b><small>${esc(S.season)}</small>`;
     const hasHl = window.HL && Object.keys(window.HIGHLIGHTS?.[S.id] || {}).length;
-    $("#sectionNav").innerHTML = [["garagem", L.garage], ["pilotos", L.people], ...(hasHl ? [["destaques", "Destaques"]] : []), ["temporada", L.season], ["regras", L.rules], ["curiosidades", L.facts]]
+    $("#sectionNav").innerHTML = [["garagem", L.garage], ["pilotos", L.people], ...(hasHl ? [["destaques", T("Destaques", "Highlights")]] : []), ["temporada", L.season], ["regras", L.rules], ["curiosidades", L.facts]]
       .map(([id, l]) => `<a href="#${id}">${esc(l)}</a>`).join("");
   }
 }
@@ -120,7 +134,7 @@ function renderPill() {
   const pill = $("#nextPill");
   if (S) {
     const r = nextOf(S);
-    if (!r) { pill.className = "next-pill off"; pill.innerHTML = `<span>${esc(S.offSeason || "Temporada encerrada")}</span>`; return; }
+    if (!r) { pill.className = "next-pill off"; pill.innerHTML = `<span>${esc(S.offSeason || T("Temporada encerrada", "Season over"))}</span>`; return; }
     pill.className = "next-pill";
     pill.innerHTML = `<span>${esc(r.pill || r.gp)}</span><b>${countdown(raceDate(r))}</b>`;
     return;
@@ -132,8 +146,8 @@ function renderPill() {
 
 function labels() {
   return Object.assign({
-    garage: "Garagem", people: "Pilotos", season: `Temporada ${S.season}`, rules: "Regras", facts: "Curiosidades",
-    vehicle: "carro", cta: "Entrar na garagem",
+    garage: T("Garagem", "Garage"), people: T("Pilotos", "Drivers"), season: T(`Temporada ${S.season}`, `${S.season} season`), rules: T("Regras", "Rules"), facts: T("Curiosidades", "Trivia"),
+    vehicle: T("carro", "car"), cta: T("Entrar na garagem", "Enter the garage"),
   }, S.labels);
 }
 
@@ -141,7 +155,7 @@ function labels() {
    LOBBY
    ====================================================================== */
 function renderLobby() {
-  document.title = "Pitstop: F1, Fórmula E, MotoGP e WEC";
+  document.title = T("Pitstop: F1, Fórmula E, MotoGP e WEC", "Pitstop: F1, Formula E, MotoGP and WEC");
   const all = ORDER.map(id => SERIES[id]);
   const next = upcoming();
   const drivers = all.reduce((n, s) => n + s.drivers.reduce((m, d) => m + (d.imgs ? d.imgs.length : 1), 0), 0);
@@ -159,37 +173,37 @@ function renderLobby() {
         <li style="--c:${s.accent}"><a href="?c=${s.id}${window.HL?.has(s.id, r.r) ? `&r=${r.r}#destaques` : "#temporada"}"><b>${esc(s.short)}</b>${esc(r.gp)}<span>${esc(r.winner)}</span></a></li>`).join("");
 
   $("#lobby").innerHTML = `
-    <nav class="ticker" aria-label="Próximas largadas e últimos vencedores">
+    <nav class="ticker" aria-label="${T("Próximas largadas e últimos vencedores", "Upcoming races and latest winners")}">
       <ul class="ticker-track">
-        ${comingUp ? `<li class="tk-head">Próximas largadas</li>${comingUp}` : ""}
-        ${winners ? `<li class="tk-head">Últimos vencedores</li>${winners}` : ""}
+        ${comingUp ? `<li class="tk-head">${T("Próximas largadas", "Next up")}</li>${comingUp}` : ""}
+        ${winners ? `<li class="tk-head">${T("Últimos vencedores", "Latest winners")}</li>${winners}` : ""}
       </ul>
     </nav>
 
     <section class="lobby-hero" aria-labelledby="lobby-title">
-      <div class="grid-slots" aria-label="Grid de largada dos campeonatos">
+      <div class="grid-slots" aria-label="${T("Grid de largada dos campeonatos", "Starting grid of the championships")}">
         ${all.map((s, i) => { const { t, v } = slot(s); return `
           <a class="slot" href="?c=${s.id}" style="--c:${s.accent};--i:${i}">
             <span class="slot-pos">P${i + 1}</span>
-            <img src="${v.img}" alt="${esc(t.car)} da ${esc(t.name)}">
+            <img src="${v.img}" alt="${T(`${esc(t.car)} da ${esc(t.name)}`, `${esc(t.name)} ${esc(t.car)}`)}">
             <span class="slot-label"><b>${esc(s.short)}</b>${esc(t.name)} ${esc(t.car)}</span>
           </a>`; }).join("")}
       </div>
       <h1 class="wordmark" id="lobby-title" aria-label="Pitstop">${document.querySelector(".brand .logo-mark")?.outerHTML.replace('id="LM"', 'id="LM2"').replace("url(#LM)", "url(#LM2)") || ""}<span>Pit<b>stop</b></span></h1>
-      <p class="lobby-lede">Carros, pilotos, fichas técnicas e a temporada de ${all.length} campeonatos, com dados atualizados e fotos oficiais.</p>
+      <p class="lobby-lede">${T(`Carros, pilotos, fichas técnicas e a temporada de ${all.length} campeonatos, com dados atualizados e fotos oficiais.`, `Cars, drivers, spec sheets and the season of ${all.length} championships, with up-to-date data and official photos.`)}</p>
       <dl class="lobby-stats">
-        <div><dt>Campeonatos</dt><dd>${all.length}</dd></div>
-        <div><dt>Equipes e fabricantes</dt><dd>${teams}</dd></div>
-        <div><dt>Pilotos</dt><dd>${drivers}</dd></div>
-        ${next[0] ? `<div><dt>Próxima largada</dt><dd>${countdown(next[0].d)}</dd><small>${esc(next[0].s.short)}: ${esc(next[0].r.pill || next[0].r.gp)}</small></div>` : ""}
+        <div><dt>${T("Campeonatos", "Championships")}</dt><dd>${all.length}</dd></div>
+        <div><dt>${T("Equipes e fabricantes", "Teams and manufacturers")}</dt><dd>${teams}</dd></div>
+        <div><dt>${T("Pilotos", "Drivers")}</dt><dd>${drivers}</dd></div>
+        ${next[0] ? `<div><dt>${T("Próxima largada", "Next race")}</dt><dd>${countdown(next[0].d)}</dd><small>${esc(next[0].s.short)}: ${esc(next[0].r.pill || next[0].r.gp)}</small></div>` : ""}
       </dl>
       <div class="lobby-cta">
-        <a class="btn btn-solid" href="#campeonatos">Escolher campeonato</a>
+        <a class="btn btn-solid" href="#campeonatos">${T("Escolher campeonato", "Pick a championship")}</a>
       </div>
     </section>
 
     <section class="lobby-series" id="campeonatos" aria-labelledby="series-title">
-      <div class="section-head"><h2 id="series-title">Campeonatos</h2></div>
+      <div class="section-head"><h2 id="series-title">${T("Campeonatos", "Championships")}</h2></div>
       <div class="series-cards series-row">${ORDER.map(id => seriesCard(SERIES[id])).join("")}</div>
     </section>
 
@@ -199,7 +213,7 @@ function renderLobby() {
 
     ${next.length ? `
     <section class="agenda" aria-labelledby="agenda-title">
-      <div class="section-head"><h2 id="agenda-title">Próximas corridas</h2><p>Todas as categorias, em ordem de data.</p></div>
+      <div class="section-head"><h2 id="agenda-title">${T("Próximas corridas", "Upcoming races")}</h2><p>${T("Todas as categorias, em ordem de data.", "Every category, in date order.")}</p></div>
       <div class="agenda-wrap">
       ${agendaFeature(next[0])}
       <ol class="agenda-list">${next.slice(1, 9).map(({ s, r, d }) => `
@@ -208,7 +222,7 @@ function renderLobby() {
           <span class="ag-series">${esc(s.short)}</span>
           <span class="ag-gp"><b>${esc(r.gp)}</b><small>${esc(r.circuit)}</small></span>
           <span class="ag-when">${countdown(d)}</span>
-          <a href="${venueOf(s, r) ? `?pista=${venueOf(s, r)}` : `?c=${s.id}#temporada`}" aria-label="${venueOf(s, r) ? `Guia da pista: ${esc(r.circuit)}` : `Ver calendário: ${esc(s.name)}`}"></a>
+          <a href="${venueOf(s, r) ? `?pista=${venueOf(s, r)}` : `?c=${s.id}#temporada`}" aria-label="${venueOf(s, r) ? `${T("Guia da pista", "Circuit guide")}: ${esc(r.circuit)}` : `${T("Ver calendário", "See calendar")}: ${esc(s.name)}`}"></a>
         </li>`).join("")}
       </ol>
       </div>
@@ -216,7 +230,8 @@ function renderLobby() {
 
     ${newsletterSection()}`;
   tickAgenda();
-  $("#footerText").textContent = "Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.";
+  $("#footerText").textContent = T("Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.",
+    "Pitstop is a fan project, not affiliated with the championships. Data and images from formula1.com, fiaformulae.com, motogp.com and fiawec.com.");
 }
 
 /* ---------- Boletim por e-mail (Buttondown) ---------- */
@@ -224,13 +239,13 @@ function nlForm(id) {
   const user = window.NEWSLETTER?.buttondown || "";
   return `
     <form class="nl-form" action="https://buttondown.com/api/emails/embed-subscribe/${esc(user)}" method="post" target="_blank" novalidate>
-      <label class="sr-only" for="${id}">Seu e-mail</label>
+      <label class="sr-only" for="${id}">${T("Seu e-mail", "Your email")}</label>
       <div class="nl-row">
-        <input id="${id}" type="email" name="email" placeholder="seu@email.com" autocomplete="email" inputmode="email" required>
-        <button class="btn btn-solid" type="submit">Assinar</button>
+        <input id="${id}" type="email" name="email" placeholder="${T("seu@email.com", "you@email.com")}" autocomplete="email" inputmode="email" required>
+        <button class="btn btn-solid" type="submit">${T("Assinar", "Subscribe")}</button>
       </div>
       <p class="nl-msg" role="status" aria-live="polite"></p>
-      <p class="nl-fine">Usamos seu e-mail só para o boletim. A inscrição vale depois que você confirma pelo link que chega na caixa de entrada, e dá para sair com um clique em qualquer e-mail. <a href="privacidade.html">Privacidade</a></p>
+      <p class="nl-fine">${T("Usamos seu e-mail só para o boletim. A inscrição vale depois que você confirma pelo link que chega na caixa de entrada, e dá para sair com um clique em qualquer e-mail.", "We only use your email for the newsletter, which is written in Portuguese. Your subscription starts once you confirm through the link sent to your inbox, and every email has a one-click unsubscribe.")} <a href="privacidade.html">${T("Privacidade", "Privacy")}</a></p>
     </form>`;
 }
 
@@ -242,26 +257,27 @@ function newsletterSection() {
   return `
     <section class="newsletter" id="boletim" aria-labelledby="nl-title">
       <div class="nl-copy">
-        <p class="kicker">Boletim Pitstop</p>
-        <h2 id="nl-title">A bandeirada no seu e-mail</h2>
-        <p class="nl-lede">O resultado de cada corrida assim que ela termina, com a classificação atualizada, e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só.</p>
+        <p class="kicker">${T("Boletim Pitstop", "Pitstop newsletter")}</p>
+        <h2 id="nl-title">${T("A bandeirada no seu e-mail", "The chequered flag in your inbox")}</h2>
+        <p class="nl-lede">${T("O resultado de cada corrida assim que ela termina, com a classificação atualizada, e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só.",
+          "Every race result as soon as it ends, with the updated standings, and the weekend schedule every Thursday. F1, Formula E, MotoGP and WEC in a single email, written in Portuguese.")}</p>
         <ul class="nl-points">
-          <li><b>Depois de cada corrida</b><span>Vencedor, top 5 e quem lidera o campeonato.</span></li>
-          <li><b>Toda quinta-feira</b><span>As corridas do fim de semana, no horário de Brasília.</span></li>
-          <li><b>Só corrida</b><span>Nada de propaganda. Cancelamento com um clique.</span></li>
+          <li><b>${T("Depois de cada corrida", "After every race")}</b><span>${T("Vencedor, top 5 e quem lidera o campeonato.", "Winner, top 5 and who leads the championship.")}</span></li>
+          <li><b>${T("Toda quinta-feira", "Every Thursday")}</b><span>${T("As corridas do fim de semana, no horário de Brasília.", "The weekend's races, in Brasília time.")}</span></li>
+          <li><b>${T("Só corrida", "Racing only")}</b><span>${T("Nada de propaganda. Cancelamento com um clique.", "No ads. One-click unsubscribe.")}</span></li>
         </ul>
         ${nlForm("nlEmail")}
       </div>
       ${last ? `
-      <figure class="nl-sample" aria-label="Exemplo de boletim" style="--c:${last.s.accent}">
-        <figcaption>Exemplo, com o último resultado</figcaption>
+      <figure class="nl-sample" aria-label="${T("Exemplo de boletim", "Sample newsletter")}" style="--c:${last.s.accent}">
+        <figcaption>${T("Exemplo, com o último resultado", "Sample, with the latest result")}</figcaption>
         <div class="nl-mail">
-          <p class="nl-from"><b>Pitstop</b><span>Boletim</span></p>
-          <p class="nl-subject">${esc(last.s.short)} · ${esc(last.r.gp)}: vitória de ${esc(last.r.winner)}</p>
-          <p class="nl-head">${esc(last.s.name)} · Etapa ${esc(last.r.r)}</p>
-          <p><b>Vitória de ${esc(last.r.winner)}</b> em ${esc(last.r.circuit)}, ${esc(last.r.date)}.</p>
+          <p class="nl-from"><b>Pitstop</b><span>${T("Boletim", "Newsletter")}</span></p>
+          <p class="nl-subject">${esc(last.s.short)} · ${esc(last.r.gp)}: ${T("vitória de", "won by")} ${esc(last.r.winner)}</p>
+          <p class="nl-head">${esc(last.s.name)} · ${T("Etapa", "Round")} ${esc(last.r.r)}</p>
+          <p>${T(`<b>Vitória de ${esc(last.r.winner)}</b> em ${esc(last.r.circuit)}, ${esc(last.r.date)}.`, `<b>${esc(last.r.winner)} wins</b> at ${esc(last.r.circuit)}, ${esc(last.r.date)}.`)}</p>
           <ol>${top.map(x => `<li><span>${x.pos}. ${esc(x.name)}</span><b>${x.pts} pts</b></li>`).join("")}</ol>
-          <p class="nl-more">Ver a temporada no Pitstop ›</p>
+          <p class="nl-more">${T("Ver a temporada no Pitstop ›", "See the season on Pitstop ›")}</p>
         </div>
       </figure>` : ""}
     </section>`;
@@ -277,7 +293,7 @@ const DAY = 864e5;
 function initNewsletter() {
   // nas páginas internas, uma versão compacta no rodapé
   if (!$("#boletim")) $("#newsletterFoot").innerHTML = `
-    <div class="nl-foot"><div><b>Boletim Pitstop</b><span>Resultados de cada corrida e a agenda do fim de semana no seu e-mail.</span></div>${nlForm("nlEmailFoot")}</div>`;
+    <div class="nl-foot"><div><b>${T("Boletim Pitstop", "Pitstop newsletter")}</b><span>${T("Resultados de cada corrida e a agenda do fim de semana no seu e-mail.", "Every race result and the weekend schedule in your inbox (in Portuguese).")}</span></div>${nlForm("nlEmailFoot")}</div>`;
   // um só tratador para todos os formulários, inclusive os que aparecem depois (janela e balão)
   document.addEventListener("submit", async e => {
     const form = e.target.closest?.(".nl-form");
@@ -286,12 +302,12 @@ function initNewsletter() {
     const input = form.querySelector("input"), btn = form.querySelector("button"), msg = form.querySelector(".nl-msg");
     const email = input.value.trim(), user = window.NEWSLETTER?.buttondown;
     const say = (t, ok) => { msg.textContent = t; msg.className = `nl-msg ${ok ? "ok" : "err"}`; };
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say("Confira o e-mail: parece que falta alguma coisa.", false); input.focus(); return; }
-    if (!user) { say("O boletim está sendo configurado. Volte em alguns dias para assinar.", false); return; }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(email)) { say(T("Confira o e-mail: parece que falta alguma coisa.", "Check the email: something seems to be missing."), false); input.focus(); return; }
+    if (!user) { say(T("O boletim está sendo configurado. Volte em alguns dias para assinar.", "The newsletter is being set up. Come back in a few days to subscribe."), false); return; }
     btn.disabled = true;
     try {
       await fetch(form.action, { method: "POST", mode: "no-cors", body: new URLSearchParams({ email, embed: "1" }) });
-      say(`Quase lá: mandamos um e-mail para ${email}. Clique no link de confirmação para começar a receber.`, true);
+      say(T(`Quase lá: mandamos um e-mail para ${email}. Clique no link de confirmação para começar a receber.`, `Almost there: we sent an email to ${email}. Click the confirmation link to start receiving it.`), true);
       form.classList.add("done");
       nlPref.set("subscribed", Date.now());
       document.dispatchEvent(new CustomEvent("pitstop:subscribed"));
@@ -320,15 +336,16 @@ function initNudges() {
   modal.className = "nl-modal";
   modal.setAttribute("aria-labelledby", "nlmTitle");
   modal.innerHTML = `
-    <button class="modal-close" type="button" aria-label="Fechar">×</button>
+    <button class="modal-close" type="button" aria-label="${T("Fechar", "Close")}">×</button>
     <div class="nlm-band" aria-hidden="true"></div>
     <div class="nlm-body">
-      <p class="kicker">Boletim Pitstop</p>
-      <h2 id="nlmTitle">Antes de sair, leve a bandeirada com você</h2>
-      <p class="nlm-lede">O resultado de cada corrida assim que ela termina e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só, grátis e sem propaganda.</p>
-      ${n ? `<p class="nlm-next"><i></i><span>Próxima largada: <b>${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)}</b></span><em>${countdown(n.d)}</em></p>` : ""}
+      <p class="kicker">${T("Boletim Pitstop", "Pitstop newsletter")}</p>
+      <h2 id="nlmTitle">${T("Antes de sair, leve a bandeirada com você", "Before you go, take the chequered flag with you")}</h2>
+      <p class="nlm-lede">${T("O resultado de cada corrida assim que ela termina e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só, grátis e sem propaganda.",
+        "Every race result as soon as it ends and the weekend schedule every Thursday. F1, Formula E, MotoGP and WEC in a single email, free and ad-free. Written in Portuguese.")}</p>
+      ${n ? `<p class="nlm-next"><i></i><span>${T("Próxima largada", "Next race")}: <b>${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)}</b></span><em>${countdown(n.d)}</em></p>` : ""}
       ${nlForm("nlEmailModal")}
-      <button class="nlm-no" type="button">Agora não</button>
+      <button class="nlm-no" type="button">${T("Agora não", "Not now")}</button>
     </div>`;
   document.body.append(modal);
   modal.querySelector(".modal-close").onclick = () => modal.close();
@@ -371,18 +388,19 @@ function initNudges() {
   if (since("bubbleDismissed") < 3 * DAY) return;
   bubble = document.createElement("aside");
   bubble.className = "nl-bubble";
-  bubble.setAttribute("aria-label", "Boletim Pitstop");
+  bubble.setAttribute("aria-label", T("Boletim Pitstop", "Pitstop newsletter"));
   bubble.hidden = true;
-  const pitch = n ? `Quer o resultado de ${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)} no seu e-mail?` : "Quer os resultados das corridas no seu e-mail?";
+  const pitch = n ? T(`Quer o resultado de ${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)} no seu e-mail?`, `Want the ${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)} result in your inbox?`)
+    : T("Quer os resultados das corridas no seu e-mail?", "Want race results in your inbox?");
   bubble.innerHTML = `
     <div class="nlb-panel" id="nlbPanel" hidden>
-      <b>Boletim Pitstop</b>
-      <p>Resultado de cada corrida e a agenda do fim de semana. Grátis.</p>
+      <b>${T("Boletim Pitstop", "Pitstop newsletter")}</b>
+      <p>${T("Resultado de cada corrida e a agenda do fim de semana. Grátis.", "Every race result and the weekend schedule. Free, in Portuguese.")}</p>
       ${nlForm("nlEmailBubble")}
     </div>
     <div class="nlb-row">
       <button class="nlb-toggle" type="button" aria-expanded="false" aria-controls="nlbPanel"><span class="nlb-icon">${flagIcon}</span><span class="nlb-text">${pitch}</span></button>
-      <button class="nlb-close" type="button" aria-label="Dispensar">×</button>
+      <button class="nlb-close" type="button" aria-label="${T("Dispensar", "Dismiss")}">×</button>
     </div>`;
   document.body.append(bubble);
   const panel = bubble.querySelector(".nlb-panel"), toggle = bubble.querySelector(".nlb-toggle");
@@ -420,18 +438,19 @@ function initLeaveNotice() {
   dlg.className = "leave-modal";
   dlg.setAttribute("aria-labelledby", "leaveTitle");
   dlg.innerHTML = `
-    <button class="modal-close" type="button" aria-label="Fechar">×</button>
+    <button class="modal-close" type="button" aria-label="${T("Fechar", "Close")}">×</button>
     <div class="lv-media"><img alt=""><span class="lv-yt" aria-hidden="true"><svg viewBox="0 0 28 20"><rect width="28" height="20" rx="5" fill="#ff0000"/><path d="M11 5.5v9l8-4.5z" fill="#fff"/></svg></span></div>
     <div class="lv-body">
-      <p class="kicker">Indo para o YouTube</p>
-      <h2 id="leaveTitle">Este vídeo abre no YouTube</h2>
+      <p class="kicker">${T("Indo para o YouTube", "Off to YouTube")}</p>
+      <h2 id="leaveTitle">${T("Este vídeo abre no YouTube", "This video opens on YouTube")}</h2>
       <p class="lv-video"></p>
-      <p class="lv-why">O canal oficial só permite assistir a este vídeo no YouTube. Ele vai abrir numa nova aba, e o Pitstop continua aqui do jeito que você deixou: é só voltar para esta aba quando terminar.</p>
+      <p class="lv-why">${T("O canal oficial só permite assistir a este vídeo no YouTube. Ele vai abrir numa nova aba, e o Pitstop continua aqui do jeito que você deixou: é só voltar para esta aba quando terminar.",
+        "The official channel only allows this video to be watched on YouTube. It will open in a new tab, and Pitstop stays right here as you left it: just come back to this tab when you're done.")}</p>
       <div class="lv-actions">
-        <a class="btn btn-solid lv-go" target="_blank" rel="noopener">Abrir no YouTube ↗</a>
-        <button class="btn btn-ghost lv-stay" type="button">Ficar no Pitstop</button>
+        <a class="btn btn-solid lv-go" target="_blank" rel="noopener">${T("Abrir no YouTube ↗", "Open on YouTube ↗")}</a>
+        <button class="btn btn-ghost lv-stay" type="button">${T("Ficar no Pitstop", "Stay on Pitstop")}</button>
       </div>
-      <label class="lv-skip"><input type="checkbox"> Não mostrar este aviso de novo</label>
+      <label class="lv-skip"><input type="checkbox"> ${T("Não mostrar este aviso de novo", "Don't show this again")}</label>
     </div>`;
   document.body.append(dlg);
   const skipKey = "pitstop-leave-skip";
@@ -457,25 +476,26 @@ function initLeaveNotice() {
   });
 }
 
-// destaque da próxima largada ao lado da lista: traçado, contagem regressiva ao vivo e horário de Brasília
+// destaque da próxima largada ao lado da lista: traçado, contagem regressiva ao vivo e horário
+// (de Brasília em português; em inglês, no fuso do próprio visitante, com o nome do fuso)
 function agendaFeature({ s, r, d }) {
   const v = venueOf(s, r), c = v && window.CIRCUITS?.[v];
-  const when = r.start
-    ? `${d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", weekday: "long", day: "numeric", month: "long" })} · ${d.toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit" })} (horário de Brasília)`
-    : `${d.toLocaleDateString("pt-BR", { weekday: "long", day: "numeric", month: "long" })}`;
+  const when = !r.start ? d.toLocaleDateString(I18N.locale, { weekday: "long", day: "numeric", month: "long" })
+    : I18N.en ? `${d.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long" })} · ${d.toLocaleTimeString("en-GB", { hour: "2-digit", minute: "2-digit", timeZoneName: "short" })} (your time)`
+    : `${d.toLocaleString("pt-BR", { timeZone: "America/Sao_Paulo", weekday: "long", day: "numeric", month: "long" })} · ${d.toLocaleTimeString("pt-BR", { timeZone: "America/Sao_Paulo", hour: "2-digit", minute: "2-digit" })} (horário de Brasília)`;
   return `
-      <aside class="ag-feature" style="--c:${s.accent}" aria-label="Próxima largada">
-        <p class="ag-f-kicker"><i></i>Próxima largada · ${esc(s.short)}</p>
+      <aside class="ag-feature" style="--c:${s.accent}" aria-label="${T("Próxima largada", "Next race")}">
+        <p class="ag-f-kicker"><i></i>${T("Próxima largada", "Next race")} · ${esc(s.short)}</p>
         <h3>${esc(r.pill || r.gp)}</h3>
         <p class="ag-f-place">${esc(r.circuit)}${c ? ` · ${esc(c.city)}, ${esc(c.country)}` : ""}</p>
-        ${c && window.Guide ? `<a class="c-art ag-f-art" href="?pista=${v}" aria-label="Guia da pista: ${esc(c.name)}">${Guide.outline(c)}</a>` : ""}
+        ${c && window.Guide ? `<a class="c-art ag-f-art" href="?pista=${v}" aria-label="${T("Guia da pista", "Circuit guide")}: ${esc(c.name)}">${Guide.outline(c)}</a>` : ""}
         <div class="ag-f-count" data-start="${d.toISOString()}" aria-live="off">
-          ${["dias", "horas", "min", "seg"].map(u => `<span><b data-u="${u}">--</b><small>${u}</small></span>`).join("")}
+          ${[["dias", T("dias", "days")], ["horas", T("horas", "hrs")], ["min", "min"], ["seg", T("seg", "sec")]].map(([u, l]) => `<span><b data-u="${u}">--</b><small>${l}</small></span>`).join("")}
         </div>
         <p class="ag-f-when">${esc(when)}</p>
         <div class="ag-f-actions">
-          ${v ? `<a class="btn btn-solid" href="?pista=${v}">Guia da pista</a>` : ""}
-          <a class="btn btn-ghost" href="?c=${s.id}#temporada">Ver ${esc(s.short)}</a>
+          ${v ? `<a class="btn btn-solid" href="?pista=${v}">${T("Guia da pista", "Circuit guide")}</a>` : ""}
+          <a class="btn btn-ghost" href="?c=${s.id}#temporada">${T("Ver", "See")} ${esc(s.short)}</a>
         </div>
       </aside>`;
 }
@@ -529,14 +549,14 @@ function guideTeaser() {
   if (!list.length) return "";
   return `
     <section class="lobby-guide" aria-labelledby="lg-title">
-      <div class="section-head"><h2 id="lg-title">Guia de pistas</h2><p>Traçado, ficha, recorde, fotos e mapa de satélite de todos os circuitos do ano.</p></div>
+      <div class="section-head"><h2 id="lg-title">${T("Guia de pistas", "Circuit guide")}</h2><p>${T("Traçado, ficha, recorde, fotos e mapa de satélite de todos os circuitos do ano.", "Layout, facts, lap record, photos and satellite map of every circuit this year.")}</p></div>
       <div class="c-grid">${list.map(({ c, up }) => `
         <a class="c-card" href="?pista=${c.id}" style="--c:${up.s.accent}">
           <span class="c-art">${G.outline(c)}<span class="c-next">${esc(up.s.short)} · ${esc(up.r.date)}</span></span>
           <span class="c-body"><b class="c-name">${esc(c.name)}</b><small class="c-place">${esc(c.city)}, ${esc(c.country)}${G.kmOf(c) ? ` · ${G.kmOf(c)}` : ""}</small></span>
         </a>`).join("")}
       </div>
-      <a class="btn btn-ghost lg-cta" href="?c=pistas">Abrir o guia de pistas</a>
+      <a class="btn btn-ghost lg-cta" href="?c=pistas">${T("Abrir o guia de pistas", "Open the circuit guide")}</a>
     </section>`;
 }
 
@@ -552,10 +572,10 @@ function seriesCard(s) {
         <p class="sc-status">${esc(s.status)}</p>
         <div class="sc-leader">
           ${leadImg ? `<img src="${leadImg}" alt="" loading="lazy">` : ""}
-          <span><small>${s.seasonOver ? "Campeão" : "Líder"}</small><b>${esc(lead.imgs ? lead.last : `${lead.first} ${lead.last}`)}</b><em>${lead.pts} pts</em></span>
+          <span><small>${s.seasonOver ? T("Campeão", "Champion") : T("Líder", "Leader")}</small><b>${esc(lead.imgs ? lead.last : `${lead.first} ${lead.last}`)}</b><em>${lead.pts} pts</em></span>
         </div>
-        <p class="sc-next">${n ? `Próxima: <b>${esc(n.pill || n.gp)}</b>, ${esc(n.date)}` : esc(s.offSeason || "Temporada encerrada")}</p>
-        <span class="sc-cta">Abrir ${esc(s.name)}</span>
+        <p class="sc-next">${n ? `${T("Próxima", "Next")}: <b>${esc(n.pill || n.gp)}</b>, ${esc(n.date)}` : esc(s.offSeason || T("Temporada encerrada", "Season over"))}</p>
+        <span class="sc-cta">${T("Abrir", "Open")} ${esc(s.name)}</span>
       </div>
     </a>`;
 }
@@ -577,7 +597,7 @@ function renderSeriesChrome() {
   $("#updated").textContent = S.updated;
   $("#rules-title").textContent = S.rules.title;
   $("#rules-lede").textContent = S.rules.lede;
-  $("#footerText").innerHTML = `Pitstop é um projeto de fã, sem vínculo com os campeonatos. ${S.footer}`;
+  $("#footerText").innerHTML = `${T("Pitstop é um projeto de fã, sem vínculo com os campeonatos.", "Pitstop is a fan project, not affiliated with the championships.")} ${S.footer}`;
 }
 
 /* ---------- Hero ---------- */
@@ -597,14 +617,14 @@ function renderHero() {
       <dl class="hero-stats">${h.stats.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
       <div class="hero-actions">
         <a class="btn btn-solid" href="#garagem">${esc(L.cta)}</a>
-        <a class="btn btn-ghost" href="#temporada">Ver classificação</a>
+        <a class="btn btn-ghost" href="#temporada">${T("Ver classificação", "See standings")}</a>
       </div>
     </div>
     ${media}`;
 }
 
 /* ---------- Garagem, com troca de ângulo ---------- */
-const ALL_ANGLES = ["Lateral direita", "Lateral esquerda", "Frente", "Traseira", "Vista de cima"];
+const ALL_ANGLES = ["Lateral direita", "Lateral esquerda", "Frente", "Traseira", "Vista de cima"].map(I18N.term);
 let current = 0, viewId = null;
 
 function renderPicker() {
@@ -624,13 +644,13 @@ function renderStage() {
   viewId = v.id;
   const media = $("#stageMedia");
   media.className = `stage-media view-${v.id} ${swapDir < 0 ? "drive-l" : "drive-r"}`;
-  media.innerHTML = `<img class="stage-car" src="${v.img}" ${v.srcset ? `srcset="${v.srcset}" sizes="(max-width: 1500px) 100vw, 1500px"` : ""} alt="${esc(t.car)}, ${labels().vehicle} da ${esc(t.name)}: ${esc(v.label.toLowerCase())}">`;
+  media.innerHTML = `<img class="stage-car" src="${v.img}" ${v.srcset ? `srcset="${v.srcset}" sizes="(max-width: 1500px) 100vw, 1500px"` : ""} alt="${T(`${esc(t.car)}, ${labels().vehicle} da ${esc(t.name)}`, `${esc(t.car)}, the ${esc(t.name)} ${labels().vehicle}`)}: ${esc(v.label.toLowerCase())}">`;
   void media.offsetWidth;
 
   $("#viewSwitch").innerHTML = views.map(x =>
     `<button aria-pressed="${x.id === v.id}" data-v="${x.id}">${esc(x.label)}</button>`).join("");
   const missing = ALL_ANGLES.filter(a => !views.some(x => x.label === a));
-  $("#viewNote").textContent = missing.length ? `Sem foto oficial publicada: ${missing.join(", ").toLowerCase()}.` : "";
+  $("#viewNote").textContent = missing.length ? `${T("Sem foto oficial publicada", "No official photo published")}: ${missing.join(", ").toLowerCase()}.` : "";
 }
 
 let swapDir = 1;
@@ -654,7 +674,7 @@ function selectTeam(i, { scrollChip = true } = {}) {
   ghost.classList.remove("swap"); void ghost.offsetWidth; ghost.classList.add("swap");
   const logo = $("#teamLogo");
   logo.hidden = !t.logo;
-  if (t.logo) { logo.src = t.logo; logo.alt = `Logo ${t.name}`; }
+  if (t.logo) { logo.src = t.logo; logo.alt = T(`Logo ${t.name}`, `${t.name} logo`); }
   $("#carName").textContent = t.car;
   $("#teamFull").textContent = t.full;
   $("#teamPos").textContent = t.pos ? `P${t.pos}` : "";
@@ -695,34 +715,34 @@ function renderGallery(t) {
   galItems = (window.MEDIA?.[S.id]?.[t.id]) || [];
   const nv = galItems.filter(x => x.t === "v").length, np = galItems.length - nv;
   $("#gallery").hidden = !galItems.length;
-  $("#galleryTitle").textContent = `Galeria do ${t.car}`;
+  $("#galleryTitle").textContent = T(`Galeria do ${t.car}`, `${t.car} gallery`);
   if (!nv || !np) galFilter = "all";
-  $("#galleryTabs").innerHTML = (nv && np ? [["all", `Tudo ${galItems.length}`], ["v", `Vídeos ${nv}`], ["p", `Fotos ${np}`]] : [])
+  $("#galleryTabs").innerHTML = (nv && np ? [["all", `${T("Tudo", "All")} ${galItems.length}`], ["v", `${T("Vídeos", "Videos")} ${nv}`], ["p", `${T("Fotos", "Photos")} ${np}`]] : [])
     .map(([k, l]) => `<button role="tab" aria-selected="${k === galFilter}" data-f="${k}">${l}</button>`).join("");
   galList = galItems.filter(x => galFilter === "all" || x.t === galFilter);
   $("#galleryStrip").innerHTML = galList.map((x, i) => {
     if (x.t === "v" && x.ext) return `
     <a class="g-tile is-ext" href="${ytWatch(x.id)}" target="_blank" rel="noopener" data-leave data-title="${esc(x.title)}" data-thumb="${ytThumb(x.id)}">
-      <span class="g-thumb"><img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span>${x.engine ? `<span class="g-badge">Som do motor</span>` : ""}<span class="g-ext">Só no YouTube ↗</span></span>
-      <span class="g-cap"><b>${esc(x.title)}</b><small>Vídeo · ${esc(x.ch)} · abre no YouTube</small></span>
+      <span class="g-thumb"><img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span>${x.engine ? `<span class="g-badge">${T("Som do motor", "Engine sound")}</span>` : ""}<span class="g-ext">${T("Só no YouTube ↗", "YouTube only ↗")}</span></span>
+      <span class="g-cap"><b>${esc(x.title)}</b><small>${T("Vídeo", "Video")} · ${esc(x.ch)} · ${T("abre no YouTube", "opens on YouTube")}</small></span>
     </a>`;
     if (x.t === "v") return `
     <button class="g-tile" data-i="${i}">
-      <span class="g-thumb"><img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span>${x.engine ? `<span class="g-badge">Som do motor</span>` : ""}</span>
-      <span class="g-cap"><b>${esc(x.title)}</b><small>Vídeo · ${esc(x.ch)}</small></span>
+      <span class="g-thumb"><img src="${ytThumb(x.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span>${x.engine ? `<span class="g-badge">${T("Som do motor", "Engine sound")}</span>` : ""}</span>
+      <span class="g-cap"><b>${esc(x.title)}</b><small>${T("Vídeo", "Video")} · ${esc(x.ch)}</small></span>
     </button>`;
     return `
     <button class="g-tile" data-i="${i}">
       <span class="g-thumb"><img src="${x.thumb}" alt="" loading="lazy"></span>
-      <span class="g-cap"><b>${esc(x.title)}</b><small>Foto · ${esc(x.credit)}</small></span>
+      <span class="g-cap"><b>${esc(x.title)}</b><small>${T("Foto", "Photo")} · ${esc(x.credit)}</small></span>
     </button>`;
   }).join("");
   $("#galleryStrip").scrollLeft = 0;
   const hasCommons = galItems.some(x => x.t === "p" && /commons/.test(x.link));
   const hasExt = galItems.some(x => x.ext);
-  $("#galleryNote").textContent = [nv && "Vídeos dos canais oficiais no YouTube.",
-    hasExt && "Os marcados com “Só no YouTube” têm a exibição em outros sites bloqueada pelo dono e abrem no YouTube.",
-    np && (hasCommons ? "Fotos da Wikimedia Commons, com autor e licença." : "Fotos oficiais do campeonato.")].filter(Boolean).join(" ");
+  $("#galleryNote").textContent = [nv && T("Vídeos dos canais oficiais no YouTube.", "Videos from the official YouTube channels."),
+    hasExt && T("Os marcados com “Só no YouTube” têm a exibição em outros sites bloqueada pelo dono e abrem no YouTube.", "Those marked “YouTube only” can't be embedded on other sites, by the owner's choice, and open on YouTube."),
+    np && (hasCommons ? T("Fotos da Wikimedia Commons, com autor e licença.", "Photos from Wikimedia Commons, with author and licence.") : T("Fotos oficiais do campeonato.", "Official championship photos."))].filter(Boolean).join(" ");
   $("#engineBtn").hidden = !galItems.some(x => x.engine && !x.ext);
 }
 
@@ -742,9 +762,9 @@ function extCard(x) {
   return `<div class="mm-extcard">
     <img src="https://i.ytimg.com/vi/${x.id}/maxresdefault.jpg" onerror="if(!this.dataset.f){this.dataset.f=1;this.src='${ytThumb(x.id)}'}" alt="">
     <div class="mm-extcard-body">
-      <b>Este vídeo abre no YouTube</b>
-      <p>O canal oficial só permite assistir lá. O Pitstop continua aberto nesta aba.</p>
-      <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener" data-leave data-title="${esc(x.title)}" data-thumb="${ytThumb(x.id)}">Assistir no YouTube ↗</a>
+      <b>${T("Este vídeo abre no YouTube", "This video opens on YouTube")}</b>
+      <p>${T("O canal oficial só permite assistir lá. O Pitstop continua aberto nesta aba.", "The official channel only allows watching it there. Pitstop stays open in this tab.")}</p>
+      <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener" data-leave data-title="${esc(x.title)}" data-thumb="${ytThumb(x.id)}">${T("Assistir no YouTube ↗", "Watch on YouTube ↗")}</a>
     </div>
   </div>`;
 }
@@ -771,9 +791,9 @@ function stripArrows() {
 function blockedCard(x) {
   return `<div class="mm-blocked">
     <img src="${ytThumb(x.id)}" alt="">
-    <div><b>Este vídeo só pode ser assistido no YouTube</b>
-    <p>O dono do vídeo bloqueou a exibição em outros sites.</p>
-    <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener">Assistir no YouTube ↗</a></div>
+    <div><b>${T("Este vídeo só pode ser assistido no YouTube", "This video can only be watched on YouTube")}</b>
+    <p>${T("O dono do vídeo bloqueou a exibição em outros sites.", "The owner has blocked playback on other sites.")}</p>
+    <a class="btn btn-solid" href="${ytWatch(x.id)}" target="_blank" rel="noopener">${T("Assistir no YouTube ↗", "Watch on YouTube ↗")}</a></div>
   </div>`;
 }
 
@@ -784,8 +804,8 @@ async function openMedia(i, step = 1) {
   const x = galList[galIndex], shown = galList.filter(inModal), pos = shown.indexOf(x) + 1;
   stopPlayer();
   $("#mediaCaption").innerHTML = x.t === "v"
-    ? `<b>${esc(x.title)}</b> <span>Vídeo oficial · ${esc(x.ch)} · ${pos} de ${shown.length}</span>`
-    : `<b>${esc(x.title)}</b> <span><a href="${x.link}" target="_blank" rel="noopener">${esc(x.credit)}</a> · ${pos} de ${shown.length}</span>`;
+    ? `<b>${esc(x.title)}</b> <span>${T("Vídeo oficial", "Official video")} · ${esc(x.ch)} · ${pos} ${T("de", "of")} ${shown.length}</span>`
+    : `<b>${esc(x.title)}</b> <span><a href="${x.link}" target="_blank" rel="noopener">${esc(x.credit)}</a> · ${pos} ${T("de", "of")} ${shown.length}</span>`;
   const modal = $("#mediaModal");
   if (!modal.open) modal.showModal();
   renderStrip();
@@ -884,7 +904,7 @@ function renderDrivers() {
       ? `<span class="multi">${d.imgs.map(src => `<img src="${src}" alt="" loading="lazy">`).join("")}</span>`
       : `<img src="${d.img}" alt="" loading="lazy">`;
     return `
-    <button class="driver-card${d.imgs ? " crew" : ""}" style="--c:${t.color}" data-k="${k}" aria-label="${esc(d.first)} ${esc(d.last)}, ${esc(t.name)}${d.pos ? `, ${d.pos}º lugar` : ""}">
+    <button class="driver-card${d.imgs ? " crew" : ""}" style="--c:${t.color}" data-k="${k}" aria-label="${esc(d.first)} ${esc(d.last)}, ${esc(t.name)}${d.pos ? `, ${T(`${d.pos}º lugar`, `${I18N.ordinal(d.pos)} place`)}` : ""}">
       <span class="num" aria-hidden="true">${esc(d.n)}</span>
       ${media}
       <div class="meta">
@@ -914,18 +934,18 @@ function openDriver(k) {
   modal.style.setProperty("--c", t.color);
   const mates = d.imgs ? [] : S.drivers.filter(x => x.team === d.team && x !== d).map(x => x.last);
   const facts = [
-    d.country && ["Nacionalidade", d.country],
-    d.born && ["Idade", `${age(d.born)} anos`],
-    d.born && ["Nascimento", d.place ? `${d.born}, ${d.place}` : d.born],
-    d.debut && [S.debutLabel || "Estreia", d.debut],
-    d.titles != null && ["Títulos mundiais", d.titles || "—"],
-    mates.length && [mates.length > 1 ? "Companheiros" : "Companheiro", mates.join(", ")],
+    d.country && [T("Nacionalidade", "Nationality"), d.country],
+    d.born && [T("Idade", "Age"), T(`${age(d.born)} anos`, `${age(d.born)}`)],
+    d.born && [T("Nascimento", "Born"), d.place ? `${d.born}, ${d.place}` : d.born],
+    d.debut && [S.debutLabel || T("Estreia", "Debut"), d.debut],
+    d.titles != null && [T("Títulos mundiais", "World titles"), d.titles || "—"],
+    mates.length && [mates.length > 1 ? T("Companheiros", "Teammates") : T("Companheiro", "Teammate"), mates.join(", ")],
     ...(d.extra || []),
   ].filter(Boolean);
   const stats = [
-    d.pos && ["Posição", `P${d.pos}`],
-    d.pts != null && [`Pontos ${S.season}`, d.pts],
-    d.wins != null && [`Vitórias ${S.season}`, d.wins],
+    d.pos && [T("Posição", "Position"), `P${d.pos}`],
+    d.pts != null && [T(`Pontos ${S.season}`, `${S.season} points`), d.pts],
+    d.wins != null && [T(`Vitórias ${S.season}`, `${S.season} wins`), d.wins],
   ].filter(Boolean);
   const media = d.imgs
     ? `<div class="full multi">${d.imgs.map(src => `<img src="${src}" alt="">`).join("")}</div>`
@@ -978,18 +998,18 @@ function renderStandings() {
     document.querySelectorAll("#standLists > div").forEach(x => { x.hidden = x.dataset.i !== b.dataset.i; });
   };
 
-  $("#calendarNote").textContent = S.calendarNote || `${S.calendar.length} etapas.`;
+  $("#calendarNote").textContent = S.calendarNote || T(`${S.calendar.length} etapas.`, `${S.calendar.length} rounds.`);
   const venues = window.VENUES?.[S.id] || [];
   $("#calendar").innerHTML = S.calendar.map((r, i) => {
     const cls = r.winner ? "done" : r === next ? "next" : "";
     const c = r.winner ? colorOf(r.team) : "";
     const res = r.winner
       ? `<b>${esc(r.winner)}</b><small>${esc(r.date)}</small>`
-      : r === next ? `<b>Próxima</b><small>${esc(r.date)}</small>` : `<small>${esc(r.date)}</small>`;
+      : r === next ? `<b>${T("Próxima", "Next")}</b><small>${esc(r.date)}</small>` : `<small>${esc(r.date)}</small>`;
     return `<li class="${cls}"${c ? ` style="--c:${c}"` : ""}>
       <span class="rnd">${esc(r.r)}</span>
       <span class="gp"><b>${esc(r.gp)}</b>${venues[i] ? `<a class="to-track" href="?pista=${venues[i]}">${esc(r.circuit)} <span aria-hidden="true">›</span></a>` : `<small>${esc(r.circuit)}</small>`}</span>
-      <span class="res">${res}${r.winner && window.HL?.has(S.id, r.r) ? `<a class="to-hl" href="?c=${S.id}&r=${r.r}#destaques" data-hl="${r.r}">▶ Destaques</a>` : ""}</span>
+      <span class="res">${res}${r.winner && window.HL?.has(S.id, r.r) ? `<a class="to-hl" href="?c=${S.id}&r=${r.r}#destaques" data-hl="${r.r}">▶ ${T("Destaques", "Highlights")}</a>` : ""}</span>
     </li>`;
   }).join("");
 }

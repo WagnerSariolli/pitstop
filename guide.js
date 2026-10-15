@@ -5,9 +5,11 @@ window.Guide = (() => {
   const LEAFLET = "https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/";
   const REDUCE = matchMedia("(prefers-reduced-motion: reduce)").matches;
   const COARSE = matchMedia("(hover: none)").matches;
-  const nf = (n, d) => n.toLocaleString("pt-BR", { minimumFractionDigits: d, maximumFractionDigits: d });
+  const T = I18N.T;
+  const nf = (n, d) => n.toLocaleString(I18N.locale, { minimumFractionDigits: d, maximumFractionDigits: d });
   const kmOf = c => (c.length_km ? `${nf(+c.length_km, 3)} km` : null);
-  const DIR = { cw: "Horário", ccw: "Anti-horário", eight: "Em oito (cruza a si mesmo)" };
+  const DIR = { cw: T("Horário", "Clockwise"), ccw: T("Anti-horário", "Anticlockwise"), eight: T("Em oito (cruza a si mesmo)", "Figure of eight (crosses itself)") };
+  const EIGHT = T("Em oito", "Figure of eight");
   // na Fórmula E estas provas usam uma versão mais curta do circuito
   const FE_SHORT = { mexico: true, jeddah: true, shanghai: true };
 
@@ -54,7 +56,7 @@ window.Guide = (() => {
   }
 
   function outline(c) {
-    if (!c.path) return `<svg class="c-outline is-empty" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="30"/><text x="50" y="54" text-anchor="middle">sem traçado</text></svg>`;
+    if (!c.path) return `<svg class="c-outline is-empty" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="30"/><text x="50" y="54" text-anchor="middle">${T("sem traçado", "no layout")}</text></svg>`;
     const f = fit(c.path, 100, 100, 8);
     const d = "M" + c.path.map(q => f.map(q).map(v => v.toFixed(1)).join(" ")).join("L") + "Z";
     return `<svg class="c-outline" viewBox="0 0 100 100" aria-hidden="true"><path class="o-base" d="${d}"/><path class="o-run" d="${d}" pathLength="1"/></svg>`;
@@ -335,7 +337,7 @@ window.Guide = (() => {
       if (read) {
         const L = c.length_km ? +c.length_km : R.total / 1000;
         read.textContent = `${nf(L * frac, 3)} km`;
-        readLabel.textContent = frac >= 1 ? "Volta completa" : phase === "idle" ? "Pronto para a volta" : "Volta de reconhecimento";
+        readLabel.textContent = frac >= 1 ? T("Volta completa", "Lap complete") : phase === "idle" ? T("Pronto para a volta", "Ready for the lap") : T("Volta de reconhecimento", "Installation lap");
       }
     }
 
@@ -382,13 +384,13 @@ window.Guide = (() => {
     return `
       <div class="track-box${big ? " is-big" : ""}${c.path ? "" : " no-path"}">
         <canvas class="tb-ht" aria-hidden="true"></canvas>
-        <canvas class="tb-trace" role="img" aria-label="Traçado de ${esc(c.name)}${c.dir ? `, sentido ${DIR[c.dir].toLowerCase()}` : ""}"></canvas>
+        <canvas class="tb-trace" role="img" aria-label="${T("Traçado de", "Layout of")} ${esc(c.name)}${c.dir ? `, ${T("sentido", "direction")} ${DIR[c.dir].toLowerCase()}` : ""}"></canvas>
         <span class="tb-north" aria-hidden="true"><svg viewBox="0 0 20 28"><path d="M10 2 17 24 10 19 3 24Z"/></svg>N</span>
         ${c.path ? `
         <span class="tb-scale" aria-hidden="true"><i></i><span></span></span>
-        ${label ? `<span class="tb-read"><small>Pronto para a volta</small><b>0,000 km</b></span>` : ""}
-        <button class="tb-replay" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10a6 6 0 1 0 2-4.5M4 3v3.5h3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>Dar outra volta</button>`
-        : `<p class="tb-empty"><b>Traçado sem fonte aberta</b>Não há um desenho do circuito com licença livre. Veja o local no mapa de satélite.</p>`}
+        ${label ? `<span class="tb-read"><small>${T("Pronto para a volta", "Ready for the lap")}</small><b>${nf(0, 3)} km</b></span>` : ""}
+        <button class="tb-replay" type="button"><svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 10a6 6 0 1 0 2-4.5M4 3v3.5h3.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>${T("Dar outra volta", "Do another lap")}</button>`
+        : `<p class="tb-empty"><b>${T("Traçado sem fonte aberta", "No open-source layout")}</b>${T("Não há um desenho do circuito com licença livre. Veja o local no mapa de satélite.", "There's no freely licensed drawing of this circuit. See the venue on the satellite map.")}</p>`}
       </div>`;
   }
   function mountTrack(host, c, accent) {
@@ -415,9 +417,9 @@ window.Guide = (() => {
   }
   const TILES = {
     dark: ["https://server.arcgisonline.com/ArcGIS/rest/services/Canvas/World_Dark_Gray_Base/MapServer/tile/{z}/{y}/{x}",
-      { maxZoom: 16, attribution: 'Mapa &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>' }],
+      { maxZoom: 16, attribution: `${T("Mapa", "Map")} &copy; Esri, HERE, Garmin, &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>` }],
     sat: ["https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}",
-      { maxZoom: 19, attribution: "Imagens &copy; Esri, Maxar, Earthstar Geographics" }],
+      { maxZoom: 19, attribution: `${T("Imagens", "Imagery")} &copy; Esri, Maxar, Earthstar Geographics` }],
   };
   function whenNear(el, fn) {
     const io = new IntersectionObserver(([e]) => { if (e.isIntersecting) { io.disconnect(); fn(); } }, { rootMargin: "400px 0px" });
@@ -431,7 +433,7 @@ window.Guide = (() => {
      ÍNDICE: ?c=pistas
      ====================================================================== */
   function renderIndex(main) {
-    document.title = "Pitstop: guia de pistas";
+    document.title = T("Pitstop: guia de pistas", "Pitstop: circuit guide");
     const list = venues();
     const next = list.find(x => x.up && x.c.path) || list[0];
     const countries = new Set(list.map(x => x.c.country)).size;
@@ -442,32 +444,33 @@ window.Guide = (() => {
     main.innerHTML = `
       <section class="g-hero" id="tracado" style="--c:${nacc}">
         <div class="g-copy">
-          <p class="kicker">Guia de pistas · 2026</p>
-          <h1 class="g-title">Pistas</h1>
-          <p class="g-lede">Os ${list.length} circuitos dos ${ORDER.length} campeonatos: traçado, extensão, curvas, recorde da volta, as provas do ano, fotos e onde ficam.</p>
+          <p class="kicker">${T("Guia de pistas", "Circuit guide")} · 2026</p>
+          <h1 class="g-title">${T("Pistas", "Circuits")}</h1>
+          <p class="g-lede">${T(`Os ${list.length} circuitos dos ${ORDER.length} campeonatos: traçado, extensão, curvas, recorde da volta, as provas do ano, fotos e onde ficam.`,
+            `The ${list.length} circuits of the ${ORDER.length} championships: layout, length, corners, lap record, this year's races, photos and where they are.`)}</p>
           <dl class="lobby-stats g-stats">
-            <div><dt>Circuitos</dt><dd>${list.length}</dd></div>
-            <div><dt>Países</dt><dd>${countries}</dd></div>
-            <div><dt>Provas em 2026</dt><dd>${races}</dd></div>
-            <div><dt>Km de pista somados</dt><dd>${Math.round(totalKm)}</dd></div>
+            <div><dt>${T("Circuitos", "Circuits")}</dt><dd>${list.length}</dd></div>
+            <div><dt>${T("Países", "Countries")}</dt><dd>${countries}</dd></div>
+            <div><dt>${T("Provas em 2026", "Races in 2026")}</dt><dd>${races}</dd></div>
+            <div><dt>${T("Km de pista somados", "Total track km")}</dt><dd>${Math.round(totalKm)}</dd></div>
           </dl>
         </div>
         <a class="g-feature" href="?pista=${nc.id}">
-          <span class="g-feature-tag">${next.up ? `Próxima prova · ${esc(next.up.s.short)} · ${esc(next.up.r.date)}` : "Em destaque"}</span>
+          <span class="g-feature-tag">${next.up ? `${T("Próxima prova", "Next race")} · ${esc(next.up.s.short)} · ${esc(next.up.r.date)}` : T("Em destaque", "Featured")}</span>
           ${trackBox(nc)}
-          <span class="g-feature-name"><b>${esc(nc.name)}</b><small>${esc(nc.city)}, ${esc(nc.country)} · ${kmOf(nc) || ""}</small><em>Abrir guia ›</em></span>
+          <span class="g-feature-name"><b>${esc(nc.name)}</b><small>${esc(nc.city)}, ${esc(nc.country)} · ${kmOf(nc) || ""}</small><em>${T("Abrir guia ›", "Open guide ›")}</em></span>
         </a>
       </section>
 
       <section class="g-world" id="mundo" aria-labelledby="world-title">
-        <div class="section-head"><h2 id="world-title">Onde ficam</h2><p>Cada ponto é um circuito, na cor do campeonato que corre lá. Clique para abrir o guia da pista.</p></div>
-        <div class="world-map" id="worldMap" role="region" aria-label="Mapa-múndi dos circuitos"><p class="map-loading">Carregando mapa…</p></div>
+        <div class="section-head"><h2 id="world-title">${T("Onde ficam", "Where they are")}</h2><p>${T("Cada ponto é um circuito, na cor do campeonato que corre lá. Clique para abrir o guia da pista.", "Each dot is a circuit, in the colour of the championship that races there. Click to open its guide.")}</p></div>
+        <div class="world-map" id="worldMap" role="region" aria-label="${T("Mapa-múndi dos circuitos", "World map of the circuits")}"><p class="map-loading">${T("Carregando mapa…", "Loading map…")}</p></div>
       </section>
 
       <section class="g-list" id="circuitos" aria-labelledby="list-title">
-        <div class="section-head"><h2 id="list-title">Circuitos</h2><p>Em ordem de calendário: primeiro as próximas provas, depois as já disputadas.</p></div>
-        <div class="g-filters" role="group" aria-label="Filtrar por campeonato">
-          <button aria-pressed="true" data-s="all">Todos <small>${list.length}</small></button>
+        <div class="section-head"><h2 id="list-title">${T("Circuitos", "Circuits")}</h2><p>${T("Em ordem de calendário: primeiro as próximas provas, depois as já disputadas.", "In calendar order: upcoming races first, then those already run.")}</p></div>
+        <div class="g-filters" role="group" aria-label="${T("Filtrar por campeonato", "Filter by championship")}">
+          <button aria-pressed="true" data-s="all">${T("Todos", "All")} <small>${list.length}</small></button>
           ${ORDER.map(id => `<button aria-pressed="false" data-s="${id}" style="--c:${SERIES[id].accent}"><i></i>${esc(SERIES[id].short)} <small>${new Set(V[id]).size}</small></button>`).join("")}
         </div>
         <div class="c-grid" id="cGrid">${list.map(card).join("")}</div>
@@ -485,7 +488,7 @@ window.Guide = (() => {
 
     let worldFilter = null;
     whenNear($("#worldMap"), async () => {
-      try { await loadLeaflet(); } catch (e) { $("#worldMap").innerHTML = `<p class="map-loading">Não foi possível carregar o mapa.</p>`; return; }
+      try { await loadLeaflet(); } catch (e) { $("#worldMap").innerHTML = `<p class="map-loading">${T("Não foi possível carregar o mapa.", "The map couldn't be loaded.")}</p>`; return; }
       const el = $("#worldMap"); el.innerHTML = "";
       const map = L.map(el, { ...mapOpts(), minZoom: 1.5 }).setView([22, 12], COARSE ? 1.5 : 2);
       L.tileLayer(...TILES.dark).addTo(map);
@@ -497,7 +500,7 @@ window.Guide = (() => {
           radius: 5 + k * 3.5, color: SERIES[sid].accent, weight: k ? 2 : 1.5, fillColor: SERIES[sid].accent, fillOpacity: k ? 0 : 0.95, opacity: 1,
         })).reverse());
         g.eachLayer(m => {
-          m.bindTooltip(`<b>${esc(c.name)}</b><br>${esc(c.country)} · ${ser.map(s => esc(SERIES[s].short)).join(", ")}${up ? `<br>Próxima: ${esc(up.r.date)}` : ""}`, { direction: "top", offset: [0, -6], className: "pit-tip" });
+          m.bindTooltip(`<b>${esc(c.name)}</b><br>${esc(c.country)} · ${ser.map(s => esc(SERIES[s].short)).join(", ")}${up ? `<br>${T("Próxima", "Next")}: ${esc(up.r.date)}` : ""}`, { direction: "top", offset: [0, -6], className: "pit-tip" });
           m.on("click", () => { location.href = `?pista=${c.id}`; });
         });
         g.addTo(map);
@@ -507,7 +510,7 @@ window.Guide = (() => {
       const cur = main.querySelector(".g-filters [aria-pressed=true]")?.dataset.s;
       if (cur && cur !== "all") worldFilter(cur);
     });
-    return [["tracado", "Destaque"], ["mundo", "Mapa"], ["circuitos", "Circuitos"]];
+    return [["tracado", T("Destaque", "Featured")], ["mundo", T("Mapa", "Map")], ["circuitos", T("Circuitos", "Circuits")]];
   }
 
   function card({ c, rs, up }) {
@@ -515,11 +518,11 @@ window.Guide = (() => {
     const acc = (up || rs[0]).s.accent;
     return `
       <a class="c-card" href="?pista=${c.id}" data-series="${ser.join(" ")}" style="--c:${acc}">
-        <span class="c-art">${outline(c)}${up ? `<span class="c-next">Próxima · ${esc(up.r.date)}</span>` : ""}</span>
+        <span class="c-art">${outline(c)}${up ? `<span class="c-next">${T("Próxima", "Next")} · ${esc(up.r.date)}</span>` : ""}</span>
         <span class="c-body">
           <b class="c-name">${esc(c.name)}</b>
           <small class="c-place">${esc(c.city)}, ${esc(c.country)}</small>
-          <span class="c-facts">${kmOf(c) ? `<span><em>Extensão</em>${kmOf(c)}</span>` : ""}${c.turns ? `<span><em>Curvas</em>${esc(c.turns)}</span>` : ""}${c.dir ? `<span><em>Sentido</em>${c.dir === "eight" ? "Em oito" : DIR[c.dir]}</span>` : ""}</span>
+          <span class="c-facts">${kmOf(c) ? `<span><em>${T("Extensão", "Length")}</em>${kmOf(c)}</span>` : ""}${c.turns ? `<span><em>${T("Curvas", "Corners")}</em>${esc(c.turns)}</span>` : ""}${c.dir ? `<span><em>${T("Sentido", "Direction")}</em>${c.dir === "eight" ? EIGHT : DIR[c.dir]}</span>` : ""}</span>
           <span class="c-series">${ser.map(s => `<i style="--c:${SERIES[s].accent}">${esc(SERIES[s].short)}</i>`).join("")}</span>
         </span>
       </a>`;
@@ -535,58 +538,59 @@ window.Guide = (() => {
     const prev = list[(k - 1 + list.length) % list.length].c, next = list[(k + 1) % list.length].c;
     const measured = c.path ? perimeter(c.path) / 1000 : null;
     const coord = (v, pos, neg) => `${nf(Math.abs(v), 4)}° ${v >= 0 ? pos : neg}`;
+    const [E, W] = [T("L", "E"), T("O", "W")];
     const hasFE = rs.some(x => x.s.id === "formulae");
     const notes = [
-      hasFE && FE_SHORT[c.id] && "Na Fórmula E a prova usa uma versão mais curta do circuito; o desenho e a ficha mostram o traçado completo.",
-      c.id === "homestead" && "A Fórmula E corre num traçado montado na área interna do oval; a ficha do oval não vale para ele.",
-      c.id === "lemans" && "A volta de 13,6 km usa estradas públicas fechadas para a corrida, por isso não há traçado aberto contínuo.",
-      c.dir === "eight" && "Suzuka é um oito: o traçado passa por cima de si mesmo num viaduto.",
+      hasFE && FE_SHORT[c.id] && T("Na Fórmula E a prova usa uma versão mais curta do circuito; o desenho e a ficha mostram o traçado completo.", "Formula E races on a shorter version of the circuit; the drawing and the facts show the full layout."),
+      c.id === "homestead" && T("A Fórmula E corre num traçado montado na área interna do oval; a ficha do oval não vale para ele.", "Formula E races on a layout set up in the oval's infield; the oval's facts don't apply to it."),
+      c.id === "lemans" && T("A volta de 13,6 km usa estradas públicas fechadas para a corrida, por isso não há traçado aberto contínuo.", "The 13.6 km lap uses public roads closed for the race, so there's no continuous open-source layout."),
+      c.dir === "eight" && T("Suzuka é um oito: o traçado passa por cima de si mesmo num viaduto.", "Suzuka is a figure of eight: the track crosses over itself on a bridge."),
     ].filter(Boolean);
     const photos = (c.photos || []).map(p => ({ t: "p", ...p }));
 
     main.innerHTML = `
       <section class="ct-hero" id="tracado" style="--c:${acc}">
         <div class="ct-copy">
-          <a class="ct-back" href="?c=pistas">‹ Todas as pistas</a>
+          <a class="ct-back" href="?c=pistas">‹ ${T("Todas as pistas", "All circuits")}</a>
           <p class="kicker">${esc(c.city)}, ${esc(c.country)}</p>
           <h1 class="ct-name" style="--n:${Math.max(6, ...c.name.split(/[\s-]+/).map(w => w.length + 1))}">${esc(c.name)}</h1>
           ${c.full && c.full !== c.name ? `<p class="ct-full">${esc(c.full)}</p>` : ""}
           <dl class="ct-stats">
-            <div><dt>Extensão</dt><dd>${c.length_km ? `${nf(+c.length_km, 3)}<small>km</small>` : "—"}</dd></div>
-            <div><dt>Curvas</dt><dd>${esc(c.turns || "—")}</dd></div>
-            <div><dt>Sentido</dt><dd class="sm">${c.dir ? (c.dir === "eight" ? "Em oito" : DIR[c.dir]) : "—"}</dd></div>
+            <div><dt>${T("Extensão", "Length")}</dt><dd>${c.length_km ? `${nf(+c.length_km, 3)}<small>km</small>` : "—"}</dd></div>
+            <div><dt>${T("Curvas", "Corners")}</dt><dd>${esc(c.turns || "—")}</dd></div>
+            <div><dt>${T("Sentido", "Direction")}</dt><dd class="sm">${c.dir ? (c.dir === "eight" ? EIGHT : DIR[c.dir]) : "—"}</dd></div>
           </dl>
-          ${c.record ? `<p class="ct-record"><span>Recorde da volta</span><b>${esc(c.record.time)}</b>${esc(c.record.driver)}${c.record.cls ? ` · ${esc(c.record.cls)}` : ""}${c.record.year ? ` · ${esc(c.record.year)}` : ""}</p>` : ""}
-          ${up ? `<p class="ct-next" style="--c:${up.s.accent}"><i></i><span>Próxima prova: <b>${esc(up.s.short)} · ${esc(up.r.pill || up.r.gp)}</b>, ${esc(up.r.date)}</span><em>${countdown(up.d)}</em></p>` : ""}
+          ${c.record ? `<p class="ct-record"><span>${T("Recorde da volta", "Lap record")}</span><b>${esc(c.record.time)}</b>${esc(c.record.driver)}${c.record.cls ? ` · ${esc(c.record.cls)}` : ""}${c.record.year ? ` · ${esc(c.record.year)}` : ""}</p>` : ""}
+          ${up ? `<p class="ct-next" style="--c:${up.s.accent}"><i></i><span>${T("Próxima prova", "Next race")}: <b>${esc(up.s.short)} · ${esc(up.r.pill || up.r.gp)}</b>, ${esc(up.r.date)}</span><em>${countdown(up.d)}</em></p>` : ""}
         </div>
         <div class="ct-map">
           ${trackBox(c, { big: true })}
-          <p class="tb-legend">${c.path ? `${c.dir && c.dir !== "eight" ? "Setas: sentido da corrida. " : c.dir ? "" : "Sentido não confirmado: a volta é desenhada dos dois lados. "}Pontos claros: frenagens fortes, estimadas pela curvatura do traçado. Norte para cima.` : ""}</p>
+          <p class="tb-legend">${c.path ? `${c.dir && c.dir !== "eight" ? T("Setas: sentido da corrida. ", "Arrows: race direction. ") : c.dir ? "" : T("Sentido não confirmado: a volta é desenhada dos dois lados. ", "Direction not confirmed: the lap is drawn both ways. ")}${T("Pontos claros: frenagens fortes, estimadas pela curvatura do traçado. Norte para cima.", "Bright dots: heavy braking, estimated from the track's curvature. North is up.")}` : ""}</p>
         </div>
       </section>
 
       <section class="ct-info" id="ficha" aria-labelledby="ficha-title">
-        <div class="section-head"><h2 id="ficha-title">Ficha e provas</h2>${notes.length ? `<p>${notes.map(esc).join(" ")}</p>` : ""}</div>
+        <div class="section-head"><h2 id="ficha-title">${T("Ficha e provas", "Facts and races")}</h2>${notes.length ? `<p>${notes.map(esc).join(" ")}</p>` : ""}</div>
         <div class="ct-grid">
           <div class="panel">
-            <h4>Ficha do circuito</h4>
+            <h4>${T("Ficha do circuito", "Circuit facts")}</h4>
             <dl class="ct-sheet">
               ${[
-                c.full && ["Nome", c.full],
-                ["Local", `${c.city}, ${c.country}`],
-                ["Extensão oficial", kmOf(c) || "—"],
-                ["Curvas", c.turns || "—"],
-                ["Sentido", c.dir ? DIR[c.dir] : "Não confirmado"],
-                c.record && ["Recorde da volta", `${c.record.time}, ${c.record.driver}${c.record.cls ? ` (${c.record.cls}` : ""}${c.record.year ? `${c.record.cls ? ", " : " ("}${c.record.year})` : c.record.cls ? ")" : ""}`],
-                measured && ["Traçado medido no mapa", `${nf(measured, 2)} km`],
-                c.lat != null && ["Coordenadas", `${coord(c.lat, "N", "S")}, ${coord(c.lon, "L", "O")}`],
+                c.full && [T("Nome", "Name"), c.full],
+                [T("Local", "Location"), `${c.city}, ${c.country}`],
+                [T("Extensão oficial", "Official length"), kmOf(c) || "—"],
+                [T("Curvas", "Corners"), c.turns || "—"],
+                [T("Sentido", "Direction"), c.dir ? DIR[c.dir] : T("Não confirmado", "Not confirmed")],
+                c.record && [T("Recorde da volta", "Lap record"), `${c.record.time}, ${c.record.driver}${c.record.cls ? ` (${c.record.cls}` : ""}${c.record.year ? `${c.record.cls ? ", " : " ("}${c.record.year})` : c.record.cls ? ")" : ""}`],
+                measured && [T("Traçado medido no mapa", "Layout measured on the map"), `${nf(measured, 2)} km`],
+                c.lat != null && [T("Coordenadas", "Coordinates"), `${coord(c.lat, "N", "S")}, ${coord(c.lon, E, W)}`],
               ].filter(Boolean).map(([a, b]) => `<div><dt>${esc(a)}</dt><dd>${esc(b)}</dd></div>`).join("")}
             </dl>
-            <p class="panel-sub ct-src">O recorde é a melhor volta em corrida de qualquer categoria, segundo a Wikipedia.${c.pathSource ? ` Traçado: ${esc(c.pathSource)}.` : ""}${c.wiki ? ` <a href="${c.wiki}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ""}</p>
+            <p class="panel-sub ct-src">${T("O recorde é a melhor volta em corrida de qualquer categoria, segundo a Wikipedia.", "The record is the fastest race lap in any category, according to Wikipedia.")}${c.pathSource ? ` ${T("Traçado", "Layout")}: ${esc(c.pathSource)}.` : ""}${c.wiki ? ` <a href="${c.wiki}" target="_blank" rel="noopener">Wikipedia ↗</a>` : ""}</p>
           </div>
           <div class="panel">
-            <h4>Provas em 2026</h4>
-            <p class="panel-sub">${rs.length} ${rs.length > 1 ? "provas" : "prova"} neste circuito.</p>
+            <h4>${T("Provas em 2026", "Races in 2026")}</h4>
+            <p class="panel-sub">${T(`${rs.length} ${rs.length > 1 ? "provas" : "prova"} neste circuito.`, `${rs.length} ${rs.length > 1 ? "races" : "race"} at this circuit.`)}</p>
             <ol class="race-list">${rs.map(x => raceRow(x, x === up)).join("")}</ol>
           </div>
         </div>
@@ -594,7 +598,7 @@ window.Guide = (() => {
 
       ${photos.length ? `
       <section class="ct-gallery" id="galeria" aria-labelledby="gal-title">
-        <div class="section-head"><h2 id="gal-title">Galeria</h2><p>Fotos reais da Wikimedia Commons, com autor e licença. Clique para ampliar.</p></div>
+        <div class="section-head"><h2 id="gal-title">${T("Galeria", "Gallery")}</h2><p>${T("Fotos reais da Wikimedia Commons, com autor e licença. Clique para ampliar.", "Real photos from Wikimedia Commons, with author and licence. Click to enlarge.")}</p></div>
         <div class="ph-grid n${Math.min(photos.length, 4)}">${photos.map((p, i) => `
           <button class="ph-tile" data-i="${i}">
             <img src="${p.thumb}" alt="${esc(p.title)}" loading="lazy">
@@ -604,24 +608,24 @@ window.Guide = (() => {
       </section>` : ""}
 
       <section class="ct-local" id="local" aria-labelledby="local-title">
-        <div class="section-head"><h2 id="local-title">Onde fica</h2><p>${esc(c.city)}, ${esc(c.country)}.${c.center ? " O traçado aparece desenhado sobre a imagem de satélite." : ""}</p></div>
+        <div class="section-head"><h2 id="local-title">${T("Onde fica", "Where it is")}</h2><p>${esc(c.city)}, ${esc(c.country)}.${c.center ? T(" O traçado aparece desenhado sobre a imagem de satélite.", " The layout is drawn over the satellite image.") : ""}</p></div>
         <div class="local-wrap">
-          <div class="local-map" id="localMap" role="region" aria-label="Mapa de ${esc(c.name)}"><p class="map-loading">Carregando mapa…</p></div>
+          <div class="local-map" id="localMap" role="region" aria-label="${T("Mapa de", "Map of")} ${esc(c.name)}"><p class="map-loading">${T("Carregando mapa…", "Loading map…")}</p></div>
           <div class="local-side">
-            <div class="map-switch" role="group" aria-label="Tipo de mapa">
-              <button aria-pressed="true" data-l="sat">Satélite</button><button aria-pressed="false" data-l="dark">Mapa</button>
+            <div class="map-switch" role="group" aria-label="${T("Tipo de mapa", "Map type")}">
+              <button aria-pressed="true" data-l="sat">${T("Satélite", "Satellite")}</button><button aria-pressed="false" data-l="dark">${T("Mapa", "Map")}</button>
             </div>
-            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lon}" target="_blank" rel="noopener">Abrir no Google Maps ↗</a>
-            <a class="btn btn-ghost" href="https://www.openstreetmap.org/?mlat=${c.lat}&mlon=${c.lon}#map=15/${c.lat}/${c.lon}" target="_blank" rel="noopener">Abrir no OpenStreetMap ↗</a>
-            <button class="btn btn-ghost" type="button" id="zoomOut">Ver a região</button>
+            <a class="btn btn-ghost" href="https://www.google.com/maps/search/?api=1&query=${c.lat},${c.lon}" target="_blank" rel="noopener">${T("Abrir no Google Maps ↗", "Open in Google Maps ↗")}</a>
+            <a class="btn btn-ghost" href="https://www.openstreetmap.org/?mlat=${c.lat}&mlon=${c.lon}#map=15/${c.lat}/${c.lon}" target="_blank" rel="noopener">${T("Abrir no OpenStreetMap ↗", "Open in OpenStreetMap ↗")}</a>
+            <button class="btn btn-ghost" type="button" id="zoomOut">${T("Ver a região", "See the region")}</button>
           </div>
         </div>
       </section>
 
-      <nav class="ct-pager" aria-label="Outros circuitos">
-        <a href="?pista=${prev.id}"><small>‹ Anterior</small><b>${esc(prev.name)}</b></a>
-        <a href="?c=pistas" class="mid">Todas as pistas</a>
-        <a href="?pista=${next.id}"><small>Próxima ›</small><b>${esc(next.name)}</b></a>
+      <nav class="ct-pager" aria-label="${T("Outros circuitos", "Other circuits")}">
+        <a href="?pista=${prev.id}"><small>‹ ${T("Anterior", "Previous")}</small><b>${esc(prev.name)}</b></a>
+        <a href="?c=pistas" class="mid">${T("Todas as pistas", "All circuits")}</a>
+        <a href="?pista=${next.id}"><small>${T("Próxima", "Next")} ›</small><b>${esc(next.name)}</b></a>
       </nav>`;
 
     mountTrack($(".ct-map", main), c, acc);
@@ -631,7 +635,7 @@ window.Guide = (() => {
     });
 
     whenNear($("#localMap"), async () => {
-      try { await loadLeaflet(); } catch (e) { $("#localMap").innerHTML = `<p class="map-loading">Não foi possível carregar o mapa.</p>`; return; }
+      try { await loadLeaflet(); } catch (e) { $("#localMap").innerHTML = `<p class="map-loading">${T("Não foi possível carregar o mapa.", "The map couldn't be loaded.")}</p>`; return; }
       const el = $("#localMap"); el.innerHTML = "";
       const map = L.map(el, mapOpts());
       const layers = { sat: L.tileLayer(...TILES.sat), dark: L.tileLayer(...TILES.dark) };
@@ -656,22 +660,22 @@ window.Guide = (() => {
       zb.addEventListener("click", () => {
         wide = !wide;
         if (wide) map.setView([c.lat, c.lon], 6); else focus();
-        zb.textContent = wide ? "Voltar ao circuito" : "Ver a região";
+        zb.textContent = wide ? T("Voltar ao circuito", "Back to the circuit") : T("Ver a região", "See the region");
       });
     });
-    return [["tracado", "Traçado"], ["ficha", "Ficha e provas"], photos.length && ["galeria", "Galeria"], ["local", "Onde fica"]].filter(Boolean);
+    return [["tracado", T("Traçado", "Layout")], ["ficha", T("Ficha e provas", "Facts and races")], photos.length && ["galeria", T("Galeria", "Gallery")], ["local", T("Onde fica", "Where it is")]].filter(Boolean);
   }
 
   function raceRow({ s, r, d }, isNext) {
     const team = s.teams.find(t => t.id === r.team);
-    const res = r.winner ? `<b>${esc(r.winner)}</b><small>Vencedor${team ? ` · ${esc(team.name)}` : ""}</small>${window.HL?.has(s.id, r.r) ? `<em class="rl-hl">▶ Ver destaques</em>` : ""}`
-      : isNext ? `<b class="nx">Próxima</b><small>em ${countdown(d)}</small>` : `<small>A disputar</small>`;
+    const res = r.winner ? `<b>${esc(r.winner)}</b><small>${T("Vencedor", "Winner")}${team ? ` · ${esc(team.name)}` : ""}</small>${window.HL?.has(s.id, r.r) ? `<em class="rl-hl">▶ ${T("Ver destaques", "See highlights")}</em>` : ""}`
+      : isNext ? `<b class="nx">${T("Próxima", "Next")}</b><small>${T("em", "in")} ${countdown(d)}</small>` : `<small>${T("A disputar", "To be raced")}</small>`;
     return `
       <li style="--c:${s.accent}">
         <time datetime="${d.toISOString().slice(0, 10)}"><b>${d.getDate()}</b>${esc(String(r.date).replace(/^\d+\s*/, ""))}</time>
-        <span class="rl-gp"><i>${esc(s.short)} · Etapa ${esc(r.r)}</i><b>${esc(r.gp)}</b></span>
+        <span class="rl-gp"><i>${esc(s.short)} · ${T("Etapa", "Round")} ${esc(r.r)}</i><b>${esc(r.gp)}</b></span>
         <span class="rl-res">${res}</span>
-        <a href="${r.winner && window.HL?.has(s.id, r.r) ? `?c=${s.id}&r=${r.r}#destaques` : `?c=${s.id}#temporada`}" aria-label="${r.winner && window.HL?.has(s.id, r.r) ? `Destaques da etapa: ${esc(r.gp)}` : `Calendário de ${esc(s.name)}`}"></a>
+        <a href="${r.winner && window.HL?.has(s.id, r.r) ? `?c=${s.id}&r=${r.r}#destaques` : `?c=${s.id}#temporada`}" aria-label="${r.winner && window.HL?.has(s.id, r.r) ? `${T("Destaques da etapa", "Round highlights")}: ${esc(r.gp)}` : `${T("Calendário de", "Calendar:")} ${esc(s.name)}`}"></a>
       </li>`;
   }
 
@@ -685,11 +689,12 @@ window.Guide = (() => {
     $("#subbar").hidden = false;
     $("#subbar").style.setProperty("--series", c ? accentOf(c.id) : "#ffc21a");
     $("#crumb").innerHTML = c
-      ? `<a href="?c=pistas">Pistas</a><span aria-hidden="true">/</span><b>${esc(c.name)}</b><small>${esc(c.country)}</small>`
-      : `<a href="./">Início</a><span aria-hidden="true">/</span><b>Guia de pistas</b><small>2026</small>`;
+      ? `<a href="?c=pistas">${T("Pistas", "Circuits")}</a><span aria-hidden="true">/</span><b>${esc(c.name)}</b><small>${esc(c.country)}</small>`
+      : `<a href="./">${T("Início", "Home")}</a><span aria-hidden="true">/</span><b>${T("Guia de pistas", "Circuit guide")}</b><small>2026</small>`;
     $("#sectionNav").innerHTML = nav.map(([h, l]) => `<a href="#${h}">${esc(l)}</a>`).join("");
     document.documentElement.style.setProperty("--series", c ? accentOf(c.id) : "#ffc21a");
-    $("#footerText").innerHTML = `Pitstop é um projeto de fã, sem vínculo com os campeonatos. Traçados: bacinger/f1-circuits (MIT) e © colaboradores do OpenStreetMap (ODbL). Fichas: Wikipedia. Fotos: Wikimedia Commons, com autor e licença em cada imagem. Mapas e imagens de satélite: © Esri e © OpenStreetMap.`;
+    $("#footerText").innerHTML = T(`Pitstop é um projeto de fã, sem vínculo com os campeonatos. Traçados: bacinger/f1-circuits (MIT) e © colaboradores do OpenStreetMap (ODbL). Fichas: Wikipedia. Fotos: Wikimedia Commons, com autor e licença em cada imagem. Mapas e imagens de satélite: © Esri e © OpenStreetMap.`,
+      `Pitstop is a fan project, not affiliated with the championships. Layouts: bacinger/f1-circuits (MIT) and © OpenStreetMap contributors (ODbL). Facts: Wikipedia. Photos: Wikimedia Commons, with author and licence on each image. Maps and satellite imagery: © Esri and © OpenStreetMap.`);
   }
 
   const isRoute = () => { const p = new URLSearchParams(location.search); return p.get("c") === "pistas" || (p.has("pista") && !!C[p.get("pista")]); };

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pitstop</title>
-  <meta name="description" content="Carros, pilotos, fichas técnicas, classificação, guia de pistas e curiosidades de Fórmula 1, Fórmula E, MotoGP e WEC.">
+  <meta name="description" data-i18n-content="meta.description" content="Carros, pilotos, fichas técnicas, classificação, guia de pistas e curiosidades de Fórmula 1, Fórmula E, MotoGP e WEC.">
   <meta name="google-site-verification" content="XlvoL0sIaH_WOiD_HLYMt23-8fYDxSONOUF_NTHfLro">
   <meta name="theme-color" content="#16181d">
   <link rel="canonical" href="https://wagnersariolli.github.io/pitstop/">
@@ -23,7 +23,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700&family=Big+Shoulders+Display:wght@500;700;800;900&display=swap" rel="stylesheet">
   <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="styles.css?v=20261007p">
+  <link rel="stylesheet" href="styles.css?v=20261015a">
+  <script src="i18n.js?v=20261015a"></script>
   <script>
     // esqueleto de carregamento padrão para TODAS as imagens: enquanto a imagem não chega, ela mostra um bloco
     // com brilho; quando carrega, entra com um fade. Vale também para as imagens criadas depois pelo JavaScript.
@@ -85,13 +86,14 @@
 <body>
   <header class="topbar">
     <div class="topbar-row">
-      <a class="brand" href="./" aria-label="Pitstop, página inicial"><svg class="logo-mark" viewBox="0 0 46 30" aria-hidden="true"><defs><clipPath id="LM"><path d="M10 0H46L36 30H0Z"/></clipPath></defs><path d="M10 0H46L36 30H0Z" fill="#e10600"/><g clip-path="url(#LM)" fill="#fff"><rect x="24" y="0" width="6" height="5" opacity="0.3"/><rect x="36" y="0" width="6" height="5" opacity="0.8"/><rect x="30" y="5" width="6" height="5" opacity="0.55"/><rect x="42" y="5" width="6" height="5" opacity="1"/><rect x="24" y="10" width="6" height="5" opacity="0.3"/><rect x="36" y="10" width="6" height="5" opacity="0.8"/><rect x="30" y="15" width="6" height="5" opacity="0.55"/><rect x="42" y="15" width="6" height="5" opacity="1"/><rect x="24" y="20" width="6" height="5" opacity="0.3"/><rect x="36" y="20" width="6" height="5" opacity="0.8"/><rect x="30" y="25" width="6" height="5" opacity="0.55"/><rect x="42" y="25" width="6" height="5" opacity="1"/></g></svg><span class="logo-word">Pit<b>stop</b></span></a>
-      <nav class="cat-nav" id="catNav" aria-label="Campeonatos por categoria"></nav>
+      <a class="brand" href="./" aria-label="Pitstop, página inicial" data-i18n-aria-label="brand"><svg class="logo-mark" viewBox="0 0 46 30" aria-hidden="true"><defs><clipPath id="LM"><path d="M10 0H46L36 30H0Z"/></clipPath></defs><path d="M10 0H46L36 30H0Z" fill="#e10600"/><g clip-path="url(#LM)" fill="#fff"><rect x="24" y="0" width="6" height="5" opacity="0.3"/><rect x="36" y="0" width="6" height="5" opacity="0.8"/><rect x="30" y="5" width="6" height="5" opacity="0.55"/><rect x="42" y="5" width="6" height="5" opacity="1"/><rect x="24" y="10" width="6" height="5" opacity="0.3"/><rect x="36" y="10" width="6" height="5" opacity="0.8"/><rect x="30" y="15" width="6" height="5" opacity="0.55"/><rect x="42" y="15" width="6" height="5" opacity="1"/><rect x="24" y="20" width="6" height="5" opacity="0.3"/><rect x="36" y="20" width="6" height="5" opacity="0.8"/><rect x="30" y="25" width="6" height="5" opacity="0.55"/><rect x="42" y="25" width="6" height="5" opacity="1"/></g></svg><span class="logo-word">Pit<b>stop</b></span></a>
+      <nav class="cat-nav" id="catNav" aria-label="Campeonatos por categoria" data-i18n-aria-label="nav.series"></nav>
       <div class="next-pill" id="nextPill"></div>
+      <div class="lang-switch" role="group" aria-label="Idioma / Language" data-i18n-aria-label="lang"><button type="button" class="lang-btn" data-lang="pt" lang="pt-BR" aria-pressed="true">PT</button><button type="button" class="lang-btn" data-lang="en" lang="en" aria-pressed="false">EN</button></div>
     </div>
     <div class="subbar" id="subbar" hidden>
       <div class="crumb" id="crumb"></div>
-      <nav class="section-nav" id="sectionNav" aria-label="Seções"></nav>
+      <nav class="section-nav" id="sectionNav" aria-label="Seções" data-i18n-aria-label="nav.sections"></nav>
     </div>
   </header>
 
@@ -107,27 +109,27 @@
         <h2 id="garage-title"></h2>
         <p id="garage-lede"></p>
       </div>
-      <div class="team-picker" role="tablist" aria-label="Equipes" id="teamPicker"></div>
+      <div class="team-picker" role="tablist" aria-label="Equipes" data-i18n-aria-label="garage.teams" id="teamPicker"></div>
 
       <div class="stage" id="stage">
         <div class="stage-ghost" id="stageGhost" aria-hidden="true"></div>
-        <button class="stage-arrow prev" id="prevTeam" aria-label="Equipe anterior">‹</button>
+        <button class="stage-arrow prev" id="prevTeam" aria-label="Equipe anterior" data-i18n-aria-label="garage.prev">‹</button>
         <div class="stage-media" id="stageMedia"></div>
-        <button class="stage-arrow next" id="nextTeam" aria-label="Próxima equipe">›</button>
+        <button class="stage-arrow next" id="nextTeam" aria-label="Próxima equipe" data-i18n-aria-label="garage.next">›</button>
         <div class="stage-floor" aria-hidden="true"></div>
       </div>
       <div class="view-bar">
         <div class="view-row">
-          <div class="view-switch" id="viewSwitch" role="group" aria-label="Ângulo da foto"></div>
-          <button class="engine-btn" id="engineBtn" hidden><span aria-hidden="true"></span>Ouvir o motor</button>
+          <div class="view-switch" id="viewSwitch" role="group" aria-label="Ângulo da foto" data-i18n-aria-label="garage.angle"></div>
+          <button class="engine-btn" id="engineBtn" hidden><span aria-hidden="true"></span><span data-i18n="garage.engine">Ouvir o motor</span></button>
         </div>
         <p class="view-note" id="viewNote"></p>
       </div>
 
       <div class="gallery" id="gallery">
         <div class="gallery-head">
-          <h4 id="galleryTitle">Galeria</h4>
-          <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="Filtrar galeria"></div>
+          <h4 id="galleryTitle" data-i18n="gallery">Galeria</h4>
+          <div class="gallery-tabs" id="galleryTabs" role="tablist" aria-label="Filtrar galeria" data-i18n-aria-label="gallery.filter"></div>
         </div>
         <div class="gallery-strip" id="galleryStrip"></div>
         <p class="gallery-note" id="galleryNote"></p>
@@ -149,17 +151,17 @@
 
         <div class="garage-grid">
           <div class="panel">
-            <h4>Desempenho</h4>
-            <p class="panel-sub">Estimativa Pitstop, de 0 a 100, com base nos resultados da temporada</p>
+            <h4 data-i18n="garage.performance">Desempenho</h4>
+            <p class="panel-sub" data-i18n="garage.performanceSub">Estimativa Pitstop, de 0 a 100, com base nos resultados da temporada</p>
             <div id="ratings" class="ratings"></div>
-            <div class="overall"><span>Geral</span><strong id="overall"></strong></div>
+            <div class="overall"><span data-i18n="garage.overall">Geral</span><strong id="overall"></strong></div>
           </div>
           <div class="panel">
-            <h4>Ficha técnica</h4>
+            <h4 data-i18n="garage.specs">Ficha técnica</h4>
             <dl class="specs" id="specs"></dl>
           </div>
           <div class="panel panel-drivers">
-            <h4 id="teamDriversTitle">Pilotos</h4>
+            <h4 id="teamDriversTitle" data-i18n="garage.drivers">Pilotos</h4>
             <div id="teamDrivers" class="team-drivers"></div>
           </div>
         </div>
@@ -176,10 +178,10 @@
 
     <section class="highlights" id="destaques" aria-labelledby="hl-title" hidden>
       <div class="section-head">
-        <h2 id="hl-title">Destaques</h2>
+        <h2 id="hl-title" data-i18n="hl.title">Destaques</h2>
         <p id="hl-lede"></p>
       </div>
-      <div class="hl-races" id="hlRaces" role="tablist" aria-label="Etapas"></div>
+      <div class="hl-races" id="hlRaces" role="tablist" aria-label="Etapas" data-i18n-aria-label="hl.rounds"></div>
       <div class="hl-stage" id="hlStage"></div>
       <p class="gallery-note" id="hlNote"></p>
     </section>
@@ -195,7 +197,7 @@
           <div id="standLists"></div>
         </div>
         <div class="panel">
-          <h4>Calendário</h4>
+          <h4 data-i18n="season.calendar">Calendário</h4>
           <p class="panel-sub" id="calendarNote"></p>
           <ol class="calendar" id="calendar"></ol>
         </div>
@@ -220,14 +222,14 @@
 
     <section class="facts" id="curiosidades" aria-labelledby="facts-title">
       <div class="section-head">
-        <h2 id="facts-title">Curiosidades</h2>
+        <h2 id="facts-title" data-i18n="facts.title">Curiosidades</h2>
       </div>
       <ul class="fact-list" id="facts"></ul>
     </section>
 
     <section class="others" aria-labelledby="others-title">
       <div class="section-head">
-        <h2 id="others-title">Outros campeonatos</h2>
+        <h2 id="others-title" data-i18n="others.title">Outros campeonatos</h2>
       </div>
       <div class="series-cards series-row" id="otherSeries"></div>
     </section>
@@ -236,43 +238,49 @@
   <footer class="footer">
     <div id="newsletterFoot"></div>
     <p id="footerText"></p>
-    <p class="footer-links"><a href="privacidade.html">Privacidade</a><span aria-hidden="true">·</span><a href="https://github.com/WagnerSariolli/pitstop" rel="noopener">Código no GitHub</a></p>
+    <p class="footer-links"><a href="privacidade.html" data-i18n="footer.privacy">Privacidade</a><span aria-hidden="true">·</span><a href="https://github.com/WagnerSariolli/pitstop" rel="noopener" data-i18n="footer.code">Código no GitHub</a></p>
   </footer>
 
   <dialog class="driver-modal" id="driverModal" aria-labelledby="modalName">
-    <button class="modal-close" id="modalClose" aria-label="Fechar">×</button>
+    <button class="modal-close" id="modalClose" aria-label="Fechar" data-i18n-aria-label="close">×</button>
     <div class="modal-body" id="modalBody"></div>
   </dialog>
 
-  <dialog class="media-modal" id="mediaModal" aria-label="Galeria">
-    <button class="modal-close" id="mediaClose" aria-label="Fechar">×</button>
-    <button class="mm-nav prev" id="mediaPrev" aria-label="Anterior">‹</button>
+  <dialog class="media-modal" id="mediaModal" aria-label="Galeria" data-i18n-aria-label="gallery">
+    <button class="modal-close" id="mediaClose" aria-label="Fechar" data-i18n-aria-label="close">×</button>
+    <button class="mm-nav prev" id="mediaPrev" aria-label="Anterior" data-i18n-aria-label="prev">‹</button>
     <div class="mm-stage" id="mediaStage"></div>
-    <button class="mm-nav next" id="mediaNext" aria-label="Próximo">›</button>
+    <button class="mm-nav next" id="mediaNext" aria-label="Próximo" data-i18n-aria-label="next">›</button>
     <p class="mm-caption" id="mediaCaption"></p>
     <div class="mm-strip" id="mediaStrip" hidden>
-      <p>Próximos</p>
+      <p data-i18n="strip.next">Próximos</p>
       <div class="mm-strip-wrap">
-        <button class="mm-strip-arrow prev" id="mediaStripPrev" type="button" aria-label="Ver vídeos anteriores">‹</button>
+        <button class="mm-strip-arrow prev" id="mediaStripPrev" type="button" aria-label="Ver vídeos anteriores" data-i18n-aria-label="strip.prev">‹</button>
         <div class="mm-strip-row" id="mediaStripRow"></div>
-        <button class="mm-strip-arrow next" id="mediaStripNext" type="button" aria-label="Ver mais vídeos">›</button>
+        <button class="mm-strip-arrow next" id="mediaStripNext" type="button" aria-label="Ver mais vídeos" data-i18n-aria-label="strip.more">›</button>
       </div>
     </div>
   </dialog>
 
   <script>window.SERIES = {};</script>
-  <script src="data/f1.js?v=20261007p"></script>
-  <script src="data/formulae.js?v=20261007p"></script>
-  <script src="data/motogp.js?v=20261007p"></script>
-  <script src="data/wec.js?v=20261007p"></script>
-  <script src="data/media.js?v=20261007p"></script>
+  <script src="data/f1.js?v=20261015a"></script>
+  <script src="data/formulae.js?v=20261015a"></script>
+  <script src="data/motogp.js?v=20261015a"></script>
+  <script src="data/wec.js?v=20261015a"></script>
+  <script src="data/media.js?v=20261015a"></script>
   <script src="data/live.js"></script>
-  <script src="data/newsletter.js?v=20261007p"></script>
-  <script src="data/circuits.js?v=20261007p"></script>
+  <script src="data/newsletter.js?v=20261015a"></script>
+  <script src="data/circuits.js?v=20261015a"></script>
+  <script>window.EN = {};</script>
+  <script src="data/en/f1.js?v=20261015a"></script>
+  <script src="data/en/formulae.js?v=20261015a"></script>
+  <script src="data/en/motogp.js?v=20261015a"></script>
+  <script src="data/en/wec.js?v=20261015a"></script>
+  <script src="data/en/media.js?v=20261015a"></script>
   <script src="data/highlights.js"></script>
-  <script src="destaques.js?v=20261007p"></script>
-  <script src="guide.js?v=20261007p"></script>
-  <script src="app.js?v=20261007p"></script>
-  <script type="module" src="motion.js?v=20261007p"></script>
+  <script src="destaques.js?v=20261015a"></script>
+  <script src="guide.js?v=20261015a"></script>
+  <script src="app.js?v=20261015a"></script>
+  <script type="module" src="motion.js?v=20261015a"></script>
 </body>
 </html>

@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-11T20:17:22.476Z",
+ "generated": "2026-10-15T18:39:08.088Z",
  "f1": {
   "round": 17,
   "drivers": [
@@ -353,6 +353,14 @@ window.LIVE = {
    "lede": "Kimi Antonelli lidera o campeonato com 340 pontos e 102 pontos de vantagem sobre George Russell, depois de 17 de 23 etapas."
   },
   "status": "Antonelli lidera com 102 pts de vantagem",
+  "en": {
+   "hero": {
+    "kicker": "Championship leader · after 17 of 23 rounds",
+    "lede": "Kimi Antonelli leads the championship with 340 points, 102 points clear of George Russell, after 17 of 23 rounds."
+   },
+   "status": "Antonelli leads by 102 pts",
+   "updated": "Updated after round 17: Singapore, 11 Oct."
+  },
   "updated": "Atualizado após a etapa 17: Singapura, 11 out.",
   "standings": [
    [
@@ -1003,6 +1011,14 @@ window.LIVE = {
    "lede": "Jorge Martín lidera o campeonato com 355 pontos e 2 pontos de vantagem sobre Marc Márquez, depois de 17 de 22 etapas."
   },
   "status": "Martín lidera com 2 pts de vantagem",
+  "en": {
+   "hero": {
+    "kicker": "Championship leader · after 17 of 22 rounds",
+    "lede": "Jorge Martín leads the championship with 355 points, 2 points clear of Marc Márquez, after 17 of 22 rounds."
+   },
+   "status": "Martín leads by 2 pts",
+   "updated": "Updated after round 17: Indonesia, 11 Oct."
+  },
   "updated": "Atualizado após a etapa 17: Indonésia, 11 out.",
   "standings": [
    [
@@ -1456,6 +1472,12 @@ window.LIVE = {
   },
   "hero": {
    "kicker": "Líderes do campeonato · após 6 de 8 etapas"
+  },
+  "en": {
+   "hero": {
+    "kicker": "Championship leaders · after 6 of 8 rounds"
+   },
+   "updated": "Updated after round 6: 6 Hours of Fuji, 27 Sep. Hypercar class."
   },
   "updated": "Atualizado após a etapa 6: 6 Horas de Fuji, 27 set. Classe Hypercar.",
   "standings": [

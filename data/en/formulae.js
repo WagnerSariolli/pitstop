@@ -1,0 +1,92 @@
+// Fórmula E em inglês: só os textos, por cima de data/formulae.js (veja I18N.localize em i18n.js).
+// Ao mudar um texto em data/formulae.js, mude aqui também.
+EN.formulae = {
+  name: "Formula E", short: "Formula E",
+  offSeason: "Season over · Gen4 up next",
+  status: "Wehrlein two-time champion; Jaguar wins the teams' title",
+  updated: "Final standings of season 12, after the London E-Prix, 16 August 2026.",
+  labels: { season: "Season 12", rules: "Gen4" },
+  garageLede: "The 10 teams of the Gen3 Evo car's final season. They all use the same chassis; what changes is the electric powertrain.",
+  peopleLede: "The 20 drivers, in final championship order.",
+  terms: {
+    "Porsche (cliente)": "Porsche (customer)", "Jaguar (cliente)": "Jaguar (customer)",
+    "Powertrain Porsche (cliente)": "Porsche (customer) powertrain", "Powertrain Jaguar (cliente)": "Jaguar (customer) powertrain",
+  },
+  hero: {
+    kicker: "2025/26 season champion",
+    lede: "Porsche's German won three races and beat Jake Dennis by 5 points. He's only the second two-time champion in Formula E history, after Jean-Éric Vergne.",
+    stats: [["Points", "169"], ["Wins", "3"], ["Margin", "+5"]],
+    alt: "Pascal Wehrlein in his Porsche race suit",
+  },
+  team: t => {
+    const wins = t.specs[2][1];
+    return { ptsLabel: `${t.pts} pts in the teams' championship · ${wins} ${wins === 1 ? "win" : "wins"}` };
+  },
+  teams: {
+    jaguar: { note: "Teams' champion. Evans and Da Costa won three races and scored consistently." },
+    porsche: { note: "Two-time manufacturers' champion. Wehrlein took the title with three wins, including the penultimate race in London." },
+    mahindra: { note: "The big surprise of the year. Nyck de Vries won three times, including in Monaco." },
+    andretti: { note: "Jake Dennis was runner-up by 5 points. Brazil's Felipe Drugovich drives for the team and stays on for the Gen4 era." },
+    citroen: { note: "New in season 12, with the experienced pairing of Cassidy and Vergne. Won in Mexico City." },
+    nissan: { note: "Races with the number 1 of the 2024/25 champion, Oliver Rowland. Won in Monaco." },
+    envision: { note: "A team focused on sustainability, led by veteran Sébastien Buemi, the 2015/16 champion." },
+    cupra: { note: "Dan Ticktum won in Tokyo. Young Josep Maria Martí completes the line-up." },
+    dspenske: { note: "Taylor Barnard closed the season by winning the final race, in London." },
+    lola: { note: "A new project from the historic Lola with Yamaha power. Lucas di Grassi gave the team its win in Shanghai." },
+  },
+  drivers: {
+    94: { bio: "Two-time champion: only the second driver with two titles in Formula E history." },
+    27: { bio: "The 2022/23 champion. Won the opener in São Paulo and finished runner-up by 5 points." },
+    9: { bio: "The winningest driver in Formula E history, with 16 victories, but still without a title." },
+    1: { bio: "The 2024/25 champion, defending the number 1. Won in Monaco." },
+    48: { bio: "Runner-up in 2021/22. On the podium at the final race of the year." },
+    13: { bio: "The 2019/20 champion. Also races in WEC for Alpine." },
+    21: { bio: "The 2020/21 champion and former F1 driver. Three wins in 2026 and a Le Mans winner with Toyota." },
+    37: { bio: "Twelve career wins. Gave Citroën its first victory, in Mexico City." },
+    51: { bio: "Took his first Formula E win in Berlin, in 2026." },
+    16: { bio: "The 2015/16 champion and WEC leader with Toyota." },
+    77: { bio: "First career win at the final race of the season, in London." },
+    25: { bio: "The first two-time champion in history (2017/18 and 2018/19)." },
+    3: { bio: "Former F2 driver, in his second season in the series." },
+    28: { bio: "2022 F2 champion and former Aston Martin F1 reserve. Re-signed with Andretti for the Gen4 era." },
+    33: { bio: "Won in Tokyo. Two-time winner of the Macau F3 Grand Prix." },
+    14: { bio: "Former DTM driver and Formula E test driver." },
+    11: { bio: "The 2016/17 champion and the series' record holder for podiums (42). Won in Shanghai with Lola." },
+    7: { bio: "Seven career wins." },
+    23: { bio: "Also races in WEC, in the #12 Cadillac." },
+    22: { bio: "The first driver from Barbados in the series." },
+  },
+  ratingLabels: { potencia: "Powertrain", efic: "Energy efficiency", quali: "Qualifying", corrida: "Race pace", confiab: "Reliability" },
+  commonSpecs: [
+    ["Chassis", "Spark Gen3 Evo (spec)"], ["Maximum power", "350 kW (≈ 470 hp) in attack mode"], ["Race power", "300 kW (≈ 400 hp)"],
+    ["Regeneration", "Up to 600 kW under braking"], ["0 to 100 km/h", "1.82 s"], ["Top speed", "≈ 320 km/h"],
+    ["Drive", "Rear; all-wheel in attack mode and at the start"], ["Tyres", "Hankook, for dry and wet"], ["Minimum weight", "≈ 850 kg (with driver)"],
+  ],
+  calendarNote: "17 races in 11 cities, from December 2025 to August 2026. Several cities host two races on the same weekend.",
+  rules: {
+    title: "Gen4: the next car",
+    lede: "The 2025/26 season was the last for Gen3. From season 13 comes Gen4, the most powerful car in the series' history.",
+    compare: {
+      head: ["Item", "Gen3 Evo", "Gen4"],
+      rows: [
+        ["Maximum power", "350 kW", "600 kW"], ["Regeneration", "600 kW", "700 kW"],
+        ["All-wheel drive", "Attack mode only", "Permanent"], ["Tyres", "Hankook", "Bridgestone"],
+      ],
+    },
+    cards: [
+      ["Attack mode", "By driving through a zone off the racing line, a driver gets extra power and all-wheel drive for a few minutes."],
+      ["Pit Boost", "In some races, everyone has to stop for a quick 30-second recharge."],
+      ["Counted energy", "Each car starts with a fixed amount of energy. Whoever saves it best finishes strongest."],
+    ],
+  },
+  facts: [
+    { big: "1.82 s", text: "The Gen3 Evo's 0 to 100 km/h time, quicker than an F1 car." },
+    { big: "16", text: "Wins for Mitch Evans, a Formula E record, still without a single title." },
+    { big: "42", text: "Podiums for Lucas di Grassi, the series record. He won in Shanghai in 2026." },
+    { big: "Anhembi", text: "The season opened in São Paulo, at the Sambadrome. Jake Dennis won." },
+    { big: "5 pts", text: "The gap between Wehrlein and Dennis at the end of the championship." },
+    { big: "2", text: "Brazilians on the grid: Lucas di Grassi (Lola Yamaha ABT) and Felipe Drugovich (Andretti)." },
+    { big: "600 kW", text: "The Gen3 Evo's regeneration power: much of the race's energy comes from braking." },
+  ],
+  footer: "Data from fiaformulae.com. Images © Formula E Operations.",
+};

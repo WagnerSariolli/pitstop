@@ -12,6 +12,19 @@ python -m http.server 5173
 
 Cada campeonato tem um arquivo em `data/` (`f1.js`, `formulae.js`, `motogp.js`, `wec.js`). As galerias dos veículos ficam em `data/media.js`. Os dados não se atualizam sozinhos: edite esses arquivos depois de cada corrida.
 
+## Português e inglês
+
+A chave PT/EN no topo troca o idioma (a escolha fica no navegador; na primeira visita vale o idioma do navegador,
+e `?lang=en` força o inglês num link). Tudo passa por `i18n.js`:
+
+- Textos da interface: escritos nos dois idiomas direto no código, com `T("português", "english")`.
+- Conteúdo de cada campeonato: `data/en/<campeonato>.js` traz só os textos em inglês e entra por cima de `data/<campeonato>.js`.
+  **Ao mudar um texto em `data/<campeonato>.js`, mude também o de `data/en/`.** Países, cidades e rótulos de ficha
+  que se repetem ficam em `TERMS`, no `i18n.js`. Títulos da galeria em português: `data/en/media.js`.
+- HTML fixo (`index.html`, `privacidade.html`, `404.html`): atributos `data-i18n*`, com o inglês em `STATIC`, no `i18n.js`.
+- `scripts/update-data.mjs` escreve os textos do líder nos dois idiomas (`en` dentro de cada campeonato em `data/live.js`).
+- O boletim por e-mail continua só em português.
+
 ## Créditos
 
 Projeto de fã, sem vínculo com os campeonatos.

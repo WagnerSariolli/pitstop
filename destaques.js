@@ -3,11 +3,17 @@
 // Carregado antes de app.js; as funções usam SERIES, ORDER, raceDate, esc, $ e openGallery na hora em que rodam.
 window.HL = (() => {
   const H = window.HIGHLIGHTS || {};
-  const KIND = {
+  const T = I18N.T;
+  const KIND = I18N.en ? {
+    race: "Race highlights", moments: "Epic moments", extended: "Extended highlights",
+    overtakes: "Overtakes", qualifying: "Qualifying", onboard: "Top 10 onboards", sprint: "Sprint",
+    replay: "Full race", start: "The start", radio: "Team radio", react: "Driver reactions", epic: "Moment of the race",
+  } : {
     race: "Melhores momentos da corrida", moments: "Momentos épicos", extended: "Melhores momentos estendidos",
     overtakes: "Ultrapassagens", qualifying: "Classificação", onboard: "Top 10 câmeras onboard", sprint: "Sprint",
     replay: "Corrida completa", start: "A largada", radio: "Rádio das equipes", react: "Reação dos pilotos", epic: "Lance da corrida",
   };
+  const VIDEO = T("Vídeo", "Video");
   // ordem de exibição: primeiro o que toca dentro do site (o vídeo grande nunca manda o visitante embora)
   const ordered = h => [...h.videos.filter(v => !v.ext), ...h.videos.filter(v => v.ext)];
   const thumb = (id, q = "hqdefault") => `https://i.ytimg.com/vi/${id}/${q}.jpg`;
@@ -39,10 +45,11 @@ window.HL = (() => {
     let cur = races.find(r => String(r.r) === want) || races[0];
     const host = $("#destaques");
     host.hidden = false;
-    $("#hl-lede").textContent = `Os momentos mais épicos de cada etapa: vídeos oficiais dos campeonatos no YouTube e fotos da Wikimedia Commons, com autor e licença.`;
+    $("#hl-lede").textContent = T("Os momentos mais épicos de cada etapa: vídeos oficiais dos campeonatos no YouTube e fotos da Wikimedia Commons, com autor e licença.",
+      "The most epic moments of each round: official championship videos on YouTube and photos from Wikimedia Commons, with author and licence.");
     $("#hlRaces").innerHTML = races.map(r => `
       <button role="tab" data-r="${r.r}" aria-selected="${r === cur}">
-        <small>Etapa ${esc(r.r)} · ${esc(r.date)}</small><b>${esc(r.gp)}</b><span>${esc(r.winner)}</span>
+        <small>${T("Etapa", "Round")} ${esc(r.r)} · ${esc(r.date)}</small><b>${esc(r.gp)}</b><span>${esc(r.winner)}</span>
       </button>`).join("");
 
     const draw = () => {
@@ -56,32 +63,32 @@ window.HL = (() => {
           <span class="hl-shade" aria-hidden="true"></span>
           <span class="g-play" aria-hidden="true"></span>
           <span class="hl-meta">
-            <i>${esc(KIND[first.kind] || "Vídeo")} · Etapa ${esc(cur.r)}</i>
+            <i>${esc(KIND[first.kind] || VIDEO)} · ${T("Etapa", "Round")} ${esc(cur.r)}</i>
             <b>${esc(cur.gp)}</b>
-            <small>Vitória de ${esc(cur.winner)}${team ? ` · ${esc(team.name)}` : ""} · ${esc(cur.date)}</small>
+            <small>${T(`Vitória de ${esc(cur.winner)}`, `Won by ${esc(cur.winner)}`)}${team ? ` · ${esc(team.name)}` : ""} · ${esc(cur.date)}</small>
           </span>
-          ${first.ext ? `<span class="g-ext hl-ext">Assistir no YouTube ↗</span>` : ""}
+          ${first.ext ? `<span class="g-ext hl-ext">${T("Assistir no YouTube ↗", "Watch on YouTube ↗")}</span>` : ""}
         </${first.ext ? "a" : "button"}>` : ""}
         ${rest.length ? `<div class="hl-grid">${rest.map((x, k) => tile(x, k + (first ? 1 : 0), h)).join("")}</div>` : ""}`;
       const nOff = h.videos.length;
       $("#hlNote").textContent = [
-        nOff && `${nOff} ${nOff > 1 ? "vídeos oficiais" : "vídeo oficial"}`,
-        h.photos?.length && `${h.photos.length} ${h.photos.length > 1 ? "fotos" : "foto"} da Wikimedia Commons`,
-      ].filter(Boolean).join(" · ") + (h.videos.some(v => v.ext) ? ". Os marcados com “Só no YouTube” abrem no YouTube, porque o canal bloqueia a exibição em outros sites." : ".");
+        nOff && `${nOff} ${nOff > 1 ? T("vídeos oficiais", "official videos") : T("vídeo oficial", "official video")}`,
+        h.photos?.length && `${h.photos.length} ${h.photos.length > 1 ? T("fotos", "photos") : T("foto", "photo")} ${T("da", "from")} Wikimedia Commons`,
+      ].filter(Boolean).join(" · ") + (h.videos.some(v => v.ext) ? T(". Os marcados com “Só no YouTube” abrem no YouTube, porque o canal bloqueia a exibição em outros sites.", ". Those marked “YouTube only” open on YouTube, because the channel blocks playback on other sites.") : ".");
     };
     function tile(x, i) {
       if (x.t === "p") return `
         <button class="g-tile hl-photo" data-i="${i}">
           <span class="g-thumb"><img src="${x.thumb}" alt="" loading="lazy"></span>
-          <span class="g-cap"><b>${esc(x.title)}</b><small>Foto · ${esc(x.credit)}</small></span>
+          <span class="g-cap"><b>${esc(x.title)}</b><small>${T("Foto", "Photo")} · ${esc(x.credit)}</small></span>
         </button>`;
       const v = H[S.id][cur.r].videos.find(y => y.id === x.id);
-      const label = KIND[v.kind] || "Vídeo";
-      const sub = `Vídeo oficial · ${v.ch}`;
+      const label = KIND[v.kind] || VIDEO;
+      const sub = `${T("Vídeo oficial", "Official video")} · ${v.ch}`;
       return v.ext ? `
         <a class="g-tile is-ext" href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-leave data-title="${esc(v.title)}" data-thumb="${thumb(v.id)}">
-          <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-ext">Só no YouTube ↗</span></span>
-          <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(KIND[v.kind] || "Vídeo")} · ${esc(v.ch)} · abre no YouTube</small></span>
+          <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-ext">${T("Só no YouTube ↗", "YouTube only ↗")}</span></span>
+          <span class="g-cap"><b>${esc(v.title)}</b><small>${esc(KIND[v.kind] || VIDEO)} · ${esc(v.ch)} · ${T("abre no YouTube", "opens on YouTube")}</small></span>
         </a>` : `
         <button class="g-tile" data-i="${i}">
           <span class="g-thumb"><img src="${thumb(v.id)}" alt="" loading="lazy"><span class="g-play" aria-hidden="true"></span><span class="g-badge hl-kind">${esc(label)}</span></span>
@@ -123,20 +130,20 @@ window.HL = (() => {
     if (!cards.length) return "";
     return `
       <section class="lobby-hl" aria-labelledby="lhl-title">
-        <div class="section-head"><h2 id="lhl-title">Momentos épicos</h2><p>Os melhores momentos da última corrida de cada campeonato, com os vídeos oficiais.</p></div>
+        <div class="section-head"><h2 id="lhl-title">${T("Momentos épicos", "Epic moments")}</h2><p>${T("Os melhores momentos da última corrida de cada campeonato, com os vídeos oficiais.", "Highlights of the latest race in each championship, with the official videos.")}</p></div>
         <div class="lhl-grid">${cards.map(({ s, r, v }) => `
           <article class="lhl-card" style="--c:${s.accent}">
-            <${v.ext ? `a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-leave data-title="${esc(v.title)}" data-thumb="${thumb(v.id)}"` : `button data-hls="${s.id}" data-hlr="${r.r}"`} class="lhl-media" aria-label="Assistir: ${esc(KIND[v.kind] || "vídeo")} de ${esc(s.short)} ${esc(r.gp)}${v.ext ? " (abre no YouTube)" : ""}">
+            <${v.ext ? `a href="https://www.youtube.com/watch?v=${v.id}" target="_blank" rel="noopener" data-leave data-title="${esc(v.title)}" data-thumb="${thumb(v.id)}"` : `button data-hls="${s.id}" data-hlr="${r.r}"`} class="lhl-media" aria-label="${T("Assistir", "Watch")}: ${esc(KIND[v.kind] || VIDEO)}, ${esc(s.short)} ${esc(r.gp)}${v.ext ? T(" (abre no YouTube)", " (opens on YouTube)") : ""}">
               <img src="${thumb(v.id, "maxresdefault")}" ${fallback} alt="" loading="lazy">
               <span class="g-play" aria-hidden="true"></span>
               <span class="lhl-badge">${esc(s.short)}</span>
-              ${v.ext ? `<span class="g-ext">No YouTube ↗</span>` : ""}
+              ${v.ext ? `<span class="g-ext">${T("No YouTube ↗", "On YouTube ↗")}</span>` : ""}
             </${v.ext ? "a" : "button"}>
             <div class="lhl-body">
-              <small>Etapa ${esc(r.r)} · ${esc(r.date)}</small>
+              <small>${T("Etapa", "Round")} ${esc(r.r)} · ${esc(r.date)}</small>
               <b>${esc(r.gp)}</b>
-              <span>Vitória de ${esc(r.winner)}</span>
-              <a href="?c=${s.id}&r=${r.r}#destaques">Todos os destaques ›</a>
+              <span>${T(`Vitória de ${esc(r.winner)}`, `Won by ${esc(r.winner)}`)}</span>
+              <a href="?c=${s.id}&r=${r.r}#destaques">${T("Todos os destaques ›", "All highlights ›")}</a>
             </div>
           </article>`).join("")}
         </div>
