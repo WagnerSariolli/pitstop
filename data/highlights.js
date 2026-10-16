@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-14T23:55:52.290Z"
+   "photosChecked": "2026-10-16T01:21:21.313Z"
   },
   "16": {
    "videos": [
@@ -1340,9 +1340,16 @@ window.HIGHLIGHTS = {
      "title": "2026 Bahrain GP - Red Bull - Max Verstappen - FP2",
      "credit": "Liauzh · CC BY-SA 4.0",
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Red_Bull_-_Max_Verstappen_-_FP2.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg/1920px-2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/9/98/2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg/500px-2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg",
+     "title": "2026 Bahrain GP - McLaren - Oscar Piastri - FP1",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-14T23:55:52.966Z"
+   "photosChecked": "2026-10-16T01:21:22.027Z"
   },
   "17": {
    "videos": [
@@ -2908,7 +2915,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-14T23:56:25.128Z"
+   "photosChecked": "2026-10-16T01:21:53.943Z"
   },
   "16": {
    "videos": [
@@ -2956,7 +2963,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-14T23:56:25.719Z"
+   "photosChecked": "2026-10-16T01:21:54.566Z"
   },
   "17": {
    "videos": [
@@ -3004,7 +3011,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-14T23:56:26.354Z"
+   "photosChecked": "2026-10-16T01:21:55.237Z"
   }
  },
  "wec": {
@@ -3408,7 +3415,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-14T23:56:58.679Z"
+   "photosChecked": "2026-10-16T01:21:56.118Z"
   }
  }
 };
