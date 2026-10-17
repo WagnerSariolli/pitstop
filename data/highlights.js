@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-16T01:21:21.313Z"
+   "photosChecked": "2026-10-17T04:26:52.169Z"
   },
   "16": {
    "videos": [
@@ -1349,7 +1349,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-16T01:21:22.027Z"
+   "photosChecked": "2026-10-17T04:26:52.711Z"
   },
   "17": {
    "videos": [
@@ -2915,7 +2915,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-16T01:21:53.943Z"
+   "photosChecked": "2026-10-17T04:27:24.354Z"
   },
   "16": {
    "videos": [
@@ -2963,7 +2963,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-16T01:21:54.566Z"
+   "photosChecked": "2026-10-17T04:27:24.887Z"
   },
   "17": {
    "videos": [
@@ -3011,7 +3011,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-16T01:21:55.237Z"
+   "photosChecked": "2026-10-17T04:27:25.419Z"
   }
  },
  "wec": {
@@ -3415,7 +3415,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-16T01:21:56.118Z"
+   "photosChecked": "2026-10-17T04:27:57.265Z"
   }
  }
 };
