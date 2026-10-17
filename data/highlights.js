@@ -1411,7 +1411,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-16T12:25:19.389Z"
+   "photosChecked": "2026-10-17T13:43:31.744Z"
   }
  },
  "formulae": {
@@ -3416,6 +3416,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-10-17T04:27:57.265Z"
+  },
+  "7": {
+   "videos": [
+    {
+     "id": "QL4WG87op8I",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "From Last to First After Brilliant Qualifying Lap! | 6 Hours of Barcelona 2026",
+     "ch": "FIA WEC"
+    }
+   ],
+   "photos": []
   }
  }
 };
