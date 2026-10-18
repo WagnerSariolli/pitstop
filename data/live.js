@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-18T18:05:47.784Z",
+ "generated": "2026-10-18T20:43:45.849Z",
  "f1": {
   "round": 17,
   "drivers": [
@@ -1392,7 +1392,7 @@ window.LIVE = {
    {
     "key": "17",
     "pos": 20,
-    "pts": 10,
+    "pts": 11,
     "wins": 0
    },
    {
