@@ -3434,7 +3434,8 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-10-18T18:05:53.483Z"
   }
  }
 };
