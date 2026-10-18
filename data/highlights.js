@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-17T04:26:52.169Z"
+   "photosChecked": "2026-10-18T05:55:05.349Z"
   },
   "16": {
    "videos": [
@@ -1347,9 +1347,16 @@ window.HIGHLIGHTS = {
      "title": "2026 Bahrain GP - McLaren - Oscar Piastri - FP1",
      "credit": "Liauzh · CC BY-SA 4.0",
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_McLaren_-_Oscar_Piastri_-_FP1.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg/1920px-2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c0/2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg/500px-2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg",
+     "title": "2026 Bahrain GP - Audi - Nico Hulkenberg - FP1",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-17T04:26:52.711Z"
+   "photosChecked": "2026-10-18T05:55:06.089Z"
   },
   "17": {
    "videos": [
@@ -2915,7 +2922,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-17T04:27:24.354Z"
+   "photosChecked": "2026-10-18T05:55:38.387Z"
   },
   "16": {
    "videos": [
@@ -2963,7 +2970,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-17T04:27:24.887Z"
+   "photosChecked": "2026-10-18T05:55:39.038Z"
   },
   "17": {
    "videos": [
@@ -3011,7 +3018,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-17T04:27:25.419Z"
+   "photosChecked": "2026-10-18T05:55:39.694Z"
   }
  },
  "wec": {
@@ -3415,7 +3422,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-17T04:27:57.265Z"
+   "photosChecked": "2026-10-18T05:56:11.983Z"
   },
   "7": {
    "videos": [
