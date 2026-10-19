@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-18T14:34:39.284Z"
+   "photosChecked": "2026-10-19T14:41:07.050Z"
   }
  },
  "formulae": {
@@ -3426,6 +3426,13 @@ window.HIGHLIGHTS = {
   },
   "7": {
    "videos": [
+    {
+     "id": "T3lCfL3qXoA",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 6 Hours of Barcelona 2026",
+     "ch": "FIA WEC"
+    },
     {
      "id": "QL4WG87op8I",
      "kind": "qualifying",
