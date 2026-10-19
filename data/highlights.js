@@ -3434,6 +3434,20 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     },
     {
+     "id": "Cw2SZgbezRU",
+     "kind": "moments",
+     "prio": 2,
+     "title": "5 Dramatic Barcelona 2026 Moments 🇪🇸",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "i3uyoeqMid4",
+     "kind": "extended",
+     "prio": 3,
+     "title": "Extended Highlights | 6 Hours of Barcelona 2026",
+     "ch": "FIA WEC"
+    },
+    {
      "id": "QL4WG87op8I",
      "kind": "qualifying",
      "prio": 9,
@@ -3442,7 +3456,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-18T18:05:53.483Z"
+   "photosChecked": "2026-10-19T20:35:56.211Z"
   }
  }
 };
