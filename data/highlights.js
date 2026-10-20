@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-19T14:41:07.050Z"
+   "photosChecked": "2026-10-20T17:04:39.353Z"
   }
  },
  "formulae": {
@@ -3445,6 +3445,20 @@ window.HIGHLIGHTS = {
      "kind": "extended",
      "prio": 3,
      "title": "Extended Highlights | 6 Hours of Barcelona 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "-HHa2cpa5Pw",
+     "kind": "epic",
+     "prio": 4,
+     "title": "TOYOTA WORLD CHAMPIONS! 🏆 Celebrations & Reactions | 6 Hours of Barcelona 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "z6frFDPwnGo",
+     "kind": "replay",
+     "prio": 6,
+     "title": "FULL RACE | 6 Hours of Barcelona 2026",
      "ch": "FIA WEC"
     },
     {
