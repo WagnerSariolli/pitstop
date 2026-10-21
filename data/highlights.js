@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-20T11:36:52.349Z"
+   "photosChecked": "2026-10-21T15:14:43.314Z"
   },
   "16": {
    "videos": [
@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-20T11:36:52.880Z"
+   "photosChecked": "2026-10-21T15:14:44.005Z"
   },
   "17": {
    "videos": [
@@ -2970,7 +2970,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-20T11:36:53.480Z"
+   "photosChecked": "2026-10-21T15:14:44.625Z"
   },
   "17": {
    "videos": [
@@ -3018,7 +3018,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-20T11:36:53.975Z"
+   "photosChecked": "2026-10-21T15:14:45.281Z"
   }
  },
  "wec": {
@@ -3422,7 +3422,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-20T11:36:54.637Z"
+   "photosChecked": "2026-10-21T15:14:45.888Z"
   },
   "7": {
    "videos": [
