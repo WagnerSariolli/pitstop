@@ -3470,7 +3470,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-20T23:53:27.393Z"
+   "photosChecked": "2026-10-22T04:47:24.081Z"
   }
  }
 };
