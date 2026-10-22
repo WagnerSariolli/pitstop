@@ -3019,6 +3019,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-10-21T15:14:45.281Z"
+  },
+  "18": {
+   "videos": [
+    {
+     "id": "IyArnXH4gxQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "San Remo to Phillip Island ride 🏍️ | 2026 Australian GP",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
   }
  },
  "wec": {
