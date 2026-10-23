@@ -3028,6 +3028,13 @@ window.HIGHLIGHTS = {
      "prio": 4,
      "title": "San Remo to Phillip Island ride 🏍️ | 2026 Australian GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "M70qjRuqyKw",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Brilliantly rapid laps in the last 5 minutes of MotoGP Practice 😎 | 2026 Australian GP",
+     "ch": "MotoGP"
     }
    ],
    "photos": []
