@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-22T15:17:07.909Z"
+   "photosChecked": "2026-10-23T18:22:03.098Z"
   },
   "16": {
    "videos": [
@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-22T15:17:08.441Z"
+   "photosChecked": "2026-10-23T18:22:03.785Z"
   },
   "17": {
    "videos": [
@@ -2970,7 +2970,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-22T15:17:09.057Z"
+   "photosChecked": "2026-10-23T18:22:04.513Z"
   },
   "17": {
    "videos": [
@@ -3018,7 +3018,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-22T15:17:09.555Z"
+   "photosChecked": "2026-10-23T18:22:05.091Z"
   },
   "18": {
    "videos": [
@@ -3434,7 +3434,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-22T15:17:10.177Z"
+   "photosChecked": "2026-10-23T18:22:05.686Z"
   },
   "7": {
    "videos": [
@@ -3450,6 +3450,13 @@ window.HIGHLIGHTS = {
      "kind": "moments",
      "prio": 2,
      "title": "5 Dramatic Barcelona 2026 Moments 🇪🇸",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "nWassaldZHo",
+     "kind": "moments",
+     "prio": 2,
+     "title": "10 Dramatic Barcelona 2026 Moments | 6 Hours of Barcelona 2026",
      "ch": "FIA WEC"
     },
     {
@@ -3471,13 +3478,6 @@ window.HIGHLIGHTS = {
      "kind": "replay",
      "prio": 6,
      "title": "FULL RACE | 6 Hours of Barcelona 2026",
-     "ch": "FIA WEC"
-    },
-    {
-     "id": "QL4WG87op8I",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "From Last to First After Brilliant Qualifying Lap! | 6 Hours of Barcelona 2026",
      "ch": "FIA WEC"
     }
    ],
