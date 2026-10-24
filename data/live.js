@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-24T05:54:05.798Z",
+ "generated": "2026-10-24T11:00:07.816Z",
  "f1": {
   "round": 17,
   "drivers": [
@@ -615,7 +615,7 @@ window.LIVE = {
    {
     "key": 79,
     "pos": 5,
-    "pts": 263,
+    "pts": 259,
     "wins": 1,
     "podiums": 4,
     "name": "Ai Ogura",
@@ -687,7 +687,7 @@ window.LIVE = {
    {
     "key": 33,
     "pos": 13,
-    "pts": 107,
+    "pts": 108,
     "wins": 0,
     "podiums": 0,
     "name": "Brad Binder",
@@ -696,7 +696,7 @@ window.LIVE = {
    {
     "key": 11,
     "pos": 14,
-    "pts": 75,
+    "pts": 76,
     "wins": 0,
     "podiums": 0,
     "name": "Diogo Moreira",
@@ -741,7 +741,7 @@ window.LIVE = {
    {
     "key": 43,
     "pos": 19,
-    "pts": 30,
+    "pts": 31,
     "wins": 0,
     "podiums": 0,
     "name": "Jack Miller",
@@ -777,7 +777,7 @@ window.LIVE = {
    {
     "key": null,
     "pos": 23,
-    "pts": 9,
+    "pts": 10,
     "wins": 0,
     "podiums": 0,
     "name": "Iker Lecuona",
@@ -879,17 +879,17 @@ window.LIVE = {
    {
     "id": "trackhouse",
     "pos": 3,
-    "pts": 499
+    "pts": 495
    },
    {
     "id": "ktm",
     "pos": 4,
-    "pts": 370
+    "pts": 371
    },
    {
     "id": "gresini",
     "pos": 5,
-    "pts": 315
+    "pts": 316
    },
    {
     "id": "vr46",
@@ -909,7 +909,7 @@ window.LIVE = {
    {
     "id": "lcr",
     "pos": 9,
-    "pts": 126
+    "pts": 127
    },
    {
     "id": "yamaha",
@@ -919,7 +919,7 @@ window.LIVE = {
    {
     "id": "pramac",
     "pos": 11,
-    "pts": 54
+    "pts": 55
    }
   ],
   "calendar": {
@@ -1058,7 +1058,7 @@ window.LIVE = {
      "pos": 5,
      "name": "Ai Ogura",
      "team": "trackhouse",
-     "pts": 263
+     "pts": 259
     },
     {
      "pos": 6,
@@ -1106,13 +1106,13 @@ window.LIVE = {
      "pos": 13,
      "name": "Brad Binder",
      "team": "ktm",
-     "pts": 107
+     "pts": 108
     },
     {
      "pos": 14,
      "name": "Diogo Moreira",
      "team": "lcr",
-     "pts": 75
+     "pts": 76
     },
     {
      "pos": 15,
@@ -1142,7 +1142,7 @@ window.LIVE = {
      "pos": 19,
      "name": "Jack Miller",
      "team": "pramac",
-     "pts": 30
+     "pts": 31
     },
     {
      "pos": 20,
@@ -1166,7 +1166,7 @@ window.LIVE = {
      "pos": 23,
      "name": "Iker Lecuona",
      "team": "gresini",
-     "pts": 9
+     "pts": 10
     },
     {
      "pos": 24,
@@ -1242,21 +1242,21 @@ window.LIVE = {
      "pos": 3,
      "name": "Trackhouse",
      "team": "trackhouse",
-     "pts": 499,
+     "pts": 495,
      "sub": "Aprilia RS-GP26"
     },
     {
      "pos": 4,
      "name": "KTM",
      "team": "ktm",
-     "pts": 370,
+     "pts": 371,
      "sub": "KTM RC16"
     },
     {
      "pos": 5,
      "name": "Gresini",
      "team": "gresini",
-     "pts": 315,
+     "pts": 316,
      "sub": "Ducati Desmosedici GP25"
     },
     {
@@ -1284,7 +1284,7 @@ window.LIVE = {
      "pos": 9,
      "name": "LCR Honda",
      "team": "lcr",
-     "pts": 126,
+     "pts": 127,
      "sub": "Honda RC213V"
     },
     {
@@ -1298,7 +1298,7 @@ window.LIVE = {
      "pos": 11,
      "name": "Pramac",
      "team": "pramac",
-     "pts": 54,
+     "pts": 55,
      "sub": "Yamaha YZR-M1"
     }
    ]

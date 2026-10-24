@@ -3030,6 +3030,27 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "OWBrB2zX5DE",
+     "kind": "epic",
+     "prio": 4,
+     "title": "The fight for the title: Martin vs Marquez ⚔️ | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "xd2sYL3jTTA",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Top 3 Tissot Sprint moments 🤯 | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "NmPIcFKfUeM",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Tissot Sprint Build Up | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "M70qjRuqyKw",
      "kind": "qualifying",
      "prio": 9,
@@ -3489,7 +3510,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-23T07:32:47.517Z"
+   "photosChecked": "2026-10-24T11:00:13.988Z"
   }
  }
 };
