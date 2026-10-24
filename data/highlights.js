@@ -1245,7 +1245,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Formula_1_2026_Azerbaijan_Grand_Prix_6.jpg"
     }
    ],
-   "photosChecked": "2026-10-23T18:22:03.098Z"
+   "photosChecked": "2026-10-24T20:49:54.688Z"
   },
   "16": {
    "videos": [
@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-23T18:22:03.785Z"
+   "photosChecked": "2026-10-24T20:49:55.358Z"
   },
   "17": {
    "videos": [
@@ -2970,7 +2970,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-23T18:22:04.513Z"
+   "photosChecked": "2026-10-24T20:49:56.126Z"
   },
   "17": {
    "videos": [
@@ -3018,7 +3018,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-23T18:22:05.091Z"
+   "photosChecked": "2026-10-24T20:49:56.742Z"
   },
   "18": {
    "videos": [
@@ -3055,6 +3055,13 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Brilliantly rapid laps in the last 5 minutes of MotoGP Practice 😎 | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "9JHM8aeF0jM",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Crazy skill shown in the last 5 minutes of MotoGP Q2 😎 | 2026 Australian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3462,7 +3469,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-23T18:22:05.686Z"
+   "photosChecked": "2026-10-24T20:49:57.474Z"
   },
   "7": {
    "videos": [
