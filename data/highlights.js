@@ -1419,6 +1419,19 @@ window.HIGHLIGHTS = {
     }
    ],
    "photosChecked": "2026-10-24T00:42:34.408Z"
+  },
+  "18": {
+   "videos": [
+    {
+     "id": "EQ74or790IM",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Qualifying Highlights | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    }
+   ],
+   "photos": []
   }
  },
  "formulae": {
