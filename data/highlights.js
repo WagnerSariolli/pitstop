@@ -3074,6 +3074,13 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "0ng2-ZAk6ts",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Farewell Lap & Rider Parade | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "xd2sYL3jTTA",
      "kind": "sprint",
      "prio": 6,
@@ -3092,13 +3099,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Brilliantly rapid laps in the last 5 minutes of MotoGP Practice 😎 | 2026 Australian GP",
-     "ch": "MotoGP"
-    },
-    {
-     "id": "9JHM8aeF0jM",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Crazy skill shown in the last 5 minutes of MotoGP Q2 😎 | 2026 Australian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3554,7 +3554,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-24T11:00:13.988Z"
+   "photosChecked": "2026-10-25T11:29:36.899Z"
   }
  }
 };
