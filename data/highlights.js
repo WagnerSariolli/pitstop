@@ -1437,6 +1437,22 @@ window.HIGHLIGHTS = {
      "title": "Kimi Antonelli & Max Verstappen's Ghost Car Comparison Laps! | 2026 United States Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "kxDTghRx_VA",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Kimi Antonelli's Pole Lap | 2026 United States Grand Prix | Pirelli",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "F3aaTsKR1hM",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Drivers React After Qualifying | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
     }
    ],
    "photos": []
