@@ -1,8 +1,8 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-24T11:00:07.816Z",
+ "generated": "2026-10-25T19:37:15.175Z",
  "f1": {
-  "round": 17,
+  "round": 18,
   "drivers": [
    {
     "key": 12,
@@ -335,7 +335,7 @@ window.LIVE = {
    }
   },
   "hero": {
-   "kicker": "Líder do campeonato · após 17 de 23 etapas",
+   "kicker": "Líder do campeonato · após 18 de 23 etapas",
    "stats": [
     [
      "Pontos",
@@ -350,18 +350,18 @@ window.LIVE = {
      "+102"
     ]
    ],
-   "lede": "Kimi Antonelli lidera o campeonato com 340 pontos e 102 pontos de vantagem sobre George Russell, depois de 17 de 23 etapas."
+   "lede": "Kimi Antonelli lidera o campeonato com 340 pontos e 102 pontos de vantagem sobre George Russell, depois de 18 de 23 etapas."
   },
   "status": "Antonelli lidera com 102 pts de vantagem",
   "en": {
    "hero": {
-    "kicker": "Championship leader · after 17 of 23 rounds",
-    "lede": "Kimi Antonelli leads the championship with 340 points, 102 points clear of George Russell, after 17 of 23 rounds."
+    "kicker": "Championship leader · after 18 of 23 rounds",
+    "lede": "Kimi Antonelli leads the championship with 340 points, 102 points clear of George Russell, after 18 of 23 rounds."
    },
    "status": "Antonelli leads by 102 pts",
-   "updated": "Updated after round 17: Singapore, 11 Oct."
+   "updated": "Updated after round 18: United States, 25 Oct."
   },
-  "updated": "Atualizado após a etapa 17: Singapura, 11 out.",
+  "updated": "Atualizado após a etapa 18: Estados Unidos, 25 out.",
   "standings": [
    [
     {
