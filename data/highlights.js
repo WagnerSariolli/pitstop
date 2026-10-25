@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-24T00:42:34.408Z"
+   "photosChecked": "2026-10-25T01:13:42.429Z"
   },
   "18": {
    "videos": [
@@ -1427,6 +1427,14 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Qualifying Highlights | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "hNwf2nhgjrU",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Kimi Antonelli & Max Verstappen's Ghost Car Comparison Laps! | 2026 United States Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
