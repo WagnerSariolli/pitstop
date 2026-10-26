@@ -1431,6 +1431,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "-AOf3hV6AJ4",
+     "kind": "radio",
+     "prio": 7,
+     "title": "Radio Rewind | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "q03CkMtY9CE",
      "kind": "react",
      "prio": 8,
@@ -1459,14 +1467,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Kimi Antonelli's Pole Lap | 2026 United States Grand Prix | Pirelli",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "F3aaTsKR1hM",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Drivers React After Qualifying | 2026 United States Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -3563,10 +3563,10 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     },
     {
-     "id": "z6frFDPwnGo",
-     "kind": "replay",
-     "prio": 6,
-     "title": "FULL RACE | 6 Hours of Barcelona 2026",
+     "id": "mSvQKZ8spQE",
+     "kind": "epic",
+     "prio": 4,
+     "title": "5 Insane Barcelona 2026 Overtakes 🇪🇸⚔️",
      "ch": "FIA WEC"
     }
    ],
