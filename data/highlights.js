@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-25T01:13:42.429Z"
+   "photosChecked": "2026-10-26T06:14:12.327Z"
   },
   "18": {
    "videos": [
@@ -1427,6 +1427,14 @@ window.HIGHLIGHTS = {
      "kind": "race",
      "prio": 1,
      "title": "Race Highlights | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "q03CkMtY9CE",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React After The Race | 2026 United States Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     },
