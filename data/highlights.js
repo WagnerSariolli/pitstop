@@ -3098,6 +3098,13 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "8_VxBOlenPQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Phillip Island's farewell lap 🫶 | 2026 Australian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "xd2sYL3jTTA",
      "kind": "sprint",
      "prio": 6,
@@ -3109,13 +3116,6 @@ window.HIGHLIGHTS = {
      "kind": "sprint",
      "prio": 6,
      "title": "Tissot Sprint Build Up | 2026 Australian GP",
-     "ch": "MotoGP"
-    },
-    {
-     "id": "M70qjRuqyKw",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Brilliantly rapid laps in the last 5 minutes of MotoGP Practice 😎 | 2026 Australian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3571,7 +3571,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-25T11:29:36.899Z"
+   "photosChecked": "2026-10-26T13:06:48.784Z"
   }
  }
 };
