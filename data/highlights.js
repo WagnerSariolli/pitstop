@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-25T22:33:27.853Z"
+   "photosChecked": "2026-10-26T23:53:26.437Z"
   },
   "17": {
    "videos": [
@@ -3024,7 +3024,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-25T22:33:28.511Z"
+   "photosChecked": "2026-10-26T23:53:58.127Z"
   },
   "17": {
    "videos": [
@@ -3072,7 +3072,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-25T22:33:29.006Z"
+   "photosChecked": "2026-10-26T23:53:58.624Z"
   },
   "18": {
    "videos": [
@@ -3523,7 +3523,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-25T22:33:29.617Z"
+   "photosChecked": "2026-10-26T23:54:30.341Z"
   },
   "7": {
    "videos": [
