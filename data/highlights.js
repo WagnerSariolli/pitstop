@@ -1423,6 +1423,14 @@ window.HIGHLIGHTS = {
   "18": {
    "videos": [
     {
+     "id": "srLm23RUAH0",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "EQ74or790IM",
      "kind": "qualifying",
      "prio": 9,
@@ -1455,7 +1463,8 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-10-26T01:10:19.224Z"
   }
  },
  "formulae": {

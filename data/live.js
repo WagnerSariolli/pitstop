@@ -1,21 +1,21 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-25T19:37:15.175Z",
+ "generated": "2026-10-26T01:10:14.259Z",
  "f1": {
   "round": 18,
   "drivers": [
    {
     "key": 12,
     "pos": 1,
-    "pts": 340,
-    "wins": 8,
+    "pts": 365,
+    "wins": 9,
     "name": "Kimi Antonelli",
     "team": "mercedes"
    },
    {
     "key": 63,
     "pos": 2,
-    "pts": 238,
+    "pts": 242,
     "wins": 3,
     "name": "George Russell",
     "team": "mercedes"
@@ -23,7 +23,7 @@ window.LIVE = {
    {
     "key": 44,
     "pos": 3,
-    "pts": 229,
+    "pts": 241,
     "wins": 1,
     "name": "Lewis Hamilton",
     "team": "ferrari"
@@ -31,7 +31,7 @@ window.LIVE = {
    {
     "key": 3,
     "pos": 4,
-    "pts": 221,
+    "pts": 236,
     "wins": 2,
     "name": "Max Verstappen",
     "team": "redbullracing"
@@ -39,7 +39,7 @@ window.LIVE = {
    {
     "key": 16,
     "pos": 5,
-    "pts": 215,
+    "pts": 233,
     "wins": 1,
     "name": "Charles Leclerc",
     "team": "ferrari"
@@ -47,7 +47,7 @@ window.LIVE = {
    {
     "key": 1,
     "pos": 6,
-    "pts": 201,
+    "pts": 211,
     "wins": 2,
     "name": "Lando Norris",
     "team": "mclaren"
@@ -55,7 +55,7 @@ window.LIVE = {
    {
     "key": 81,
     "pos": 7,
-    "pts": 138,
+    "pts": 144,
     "wins": 0,
     "name": "Oscar Piastri",
     "team": "mclaren"
@@ -63,7 +63,7 @@ window.LIVE = {
    {
     "key": 6,
     "pos": 8,
-    "pts": 97,
+    "pts": 105,
     "wins": 0,
     "name": "Isack Hadjar",
     "team": "redbullracing"
@@ -71,7 +71,7 @@ window.LIVE = {
    {
     "key": 30,
     "pos": 9,
-    "pts": 75,
+    "pts": 77,
     "wins": 0,
     "name": "Liam Lawson",
     "team": "racingbulls"
@@ -79,7 +79,7 @@ window.LIVE = {
    {
     "key": 10,
     "pos": 10,
-    "pts": 41,
+    "pts": 42,
     "wins": 0,
     "name": "Pierre Gasly",
     "team": "alpine"
@@ -193,32 +193,32 @@ window.LIVE = {
    {
     "id": "mercedes",
     "pos": 1,
-    "pts": 578
+    "pts": 607
    },
    {
     "id": "ferrari",
     "pos": 2,
-    "pts": 444
-   },
-   {
-    "id": "mclaren",
-    "pos": 3,
-    "pts": 339
+    "pts": 474
    },
    {
     "id": "redbullracing",
+    "pos": 3,
+    "pts": 355
+   },
+   {
+    "id": "mclaren",
     "pos": 4,
-    "pts": 332
+    "pts": 355
    },
    {
     "id": "racingbulls",
     "pos": 5,
-    "pts": 100
+    "pts": 102
    },
    {
     "id": "alpine",
     "pos": 6,
-    "pts": 68
+    "pts": 69
    },
    {
     "id": "haasf1team",
@@ -316,7 +316,8 @@ window.LIVE = {
     "team": "redbullracing"
    },
    "18": {
-    "start": "2026-10-25T20:00:00Z"
+    "winner": "Antonelli",
+    "team": "mercedes"
    },
    "19": {
     "start": "2026-11-01T20:00:00Z"
@@ -339,26 +340,26 @@ window.LIVE = {
    "stats": [
     [
      "Pontos",
-     "340"
+     "365"
     ],
     [
      "Vitórias",
-     "8"
+     "9"
     ],
     [
      "Vantagem",
-     "+102"
+     "+123"
     ]
    ],
-   "lede": "Kimi Antonelli lidera o campeonato com 340 pontos e 102 pontos de vantagem sobre George Russell, depois de 18 de 23 etapas."
+   "lede": "Kimi Antonelli lidera o campeonato com 365 pontos e 123 pontos de vantagem sobre George Russell, depois de 18 de 23 etapas."
   },
-  "status": "Antonelli lidera com 102 pts de vantagem",
+  "status": "Antonelli lidera com 123 pts de vantagem",
   "en": {
    "hero": {
     "kicker": "Championship leader · after 18 of 23 rounds",
-    "lede": "Kimi Antonelli leads the championship with 340 points, 102 points clear of George Russell, after 18 of 23 rounds."
+    "lede": "Kimi Antonelli leads the championship with 365 points, 123 points clear of George Russell, after 18 of 23 rounds."
    },
-   "status": "Antonelli leads by 102 pts",
+   "status": "Antonelli leads by 123 pts",
    "updated": "Updated after round 18: United States, 25 Oct."
   },
   "updated": "Atualizado após a etapa 18: Estados Unidos, 25 out.",
@@ -368,61 +369,61 @@ window.LIVE = {
      "pos": 1,
      "name": "Kimi Antonelli",
      "team": "mercedes",
-     "pts": 340
+     "pts": 365
     },
     {
      "pos": 2,
      "name": "George Russell",
      "team": "mercedes",
-     "pts": 238
+     "pts": 242
     },
     {
      "pos": 3,
      "name": "Lewis Hamilton",
      "team": "ferrari",
-     "pts": 229
+     "pts": 241
     },
     {
      "pos": 4,
      "name": "Max Verstappen",
      "team": "redbullracing",
-     "pts": 221
+     "pts": 236
     },
     {
      "pos": 5,
      "name": "Charles Leclerc",
      "team": "ferrari",
-     "pts": 215
+     "pts": 233
     },
     {
      "pos": 6,
      "name": "Lando Norris",
      "team": "mclaren",
-     "pts": 201
+     "pts": 211
     },
     {
      "pos": 7,
      "name": "Oscar Piastri",
      "team": "mclaren",
-     "pts": 138
+     "pts": 144
     },
     {
      "pos": 8,
      "name": "Isack Hadjar",
      "team": "redbullracing",
-     "pts": 97
+     "pts": 105
     },
     {
      "pos": 9,
      "name": "Liam Lawson",
      "team": "racingbulls",
-     "pts": 75
+     "pts": 77
     },
     {
      "pos": 10,
      "name": "Pierre Gasly",
      "team": "alpine",
-     "pts": 41
+     "pts": 42
     },
     {
      "pos": 11,
@@ -508,37 +509,37 @@ window.LIVE = {
      "pos": 1,
      "name": "Mercedes",
      "team": "mercedes",
-     "pts": 578
+     "pts": 607
     },
     {
      "pos": 2,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 444
+     "pts": 474
     },
     {
      "pos": 3,
-     "name": "McLaren",
-     "team": "mclaren",
-     "pts": 339
+     "name": "Red Bull Racing",
+     "team": "redbullracing",
+     "pts": 355
     },
     {
      "pos": 4,
-     "name": "Red Bull Racing",
-     "team": "redbullracing",
-     "pts": 332
+     "name": "McLaren",
+     "team": "mclaren",
+     "pts": 355
     },
     {
      "pos": 5,
      "name": "Racing Bulls",
      "team": "racingbulls",
-     "pts": 100
+     "pts": 102
     },
     {
      "pos": 6,
      "name": "Alpine",
      "team": "alpine",
-     "pts": 68
+     "pts": 69
     },
     {
      "pos": 7,
