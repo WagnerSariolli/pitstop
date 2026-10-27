@@ -1472,7 +1472,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-26T01:10:19.224Z"
+   "photosChecked": "2026-10-27T05:05:35.969Z"
   }
  },
  "formulae": {
