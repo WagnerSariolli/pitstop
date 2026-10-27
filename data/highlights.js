@@ -1431,6 +1431,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "u_J8IDANWJs",
+     "kind": "onboard",
+     "prio": 5,
+     "title": "Top 10 Onboards | 2026 United States Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "-AOf3hV6AJ4",
      "kind": "radio",
      "prio": 7,
@@ -1459,14 +1467,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Kimi Antonelli & Max Verstappen's Ghost Car Comparison Laps! | 2026 United States Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "kxDTghRx_VA",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Kimi Antonelli's Pole Lap | 2026 United States Grand Prix | Pirelli",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -3571,7 +3571,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-26T13:06:48.784Z"
+   "photosChecked": "2026-10-27T16:39:27.872Z"
   }
  }
 };
