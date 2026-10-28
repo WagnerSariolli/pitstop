@@ -1472,7 +1472,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-27T05:05:35.969Z"
+   "photosChecked": "2026-10-28T08:32:21.997Z"
   }
  },
  "formulae": {
@@ -3116,6 +3116,18 @@ window.HIGHLIGHTS = {
      "kind": "sprint",
      "prio": 6,
      "title": "Tissot Sprint Build Up | 2026 Australian GP",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
+  },
+  "19": {
+   "videos": [
+    {
+     "id": "RuiMAiwRYPk",
+     "kind": "epic",
+     "prio": 4,
+     "title": "It's time for the 2026 Malaysian GP 🇲🇾",
      "ch": "MotoGP"
     }
    ],
