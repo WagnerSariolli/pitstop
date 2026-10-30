@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-29T07:05:45.208Z"
+   "photosChecked": "2026-10-30T07:06:47.476Z"
   },
   "17": {
    "videos": [
@@ -3024,7 +3024,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-29T07:05:45.960Z"
+   "photosChecked": "2026-10-30T07:06:48.177Z"
   },
   "17": {
    "videos": [
@@ -3072,7 +3072,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-29T07:05:46.657Z"
+   "photosChecked": "2026-10-30T07:06:48.684Z"
   },
   "18": {
    "videos": [
@@ -3128,6 +3128,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "It's time for the 2026 Malaysian GP 🇲🇾",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "EXOJ613AwiE",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Inside The Paddock | 2026 Malaysian GP",
      "ch": "MotoGP"
     }
    ],
