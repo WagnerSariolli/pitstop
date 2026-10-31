@@ -3143,6 +3143,13 @@ window.HIGHLIGHTS = {
      "prio": 4,
      "title": "All-out attack in the final five minutes of Practice 💪 | 2026 Malaysian GP",
      "ch": "MotoGP"
+    },
+    {
+     "id": "CCYmGFI69UQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Inside The Paddock | 2026 Malaysian GP",
+     "ch": "MotoGP"
     }
    ],
    "photos": []
@@ -3597,7 +3604,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-30T01:00:37.605Z"
+   "photosChecked": "2026-10-31T05:41:56.923Z"
   }
  }
 };
