@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-30T07:06:47.476Z"
+   "photosChecked": "2026-10-31T12:29:29.345Z"
   },
   "17": {
    "videos": [
@@ -3024,7 +3024,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-30T07:06:48.177Z"
+   "photosChecked": "2026-10-31T12:29:29.982Z"
   },
   "17": {
    "videos": [
@@ -3072,7 +3072,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-30T07:06:48.684Z"
+   "photosChecked": "2026-10-31T12:29:30.528Z"
   },
   "18": {
    "videos": [
@@ -3149,6 +3149,20 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Inside The Paddock | 2026 Malaysian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "YEZSdOL-Szk",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Top 3 Tissot Sprint moments ⛈️ | 2026 Malaysian GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "NKEtiR_-TWg",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Sprint Build Up at the 2026 Malaysian GP",
      "ch": "MotoGP"
     }
    ],
