@@ -1477,6 +1477,14 @@ window.HIGHLIGHTS = {
   "19": {
    "videos": [
     {
+     "id": "mZQwMnnFeG0",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React To Qualifying | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "EErul4P_qKo",
      "kind": "qualifying",
      "prio": 9,
@@ -1489,6 +1497,14 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Qualifying Highlights | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "2J4PA64Gn3s",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Lewis Hamilton's Pole Lap | 2026 Mexico City Grand Prix | Pirelli",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -3173,17 +3189,17 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
-     "id": "YEZSdOL-Szk",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Top 3 Tissot Sprint moments ⛈️ | 2026 Malaysian GP",
+     "id": "IzqVfobEyRA",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Grand Prix Build Up | 2026 Malaysian GP",
      "ch": "MotoGP"
     },
     {
-     "id": "NKEtiR_-TWg",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Sprint Build Up at the 2026 Malaysian GP",
+     "id": "1Hdlr-WkUZQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Pre-Race Talk Show | 2026 Malaysian GP",
      "ch": "MotoGP"
     }
    ],
@@ -3639,7 +3655,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-31T05:41:56.923Z"
+   "photosChecked": "2026-11-01T07:31:32.871Z"
   }
  }
 };
