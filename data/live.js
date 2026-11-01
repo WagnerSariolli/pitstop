@@ -1,8 +1,8 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-10-31T12:29:25.322Z",
+ "generated": "2026-11-01T01:10:04.944Z",
  "f1": {
-  "round": 18,
+  "round": 19,
   "drivers": [
    {
     "key": 12,
@@ -187,6 +187,14 @@ window.LIVE = {
     "wins": 0,
     "name": "Sergio Pérez",
     "team": "cadillac"
+   },
+   {
+    "key": null,
+    "pos": 24,
+    "pts": 0,
+    "wins": 0,
+    "name": "Ryo Hirakawa",
+    "team": "haasf1team"
    }
   ],
   "teams": [
@@ -336,7 +344,7 @@ window.LIVE = {
    }
   },
   "hero": {
-   "kicker": "Líder do campeonato · após 18 de 23 etapas",
+   "kicker": "Líder do campeonato · após 19 de 23 etapas",
    "stats": [
     [
      "Pontos",
@@ -351,18 +359,18 @@ window.LIVE = {
      "+123"
     ]
    ],
-   "lede": "Kimi Antonelli lidera o campeonato com 365 pontos e 123 pontos de vantagem sobre George Russell, depois de 18 de 23 etapas."
+   "lede": "Kimi Antonelli lidera o campeonato com 365 pontos e 123 pontos de vantagem sobre George Russell, depois de 19 de 23 etapas."
   },
   "status": "Antonelli lidera com 123 pts de vantagem",
   "en": {
    "hero": {
-    "kicker": "Championship leader · after 18 of 23 rounds",
-    "lede": "Kimi Antonelli leads the championship with 365 points, 123 points clear of George Russell, after 18 of 23 rounds."
+    "kicker": "Championship leader · after 19 of 23 rounds",
+    "lede": "Kimi Antonelli leads the championship with 365 points, 123 points clear of George Russell, after 19 of 23 rounds."
    },
    "status": "Antonelli leads by 123 pts",
-   "updated": "Updated after round 18: United States, 25 Oct."
+   "updated": "Updated after round 19: Mexico City, 1 Nov."
   },
-  "updated": "Atualizado após a etapa 18: Estados Unidos, 25 out.",
+  "updated": "Atualizado após a etapa 19: Cidade do México, 01 nov.",
   "standings": [
    [
     {
@@ -501,6 +509,12 @@ window.LIVE = {
      "pos": 23,
      "name": "Sergio Pérez",
      "team": "cadillac",
+     "pts": 0
+    },
+    {
+     "pos": 24,
+     "name": "Ryo Hirakawa",
+     "team": "haasf1team",
      "pts": 0
     }
    ],

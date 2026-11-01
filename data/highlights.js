@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-10-30T23:46:52.008Z"
+   "photosChecked": "2026-11-01T01:10:08.898Z"
   },
   "18": {
    "videos": [
@@ -1473,6 +1473,27 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-10-31T21:34:31.309Z"
+  },
+  "19": {
+   "videos": [
+    {
+     "id": "EErul4P_qKo",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Lewis Hamilton & George Russell's Ghost Car Comparison Laps | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "O9kbG2tTX10",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Qualifying Highlights | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    }
+   ],
+   "photos": []
   }
  },
  "formulae": {
