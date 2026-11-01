@@ -1356,7 +1356,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:2026_Bahrain_GP_-_Audi_-_Nico_Hulkenberg_-_FP1.jpg"
     }
    ],
-   "photosChecked": "2026-10-31T12:29:29.345Z"
+   "photosChecked": "2026-11-01T15:09:01.881Z"
   },
   "17": {
    "videos": [
@@ -3061,7 +3061,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-31T12:29:29.982Z"
+   "photosChecked": "2026-11-01T15:09:02.521Z"
   },
   "17": {
    "videos": [
@@ -3109,7 +3109,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-31T12:29:30.528Z"
+   "photosChecked": "2026-11-01T15:09:03.150Z"
   },
   "18": {
    "videos": [
@@ -3161,6 +3161,13 @@ window.HIGHLIGHTS = {
   "19": {
    "videos": [
     {
+     "id": "2l-tRhn_238",
+     "kind": "moments",
+     "prio": 2,
+     "title": "Best MotoGP Moments 🥵 | 2026 Malaysian GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "RuiMAiwRYPk",
      "kind": "epic",
      "prio": 4,
@@ -3194,16 +3201,10 @@ window.HIGHLIGHTS = {
      "prio": 4,
      "title": "Grand Prix Build Up | 2026 Malaysian GP",
      "ch": "MotoGP"
-    },
-    {
-     "id": "1Hdlr-WkUZQ",
-     "kind": "epic",
-     "prio": 4,
-     "title": "Pre-Race Talk Show | 2026 Malaysian GP",
-     "ch": "MotoGP"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-01T15:09:03.824Z"
   }
  },
  "wec": {
