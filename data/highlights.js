@@ -1472,10 +1472,18 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-10-31T21:34:31.309Z"
+   "photosChecked": "2026-11-01T23:36:08.795Z"
   },
   "19": {
    "videos": [
+    {
+     "id": "tIiRK7hKScU",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
     {
      "id": "mZQwMnnFeG0",
      "kind": "react",
