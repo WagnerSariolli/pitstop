@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-02T06:02:10.944Z",
+ "generated": "2026-11-02T23:30:07.499Z",
  "f1": {
   "round": 19,
   "drivers": [
@@ -55,7 +55,7 @@ window.LIVE = {
    {
     "key": 81,
     "pos": 7,
-    "pts": 150,
+    "pts": 144,
     "wins": 0,
     "name": "Oscar Piastri",
     "team": "mclaren"
@@ -63,7 +63,7 @@ window.LIVE = {
    {
     "key": 6,
     "pos": 8,
-    "pts": 105,
+    "pts": 107,
     "wins": 0,
     "name": "Isack Hadjar",
     "team": "redbullracing"
@@ -71,7 +71,7 @@ window.LIVE = {
    {
     "key": 30,
     "pos": 9,
-    "pts": 79,
+    "pts": 83,
     "wins": 0,
     "name": "Liam Lawson",
     "team": "racingbulls"
@@ -79,7 +79,7 @@ window.LIVE = {
    {
     "key": 10,
     "pos": 10,
-    "pts": 43,
+    "pts": 42,
     "wins": 0,
     "name": "Pierre Gasly",
     "team": "alpine"
@@ -95,7 +95,7 @@ window.LIVE = {
    {
     "key": 43,
     "pos": 12,
-    "pts": 31,
+    "pts": 27,
     "wins": 0,
     "name": "Franco Colapinto",
     "team": "alpine"
@@ -109,19 +109,19 @@ window.LIVE = {
     "team": "haasf1team"
    },
    {
-    "key": 27,
+    "key": 5,
     "pos": 14,
-    "pts": 13,
+    "pts": 14,
     "wins": 0,
-    "name": "Nico Hülkenberg",
+    "name": "Gabriel Bortoleto",
     "team": "audi"
    },
    {
-    "key": 5,
+    "key": 27,
     "pos": 15,
-    "pts": 10,
+    "pts": 13,
     "wins": 0,
-    "name": "Gabriel Bortoleto",
+    "name": "Nico Hülkenberg",
     "team": "audi"
    },
    {
@@ -165,8 +165,16 @@ window.LIVE = {
     "team": "racingbulls"
    },
    {
-    "key": 18,
+    "key": null,
     "pos": 21,
+    "pts": 1,
+    "wins": 0,
+    "name": "Ryo Hirakawa",
+    "team": "haasf1team"
+   },
+   {
+    "key": 18,
+    "pos": 22,
     "pts": 0,
     "wins": 0,
     "name": "Lance Stroll",
@@ -174,19 +182,11 @@ window.LIVE = {
    },
    {
     "key": 77,
-    "pos": 22,
+    "pos": 23,
     "pts": 0,
     "wins": 0,
     "name": "Valtteri Bottas",
     "team": "cadillac"
-   },
-   {
-    "key": null,
-    "pos": 23,
-    "pts": 0,
-    "wins": 0,
-    "name": "Ryo Hirakawa",
-    "team": "haasf1team"
    },
    {
     "key": 11,
@@ -211,32 +211,32 @@ window.LIVE = {
    {
     "id": "redbullracing",
     "pos": 3,
-    "pts": 380
+    "pts": 382
    },
    {
     "id": "mclaren",
     "pos": 4,
-    "pts": 371
+    "pts": 365
    },
    {
     "id": "racingbulls",
     "pos": 5,
-    "pts": 104
+    "pts": 108
    },
    {
     "id": "alpine",
     "pos": 6,
-    "pts": 74
+    "pts": 69
    },
    {
     "id": "haasf1team",
     "pos": 7,
-    "pts": 30
+    "pts": 31
    },
    {
     "id": "audi",
     "pos": 8,
-    "pts": 23
+    "pts": 27
    },
    {
     "id": "williams",
@@ -414,25 +414,25 @@ window.LIVE = {
      "pos": 7,
      "name": "Oscar Piastri",
      "team": "mclaren",
-     "pts": 150
+     "pts": 144
     },
     {
      "pos": 8,
      "name": "Isack Hadjar",
      "team": "redbullracing",
-     "pts": 105
+     "pts": 107
     },
     {
      "pos": 9,
      "name": "Liam Lawson",
      "team": "racingbulls",
-     "pts": 79
+     "pts": 83
     },
     {
      "pos": 10,
      "name": "Pierre Gasly",
      "team": "alpine",
-     "pts": 43
+     "pts": 42
     },
     {
      "pos": 11,
@@ -444,7 +444,7 @@ window.LIVE = {
      "pos": 12,
      "name": "Franco Colapinto",
      "team": "alpine",
-     "pts": 31
+     "pts": 27
     },
     {
      "pos": 13,
@@ -454,15 +454,15 @@ window.LIVE = {
     },
     {
      "pos": 14,
-     "name": "Nico Hülkenberg",
+     "name": "Gabriel Bortoleto",
      "team": "audi",
-     "pts": 13
+     "pts": 14
     },
     {
      "pos": 15,
-     "name": "Gabriel Bortoleto",
+     "name": "Nico Hülkenberg",
      "team": "audi",
-     "pts": 10
+     "pts": 13
     },
     {
      "pos": 16,
@@ -496,20 +496,20 @@ window.LIVE = {
     },
     {
      "pos": 21,
+     "name": "Ryo Hirakawa",
+     "team": "haasf1team",
+     "pts": 1
+    },
+    {
+     "pos": 22,
      "name": "Lance Stroll",
      "team": "astonmartin",
      "pts": 0
     },
     {
-     "pos": 22,
+     "pos": 23,
      "name": "Valtteri Bottas",
      "team": "cadillac",
-     "pts": 0
-    },
-    {
-     "pos": 23,
-     "name": "Ryo Hirakawa",
-     "team": "haasf1team",
      "pts": 0
     },
     {
@@ -536,37 +536,37 @@ window.LIVE = {
      "pos": 3,
      "name": "Red Bull Racing",
      "team": "redbullracing",
-     "pts": 380
+     "pts": 382
     },
     {
      "pos": 4,
      "name": "McLaren",
      "team": "mclaren",
-     "pts": 371
+     "pts": 365
     },
     {
      "pos": 5,
      "name": "Racing Bulls",
      "team": "racingbulls",
-     "pts": 104
+     "pts": 108
     },
     {
      "pos": 6,
      "name": "Alpine",
      "team": "alpine",
-     "pts": 74
+     "pts": 69
     },
     {
      "pos": 7,
      "name": "Haas",
      "team": "haasf1team",
-     "pts": 30
+     "pts": 31
     },
     {
      "pos": 8,
      "name": "Audi",
      "team": "audi",
-     "pts": 23
+     "pts": 27
     },
     {
      "pos": 9,
