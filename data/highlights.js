@@ -1418,7 +1418,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
     }
    ],
-   "photosChecked": "2026-11-01T01:10:08.898Z"
+   "photosChecked": "2026-11-02T06:02:47.239Z"
   },
   "18": {
    "videos": [
@@ -1517,7 +1517,8 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-02T06:02:47.817Z"
   }
  },
  "formulae": {
