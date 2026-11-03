@@ -1485,6 +1485,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "4ihGzDHCfQQ",
+     "kind": "onboard",
+     "prio": 5,
+     "title": "Top 10 Onboards | 2026 Mexico City Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "rsiI7YtFntU",
      "kind": "radio",
      "prio": 7,
@@ -1513,14 +1521,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Qualifying Highlights | 2026 Mexico City Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "2J4PA64Gn3s",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Lewis Hamilton's Pole Lap | 2026 Mexico City Grand Prix | Pirelli",
      "ch": "FORMULA 1",
      "ext": true
     }
