@@ -3222,6 +3222,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-11-07T02:49:25.323Z"
+  },
+  "20": {
+   "videos": [
+    {
+     "id": "GaBMi4LQaWs",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "A new all-time lap record set in the last 5 minutes of MotoGP Practice 🌙 | 2026 Qatar GP",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
   }
  },
  "wec": {
