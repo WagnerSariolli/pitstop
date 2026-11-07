@@ -1416,9 +1416,30 @@ window.HIGHLIGHTS = {
      "title": "Nico Hülkenberg Audi R26 2026",
      "credit": "Grunty89 · CC BY 4.0",
      "link": "https://commons.wikimedia.org/wiki/File:Nico_H%C3%BClkenberg_Audi_R26_2026.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/2026_Singapore_GP_-_Red_Bull_-_Max_Verstappen_-_Sprint_Race.jpg/1920px-2026_Singapore_GP_-_Red_Bull_-_Max_Verstappen_-_Sprint_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5e/2026_Singapore_GP_-_Red_Bull_-_Max_Verstappen_-_Sprint_Race.jpg/500px-2026_Singapore_GP_-_Red_Bull_-_Max_Verstappen_-_Sprint_Race.jpg",
+     "title": "2026 Singapore GP - Red Bull - Max Verstappen - Sprint Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_Red_Bull_-_Max_Verstappen_-_Sprint_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/2026_Singapore_GP_-_McLaren_-_Lando_Norris_-_Sprint_Race.jpg/1920px-2026_Singapore_GP_-_McLaren_-_Lando_Norris_-_Sprint_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/af/2026_Singapore_GP_-_McLaren_-_Lando_Norris_-_Sprint_Race.jpg/500px-2026_Singapore_GP_-_McLaren_-_Lando_Norris_-_Sprint_Race.jpg",
+     "title": "2026 Singapore GP - McLaren - Lando Norris - Sprint Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_McLaren_-_Lando_Norris_-_Sprint_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg/1920px-2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/3f/2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg/500px-2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg",
+     "title": "2026 Singapore GP - Ferrari - Lewis Hamilton - Sprint Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg"
     }
    ],
-   "photosChecked": "2026-11-06T17:29:40.181Z"
+   "photosChecked": "2026-11-07T20:52:58.902Z"
   },
   "18": {
    "videos": [
@@ -1472,7 +1493,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-06T17:29:40.769Z"
+   "photosChecked": "2026-11-07T20:52:59.507Z"
   },
   "19": {
    "videos": [
@@ -1526,7 +1547,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-06T17:29:41.383Z"
+   "photosChecked": "2026-11-07T20:53:00.095Z"
   }
  },
  "formulae": {
@@ -3237,6 +3258,13 @@ window.HIGHLIGHTS = {
      "kind": "sprint",
      "prio": 6,
      "title": "Tissot Sprint Build Up | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "iVe8Zfa078A",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Top 3 Tissot Sprint moments ⚔️ | 2026 Qatar GP",
      "ch": "MotoGP"
     },
     {
