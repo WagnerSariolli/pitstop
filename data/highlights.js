@@ -3226,6 +3226,20 @@ window.HIGHLIGHTS = {
   "20": {
    "videos": [
     {
+     "id": "fpNkyRFBp-8",
+     "kind": "epic",
+     "prio": 4,
+     "title": "A qucick catch up with Sava and a ping pong match in today's Inside The Paddock🏓 | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "sziClhbgxjQ",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Tissot Sprint Build Up | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "GaBMi4LQaWs",
      "kind": "qualifying",
      "prio": 9,
@@ -3686,6 +3700,25 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-11-07T02:49:57.113Z"
+  },
+  "8": {
+   "videos": [
+    {
+     "id": "_6ZtGFeXdRE",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Ferrari's FIRST Hypercar Pole at Monza! Antonio Fuoco Delivers 🇮🇹 | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "gsJi9sr0tzw",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Lexus Takes POLE After Aston Martin's Fastest Lap Is Deleted! | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    }
+   ],
+   "photos": []
   }
  }
 };
