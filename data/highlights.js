@@ -1576,7 +1576,8 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-08T19:42:12.092Z"
   }
  },
  "formulae": {
@@ -3318,7 +3319,8 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-08T19:42:12.709Z"
   }
  },
  "wec": {
