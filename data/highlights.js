@@ -3290,6 +3290,13 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "WigdPmF6Zhc",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Pre-Race Talk Show | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "sziClhbgxjQ",
      "kind": "sprint",
      "prio": 6,
@@ -3779,6 +3786,34 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Lexus Takes POLE After Aston Martin's Fastest Lap Is Deleted! | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "OJgpd51hcoc",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Ford STEALS THE LEAD in Thrilling LMGT3 Championship Battle! 🤯 | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "q9-wxeLHsxM",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Milesi's Alpine CRASHES Out in Heartbreaking Solo Incident | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "c7_Pvg6ZPCI",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Cadillac vs Alpine! INTENSE Battle for the Lead at Monza 🔥 | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "A68OnIQ2siI",
+     "kind": "epic",
+     "prio": 4,
+     "title": "From P2 to DISASTER! Genesis Suddenly Stops at Monza 💔 | 6 Hours of Monza 2026",
      "ch": "FIA WEC"
     }
    ],
