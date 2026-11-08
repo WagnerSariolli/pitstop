@@ -1,8 +1,8 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-07T20:52:52.969Z",
+ "generated": "2026-11-08T00:35:54.079Z",
  "f1": {
-  "round": 19,
+  "round": 20,
   "drivers": [
    {
     "key": 12,
@@ -195,6 +195,14 @@ window.LIVE = {
     "wins": 0,
     "name": "Sergio Pérez",
     "team": "cadillac"
+   },
+   {
+    "key": null,
+    "pos": 25,
+    "pts": 0,
+    "wins": 0,
+    "name": "Rafael Camara",
+    "team": "haasf1team"
    }
   ],
   "teams": [
@@ -345,7 +353,7 @@ window.LIVE = {
    }
   },
   "hero": {
-   "kicker": "Líder do campeonato · após 19 de 23 etapas",
+   "kicker": "Líder do campeonato · após 20 de 23 etapas",
    "stats": [
     [
      "Pontos",
@@ -360,18 +368,18 @@ window.LIVE = {
      "+119"
     ]
    ],
-   "lede": "Kimi Antonelli lidera o campeonato com 380 pontos e 119 pontos de vantagem sobre Max Verstappen, depois de 19 de 23 etapas."
+   "lede": "Kimi Antonelli lidera o campeonato com 380 pontos e 119 pontos de vantagem sobre Max Verstappen, depois de 20 de 23 etapas."
   },
   "status": "Antonelli lidera com 119 pts de vantagem",
   "en": {
    "hero": {
-    "kicker": "Championship leader · after 19 of 23 rounds",
-    "lede": "Kimi Antonelli leads the championship with 380 points, 119 points clear of Max Verstappen, after 19 of 23 rounds."
+    "kicker": "Championship leader · after 20 of 23 rounds",
+    "lede": "Kimi Antonelli leads the championship with 380 points, 119 points clear of Max Verstappen, after 20 of 23 rounds."
    },
    "status": "Antonelli leads by 119 pts",
-   "updated": "Updated after round 19: Mexico City, 1 Nov."
+   "updated": "Updated after round 20: São Paulo, 8 Nov."
   },
-  "updated": "Atualizado após a etapa 19: Cidade do México, 01 nov.",
+  "updated": "Atualizado após a etapa 20: São Paulo, 08 nov.",
   "standings": [
    [
     {
@@ -516,6 +524,12 @@ window.LIVE = {
      "pos": 24,
      "name": "Sergio Pérez",
      "team": "cadillac",
+     "pts": 0
+    },
+    {
+     "pos": 25,
+     "name": "Rafael Camara",
+     "team": "haasf1team",
      "pts": 0
     }
    ],

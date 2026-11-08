@@ -1548,6 +1548,35 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-11-07T20:53:00.095Z"
+  },
+  "20": {
+   "videos": [
+    {
+     "id": "5WAHbHLWcYM",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Lando Norris' Pole Lap | 2026 Sao Paulo Grand Prix | Pirelli",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "5RyZGgxFI8A",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Drivers React After Qualifying | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "Cn4C153hCLk",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Qualifying Highlights | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    }
+   ],
+   "photos": []
   }
  },
  "formulae": {
@@ -3251,6 +3280,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "A qucick catch up with Sava and a ping pong match in today's Inside The Paddock🏓 | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "dBf-CVXVLwk",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Marc vs Marco: The title contenders collide 👀 | 2026 Qatar GP",
      "ch": "MotoGP"
     },
     {
