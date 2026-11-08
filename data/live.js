@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-08T19:42:06.910Z",
+ "generated": "2026-11-08T23:42:43.270Z",
  "f1": {
   "round": 20,
   "drivers": [
@@ -39,7 +39,7 @@ window.LIVE = {
    {
     "key": 16,
     "pos": 5,
-    "pts": 251,
+    "pts": 249,
     "wins": 1,
     "name": "Charles Leclerc",
     "team": "ferrari"
@@ -71,7 +71,7 @@ window.LIVE = {
    {
     "key": 30,
     "pos": 9,
-    "pts": 87,
+    "pts": 89,
     "wins": 0,
     "name": "Liam Lawson",
     "team": "racingbulls"
@@ -214,7 +214,7 @@ window.LIVE = {
    {
     "id": "ferrari",
     "pos": 2,
-    "pts": 512
+    "pts": 510
    },
    {
     "id": "redbullracing",
@@ -229,7 +229,7 @@ window.LIVE = {
    {
     "id": "racingbulls",
     "pos": 5,
-    "pts": 112
+    "pts": 114
    },
    {
     "id": "alpine",
@@ -411,7 +411,7 @@ window.LIVE = {
      "pos": 5,
      "name": "Charles Leclerc",
      "team": "ferrari",
-     "pts": 251
+     "pts": 249
     },
     {
      "pos": 6,
@@ -435,7 +435,7 @@ window.LIVE = {
      "pos": 9,
      "name": "Liam Lawson",
      "team": "racingbulls",
-     "pts": 87
+     "pts": 89
     },
     {
      "pos": 10,
@@ -545,7 +545,7 @@ window.LIVE = {
      "pos": 2,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 512
+     "pts": 510
     },
     {
      "pos": 3,
@@ -563,7 +563,7 @@ window.LIVE = {
      "pos": 5,
      "name": "Racing Bulls",
      "team": "racingbulls",
-     "pts": 112
+     "pts": 114
     },
     {
      "pos": 6,
@@ -1359,7 +1359,7 @@ window.LIVE = {
   ]
  },
  "wec": {
-  "round": 7,
+  "round": 8,
   "drivers": [
    {
     "key": "8",
@@ -1375,62 +1375,62 @@ window.LIVE = {
    },
    {
     "key": "20",
-    "pos": 4,
-    "pts": 75,
+    "pos": 7,
+    "pts": 77,
     "wins": 1
    },
    {
     "key": "15",
     "pos": 3,
-    "pts": 75,
+    "pts": 83,
     "wins": 1
    },
    {
     "key": "51",
-    "pos": 8,
-    "pts": 59,
+    "pos": 9,
+    "pts": 74,
     "wins": 0
    },
    {
     "key": "35",
-    "pos": 10,
+    "pos": 12,
     "pts": 57,
     "wins": 0
    },
    {
     "key": "50",
-    "pos": 6,
-    "pts": 69,
+    "pos": 8,
+    "pts": 76,
     "wins": 1
    },
    {
     "key": "12",
-    "pos": 9,
+    "pos": 11,
     "pts": 58,
     "wins": 0
    },
    {
     "key": "38",
-    "pos": 11,
-    "pts": 56,
-    "wins": 0
+    "pos": 4,
+    "pts": 81,
+    "wins": 1
    },
    {
     "key": "83",
     "pos": 15,
-    "pts": 41,
+    "pts": 45,
     "wins": 0
    },
    {
     "key": "36",
-    "pos": 16,
-    "pts": 36,
+    "pos": 13,
+    "pts": 54,
     "wins": 0
    },
    {
     "key": "007",
     "pos": 14,
-    "pts": 42,
+    "pts": 54,
     "wins": 0
    },
    {
@@ -1442,13 +1442,13 @@ window.LIVE = {
    {
     "key": "93",
     "pos": 23,
-    "pts": 6,
+    "pts": 7,
     "wins": 0
    },
    {
     "key": "94",
-    "pos": 19,
-    "pts": 12,
+    "pos": 18,
+    "pts": 22,
     "wins": 0
    },
    {
@@ -1459,7 +1459,7 @@ window.LIVE = {
    },
    {
     "key": "19",
-    "pos": 27,
+    "pos": 28,
     "pts": 0,
     "wins": 0
    }
@@ -1468,37 +1468,37 @@ window.LIVE = {
    {
     "id": "toyota",
     "pos": 1,
-    "pts": 212
+    "pts": 213
    },
    {
     "id": "bmw",
     "pos": 2,
-    "pts": 154
+    "pts": 166
    },
    {
     "id": "ferrari",
     "pos": 3,
-    "pts": 130
+    "pts": 152
    },
    {
     "id": "cadillac",
     "pos": 4,
-    "pts": 118
+    "pts": 143
    },
    {
     "id": "alpine",
     "pos": 5,
-    "pts": 104
+    "pts": 122
    },
    {
     "id": "astonmartin",
     "pos": 6,
-    "pts": 58
+    "pts": 70
    },
    {
     "id": "peugeot",
     "pos": 7,
-    "pts": 24
+    "pts": 36
    },
    {
     "id": "genesis",
@@ -1534,10 +1534,14 @@ window.LIVE = {
    "7": {
     "winner": "Toyota #8",
     "team": "toyota"
+   },
+   "8": {
+    "winner": "Cadillac #38",
+    "team": "cadillac"
    }
   },
   "hero": {
-   "kicker": "Líderes do campeonato · após 7 de 8 etapas",
+   "kicker": "Campeões 2026",
    "stats": [
     [
      "Pontos",
@@ -1552,18 +1556,18 @@ window.LIVE = {
      "+17"
     ]
    ],
-   "lede": "Buemi, Hartley e Hirakawa, do Toyota #8, lideram o campeonato com 114 pontos e 17 pontos de vantagem sobre o Toyota #7, depois de 7 de 8 etapas."
+   "lede": "Buemi, Hartley e Hirakawa, do Toyota #8, conquistaram o título de 2026 com 114 pontos, 17 pontos à frente de o Toyota #7."
   },
-  "status": "Toyota #8 lidera com 17 pts de vantagem",
+  "status": "Toyota #8 é campeão de 2026",
   "en": {
    "hero": {
-    "kicker": "Championship leaders · after 7 of 8 rounds",
-    "lede": "Buemi, Hartley and Hirakawa (Toyota #8) lead the championship with 114 points, 17 points clear of the Toyota #7, after 7 of 8 rounds."
+    "kicker": "2026 champions",
+    "lede": "Buemi, Hartley and Hirakawa (Toyota #8) won the 2026 title with 114 points, 17 points ahead of the Toyota #7."
    },
-   "status": "Toyota #8 lead by 17 pts",
-   "updated": "Updated after round 7: 6 Hours of Barcelona, 18 Oct. Hypercar class."
+   "status": "Toyota #8 are the 2026 champions",
+   "updated": "Updated after round 8: 6 Hours of Monza, 8 Nov. Hypercar class."
   },
-  "updated": "Atualizado após a etapa 7: 6 Horas de Barcelona, 18 out. Classe Hypercar.",
+  "updated": "Atualizado após a etapa 8: 6 Horas de Monza, 08 nov. Classe Hypercar.",
   "standings": [
    [
     {
@@ -1583,58 +1587,58 @@ window.LIVE = {
     {
      "pos": 3,
      "team": "bmw",
-     "pts": 75,
+     "pts": 83,
      "sub": "BMW #15",
      "name": "Magnussen / Marciello"
     },
     {
      "pos": 4,
-     "team": "bmw",
-     "pts": 75,
-     "sub": "BMW #20",
-     "name": "Rast / Frijns"
+     "team": "cadillac",
+     "pts": 81,
+     "sub": "Cadillac #38",
+     "name": "Bamber / Bourdais"
     },
     {
      "pos": 5,
      "team": "bmw",
-     "pts": 69,
+     "pts": 77,
      "sub": "BMW #15",
      "name": "Dries Vanthoor"
     },
     {
      "pos": 6,
-     "team": "ferrari",
-     "pts": 69,
-     "sub": "Ferrari #50",
-     "name": "Fuoco / Molina / Nielsen"
+     "team": "cadillac",
+     "pts": 77,
+     "sub": "Cadillac #38",
+     "name": "Jack Aitken"
     },
     {
      "pos": 7,
      "team": "bmw",
-     "pts": 65,
+     "pts": 77,
      "sub": "BMW #20",
-     "name": "Sheldon van der Linde"
+     "name": "Rast / Frijns"
     },
     {
      "pos": 8,
      "team": "ferrari",
-     "pts": 59,
+     "pts": 76,
+     "sub": "Ferrari #50",
+     "name": "Fuoco / Molina / Nielsen"
+    },
+    {
+     "pos": 9,
+     "team": "ferrari",
+     "pts": 74,
      "sub": "Ferrari #51",
      "name": "Pier Guidi / Calado / Giovinazzi"
     },
     {
-     "pos": 9,
-     "team": "cadillac",
-     "pts": 58,
-     "sub": "Cadillac #12",
-     "name": "Stevens / Nato"
-    },
-    {
      "pos": 10,
-     "team": "alpine",
-     "pts": 57,
-     "sub": "Alpine #35",
-     "name": "Milesi / Habsburg"
+     "team": "bmw",
+     "pts": 67,
+     "sub": "BMW #20",
+     "name": "Sheldon van der Linde"
     }
    ],
    [
@@ -1642,49 +1646,49 @@ window.LIVE = {
      "pos": 1,
      "name": "Toyota",
      "team": "toyota",
-     "pts": 212,
+     "pts": 213,
      "sub": "TR010 Hybrid · LMH"
     },
     {
      "pos": 2,
      "name": "BMW",
      "team": "bmw",
-     "pts": 154,
+     "pts": 166,
      "sub": "M Hybrid V8 · LMDh"
     },
     {
      "pos": 3,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 130,
+     "pts": 152,
      "sub": "499P · LMH"
     },
     {
      "pos": 4,
      "name": "Cadillac",
      "team": "cadillac",
-     "pts": 118,
+     "pts": 143,
      "sub": "V-Series.R · LMDh"
     },
     {
      "pos": 5,
      "name": "Alpine",
      "team": "alpine",
-     "pts": 104,
+     "pts": 122,
      "sub": "A424 · LMDh"
     },
     {
      "pos": 6,
      "name": "Aston Martin",
      "team": "astonmartin",
-     "pts": 58,
+     "pts": 70,
      "sub": "Valkyrie · LMH"
     },
     {
      "pos": 7,
      "name": "Peugeot",
      "team": "peugeot",
-     "pts": 24,
+     "pts": 36,
      "sub": "9X8 · LMH"
     },
     {

@@ -1437,9 +1437,23 @@ window.HIGHLIGHTS = {
      "title": "2026 Singapore GP - Ferrari - Lewis Hamilton - Sprint Race",
      "credit": "Liauzh · CC BY-SA 4.0",
      "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_Ferrari_-_Lewis_Hamilton_-_Sprint_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/2026_Singapore_GP_-_Safety_Car_-_Sprint_Race.jpg/1920px-2026_Singapore_GP_-_Safety_Car_-_Sprint_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/2026_Singapore_GP_-_Safety_Car_-_Sprint_Race.jpg/500px-2026_Singapore_GP_-_Safety_Car_-_Sprint_Race.jpg",
+     "title": "2026 Singapore GP - Safety Car - Sprint Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_Safety_Car_-_Sprint_Race.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/2026_Singapore_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Sprint_Race.jpg/1920px-2026_Singapore_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Sprint_Race.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/4/4b/2026_Singapore_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Sprint_Race.jpg/500px-2026_Singapore_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Sprint_Race.jpg",
+     "title": "2026 Singapore GP - Racing Bulls - Arvid Lindblad - Sprint Race",
+     "credit": "Liauzh · CC BY-SA 4.0",
+     "link": "https://commons.wikimedia.org/wiki/File:2026_Singapore_GP_-_Racing_Bulls_-_Arvid_Lindblad_-_Sprint_Race.jpg"
     }
    ],
-   "photosChecked": "2026-11-07T20:52:58.902Z"
+   "photosChecked": "2026-11-08T23:42:48.858Z"
   },
   "18": {
    "videos": [
@@ -1493,7 +1507,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-07T20:52:59.507Z"
+   "photosChecked": "2026-11-08T23:42:49.350Z"
   },
   "19": {
    "videos": [
@@ -1547,10 +1561,26 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-07T20:53:00.095Z"
+   "photosChecked": "2026-11-08T23:42:49.815Z"
   },
   "20": {
    "videos": [
+    {
+     "id": "lkb5kqDJYXk",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "jpwFNmUzWn8",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React After The Race | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
     {
      "id": "5WAHbHLWcYM",
      "kind": "qualifying",
@@ -3277,6 +3307,13 @@ window.HIGHLIGHTS = {
   "20": {
    "videos": [
     {
+     "id": "0CIRv1O6Ghs",
+     "kind": "moments",
+     "prio": 2,
+     "title": "Best MotoGP Moments 🌛 | 2026 Qatar GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "fpNkyRFBp-8",
      "kind": "epic",
      "prio": 4,
@@ -3309,13 +3346,6 @@ window.HIGHLIGHTS = {
      "kind": "sprint",
      "prio": 6,
      "title": "Top 3 Tissot Sprint moments ⚔️ | 2026 Qatar GP",
-     "ch": "MotoGP"
-    },
-    {
-     "id": "GaBMi4LQaWs",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "A new all-time lap record set in the last 5 minutes of MotoGP Practice 🌙 | 2026 Qatar GP",
      "ch": "MotoGP"
     }
    ],
@@ -3819,7 +3849,8 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-08T23:43:52.958Z"
   }
  }
 };
