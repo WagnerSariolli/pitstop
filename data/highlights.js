@@ -3207,7 +3207,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T07:21:38.807Z"
+   "photosChecked": "2026-11-09T17:29:14.063Z"
   },
   "18": {
    "videos": [
@@ -3302,7 +3302,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T07:21:39.304Z"
+   "photosChecked": "2026-11-09T17:29:14.625Z"
   },
   "20": {
    "videos": [
@@ -3802,10 +3802,24 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T07:22:11.099Z"
+   "photosChecked": "2026-11-09T17:29:15.287Z"
   },
   "8": {
    "videos": [
+    {
+     "id": "ZPOh8z-Nflc",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
+    {
+     "id": "ApAspMx6H1g",
+     "kind": "extended",
+     "prio": 3,
+     "title": "Extended Highlights | 6 Hours of Monza 2026",
+     "ch": "FIA WEC"
+    },
     {
      "id": "_6ZtGFeXdRE",
      "kind": "epic",
@@ -3832,20 +3846,6 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Milesi's Alpine CRASHES Out in Heartbreaking Solo Incident | 6 Hours of Monza 2026",
-     "ch": "FIA WEC"
-    },
-    {
-     "id": "c7_Pvg6ZPCI",
-     "kind": "epic",
-     "prio": 4,
-     "title": "Cadillac vs Alpine! INTENSE Battle for the Lead at Monza 🔥 | 6 Hours of Monza 2026",
-     "ch": "FIA WEC"
-    },
-    {
-     "id": "A68OnIQ2siI",
-     "kind": "epic",
-     "prio": 4,
-     "title": "From P2 to DISASTER! Genesis Suddenly Stops at Monza 💔 | 6 Hours of Monza 2026",
      "ch": "FIA WEC"
     }
    ],
