@@ -1507,7 +1507,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T23:42:49.350Z"
+   "photosChecked": "2026-11-10T01:32:03.592Z"
   },
   "19": {
    "videos": [
@@ -1561,7 +1561,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T23:42:49.815Z"
+   "photosChecked": "2026-11-10T01:32:04.068Z"
   },
   "20": {
    "videos": [
@@ -1570,6 +1570,22 @@ window.HIGHLIGHTS = {
      "kind": "race",
      "prio": 1,
      "title": "Race Highlights | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "q16mDWoytf0",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Another INSANE Interlagos Drive From Max Verstappen | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "LwU_TNRBjk8",
+     "kind": "radio",
+     "prio": 7,
+     "title": "Radio Rewind | 2026 Sao Paulo Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     },
@@ -1596,18 +1612,10 @@ window.HIGHLIGHTS = {
      "title": "Drivers React After Qualifying | 2026 Sao Paulo Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
-    },
-    {
-     "id": "Cn4C153hCLk",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Qualifying Highlights | 2026 Sao Paulo Grand Prix",
-     "ch": "FORMULA 1",
-     "ext": true
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T19:42:12.092Z"
+   "photosChecked": "2026-11-10T01:32:04.538Z"
   }
  },
  "formulae": {
@@ -3350,7 +3358,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T19:42:12.709Z"
+   "photosChecked": "2026-11-10T01:32:36.278Z"
   }
  },
  "wec": {
@@ -3850,7 +3858,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-08T23:43:52.958Z"
+   "photosChecked": "2026-11-10T01:33:07.971Z"
   }
  }
 };

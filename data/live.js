@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-08T23:42:43.270Z",
+ "generated": "2026-11-10T01:31:26.948Z",
  "f1": {
   "round": 20,
   "drivers": [
@@ -1364,7 +1364,7 @@ window.LIVE = {
    {
     "key": "8",
     "pos": 1,
-    "pts": 114,
+    "pts": 115,
     "wins": 3
    },
    {
@@ -1375,19 +1375,19 @@ window.LIVE = {
    },
    {
     "key": "20",
-    "pos": 7,
-    "pts": 77,
+    "pos": 5,
+    "pts": 81,
     "wins": 1
    },
    {
     "key": "15",
     "pos": 3,
-    "pts": 83,
+    "pts": 85,
     "wins": 1
    },
    {
     "key": "51",
-    "pos": 9,
+    "pos": 8,
     "pts": 74,
     "wins": 0
    },
@@ -1399,8 +1399,8 @@ window.LIVE = {
    },
    {
     "key": "50",
-    "pos": 8,
-    "pts": 76,
+    "pos": 9,
+    "pts": 72,
     "wins": 1
    },
    {
@@ -1417,8 +1417,8 @@ window.LIVE = {
    },
    {
     "key": "83",
-    "pos": 15,
-    "pts": 45,
+    "pos": 14,
+    "pts": 49,
     "wins": 0
    },
    {
@@ -1429,26 +1429,26 @@ window.LIVE = {
    },
    {
     "key": "007",
-    "pos": 14,
-    "pts": 54,
+    "pos": 16,
+    "pts": 42,
     "wins": 0
    },
    {
     "key": "009",
     "pos": 25,
-    "pts": 4,
+    "pts": 6,
     "wins": 0
    },
    {
     "key": "93",
-    "pos": 23,
-    "pts": 7,
+    "pos": 21,
+    "pts": 10,
     "wins": 0
    },
    {
     "key": "94",
     "pos": 18,
-    "pts": 22,
+    "pts": 24,
     "wins": 0
    },
    {
@@ -1468,17 +1468,17 @@ window.LIVE = {
    {
     "id": "toyota",
     "pos": 1,
-    "pts": 213
+    "pts": 215
    },
    {
     "id": "bmw",
     "pos": 2,
-    "pts": 166
+    "pts": 172
    },
    {
     "id": "ferrari",
     "pos": 3,
-    "pts": 152
+    "pts": 150
    },
    {
     "id": "cadillac",
@@ -1493,12 +1493,12 @@ window.LIVE = {
    {
     "id": "astonmartin",
     "pos": 6,
-    "pts": 70
+    "pts": 58
    },
    {
     "id": "peugeot",
     "pos": 7,
-    "pts": 36
+    "pts": 42
    },
    {
     "id": "genesis",
@@ -1545,7 +1545,7 @@ window.LIVE = {
    "stats": [
     [
      "Pontos",
-     "114"
+     "115"
     ],
     [
      "Vitórias",
@@ -1553,16 +1553,16 @@ window.LIVE = {
     ],
     [
      "Vantagem",
-     "+17"
+     "+18"
     ]
    ],
-   "lede": "Buemi, Hartley e Hirakawa, do Toyota #8, conquistaram o título de 2026 com 114 pontos, 17 pontos à frente de o Toyota #7."
+   "lede": "Buemi, Hartley e Hirakawa, do Toyota #8, conquistaram o título de 2026 com 115 pontos, 18 pontos à frente de o Toyota #7."
   },
   "status": "Toyota #8 é campeão de 2026",
   "en": {
    "hero": {
     "kicker": "2026 champions",
-    "lede": "Buemi, Hartley and Hirakawa (Toyota #8) won the 2026 title with 114 points, 17 points ahead of the Toyota #7."
+    "lede": "Buemi, Hartley and Hirakawa (Toyota #8) won the 2026 title with 115 points, 18 points ahead of the Toyota #7."
    },
    "status": "Toyota #8 are the 2026 champions",
    "updated": "Updated after round 8: 6 Hours of Monza, 8 Nov. Hypercar class."
@@ -1573,7 +1573,7 @@ window.LIVE = {
     {
      "pos": 1,
      "team": "toyota",
-     "pts": 114,
+     "pts": 115,
      "sub": "Toyota #8",
      "name": "Buemi / Hartley / Hirakawa"
     },
@@ -1587,7 +1587,7 @@ window.LIVE = {
     {
      "pos": 3,
      "team": "bmw",
-     "pts": 83,
+     "pts": 85,
      "sub": "BMW #15",
      "name": "Magnussen / Marciello"
     },
@@ -1601,42 +1601,42 @@ window.LIVE = {
     {
      "pos": 5,
      "team": "bmw",
-     "pts": 77,
+     "pts": 81,
+     "sub": "BMW #20",
+     "name": "Rast / Frijns"
+    },
+    {
+     "pos": 6,
+     "team": "bmw",
+     "pts": 79,
      "sub": "BMW #15",
      "name": "Dries Vanthoor"
     },
     {
-     "pos": 6,
+     "pos": 7,
      "team": "cadillac",
      "pts": 77,
      "sub": "Cadillac #38",
      "name": "Jack Aitken"
     },
     {
-     "pos": 7,
-     "team": "bmw",
-     "pts": 77,
-     "sub": "BMW #20",
-     "name": "Rast / Frijns"
-    },
-    {
      "pos": 8,
-     "team": "ferrari",
-     "pts": 76,
-     "sub": "Ferrari #50",
-     "name": "Fuoco / Molina / Nielsen"
-    },
-    {
-     "pos": 9,
      "team": "ferrari",
      "pts": 74,
      "sub": "Ferrari #51",
      "name": "Pier Guidi / Calado / Giovinazzi"
     },
     {
+     "pos": 9,
+     "team": "ferrari",
+     "pts": 72,
+     "sub": "Ferrari #50",
+     "name": "Fuoco / Molina / Nielsen"
+    },
+    {
      "pos": 10,
      "team": "bmw",
-     "pts": 67,
+     "pts": 71,
      "sub": "BMW #20",
      "name": "Sheldon van der Linde"
     }
@@ -1646,21 +1646,21 @@ window.LIVE = {
      "pos": 1,
      "name": "Toyota",
      "team": "toyota",
-     "pts": 213,
+     "pts": 215,
      "sub": "TR010 Hybrid · LMH"
     },
     {
      "pos": 2,
      "name": "BMW",
      "team": "bmw",
-     "pts": 166,
+     "pts": 172,
      "sub": "M Hybrid V8 · LMDh"
     },
     {
      "pos": 3,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 152,
+     "pts": 150,
      "sub": "499P · LMH"
     },
     {
@@ -1681,14 +1681,14 @@ window.LIVE = {
      "pos": 6,
      "name": "Aston Martin",
      "team": "astonmartin",
-     "pts": 70,
+     "pts": 58,
      "sub": "Valkyrie · LMH"
     },
     {
      "pos": 7,
      "name": "Peugeot",
      "team": "peugeot",
-     "pts": 36,
+     "pts": 42,
      "sub": "9X8 · LMH"
     },
     {
