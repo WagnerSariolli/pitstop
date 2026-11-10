@@ -1582,6 +1582,14 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
+     "id": "_09gPxeE_gc",
+     "kind": "onboard",
+     "prio": 5,
+     "title": "Top 10 Onboards | 2026 Sao Paulo Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "LwU_TNRBjk8",
      "kind": "radio",
      "prio": 7,
@@ -1602,14 +1610,6 @@ window.HIGHLIGHTS = {
      "kind": "qualifying",
      "prio": 9,
      "title": "Lando Norris' Pole Lap | 2026 Sao Paulo Grand Prix | Pirelli",
-     "ch": "FORMULA 1",
-     "ext": true
-    },
-    {
-     "id": "5RyZGgxFI8A",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Drivers React After Qualifying | 2026 Sao Paulo Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -3310,7 +3310,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-09T17:29:14.625Z"
+   "photosChecked": "2026-11-10T17:51:03.302Z"
   },
   "20": {
    "videos": [
@@ -3810,7 +3810,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-09T17:29:15.287Z"
+   "photosChecked": "2026-11-10T17:51:03.911Z"
   },
   "8": {
    "videos": [
