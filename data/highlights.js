@@ -3343,17 +3343,17 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
-     "id": "sziClhbgxjQ",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Tissot Sprint Build Up | 2026 Qatar GP",
+     "id": "eTLR_JS8ZMs",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Behind the scenes of Aprilia's and Ducati's celebrations 🐪 | 2026 Qatar GP",
      "ch": "MotoGP"
     },
     {
-     "id": "iVe8Zfa078A",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Top 3 Tissot Sprint moments ⚔️ | 2026 Qatar GP",
+     "id": "tUUH1dQtaQU",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Aprilia's bringing the fight! 🟣🏆🔴 | 2026 Qatar GP",
      "ch": "MotoGP"
     }
    ],
