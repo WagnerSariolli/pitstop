@@ -3822,6 +3822,13 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     },
     {
+     "id": "2n8hGu6xwi0",
+     "kind": "moments",
+     "prio": 2,
+     "title": "10 DRAMATIC Moments from the 6 Hours of Monza 2026! 😱",
+     "ch": "FIA WEC"
+    },
+    {
      "id": "ApAspMx6H1g",
      "kind": "extended",
      "prio": 3,
@@ -3847,13 +3854,6 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Ford STEALS THE LEAD in Thrilling LMGT3 Championship Battle! 🤯 | 6 Hours of Monza 2026",
-     "ch": "FIA WEC"
-    },
-    {
-     "id": "q9-wxeLHsxM",
-     "kind": "epic",
-     "prio": 4,
-     "title": "Milesi's Alpine CRASHES Out in Heartbreaking Solo Incident | 6 Hours of Monza 2026",
      "ch": "FIA WEC"
     }
    ],
