@@ -1507,7 +1507,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-12T11:09:36.105Z"
+   "photosChecked": "2026-11-13T16:24:05.576Z"
   },
   "19": {
    "videos": [
@@ -1561,7 +1561,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-12T11:09:36.622Z"
+   "photosChecked": "2026-11-13T16:24:06.062Z"
   },
   "20": {
    "videos": [
@@ -1615,7 +1615,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-12T11:09:37.127Z"
+   "photosChecked": "2026-11-13T16:24:06.539Z"
   }
  },
  "formulae": {
@@ -3358,7 +3358,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-12T11:09:37.716Z"
+   "photosChecked": "2026-11-13T16:24:08.045Z"
   }
  },
  "wec": {
@@ -3858,7 +3858,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-12T11:09:38.310Z"
+   "photosChecked": "2026-11-13T16:24:08.862Z"
   }
  }
 };
