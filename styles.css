@@ -301,6 +301,9 @@ section { padding: clamp(64px, 9vw, 120px) var(--gutter); }
 
 /* ---------- Garagem ---------- */
 .garage {
+  /* the speed streaks (.stage::after) reach 10% past the stage on each side and sweep further as a car
+     comes in: clipped at the section's edges, or the whole page grew wider and swayed sideways */
+  overflow-x: clip;
   background:
     radial-gradient(70% 50% at 50% 38%, color-mix(in srgb, var(--team) 22%, transparent), transparent 70%),
     var(--asphalt);
