@@ -3310,7 +3310,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-13T00:24:04.180Z"
+   "photosChecked": "2026-11-14T03:16:34.569Z"
   },
   "20": {
    "videos": [
@@ -3810,7 +3810,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-13T00:24:04.687Z"
+   "photosChecked": "2026-11-14T03:17:06.675Z"
   },
   "8": {
    "videos": [
