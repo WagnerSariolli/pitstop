@@ -1506,8 +1506,30 @@ window.HIGHLIGHTS = {
      "ext": true
     }
    ],
-   "photos": [],
-   "photosChecked": "2026-11-15T17:11:05.696Z"
+   "photos": [
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix%2C_Longhorn_Band_on_track.jpg/1920px-Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix%2C_Longhorn_Band_on_track.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/1/1b/Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix%2C_Longhorn_Band_on_track.jpg/500px-Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix%2C_Longhorn_Band_on_track.jpg",
+     "title": "Dyess B-1s make historic flyover at Formula 1 U.S. Grand Prix, Longhorn Band on track",
+     "credit": "Holly Cook · Public domain",
+     "link": "https://commons.wikimedia.org/wiki/File:Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix,_Longhorn_Band_on_track.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix.jpg/1920px-Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5f/Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix.jpg/500px-Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix.jpg",
+     "title": "Dyess B-1s make historic flyover at Formula 1 U.S. Grand Prix",
+     "credit": "Holly Cook · Public domain",
+     "link": "https://commons.wikimedia.org/wiki/File:Dyess_B-1s_make_historic_flyover_at_Formula_1_U.S._Grand_Prix.jpg"
+    },
+    {
+     "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg/1920px-Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg",
+     "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/d/d6/Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg/500px-Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg",
+     "title": "Longhorn Band on track at the 2026 Formula 1 USGP",
+     "credit": "Holly Cook · Public domain",
+     "link": "https://commons.wikimedia.org/wiki/File:Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg"
+    }
+   ],
+   "photosChecked": "2026-11-16T20:29:07.013Z"
   },
   "19": {
    "videos": [
@@ -1561,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-15T17:11:06.156Z"
+   "photosChecked": "2026-11-16T20:29:07.583Z"
   },
   "20": {
    "videos": [
@@ -1615,7 +1637,36 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-15T17:11:06.616Z"
+   "photosChecked": "2026-11-16T20:29:08.166Z"
+  },
+  "21": {
+   "videos": [
+    {
+     "id": "C6lUkh_2_eU",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Collect 200, Natasha Bedingfield and Sean Paul LIVE Performance | T-Mobile Stage: 2026 Las Vegas GP",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "RphVyNQfgMU",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Disclosure and Gorgon City LIVE Performance | T-Mobile Stage: 2026 Las Vegas Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "O7X9RdaEjPg",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Ja Rule and Two Friends LIVE Performance | T-Mobile Stage: 2026 Las Vegas Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    }
+   ],
+   "photos": []
   }
  },
  "formulae": {
@@ -3358,7 +3409,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-15T17:11:07.194Z"
+   "photosChecked": "2026-11-16T20:29:08.756Z"
   }
  },
  "wec": {
@@ -3829,6 +3880,13 @@ window.HIGHLIGHTS = {
      "ch": "FIA WEC"
     },
     {
+     "id": "okio0t89k54",
+     "kind": "moments",
+     "prio": 2,
+     "title": "5 DRAMATIC Moments from Monza 2026! 🇮🇹😱",
+     "ch": "FIA WEC"
+    },
+    {
      "id": "ApAspMx6H1g",
      "kind": "extended",
      "prio": 3,
@@ -3848,17 +3906,10 @@ window.HIGHLIGHTS = {
      "prio": 4,
      "title": "Lexus Takes POLE After Aston Martin's Fastest Lap Is Deleted! | 6 Hours of Monza 2026",
      "ch": "FIA WEC"
-    },
-    {
-     "id": "OJgpd51hcoc",
-     "kind": "epic",
-     "prio": 4,
-     "title": "Ford STEALS THE LEAD in Thrilling LMGT3 Championship Battle! 🤯 | 6 Hours of Monza 2026",
-     "ch": "FIA WEC"
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-15T17:11:07.812Z"
+   "photosChecked": "2026-11-16T20:29:09.349Z"
   }
  }
 };
