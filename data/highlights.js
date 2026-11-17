@@ -1529,7 +1529,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg"
     }
    ],
-   "photosChecked": "2026-11-16T20:29:07.013Z"
+   "photosChecked": "2026-11-17T22:23:49.882Z"
   },
   "19": {
    "videos": [
@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-16T20:29:07.583Z"
+   "photosChecked": "2026-11-17T22:23:50.381Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-16T20:29:08.166Z"
+   "photosChecked": "2026-11-17T22:23:50.856Z"
   },
   "21": {
    "videos": [
@@ -3409,7 +3409,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-16T20:29:08.756Z"
+   "photosChecked": "2026-11-17T22:23:51.337Z"
   }
  },
  "wec": {
@@ -3909,7 +3909,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-16T20:29:09.349Z"
+   "photosChecked": "2026-11-17T22:23:51.977Z"
   }
  }
 };
