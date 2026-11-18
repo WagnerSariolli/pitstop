@@ -3361,7 +3361,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-17T13:26:16.073Z"
+   "photosChecked": "2026-11-18T13:58:37.366Z"
   },
   "20": {
    "videos": [
