@@ -3410,6 +3410,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-11-20T11:48:44.708Z"
+  },
+  "21": {
+   "videos": [
+    {
+     "id": "nSUlhPKh6-c",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Jack Miller's Valencia's livery revealed in Inside The Paddock 👀| 2026 Portuguese GP",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
   }
  },
  "wec": {
