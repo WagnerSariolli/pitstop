@@ -3437,6 +3437,13 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "4rztLek0Dw0",
+     "kind": "epic",
+     "prio": 4,
+     "title": "M. Marquez crashes from P3 one and a half laps before he could clinch the title🤯| 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "qxs24HREvOc",
      "kind": "sprint",
      "prio": 6,
