@@ -3361,7 +3361,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-19T21:34:06.855Z"
+   "photosChecked": "2026-11-21T02:14:12.499Z"
   },
   "20": {
    "videos": [
@@ -3418,6 +3418,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Jack Miller's Valencia's livery revealed in Inside The Paddock 👀| 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "w4GqsDChLWk",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Alex Marquez sets the pace in the last 5 minutes of MotoGP Practice | 2026 Portuguese GP",
      "ch": "MotoGP"
     }
    ],
