@@ -1529,7 +1529,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg"
     }
    ],
-   "photosChecked": "2026-11-20T11:48:43.190Z"
+   "photosChecked": "2026-11-21T17:31:36.228Z"
   },
   "19": {
    "videos": [
@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-20T11:48:43.685Z"
+   "photosChecked": "2026-11-21T17:31:36.721Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-20T11:48:44.193Z"
+   "photosChecked": "2026-11-21T17:31:37.198Z"
   },
   "21": {
    "videos": [
@@ -3425,7 +3425,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-20T11:48:44.708Z"
+   "photosChecked": "2026-11-21T17:31:37.800Z"
   },
   "21": {
    "videos": [
@@ -3434,6 +3434,20 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Jack Miller's Valencia's livery revealed in Inside The Paddock 👀| 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "qxs24HREvOc",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Top 3 Tissot Sprint Moments ⚔️ | 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "jZjObZaRzXQ",
+     "kind": "sprint",
+     "prio": 6,
+     "title": "Tissot Sprint Build Up | 2026 Portuguese GP",
      "ch": "MotoGP"
     },
     {
@@ -3944,7 +3958,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-20T11:48:45.307Z"
+   "photosChecked": "2026-11-21T17:31:38.379Z"
   }
  }
 };
