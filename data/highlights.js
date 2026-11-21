@@ -1664,6 +1664,22 @@ window.HIGHLIGHTS = {
      "title": "Ja Rule and Two Friends LIVE Performance | T-Mobile Stage: 2026 Las Vegas Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
+    },
+    {
+     "id": "3QgJip5ljEk",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React To Qualifying | 2026 Las Vegas Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
+     "id": "jiBlTDJ-mFw",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Qualifying Highlights | 2026 Las Vegas Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
     }
    ],
    "photos": []
