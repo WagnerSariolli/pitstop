@@ -1642,6 +1642,14 @@ window.HIGHLIGHTS = {
   "21": {
    "videos": [
     {
+     "id": "Vyk_6bNm7lo",
+     "kind": "race",
+     "prio": 1,
+     "title": "Race Highlights | 2026 Las Vegas Grand Prix",
+     "ch": "FORMULA 1",
+     "ext": true
+    },
+    {
      "id": "C6lUkh_2_eU",
      "kind": "epic",
      "prio": 4,
@@ -1674,15 +1682,16 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
-     "id": "jiBlTDJ-mFw",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Qualifying Highlights | 2026 Las Vegas Grand Prix",
+     "id": "GwwlbV_hG7c",
+     "kind": "react",
+     "prio": 8,
+     "title": "Drivers React After The Race | 2026 Las Vegas Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-22T11:32:27.711Z"
   }
  },
  "formulae": {
@@ -3441,6 +3450,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "M. Marquez crashes from P3 one and a half laps before he could clinch the title🤯| 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "GvTocsDO224",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Pre-Race Talk Show | 2026 Portuguese GP",
      "ch": "MotoGP"
     },
     {

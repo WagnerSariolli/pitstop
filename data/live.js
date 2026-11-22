@@ -1,13 +1,13 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-21T17:31:31.961Z",
+ "generated": "2026-11-22T11:32:22.324Z",
  "f1": {
   "round": 21,
   "drivers": [
    {
     "key": 12,
     "pos": 1,
-    "pts": 390,
+    "pts": 402,
     "wins": 9,
     "name": "Kimi Antonelli",
     "team": "mercedes"
@@ -15,47 +15,47 @@ window.LIVE = {
    {
     "key": 3,
     "pos": 2,
-    "pts": 279,
-    "wins": 3,
+    "pts": 304,
+    "wins": 4,
     "name": "Max Verstappen",
     "team": "redbullracing"
    },
    {
-    "key": 63,
-    "pos": 3,
-    "pts": 262,
-    "wins": 3,
-    "name": "George Russell",
-    "team": "mercedes"
-   },
-   {
     "key": 44,
-    "pos": 4,
-    "pts": 261,
+    "pos": 3,
+    "pts": 267,
     "wins": 1,
     "name": "Lewis Hamilton",
     "team": "ferrari"
    },
    {
-    "key": 16,
-    "pos": 5,
-    "pts": 249,
-    "wins": 1,
-    "name": "Charles Leclerc",
-    "team": "ferrari"
+    "key": 63,
+    "pos": 4,
+    "pts": 264,
+    "wins": 3,
+    "name": "George Russell",
+    "team": "mercedes"
    },
    {
     "key": 1,
-    "pos": 6,
-    "pts": 246,
+    "pos": 5,
+    "pts": 264,
     "wins": 3,
     "name": "Lando Norris",
     "team": "mclaren"
    },
    {
+    "key": 16,
+    "pos": 6,
+    "pts": 250,
+    "wins": 1,
+    "name": "Charles Leclerc",
+    "team": "ferrari"
+   },
+   {
     "key": 81,
     "pos": 7,
-    "pts": 152,
+    "pts": 167,
     "wins": 0,
     "name": "Oscar Piastri",
     "team": "mclaren"
@@ -79,7 +79,7 @@ window.LIVE = {
    {
     "key": 10,
     "pos": 10,
-    "pts": 42,
+    "pts": 52,
     "wins": 0,
     "name": "Pierre Gasly",
     "team": "alpine"
@@ -95,7 +95,7 @@ window.LIVE = {
    {
     "key": 43,
     "pos": 12,
-    "pts": 27,
+    "pts": 35,
     "wins": 0,
     "name": "Franco Colapinto",
     "team": "alpine"
@@ -125,8 +125,16 @@ window.LIVE = {
     "team": "audi"
    },
    {
-    "key": 31,
+    "key": 55,
     "pos": 16,
+    "pts": 11,
+    "wins": 0,
+    "name": "Carlos Sainz",
+    "team": "williams"
+   },
+   {
+    "key": 31,
+    "pos": 17,
     "pts": 7,
     "wins": 0,
     "name": "Esteban Ocon",
@@ -134,19 +142,11 @@ window.LIVE = {
    },
    {
     "key": 14,
-    "pos": 17,
+    "pos": 18,
     "pts": 7,
     "wins": 0,
     "name": "Fernando Alonso",
     "team": "astonmartin"
-   },
-   {
-    "key": 55,
-    "pos": 18,
-    "pts": 7,
-    "wins": 0,
-    "name": "Carlos Sainz",
-    "team": "williams"
    },
    {
     "key": 23,
@@ -209,22 +209,22 @@ window.LIVE = {
    {
     "id": "mercedes",
     "pos": 1,
-    "pts": 652
+    "pts": 666
    },
    {
     "id": "ferrari",
     "pos": 2,
-    "pts": 510
+    "pts": 517
    },
    {
     "id": "redbullracing",
     "pos": 3,
-    "pts": 415
+    "pts": 440
    },
    {
     "id": "mclaren",
     "pos": 4,
-    "pts": 398
+    "pts": 431
    },
    {
     "id": "racingbulls",
@@ -234,7 +234,7 @@ window.LIVE = {
    {
     "id": "alpine",
     "pos": 6,
-    "pts": 69
+    "pts": 87
    },
    {
     "id": "haasf1team",
@@ -249,7 +249,7 @@ window.LIVE = {
    {
     "id": "williams",
     "pos": 9,
-    "pts": 12
+    "pts": 16
    },
    {
     "id": "astonmartin",
@@ -344,7 +344,8 @@ window.LIVE = {
     "team": "mclaren"
    },
    "21": {
-    "start": "2026-11-22T04:00:00Z"
+    "winner": "Verstappen",
+    "team": "redbullracing"
    },
    "22": {
     "start": "2026-11-29T16:00:00Z"
@@ -358,7 +359,7 @@ window.LIVE = {
    "stats": [
     [
      "Pontos",
-     "390"
+     "402"
     ],
     [
      "Vitórias",
@@ -366,18 +367,18 @@ window.LIVE = {
     ],
     [
      "Vantagem",
-     "+111"
+     "+98"
     ]
    ],
-   "lede": "Kimi Antonelli lidera o campeonato com 390 pontos e 111 pontos de vantagem sobre Max Verstappen, depois de 21 de 23 etapas."
+   "lede": "Kimi Antonelli lidera o campeonato com 402 pontos e 98 pontos de vantagem sobre Max Verstappen, depois de 21 de 23 etapas."
   },
-  "status": "Antonelli lidera com 111 pts de vantagem",
+  "status": "Antonelli lidera com 98 pts de vantagem",
   "en": {
    "hero": {
     "kicker": "Championship leader · after 21 of 23 rounds",
-    "lede": "Kimi Antonelli leads the championship with 390 points, 111 points clear of Max Verstappen, after 21 of 23 rounds."
+    "lede": "Kimi Antonelli leads the championship with 402 points, 98 points clear of Max Verstappen, after 21 of 23 rounds."
    },
-   "status": "Antonelli leads by 111 pts",
+   "status": "Antonelli leads by 98 pts",
    "updated": "Updated after round 21: Las Vegas, 21 Nov."
   },
   "updated": "Atualizado após a etapa 21: Las Vegas, 21 nov.",
@@ -387,43 +388,43 @@ window.LIVE = {
      "pos": 1,
      "name": "Kimi Antonelli",
      "team": "mercedes",
-     "pts": 390
+     "pts": 402
     },
     {
      "pos": 2,
      "name": "Max Verstappen",
      "team": "redbullracing",
-     "pts": 279
+     "pts": 304
     },
     {
      "pos": 3,
-     "name": "George Russell",
-     "team": "mercedes",
-     "pts": 262
+     "name": "Lewis Hamilton",
+     "team": "ferrari",
+     "pts": 267
     },
     {
      "pos": 4,
-     "name": "Lewis Hamilton",
-     "team": "ferrari",
-     "pts": 261
+     "name": "George Russell",
+     "team": "mercedes",
+     "pts": 264
     },
     {
      "pos": 5,
-     "name": "Charles Leclerc",
-     "team": "ferrari",
-     "pts": 249
+     "name": "Lando Norris",
+     "team": "mclaren",
+     "pts": 264
     },
     {
      "pos": 6,
-     "name": "Lando Norris",
-     "team": "mclaren",
-     "pts": 246
+     "name": "Charles Leclerc",
+     "team": "ferrari",
+     "pts": 250
     },
     {
      "pos": 7,
      "name": "Oscar Piastri",
      "team": "mclaren",
-     "pts": 152
+     "pts": 167
     },
     {
      "pos": 8,
@@ -441,7 +442,7 @@ window.LIVE = {
      "pos": 10,
      "name": "Pierre Gasly",
      "team": "alpine",
-     "pts": 42
+     "pts": 52
     },
     {
      "pos": 11,
@@ -453,7 +454,7 @@ window.LIVE = {
      "pos": 12,
      "name": "Franco Colapinto",
      "team": "alpine",
-     "pts": 27
+     "pts": 35
     },
     {
      "pos": 13,
@@ -475,20 +476,20 @@ window.LIVE = {
     },
     {
      "pos": 16,
+     "name": "Carlos Sainz",
+     "team": "williams",
+     "pts": 11
+    },
+    {
+     "pos": 17,
      "name": "Esteban Ocon",
      "team": "haasf1team",
      "pts": 7
     },
     {
-     "pos": 17,
+     "pos": 18,
      "name": "Fernando Alonso",
      "team": "astonmartin",
-     "pts": 7
-    },
-    {
-     "pos": 18,
-     "name": "Carlos Sainz",
-     "team": "williams",
      "pts": 7
     },
     {
@@ -539,25 +540,25 @@ window.LIVE = {
      "pos": 1,
      "name": "Mercedes",
      "team": "mercedes",
-     "pts": 652
+     "pts": 666
     },
     {
      "pos": 2,
      "name": "Ferrari",
      "team": "ferrari",
-     "pts": 510
+     "pts": 517
     },
     {
      "pos": 3,
      "name": "Red Bull Racing",
      "team": "redbullracing",
-     "pts": 415
+     "pts": 440
     },
     {
      "pos": 4,
      "name": "McLaren",
      "team": "mclaren",
-     "pts": 398
+     "pts": 431
     },
     {
      "pos": 5,
@@ -569,7 +570,7 @@ window.LIVE = {
      "pos": 6,
      "name": "Alpine",
      "team": "alpine",
-     "pts": 69
+     "pts": 87
     },
     {
      "pos": 7,
@@ -587,7 +588,7 @@ window.LIVE = {
      "pos": 9,
      "name": "Williams",
      "team": "williams",
-     "pts": 12
+     "pts": 16
     },
     {
      "pos": 10,
