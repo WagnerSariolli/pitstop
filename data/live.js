@@ -1,6 +1,6 @@
 // Gerado automaticamente por scripts/update-data.mjs. Não edite à mão.
 window.LIVE = {
- "generated": "2026-11-22T11:32:22.324Z",
+ "generated": "2026-11-22T19:40:03.586Z",
  "f1": {
   "round": 21,
   "drivers": [
@@ -606,12 +606,12 @@ window.LIVE = {
   ]
  },
  "motogp": {
-  "round": 20,
+  "round": 21,
   "drivers": [
    {
     "key": 93,
     "pos": 1,
-    "pts": 431,
+    "pts": 439,
     "wins": 7,
     "podiums": 8,
     "name": "Marc Márquez",
@@ -620,18 +620,18 @@ window.LIVE = {
    {
     "key": 89,
     "pos": 2,
-    "pts": 376,
+    "pts": 396,
     "wins": 1,
-    "podiums": 9,
+    "podiums": 10,
     "name": "Jorge Martín",
     "team": "aprilia"
    },
    {
     "key": 72,
     "pos": 3,
-    "pts": 369,
-    "wins": 6,
-    "podiums": 12,
+    "pts": 394,
+    "wins": 7,
+    "podiums": 13,
     "name": "Marco Bezzecchi",
     "team": "aprilia"
    },
@@ -647,7 +647,7 @@ window.LIVE = {
    {
     "key": 79,
     "pos": 5,
-    "pts": 298,
+    "pts": 309,
     "wins": 1,
     "podiums": 4,
     "name": "Ai Ogura",
@@ -656,7 +656,7 @@ window.LIVE = {
    {
     "key": 49,
     "pos": 6,
-    "pts": 285,
+    "pts": 298,
     "wins": 1,
     "podiums": 3,
     "name": "Fabio Di Giannantonio",
@@ -665,9 +665,9 @@ window.LIVE = {
    {
     "key": 25,
     "pos": 7,
-    "pts": 267,
+    "pts": 283,
     "wins": 1,
-    "podiums": 6,
+    "podiums": 7,
     "name": "Raúl Fernández",
     "team": "trackhouse"
    },
@@ -692,7 +692,7 @@ window.LIVE = {
    {
     "key": 23,
     "pos": 10,
-    "pts": 147,
+    "pts": 152,
     "wins": 0,
     "podiums": 0,
     "name": "Enea Bastianini",
@@ -701,7 +701,7 @@ window.LIVE = {
    {
     "key": 54,
     "pos": 11,
-    "pts": 129,
+    "pts": 139,
     "wins": 0,
     "podiums": 1,
     "name": "Fermín Aldeguer",
@@ -710,7 +710,7 @@ window.LIVE = {
    {
     "key": 33,
     "pos": 12,
-    "pts": 118,
+    "pts": 127,
     "wins": 0,
     "podiums": 0,
     "name": "Brad Binder",
@@ -719,7 +719,7 @@ window.LIVE = {
    {
     "key": 10,
     "pos": 13,
-    "pts": 117,
+    "pts": 124,
     "wins": 0,
     "podiums": 0,
     "name": "Luca Marini",
@@ -728,7 +728,7 @@ window.LIVE = {
    {
     "key": 20,
     "pos": 14,
-    "pts": 81,
+    "pts": 85,
     "wins": 0,
     "podiums": 0,
     "name": "Fabio Quartararo",
@@ -746,7 +746,7 @@ window.LIVE = {
    {
     "key": 21,
     "pos": 16,
-    "pts": 70,
+    "pts": 71,
     "wins": 0,
     "podiums": 0,
     "name": "Franco Morbidelli",
@@ -762,8 +762,17 @@ window.LIVE = {
     "team": "lcr"
    },
    {
-    "key": 36,
+    "key": 43,
     "pos": 18,
+    "pts": 34,
+    "wins": 0,
+    "podiums": 0,
+    "name": "Jack Miller",
+    "team": "pramac"
+   },
+   {
+    "key": 36,
+    "pos": 19,
     "pts": 33,
     "wins": 0,
     "podiums": 0,
@@ -771,18 +780,9 @@ window.LIVE = {
     "team": "hrc"
    },
    {
-    "key": 43,
-    "pos": 19,
-    "pts": 31,
-    "wins": 0,
-    "podiums": 0,
-    "name": "Jack Miller",
-    "team": "pramac"
-   },
-   {
     "key": 42,
     "pos": 20,
-    "pts": 29,
+    "pts": 31,
     "wins": 0,
     "podiums": 0,
     "name": "Álex Rins",
@@ -791,7 +791,7 @@ window.LIVE = {
    {
     "key": null,
     "pos": 21,
-    "pts": 19,
+    "pts": 25,
     "wins": 0,
     "podiums": 0,
     "name": "Iker Lecuona",
@@ -910,42 +910,42 @@ window.LIVE = {
    {
     "id": "aprilia",
     "pos": 1,
-    "pts": 745
+    "pts": 790
    },
    {
     "id": "ducati",
     "pos": 2,
-    "pts": 623
+    "pts": 637
    },
    {
     "id": "trackhouse",
     "pos": 3,
-    "pts": 565
+    "pts": 592
    },
    {
     "id": "ktm",
     "pos": 4,
-    "pts": 433
+    "pts": 442
    },
    {
     "id": "vr46",
     "pos": 5,
-    "pts": 355
+    "pts": 369
    },
    {
     "id": "gresini",
     "pos": 6,
-    "pts": 333
+    "pts": 343
    },
    {
     "id": "tech3",
     "pos": 7,
-    "pts": 169
+    "pts": 174
    },
    {
     "id": "hrc",
     "pos": 8,
-    "pts": 158
+    "pts": 165
    },
    {
     "id": "lcr",
@@ -955,12 +955,12 @@ window.LIVE = {
    {
     "id": "yamaha",
     "pos": 10,
-    "pts": 110
+    "pts": 116
    },
    {
     "id": "pramac",
     "pos": 11,
-    "pts": 55
+    "pts": 58
    }
   ],
   "calendar": {
@@ -1039,14 +1039,18 @@ window.LIVE = {
    "20": {
     "winner": "Bezzecchi",
     "team": "aprilia"
+   },
+   "21": {
+    "winner": "Bezzecchi",
+    "team": "aprilia"
    }
   },
   "hero": {
-   "kicker": "Líder do campeonato · após 20 de 22 etapas",
+   "kicker": "Líder do campeonato · após 21 de 22 etapas",
    "stats": [
     [
      "Pontos",
-     "431"
+     "439"
     ],
     [
      "Pódios",
@@ -1054,10 +1058,10 @@ window.LIVE = {
     ],
     [
      "Vantagem",
-     "+55"
+     "+43"
     ]
    ],
-   "lede": "Marc Márquez lidera o campeonato com 431 pontos e 55 pontos de vantagem sobre Jorge Martín, depois de 20 de 22 etapas.",
+   "lede": "Marc Márquez lidera o campeonato com 439 pontos e 43 pontos de vantagem sobre Jorge Martín, depois de 21 de 22 etapas.",
    "number": "93",
    "first": "Marc",
    "last": "Márquez",
@@ -1065,37 +1069,37 @@ window.LIVE = {
    "img": "img/motogp/23e50438.webp",
    "alt": "Marc Márquez"
   },
-  "status": "Márquez lidera com 55 pts de vantagem",
+  "status": "Márquez lidera com 43 pts de vantagem",
   "en": {
    "hero": {
-    "kicker": "Championship leader · after 20 of 22 rounds",
-    "lede": "Marc Márquez leads the championship with 431 points, 55 points clear of Jorge Martín, after 20 of 22 rounds.",
+    "kicker": "Championship leader · after 21 of 22 rounds",
+    "lede": "Marc Márquez leads the championship with 439 points, 43 points clear of Jorge Martín, after 21 of 22 rounds.",
     "first": "Marc",
     "alt": "Marc Márquez"
    },
-   "status": "Márquez leads by 55 pts",
-   "updated": "Updated after round 20: Qatar, 8 Nov."
+   "status": "Márquez leads by 43 pts",
+   "updated": "Updated after round 21: Portugal, 22 Nov."
   },
-  "updated": "Atualizado após a etapa 20: Catar, 08 nov.",
+  "updated": "Atualizado após a etapa 21: Portugal, 22 nov.",
   "standings": [
    [
     {
      "pos": 1,
      "name": "Marc Márquez",
      "team": "ducati",
-     "pts": 431
+     "pts": 439
     },
     {
      "pos": 2,
      "name": "Jorge Martín",
      "team": "aprilia",
-     "pts": 376
+     "pts": 396
     },
     {
      "pos": 3,
      "name": "Marco Bezzecchi",
      "team": "aprilia",
-     "pts": 369
+     "pts": 394
     },
     {
      "pos": 4,
@@ -1107,19 +1111,19 @@ window.LIVE = {
      "pos": 5,
      "name": "Ai Ogura",
      "team": "trackhouse",
-     "pts": 298
+     "pts": 309
     },
     {
      "pos": 6,
      "name": "Fabio Di Giannantonio",
      "team": "vr46",
-     "pts": 285
+     "pts": 298
     },
     {
      "pos": 7,
      "name": "Raúl Fernández",
      "team": "trackhouse",
-     "pts": 267
+     "pts": 283
     },
     {
      "pos": 8,
@@ -1137,31 +1141,31 @@ window.LIVE = {
      "pos": 10,
      "name": "Enea Bastianini",
      "team": "tech3",
-     "pts": 147
+     "pts": 152
     },
     {
      "pos": 11,
      "name": "Fermín Aldeguer",
      "team": "gresini",
-     "pts": 129
+     "pts": 139
     },
     {
      "pos": 12,
      "name": "Brad Binder",
      "team": "ktm",
-     "pts": 118
+     "pts": 127
     },
     {
      "pos": 13,
      "name": "Luca Marini",
      "team": "hrc",
-     "pts": 117
+     "pts": 124
     },
     {
      "pos": 14,
      "name": "Fabio Quartararo",
      "team": "yamaha",
-     "pts": 81
+     "pts": 85
     },
     {
      "pos": 15,
@@ -1173,7 +1177,7 @@ window.LIVE = {
      "pos": 16,
      "name": "Franco Morbidelli",
      "team": "vr46",
-     "pts": 70
+     "pts": 71
     },
     {
      "pos": 17,
@@ -1183,27 +1187,27 @@ window.LIVE = {
     },
     {
      "pos": 18,
+     "name": "Jack Miller",
+     "team": "pramac",
+     "pts": 34
+    },
+    {
+     "pos": 19,
      "name": "Joan Mir",
      "team": "hrc",
      "pts": 33
     },
     {
-     "pos": 19,
-     "name": "Jack Miller",
-     "team": "pramac",
-     "pts": 31
-    },
-    {
      "pos": 20,
      "name": "Álex Rins",
      "team": "yamaha",
-     "pts": 29
+     "pts": 31
     },
     {
      "pos": 21,
      "name": "Iker Lecuona",
      "team": "ducati",
-     "pts": 19
+     "pts": 25
     },
     {
      "pos": 22,
@@ -1283,56 +1287,56 @@ window.LIVE = {
      "pos": 1,
      "name": "Aprilia Racing",
      "team": "aprilia",
-     "pts": 745,
+     "pts": 790,
      "sub": "Aprilia RS-GP26"
     },
     {
      "pos": 2,
      "name": "Ducati Lenovo",
      "team": "ducati",
-     "pts": 623,
+     "pts": 637,
      "sub": "Ducati Desmosedici GP26"
     },
     {
      "pos": 3,
      "name": "Trackhouse",
      "team": "trackhouse",
-     "pts": 565,
+     "pts": 592,
      "sub": "Aprilia RS-GP26"
     },
     {
      "pos": 4,
      "name": "KTM",
      "team": "ktm",
-     "pts": 433,
+     "pts": 442,
      "sub": "KTM RC16"
     },
     {
      "pos": 5,
      "name": "VR46",
      "team": "vr46",
-     "pts": 355,
+     "pts": 369,
      "sub": "Ducati Desmosedici GP26"
     },
     {
      "pos": 6,
      "name": "Gresini",
      "team": "gresini",
-     "pts": 333,
+     "pts": 343,
      "sub": "Ducati Desmosedici GP25"
     },
     {
      "pos": 7,
      "name": "Tech3",
      "team": "tech3",
-     "pts": 169,
+     "pts": 174,
      "sub": "KTM RC16"
     },
     {
      "pos": 8,
      "name": "Honda HRC",
      "team": "hrc",
-     "pts": 158,
+     "pts": 165,
      "sub": "Honda RC213V"
     },
     {
@@ -1346,14 +1350,14 @@ window.LIVE = {
      "pos": 10,
      "name": "Yamaha",
      "team": "yamaha",
-     "pts": 110,
+     "pts": 116,
      "sub": "Yamaha YZR-M1"
     },
     {
      "pos": 11,
      "name": "Pramac",
      "team": "pramac",
-     "pts": 55,
+     "pts": 58,
      "sub": "Yamaha YZR-M1"
     }
    ]

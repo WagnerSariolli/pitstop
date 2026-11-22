@@ -1529,7 +1529,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg"
     }
    ],
-   "photosChecked": "2026-11-21T17:31:36.228Z"
+   "photosChecked": "2026-11-22T19:40:06.790Z"
   },
   "19": {
    "videos": [
@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-21T17:31:36.721Z"
+   "photosChecked": "2026-11-22T19:40:07.492Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-21T17:31:37.198Z"
+   "photosChecked": "2026-11-22T19:40:08.197Z"
   },
   "21": {
    "videos": [
@@ -3434,10 +3434,17 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-21T17:31:37.800Z"
+   "photosChecked": "2026-11-22T19:40:08.804Z"
   },
   "21": {
    "videos": [
+    {
+     "id": "NPiiMVtqaUg",
+     "kind": "moments",
+     "prio": 2,
+     "title": "Best MotoGP Moments 👑 | 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
     {
      "id": "nSUlhPKh6-c",
      "kind": "epic",
@@ -3472,16 +3479,10 @@ window.HIGHLIGHTS = {
      "prio": 6,
      "title": "Tissot Sprint Build Up | 2026 Portuguese GP",
      "ch": "MotoGP"
-    },
-    {
-     "id": "w4GqsDChLWk",
-     "kind": "qualifying",
-     "prio": 9,
-     "title": "Alex Marquez sets the pace in the last 5 minutes of MotoGP Practice | 2026 Portuguese GP",
-     "ch": "MotoGP"
     }
    ],
-   "photos": []
+   "photos": [],
+   "photosChecked": "2026-11-22T19:40:09.420Z"
   }
  },
  "wec": {
@@ -3981,7 +3982,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-21T17:31:38.379Z"
+   "photosChecked": "2026-11-22T19:40:10.037Z"
   }
  }
 };
