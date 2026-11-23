@@ -1529,7 +1529,7 @@ window.HIGHLIGHTS = {
      "link": "https://commons.wikimedia.org/wiki/File:Longhorn_Band_on_track_at_the_2026_Formula_1_USGP.jpg"
     }
    ],
-   "photosChecked": "2026-11-22T19:40:06.790Z"
+   "photosChecked": "2026-11-23T21:24:46.950Z"
   },
   "19": {
    "videos": [
@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T19:40:07.492Z"
+   "photosChecked": "2026-11-23T21:24:47.518Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T19:40:08.197Z"
+   "photosChecked": "2026-11-23T21:24:48.024Z"
   },
   "21": {
    "videos": [
@@ -1674,24 +1674,24 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
-     "id": "3QgJip5ljEk",
-     "kind": "react",
-     "prio": 8,
-     "title": "Drivers React To Qualifying | 2026 Las Vegas Grand Prix",
+     "id": "z1S6WWWIP3w",
+     "kind": "epic",
+     "prio": 4,
+     "title": "All 35 Times There Was A New Leader | 2026 Las Vegas Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     },
     {
-     "id": "GwwlbV_hG7c",
-     "kind": "react",
-     "prio": 8,
-     "title": "Drivers React After The Race | 2026 Las Vegas Grand Prix",
+     "id": "eRZpErDPLa4",
+     "kind": "radio",
+     "prio": 7,
+     "title": "Radio Rewind | 2026 Las Vegas Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T11:32:27.711Z"
+   "photosChecked": "2026-11-23T21:24:48.532Z"
   }
  },
  "formulae": {
@@ -3434,7 +3434,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T19:40:08.804Z"
+   "photosChecked": "2026-11-23T21:24:49.196Z"
   },
   "21": {
    "videos": [
@@ -3482,7 +3482,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T19:40:09.420Z"
+   "photosChecked": "2026-11-23T21:24:49.728Z"
   }
  },
  "wec": {
@@ -3982,7 +3982,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-22T19:40:10.037Z"
+   "photosChecked": "2026-11-23T21:24:50.350Z"
   }
  }
 };
