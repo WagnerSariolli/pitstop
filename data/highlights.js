@@ -3467,17 +3467,17 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
+     "id": "2W0eNMY5U18",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Marc Marquez celebrates emotional 8th MotoGP title | 2026 Portuguese GP",
+     "ch": "MotoGP"
+    },
+    {
      "id": "qxs24HREvOc",
      "kind": "sprint",
      "prio": 6,
      "title": "Top 3 Tissot Sprint Moments ⚔️ | 2026 Portuguese GP",
-     "ch": "MotoGP"
-    },
-    {
-     "id": "jZjObZaRzXQ",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Tissot Sprint Build Up | 2026 Portuguese GP",
      "ch": "MotoGP"
     }
    ],
