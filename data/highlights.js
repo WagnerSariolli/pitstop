@@ -1682,10 +1682,10 @@ window.HIGHLIGHTS = {
      "ext": true
     },
     {
-     "id": "eRZpErDPLa4",
-     "kind": "radio",
-     "prio": 7,
-     "title": "Radio Rewind | 2026 Las Vegas Grand Prix",
+     "id": "AEPr1TWEKhw",
+     "kind": "onboard",
+     "prio": 5,
+     "title": "Top 10 Onboards | 2026 Las Vegas Grand Prix",
      "ch": "FORMULA 1",
      "ext": true
     }
@@ -3386,7 +3386,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-23T09:06:48.593Z"
+   "photosChecked": "2026-11-24T17:44:37.401Z"
   },
   "20": {
    "videos": [
@@ -3474,10 +3474,10 @@ window.HIGHLIGHTS = {
      "ch": "MotoGP"
     },
     {
-     "id": "qxs24HREvOc",
-     "kind": "sprint",
-     "prio": 6,
-     "title": "Top 3 Tissot Sprint Moments ⚔️ | 2026 Portuguese GP",
+     "id": "tdZ1xiJBLKQ",
+     "kind": "epic",
+     "prio": 4,
+     "title": "POV: You're the Champion 🏆 | 2026 Portuguese GP",
      "ch": "MotoGP"
     }
    ],
