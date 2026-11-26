@@ -2676,7 +2676,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-25T22:32:24.197Z"
+   "photosChecked": "2026-11-26T23:53:45.841Z"
   },
   "20": {
    "videos": [
@@ -2773,6 +2773,18 @@ window.HIGHLIGHTS = {
    ],
    "photos": [],
    "photosChecked": "2026-11-26T05:04:05.416Z"
+  },
+  "22": {
+   "videos": [
+    {
+     "id": "v-qvfanikG4",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Pedro, Jorge & Fabio face 1000cc era quiz 🧠 | 2026 Valencia GP",
+     "ch": "MotoGP"
+    }
+   ],
+   "photos": []
   }
  },
  "wec": {
