@@ -10,8 +10,6 @@ window.Guide = (() => {
   const kmOf = c => (c.length_km ? `${nf(+c.length_km, 3)} km` : null);
   const DIR = { cw: T("Horário", "Clockwise"), ccw: T("Anti-horário", "Anticlockwise"), eight: T("Em oito (cruza a si mesmo)", "Figure of eight (crosses itself)") };
   const EIGHT = T("Em oito", "Figure of eight");
-  // na Fórmula E estas provas usam uma versão mais curta do circuito
-  const FE_SHORT = { mexico: true, jeddah: true, shanghai: true };
 
   /* ---------- Provas por circuito ---------- */
   let ALL = null;
@@ -539,10 +537,7 @@ window.Guide = (() => {
     const measured = c.path ? perimeter(c.path) / 1000 : null;
     const coord = (v, pos, neg) => `${nf(Math.abs(v), 4)}° ${v >= 0 ? pos : neg}`;
     const [E, W] = [T("L", "E"), T("O", "W")];
-    const hasFE = rs.some(x => x.s.id === "formulae");
     const notes = [
-      hasFE && FE_SHORT[c.id] && T("Na Fórmula E a prova usa uma versão mais curta do circuito; o desenho e a ficha mostram o traçado completo.", "Formula E races on a shorter version of the circuit; the drawing and the facts show the full layout."),
-      c.id === "homestead" && T("A Fórmula E corre num traçado montado na área interna do oval; a ficha do oval não vale para ele.", "Formula E races on a layout set up in the oval's infield; the oval's facts don't apply to it."),
       c.id === "lemans" && T("A volta de 13,6 km usa estradas públicas fechadas para a corrida, por isso não há traçado aberto contínuo.", "The 13.6 km lap uses public roads closed for the race, so there's no continuous open-source layout."),
       c.dir === "eight" && T("Suzuka é um oito: o traçado passa por cima de si mesmo num viaduto.", "Suzuka is a figure of eight: the track crosses over itself on a bridge."),
     ].filter(Boolean);

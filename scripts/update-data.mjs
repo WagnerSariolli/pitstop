@@ -7,7 +7,7 @@
 //   F1      → API Jolpica-F1 (sucessora da Ergast), api.jolpi.ca
 //   MotoGP  → API de resultados do site oficial, api.motogp.pulselive.com
 //   WEC     → tabelas de resultados da Wikipedia (o WEC não tem API pública)
-//   Fórmula E → temporada encerrada em agosto; nada a buscar até a próxima.
+//   WRC     → temporada encerrada em outubro; nada a buscar até a próxima (dados fixos em data/wrc.js).
 //
 // Se uma fonte falhar, o campeonato dela fica com os dados da última execução que deu certo.
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
@@ -23,7 +23,7 @@ const SEASON = 2026;
 const ctx = { window: {}, SERIES: {} };
 ctx.window.SERIES = ctx.SERIES;
 vm.createContext(ctx);
-for (const f of ["f1", "formulae", "motogp", "wec"]) vm.runInContext(readFileSync(path.join(ROOT, "data", `${f}.js`), "utf8"), ctx);
+for (const f of ["f1", "motogp", "wec", "wrc"]) vm.runInContext(readFileSync(path.join(ROOT, "data", `${f}.js`), "utf8"), ctx);
 const SERIES = ctx.SERIES;
 
 // os mesmos dados em inglês (data/en/*.js por cima, como no site), para os nomes das etapas nos textos em inglês
@@ -32,8 +32,8 @@ ctxEn.window = ctxEn;
 vm.createContext(ctxEn);
 const runEn = f => vm.runInContext(readFileSync(path.join(ROOT, f), "utf8"), ctxEn);
 runEn("i18n.js");
-for (const f of ["f1", "formulae", "motogp", "wec"]) runEn(`data/${f}.js`);
-for (const f of ["f1", "formulae", "motogp", "wec"]) runEn(`data/en/${f}.js`);
+for (const f of ["f1", "motogp", "wec", "wrc"]) runEn(`data/${f}.js`);
+for (const f of ["f1", "motogp", "wec", "wrc"]) runEn(`data/en/${f}.js`);
 ctxEn.I18N.localize();
 const SERIES_EN = ctxEn.SERIES;
 

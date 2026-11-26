@@ -1438,3 +1438,33 @@ img.is-broken { color: transparent; background: var(--sk-base); }
 .mm-s.is-on .mm-s-thumb::after { border-color: var(--series, #e10600); }
 .mm-s:focus-visible { outline: none; }
 .mm-s:focus-visible .mm-s-thumb::after { border-color: var(--chalk); }
+
+/* ---------- Campeonatos com fotos de verdade (WRC): fotos com fundo em vez de recortes ---------- */
+.slot.is-photo img { object-fit: cover; border-radius: 8px; filter: none; }
+.series-card.is-photo .sc-media { padding: 0; }
+.series-card.is-photo .sc-media img { width: 100%; height: 100%; max-width: none; max-height: none; object-fit: cover; filter: none; }
+.series-card.is-photo:hover .sc-media img { transform: scale(1.04); }
+.hero--photo { grid-template-columns: minmax(0, 1fr); align-items: center; }
+.hero-photo {
+  position: absolute; inset: 0; z-index: -2; width: 100%; height: 100%; object-fit: cover; object-position: 60% 50%;
+  animation: photoIn 1.4s cubic-bezier(.2,.7,.2,1) both;
+}
+.hero--photo::after {
+  content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none;
+  background: linear-gradient(90deg, rgba(11,13,16,.92) 0%, rgba(11,13,16,.7) 38%, rgba(11,13,16,.1) 75%), linear-gradient(0deg, rgba(11,13,16,.8), transparent 40%);
+}
+.hero--photo .hero-number { opacity: .5; }
+@keyframes photoIn { from { opacity: 0; transform: scale(1.06); } }
+.photo-series .stage-car { aspect-ratio: 3 / 2; height: 100%; width: auto; max-width: min(calc(100% - 136px), 860px); object-fit: cover; border-radius: 14px; filter: drop-shadow(0 20px 30px rgba(0,0,0,.5)); }
+.photo-series .driver-card > img { inset: 0; top: 0; left: 0; translate: none; width: 100%; height: 100%; object-fit: cover; }
+.photo-series .driver-card::after { content: ""; position: absolute; inset: 0; z-index: -1; pointer-events: none; background: linear-gradient(180deg, transparent 35%, rgba(11,13,16,.9) 92%); }
+.photo-series .driver-card .num { z-index: 0; color: rgba(255,255,255,.3); text-shadow: 0 2px 12px rgba(0,0,0,.4); }
+.photo-series .modal-body .full { width: 100%; height: 100%; min-height: 420px; object-fit: cover; margin-top: 0; border-radius: 18px 0 0 18px; }
+@media (max-width: 860px) {
+  .hero--photo { padding-top: 60vw; padding-bottom: 32px; }
+  .hero-photo { bottom: auto; height: 64vw; object-position: 50% 50%; }
+  .hero--photo::after { background: linear-gradient(0deg, var(--asphalt) calc(100% - 64vw), transparent calc(100% - 30vw)); }
+  .photo-series .stage-car { max-width: 100%; height: auto; width: 100%; }
+  .photo-series .modal-body .full { min-height: 0; height: 260px; border-radius: 18px 18px 0 0; }
+}
+@media (prefers-reduced-motion: reduce) { .hero-photo { animation: none; } }

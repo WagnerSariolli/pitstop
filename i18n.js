@@ -30,7 +30,7 @@ window.I18N = (() => {
     "Alemanha": "Germany", "Andorra": "Andorra", "Arábia Saudita": "Saudi Arabia", "Argentina": "Argentina", "Austrália": "Australia",
     "Áustria": "Austria", "Azerbaijão": "Azerbaijan", "Bahrein": "Bahrain", "Barbados": "Barbados", "Bélgica": "Belgium", "Brasil": "Brazil",
     "Canadá": "Canada", "Catar": "Qatar", "China": "China", "Coreia do Sul": "South Korea", "Dinamarca": "Denmark",
-    "Emirados Árabes": "United Arab Emirates", "Espanha": "Spain", "EUA": "USA", "Estados Unidos": "United States", "Finlândia": "Finland",
+    "Emirados Árabes": "United Arab Emirates", "Espanha": "Spain", "EUA": "USA", "Estados Unidos": "United States", "Finlândia": "Finland", "Grécia": "Greece", "Irlanda": "Ireland", "Letônia": "Latvia", "Quênia": "Kenya", "Croácia": "Croatia", "Estônia": "Estonia", "Paraguai": "Paraguay", "Chile": "Chile",
     "França": "France", "Grã-Bretanha": "Great Britain", "Holanda": "Netherlands", "Hungria": "Hungary", "Indonésia": "Indonesia",
     "Itália": "Italy", "Japão": "Japan", "Malásia": "Malaysia", "México": "Mexico", "Mônaco": "Monaco", "Nova Zelândia": "New Zealand",
     "Polônia": "Poland", "Portugal": "Portugal", "Reino Unido": "United Kingdom", "República Tcheca": "Czech Republic",
@@ -46,7 +46,7 @@ window.I18N = (() => {
     "Na F1 desde": "In F1 since", "Títulos de construtores": "Constructors' titles", "Carro": "Car", "Powertrain": "Powertrain",
     "Vitórias na temporada": "Wins this season", "Moto": "Bike", "Fabricante": "Manufacturer", "Motor": "Engine",
     "Categoria": "Category", "Base": "Base", "Largadas na carreira": "Career starts", "Vitórias na carreira": "Career wins",
-    "Pódios na carreira": "Career podiums", "Pódios em 2026": "Podiums in 2026", "Pilotos": "Drivers", "Países": "Countries",
+    "Pódios na carreira": "Career podiums", "Navegador": "Co-driver", "Em ação": "In action", "Ralis na carreira": "Career rallies", "Pódios em 2026": "Podiums in 2026", "Pilotos": "Drivers", "Países": "Countries",
     // ângulos das fotos e abas da classificação
     "Lateral direita": "Right side", "Lateral esquerda": "Left side", "Frente": "Front", "Traseira": "Rear",
     "Vista de cima": "Top view", "Três quartos": "Three-quarter view",
@@ -135,7 +135,7 @@ window.I18N = (() => {
 
   /* ---------- HTML fixo das páginas ---------- */
   const STATIC = {
-    "meta.description": "Cars, drivers, spec sheets, standings, circuit guide and trivia from Formula 1, Formula E, MotoGP and WEC.",
+    "meta.description": "Cars, drivers, spec sheets, standings, circuit guide and trivia from Formula 1, MotoGP, WEC and WRC.",
     "brand": "Pitstop, home page",
     "nav.series": "Championships by category",
     "nav.sections": "Sections",
@@ -177,7 +177,7 @@ window.I18N = (() => {
     "pv.back": "‹ Back to Pitstop",
     "pv.h1": "Privacy",
     "pv.updated": "Updated on 15 October 2026.",
-    "pv.intro": "Pitstop is a personal fan project, non-commercial and not affiliated with Formula 1, Formula E, MotoGP, WEC or the teams. This page explains, in plain language, what happens to your data when you use the site and when you subscribe to the newsletter, in line with Brazil's General Data Protection Law (LGPD, Law 13,709/2018).",
+    "pv.intro": "Pitstop is a personal fan project, non-commercial and not affiliated with Formula 1, MotoGP, WEC, WRC or the teams. This page explains, in plain language, what happens to your data when you use the site and when you subscribe to the newsletter, in line with Brazil's General Data Protection Law (LGPD, Law 13,709/2018).",
     "pv.nl": "Email newsletter",
     "pv.nl1": "<b>What we collect:</b> only the email address you type into the form.",
     "pv.nl2": "<b>What for:</b> sending the Pitstop newsletter, with race results and the weekend schedule. Nothing else: we don't sell or rent your email, and we don't use it for advertising. The newsletter is written in Portuguese.",
@@ -189,7 +189,7 @@ window.I18N = (() => {
     "pv.nav": "Browsing the site",
     "pv.nav1": "<b>No tracking cookies and no analytics tools.</b> Pitstop doesn't use Google Analytics, ad pixels or anything similar.",
     "pv.nav2": "<b>Preferences in your browser:</b> the site stores in your own browser (local storage) your language, whether you've already subscribed to the newsletter or dismissed the invitations, so it doesn't keep asking. This information never leaves your device. Clearing the site's data in your browser erases it all.",
-    "pv.nav3": "<b>Third-party content:</b> to show photos, videos, fonts and maps, your browser fetches files directly from other services, which receive your IP address as with any access on the internet. They are: Google Fonts (typefaces), formula1.com, fiaformulae.com, motogp.com and fiawec.com (official photos), Wikimedia Commons (circuit photos), YouTube in privacy-enhanced mode (only when you press play) and Esri (maps and satellite imagery).",
+    "pv.nav3": "<b>Third-party content:</b> to show photos, videos, fonts and maps, your browser fetches files directly from other services, which receive your IP address as with any access on the internet. They are: Google Fonts (typefaces), formula1.com, motogp.com and fiawec.com (official photos), Wikimedia Commons (circuit and rally photos), YouTube in privacy-enhanced mode (only when you press play) and Esri (maps and satellite imagery).",
     "pv.nav4": "<b>Hosting:</b> the site runs on GitHub Pages, which keeps technical access logs for security, as described in <a href=\"https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement\" rel=\"noopener\">GitHub's policy</a>.",
     "pv.img": "Images and trademarks",
     "pv.img1": "Photos of the cars, drivers and logos belong to the championships and teams and are used only for identification, on a non-profit fan site. Circuit photos come from Wikimedia Commons, with author and licence credited on each one. If you own any of this content and want it removed, open a request in the <a href=\"https://github.com/WagnerSariolli/pitstop/issues\" rel=\"noopener\">project repository</a>.",

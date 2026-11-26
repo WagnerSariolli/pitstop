@@ -1,6 +1,6 @@
 // Galeria de cada veículo: vídeos oficiais do YouTube e fotos reais.
 // ext: true = o dono do vídeo bloqueia a exibição fora do YouTube (testado com o player); abre no YouTube.
-// Fotos: Wikimedia Commons (licença livre, com autor) para F1 e WEC; fotos oficiais para MotoGP e Fórmula E.
+// Fotos: Wikimedia Commons (licença livre, com autor) para F1, WEC e WRC; fotos oficiais para MotoGP.
 window.MEDIA = {
  "f1": {
   "mercedes": [
@@ -537,373 +537,6 @@ window.MEDIA = {
     "title": "Cadillac at the 2026 Australian Grand Prix (028A7895)",
     "credit": "Yu Chu Chin · CC BY-SA 4.0",
     "link": "https://commons.wikimedia.org/wiki/File:Cadillac_at_the_2026_Australian_Grand_Prix_(028A7895).jpg"
-   }
-  ]
- },
- "formulae": {
-  "jaguar": [
-   {
-    "t": "v",
-    "id": "xz1UoM0Rusk",
-    "title": "Por dentro da volta mais rápida de Evans em Londres",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/5hX67VRDd2aD0oPNbCifJZ/516e64bd4f0206b12ebbd2375829b2ed/Jaguar.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/5hX67VRDd2aD0oPNbCifJZ/516e64bd4f0206b12ebbd2375829b2ed/Jaguar.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6bFNIXKwM0Rt3Gs5kuXG2i/95530a26580280c2a6820cbb76949486/1.png?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6bFNIXKwM0Rt3Gs5kuXG2i/95530a26580280c2a6820cbb76949486/1.png?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "porsche": [
-   {
-    "t": "v",
-    "id": "zSBNsFruHhY",
-    "title": "Pole de Wehrlein em Londres, onboard",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "tptabByHwUk",
-    "title": "Wehrlein campeão: a final em Londres",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/1ttUC8Qh6bAX0pynDBFFN2/b2c7b2018db6f79580363a51c6253ac0/Porsche.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/1ttUC8Qh6bAX0pynDBFFN2/b2c7b2018db6f79580363a51c6253ac0/Porsche.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/4SLJark02xYh0X1nmxo30F/993406dca43ee22c7d93a836cad56b63/WhatsApp-Image-2026-05-12-at-18.52.10.jpeg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/4SLJark02xYh0X1nmxo30F/993406dca43ee22c7d93a836cad56b63/WhatsApp-Image-2026-05-12-at-18.52.10.jpeg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "mahindra": [
-   {
-    "t": "v",
-    "id": "iz6KfVbzxAk",
-    "title": "Pole de De Vries em Londres, onboard",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "Z9xH4IKMZXA",
-    "title": "Mônaco: vitória de De Vries",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "v",
-    "id": "Mxb-WxybJj8",
-    "title": "Conheça o M12Electro",
-    "ch": "Mahindra Racing",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3tRZgMnD0035GOowoUZN98/db5633dd462a4bb951c8fc908eca2afe/Mahindra.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3tRZgMnD0035GOowoUZN98/db5633dd462a4bb951c8fc908eca2afe/Mahindra.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "andretti": [
-   {
-    "t": "v",
-    "id": "MVwUmPvTafo",
-    "title": "Pole de Drugovich em Xangai, onboard",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "kPkLx80CKrw",
-    "title": "Pole de Dennis em Sanya, onboard",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "iecRA0KmEAc",
-    "title": "O modo ataque de Drugovich",
-    "ch": "Andretti",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/K9d9JRt8TeEhdaVNwLXeb/fc07cfb78412c6e6f68102b5f614a885/2261417619.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/K9d9JRt8TeEhdaVNwLXeb/fc07cfb78412c6e6f68102b5f614a885/2261417619.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/8lnh2KyA5UuDRugpoFFuU/ca0ed9b952b4307060413f55a005993b/2276715061.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/8lnh2KyA5UuDRugpoFFuU/ca0ed9b952b4307060413f55a005993b/2276715061.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6PNROzCa9wjayeaNf6w5rN/4f5fc760996e9a4e4c4d6f30deaa19d2/Screenshot-2025-12-06-at-10.14.22.png?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6PNROzCa9wjayeaNf6w5rN/4f5fc760996e9a4e4c4d6f30deaa19d2/Screenshot-2025-12-06-at-10.14.22.png?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "citroen": [
-   {
-    "t": "v",
-    "id": "NSFOoJmOS7o",
-    "title": "Primeira pole da Citroën, com Cassidy",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "_o71ts-NngQ",
-    "title": "A Citroën chega à Fórmula E",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6eqhyVKON7bcm7UqNSdun6/ebed974618e6ed29dea8587c479941d6/Citroen.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6eqhyVKON7bcm7UqNSdun6/ebed974618e6ed29dea8587c479941d6/Citroen.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6yW9ChlaAtoSlXx4ulDeN1/81f4122d05b13f5373afbea95ba1ed0a/2255609743.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6yW9ChlaAtoSlXx4ulDeN1/81f4122d05b13f5373afbea95ba1ed0a/2255609743.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3yDRtdpC8YG4MC3yZXaAgF/c4bbd6d222b70cb599b583ced629e1f8/BA019816_kCWs6xmy_20251204024246.jpeg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3yDRtdpC8YG4MC3yZXaAgF/c4bbd6d222b70cb599b583ced629e1f8/BA019816_kCWs6xmy_20251204024246.jpeg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "nissan": [
-   {
-    "t": "v",
-    "id": "Hzzu8CiqqLU",
-    "title": "Mônaco: vitória de Rowland",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "v",
-    "id": "1C8SsEUOn74",
-    "title": "Rowland e a corrida em casa da Nissan",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/1kWLlpQnQFWHAI9Kms0Imd/3d5e02b07b759b5fa8bee27860b47516/Nissan1.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/1kWLlpQnQFWHAI9Kms0Imd/3d5e02b07b759b5fa8bee27860b47516/Nissan1.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "envision": [
-   {
-    "t": "v",
-    "id": "4kbc85B2hRY",
-    "title": "Onboard em Miami, só o som do carro",
-    "ch": "Paysafe Envision Formula E Team",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "tMmlF3sAgk4",
-    "title": "Onboard em São Paulo, só o som do carro",
-    "ch": "Paysafe Envision Formula E Team",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "l7g6pB0ycYM",
-    "title": "Onboard em Madri, só o som do carro",
-    "ch": "Paysafe Envision Formula E Team",
-    "engine": true
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/41kNpZyCqZPrp4OAmR2hf5/fb8eff29bdb2c6b88a56a35ae53f63dc/Envision.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/41kNpZyCqZPrp4OAmR2hf5/fb8eff29bdb2c6b88a56a35ae53f63dc/Envision.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/LRfC0mI9O99Wn1q5tNF5l/38b5f3737bde86dc770fb22208d00936/BDH08913_4bage9mE_20251027101341.jpeg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/LRfC0mI9O99Wn1q5tNF5l/38b5f3737bde86dc770fb22208d00936/BDH08913_4bage9mE_20251027101341.jpeg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/4MsuX45arr1pSeBtpXlFm1/19e1da0e878f7bc79638e61cb32cca15/2255296218.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/4MsuX45arr1pSeBtpXlFm1/19e1da0e878f7bc79638e61cb32cca15/2255296218.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6PdDpf2fNRpD0mXj8UqNkE/dcaf4028934ab70c8b1dd94198e24f02/2255266450.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6PdDpf2fNRpD0mXj8UqNkE/dcaf4028934ab70c8b1dd94198e24f02/2255266450.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "cupra": [
-   {
-    "t": "v",
-    "id": "6GHaAt4oz88",
-    "title": "Pole de Ticktum em Mônaco, onboard",
-    "ch": "Formula E",
-    "engine": true
-   },
-   {
-    "t": "v",
-    "id": "hYcMOK2eeWg",
-    "title": "A última volta em Madri",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/7sQlWsXa5nIFbu5O3lMsoW/60c66c066d5ca9f1e5963ae8007788a4/Cupra_Kiro2.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/7sQlWsXa5nIFbu5O3lMsoW/60c66c066d5ca9f1e5963ae8007788a4/Cupra_Kiro2.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6osqLNWi54nOl4jtyBAIlU/9db9f0d6f5a10cf6ffb3ad5f6e5b1dca/2G7A4243_BAabz6Xd_20260514013715.jpeg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/6osqLNWi54nOl4jtyBAIlU/9db9f0d6f5a10cf6ffb3ad5f6e5b1dca/2G7A4243_BAabz6Xd_20260514013715.jpeg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3zUVGGDSw5grYpBQnUqq0V/4a9e00eb404973d5aad7d3379fcf8d93/8wZ14C0L.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/3zUVGGDSw5grYpBQnUqq0V/4a9e00eb404973d5aad7d3379fcf8d93/8wZ14C0L.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "dspenske": [
-   {
-    "t": "v",
-    "id": "tptabByHwUk",
-    "title": "Final em Londres: vitória de Barnard",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "v",
-    "id": "2Or1ld20KR8",
-    "title": "Melhores momentos em São Paulo",
-    "ch": "DS PENSKE",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/uwbK1zJudpxsSjYSMbLVe/0d3eb331f024ec2bf4f92f51112fcd9d/DS_Penske.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/uwbK1zJudpxsSjYSMbLVe/0d3eb331f024ec2bf4f92f51112fcd9d/DS_Penske.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/2ZiynjBY7Wf8PtzA4TdOfC/9fd7bd3dcbfa1210631541c127272e63/lbwk-formula-e-miami-ds-penske-1.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/2ZiynjBY7Wf8PtzA4TdOfC/9fd7bd3dcbfa1210631541c127272e63/lbwk-formula-e-miami-ds-penske-1.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/5m6EdT7h9Azqp7OXpHX1ks/ea772d77bc34996d7e6c1d1ddc41bb0c/DSC_0057_IN0CEKAc_20251027013427.jpeg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/5m6EdT7h9Azqp7OXpHX1ks/ea772d77bc34996d7e6c1d1ddc41bb0c/DSC_0057_IN0CEKAc_20251027013427.jpeg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
-   }
-  ],
-  "lola": [
-   {
-    "t": "v",
-    "id": "9A4fiBPa7ko",
-    "title": "As duas voltas finais em Xangai",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "v",
-    "id": "oMefojZvynE",
-    "title": "A última dança de Di Grassi",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "v",
-    "id": "PRRvoMBYvbI",
-    "title": "A pintura especial de Di Grassi",
-    "ch": "Formula E",
-    "engine": false
-   },
-   {
-    "t": "p",
-    "src": "https://contentfulproxy.stadion.io/eag9z2l5md8w/hn606LYktjTfhvQmUupR9/a7cf00d8a0d14c2cbc8e61d7bba9f16a/Lola.jpg?fm=webp&w=1600",
-    "thumb": "https://contentfulproxy.stadion.io/eag9z2l5md8w/hn606LYktjTfhvQmUupR9/a7cf00d8a0d14c2cbc8e61d7bba9f16a/Lola.jpg?fm=webp&w=480",
-    "title": "Foto oficial da Fórmula E",
-    "credit": "Formula E",
-    "link": "https://www.fiaformulae.com"
    }
   ]
  },
@@ -1653,6 +1286,197 @@ window.MEDIA = {
     "title": "24 Heures du Mans 2026 Hypercar No. 19 Genesis GMR-001-Hypercar",
     "credit": "T GOUREAU · CC BY-SA 4.0",
     "link": "https://commons.wikimedia.org/wiki/File:24_Heures_du_Mans_2026_Hypercar_No._19_Genesis_GMR-001-Hypercar.jpg"
+   }
+  ]
+ },
+ "wrc": {
+  "toyota": [
+   {
+    "t": "v",
+    "id": "QO0VTmH-VSQ",
+    "title": "Evans no Japão, onboard de uma especial inteira",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "6L0KqdXPZ9s",
+    "title": "Solberg em Monte Carlo, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "-2NVzw2XGrw",
+    "title": "Ogier na Grécia, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "7gv6AdJateE",
+    "title": "Katsuta na neve da Suécia, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "RukXcqw-6Jg",
+    "title": "A aerodinâmica do GR Yaris Rally1",
+    "ch": "WRC",
+    "engine": false
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Elfyn_Evans_Rally_Sardegna_2026.jpg/1920px-Elfyn_Evans_Rally_Sardegna_2026.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7e/Elfyn_Evans_Rally_Sardegna_2026.jpg/500px-Elfyn_Evans_Rally_Sardegna_2026.jpg",
+    "title": "Evans no Power Stage da Sardenha, rumo ao título",
+    "credit": "Cardoesvroom · CC0",
+    "link": "https://commons.wikimedia.org/wiki/File:Elfyn_Evans_Rally_Sardegna_2026.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/SSS_Toyota_Yaris_Rally_1.jpg/1920px-SSS_Toyota_Yaris_Rally_1.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/SSS_Toyota_Yaris_Rally_1.jpg/500px-SSS_Toyota_Yaris_Rally_1.jpg",
+    "title": "Solberg na superespecial do Rali Acrópole 2026",
+    "credit": "Geonich · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:SSS_Toyota_Yaris_Rally_1.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/S%C3%A9bastien_Ogier_Rally_Finland_2026_Leustu.jpg/1920px-S%C3%A9bastien_Ogier_Rally_Finland_2026_Leustu.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/0/00/S%C3%A9bastien_Ogier_Rally_Finland_2026_Leustu.jpg/500px-S%C3%A9bastien_Ogier_Rally_Finland_2026_Leustu.jpg",
+    "title": "Ogier no Rali da Finlândia 2026",
+    "credit": "Antti Leppänen · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:S%C3%A9bastien_Ogier_Rally_Finland_2026_Leustu.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/2025_Toyota_GR_Yaris_Rally_1_Katsuta.jpg/1920px-2025_Toyota_GR_Yaris_Rally_1_Katsuta.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/5/5d/2025_Toyota_GR_Yaris_Rally_1_Katsuta.jpg/500px-2025_Toyota_GR_Yaris_Rally_1_Katsuta.jpg",
+    "title": "Katsuta na largada cerimonial do Rali do Japão 2025",
+    "credit": "TTTNIS · CC0",
+    "link": "https://commons.wikimedia.org/wiki/File:2025_Toyota_GR_Yaris_Rally_1_Katsuta.jpg"
+   }
+  ],
+  "hyundai": [
+   {
+    "t": "v",
+    "id": "1xR66GFDP0Y",
+    "title": "Neuville na Croácia, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "DHuvnkgbQ4U",
+    "title": "Fourmaux na Finlândia, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "wFwsYA-Ccng",
+    "title": "Paddon no Paraguai, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Adrien_Fourmaux_Rally_Finland_2026_Leustu.jpg/1920px-Adrien_Fourmaux_Rally_Finland_2026_Leustu.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a9/Adrien_Fourmaux_Rally_Finland_2026_Leustu.jpg/500px-Adrien_Fourmaux_Rally_Finland_2026_Leustu.jpg",
+    "title": "Fourmaux no Rali da Finlândia 2026",
+    "credit": "Antti Leppänen · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Adrien_Fourmaux_Rally_Finland_2026_Leustu.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Fourmaux_I20N_Rally_Acropolis_2026.jpg",
+    "thumb": "https://upload.wikimedia.org/wikipedia/commons/f/fc/Fourmaux_I20N_Rally_Acropolis_2026.jpg",
+    "title": "Fourmaux na terra do Rali Acrópole 2026",
+    "credit": "Geonich · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Fourmaux_I20N_Rally_Acropolis_2026.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/HyundaiRally1.jpg/1920px-HyundaiRally1.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/8/86/HyundaiRally1.jpg/500px-HyundaiRally1.jpg",
+    "title": "Neuville no Rali da Croácia 2026",
+    "credit": "AnDr0 Gr0zNy · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:HyundaiRally1.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/I20N_Hyundai.jpg/1920px-I20N_Hyundai.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/a/a2/I20N_Hyundai.jpg/500px-I20N_Hyundai.jpg",
+    "title": "Hyundai i20 N Rally1 na especial 11 do Rali Acrópole 2026",
+    "credit": "Geonich · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:I20N_Hyundai.jpg"
+   }
+  ],
+  "toyota2": [
+   {
+    "t": "v",
+    "id": "PR7eWJg_qog",
+    "title": "Pajari na Estônia, onboard",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Sami_Pajari_Rally_Finland_2026_Leustu.jpg/1920px-Sami_Pajari_Rally_Finland_2026_Leustu.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7d/Sami_Pajari_Rally_Finland_2026_Leustu.jpg/500px-Sami_Pajari_Rally_Finland_2026_Leustu.jpg",
+    "title": "Pajari a caminho da vitória no Rali da Finlândia 2026",
+    "credit": "Antti Leppänen · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Sami_Pajari_Rally_Finland_2026_Leustu.jpg"
+   }
+  ],
+  "msport": [
+   {
+    "t": "v",
+    "id": "UBcT9W7sbqY",
+    "title": "Armstrong na Sardenha, câmera no capacete",
+    "ch": "WRC",
+    "engine": true
+   },
+   {
+    "t": "v",
+    "id": "FOXarw-kIsY",
+    "title": "A M-Sport reconstrói um Rally1 no meio do rali",
+    "ch": "WRC",
+    "engine": false
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Josh_McErlean_Rally_Finland_2026_Leustu.jpg/1920px-Josh_McErlean_Rally_Finland_2026_Leustu.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/c7/Josh_McErlean_Rally_Finland_2026_Leustu.jpg/500px-Josh_McErlean_Rally_Finland_2026_Leustu.jpg",
+    "title": "McErlean no Rali da Finlândia 2026",
+    "credit": "Antti Leppänen · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Josh_McErlean_Rally_Finland_2026_Leustu.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Armstrong_2026_Rally_Acropolis.png/1920px-Armstrong_2026_Rally_Acropolis.png",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/3/30/Armstrong_2026_Rally_Acropolis.png/500px-Armstrong_2026_Rally_Acropolis.png",
+    "title": "Armstrong levanta poeira no Rali Acrópole 2026",
+    "credit": "Geonich · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Armstrong_2026_Rally_Acropolis.png"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/M%C4%81rti%C5%86%C5%A1_Sesks_Rally_Finland_2026_Leustu.jpg/1920px-M%C4%81rti%C5%86%C5%A1_Sesks_Rally_Finland_2026_Leustu.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/7/7b/M%C4%81rti%C5%86%C5%A1_Sesks_Rally_Finland_2026_Leustu.jpg/500px-M%C4%81rti%C5%86%C5%A1_Sesks_Rally_Finland_2026_Leustu.jpg",
+    "title": "Sesks no Rali da Finlândia 2026",
+    "credit": "Antti Leppänen · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:M%C4%81rti%C5%86%C5%A1_Sesks_Rally_Finland_2026_Leustu.jpg"
+   },
+   {
+    "t": "p",
+    "src": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Jourdan_Serderidis_2026_Rally_Acropolis.jpg/1920px-Jourdan_Serderidis_2026_Rally_Acropolis.jpg",
+    "thumb": "https://thumb.wikimedia.org/wikipedia/commons/thumb/c/cc/Jourdan_Serderidis_2026_Rally_Acropolis.jpg/500px-Jourdan_Serderidis_2026_Rally_Acropolis.jpg",
+    "title": "Serderidis com um terceiro Puma no Rali Acrópole 2026",
+    "credit": "Geonich · CC BY 4.0",
+    "link": "https://commons.wikimedia.org/wiki/File:Jourdan_Serderidis_2026_Rally_Acropolis.jpg"
    }
   ]
  }

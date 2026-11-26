@@ -2,9 +2,9 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://wagnersariolli.github.io/pitstop/</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?c=f1</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?c=formulae</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?c=motogp</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?c=wec</loc></url>
+  <url><loc>https://wagnersariolli.github.io/pitstop/?c=wrc</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?c=pistas</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?pista=albertpark</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?pista=shanghai</loc></url>
@@ -48,13 +48,5 @@
   <url><loc>https://wagnersariolli.github.io/pitstop/?pista=imola</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?pista=lemans</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/?pista=fuji</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=anhembi</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=homestead</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=jarama</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=tempelhof</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=tokyo</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=excel</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=jeddah</loc></url>
-  <url><loc>https://wagnersariolli.github.io/pitstop/?pista=sanya</loc></url>
   <url><loc>https://wagnersariolli.github.io/pitstop/privacidade.html</loc></url>
 </urlset>
