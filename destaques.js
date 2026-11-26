@@ -8,10 +8,12 @@ window.HL = (() => {
     race: "Race highlights", moments: "Epic moments", extended: "Extended highlights",
     overtakes: "Overtakes", qualifying: "Qualifying", onboard: "Top 10 onboards", sprint: "Sprint",
     replay: "Full race", start: "The start", radio: "Team radio", react: "Driver reactions", epic: "Moment of the race",
+    day: "Day highlights", stage: "Full stage onboard",
   } : {
     race: "Melhores momentos da corrida", moments: "Momentos épicos", extended: "Melhores momentos estendidos",
     overtakes: "Ultrapassagens", qualifying: "Classificação", onboard: "Top 10 câmeras onboard", sprint: "Sprint",
     replay: "Corrida completa", start: "A largada", radio: "Rádio das equipes", react: "Reação dos pilotos", epic: "Lance da corrida",
+    day: "Melhores momentos do dia", stage: "Especial inteira, onboard",
   };
   const VIDEO = T("Vídeo", "Video");
   // ordem de exibição: primeiro o que toca dentro do site (o vídeo grande nunca manda o visitante embora)

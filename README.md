@@ -1,6 +1,6 @@
 # Pitstop
 
-Carros, pilotos, fichas técnicas, galerias e a temporada 2026 de Fórmula 1, Fórmula E, MotoGP e WEC em um só lugar.
+Carros, pilotos, fichas técnicas, galerias e a temporada 2026 de Fórmula 1, MotoGP, WEC e WRC em um só lugar.
 
 Site estático (HTML, CSS e JavaScript, sem build). Para rodar localmente:
 
@@ -10,7 +10,7 @@ python -m http.server 5173
 
 ## Dados
 
-Cada campeonato tem um arquivo em `data/` (`f1.js`, `formulae.js`, `motogp.js`, `wec.js`). As galerias dos veículos ficam em `data/media.js`. Os dados não se atualizam sozinhos: edite esses arquivos depois de cada corrida.
+Cada campeonato tem um arquivo em `data/` (`f1.js`, `motogp.js`, `wec.js`, `wrc.js`). As galerias dos veículos ficam em `data/media.js`. Os dados não se atualizam sozinhos: edite esses arquivos depois de cada corrida.
 
 ## Português e inglês
 
@@ -29,8 +29,9 @@ e `?lang=en` força o inglês num link). Tudo passa por `i18n.js`:
 
 Projeto de fã, sem vínculo com os campeonatos.
 
-- Dados: formula1.com, fiaformulae.com, API oficial da MotoGP, fiawec.com.
-- Imagens oficiais: Formula One World Championship Limited, Formula E Operations, Dorna Sports, FIA WEC / ACO.
+- Dados: formula1.com, API oficial da MotoGP, fiawec.com, FIA e wrc.com (WRC, com apoio da Wikipedia).
+- Imagens oficiais: Formula One World Championship Limited, Dorna Sports, FIA WEC / ACO.
+- WRC: fotos da Wikimedia Commons (CC BY 4.0 e CC0), convertidas para WebP em `img/wrc/`; os autores estão no rodapé da página do WRC.
 - Fotos da Wikimedia Commons: autor e licença indicados em cada foto da galeria.
 - Vídeos: canais oficiais no YouTube, incorporados pelo player do YouTube.
 
@@ -43,7 +44,7 @@ O site aplica esse arquivo por cima dos dados fixos de `data/<campeonato>.js`. O
 - F1: API Jolpica-F1 (api.jolpi.ca)
 - MotoGP: API de resultados do site oficial (api.motogp.pulselive.com)
 - WEC: tabelas da página da temporada na Wikipedia (o WEC não tem API pública)
-- Fórmula E: temporada encerrada; a próxima precisa de dados novos (equipes, carros, calendário)
+- WRC: temporada 2026 encerrada (dados fixos em `data/wrc.js`); a de 2027, com o regulamento novo, precisa de dados novos
 
 Para rodar na mão: `node scripts/update-data.mjs`. Também dá para disparar pela aba Actions ("Run workflow").
 
@@ -60,10 +61,11 @@ Visitantes se inscrevem pelo formulário do site (página inicial e rodapé). Os
 ## Destaques das corridas
 
 `scripts/highlights.mjs` (no mesmo workflow de hora em hora) junta os vídeos oficiais de cada etapa
-pelos feeds RSS dos canais da F1, Fórmula E, MotoGP e FIA WEC no YouTube, e fotos com licença livre das
+pelos feeds RSS dos canais da F1, MotoGP, FIA WEC e WRC no YouTube, e fotos com licença livre das
 categorias da temporada na Wikimedia Commons. Grava `data/highlights.js`, que alimenta a seção "Destaques"
 de cada campeonato, os "Momentos épicos" da página inicial e o link de vídeo no boletim.
 O canal da F1 bloqueia a exibição fora do YouTube, então os vídeos dele abrem lá.
+Para preencher de uma vez um campeonato que acabou de entrar: `node scripts/highlights.mjs only=wrc wrc=lista.tsv`.
 
 Para tirar um vídeo do site, use `scripts/moderation.json`. Os vídeos que o canal só deixa assistir no YouTube
 mostram antes um aviso de que o visitante vai sair do site.

@@ -56,9 +56,10 @@ I18N.applyStatic();
 
 /* ---------- Campeonatos agrupados por tipo de competição ---------- */
 const CATEGORIES = [
-  { id: "monopostos", name: T("Monopostos", "Single-seaters"), lede: T("Carros de roda descoberta: do híbrido de 1.000 cv ao 100% elétrico.", "Open-wheel cars: from the 1,000 hp hybrid to the all-electric."), series: ["f1", "formulae"] },
+  { id: "monopostos", name: T("Monopostos", "Single-seaters"), lede: T("Carros de roda descoberta, com o híbrido de 1.000 cv da F1.", "Open-wheel cars, led by F1's 1,000 hp hybrids."), series: ["f1"] },
   { id: "motos", name: T("Motovelocidade", "Motorcycle racing"), short: T("Motos", "Bikes"), lede: T("As motos de corrida mais rápidas do planeta.", "The fastest racing bikes on the planet."), series: ["motogp"] },
   { id: "endurance", name: "Endurance", lede: T("Protótipos que aguentam até 24 horas de corrida sem parar.", "Prototypes built to race for up to 24 hours non-stop."), series: ["wec"] },
+  { id: "rali", name: T("Rali", "Rally"), lede: T("Carros de rua transformados, contra o relógio na terra, no asfalto e na neve.", "Road cars turned into racers, against the clock on gravel, tarmac and snow."), series: ["wrc"] },
 ];
 CATEGORIES.forEach(c => { c.series = c.series.filter(id => SERIES[id]); });
 const ORDER = CATEGORIES.flatMap(c => c.series);
@@ -155,7 +156,7 @@ function labels() {
    LOBBY
    ====================================================================== */
 function renderLobby() {
-  document.title = T("Pitstop: F1, Fórmula E, MotoGP e WEC", "Pitstop: F1, Formula E, MotoGP and WEC");
+  document.title = T("Pitstop: F1, MotoGP, WEC e WRC", "Pitstop: F1, MotoGP, WEC and WRC");
   const all = ORDER.map(id => SERIES[id]);
   const next = upcoming();
   const drivers = all.reduce((n, s) => n + s.drivers.reduce((m, d) => m + (d.imgs ? d.imgs.length : 1), 0), 0);
@@ -183,7 +184,7 @@ function renderLobby() {
     <section class="lobby-hero" aria-labelledby="lobby-title">
       <div class="grid-slots" aria-label="${T("Grid de largada dos campeonatos", "Starting grid of the championships")}">
         ${all.map((s, i) => { const { t, v } = slot(s); return `
-          <a class="slot" href="?c=${s.id}" style="--c:${s.accent};--i:${i}">
+          <a class="slot${s.photo ? " is-photo" : ""}" href="?c=${s.id}" style="--c:${s.accent};--i:${i}">
             <span class="slot-pos">P${i + 1}</span>
             <img src="${v.img}" alt="${T(`${esc(t.car)} da ${esc(t.name)}`, `${esc(t.name)} ${esc(t.car)}`)}">
             <span class="slot-label"><b>${esc(s.short)}</b>${esc(t.name)} ${esc(t.car)}</span>
@@ -230,8 +231,8 @@ function renderLobby() {
 
     ${newsletterSection()}`;
   tickAgenda();
-  $("#footerText").textContent = T("Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, fiaformulae.com, motogp.com e fiawec.com.",
-    "Pitstop is a fan project, not affiliated with the championships. Data and images from formula1.com, fiaformulae.com, motogp.com and fiawec.com.");
+  $("#footerText").textContent = T("Pitstop é um projeto de fã, sem vínculo com os campeonatos. Dados e imagens de formula1.com, motogp.com, fiawec.com e wrc.com.",
+    "Pitstop is a fan project, not affiliated with the championships. Data and images from formula1.com, motogp.com, fiawec.com and wrc.com.");
 }
 
 /* ---------- Boletim por e-mail (Buttondown) ---------- */
@@ -259,8 +260,8 @@ function newsletterSection() {
       <div class="nl-copy">
         <p class="kicker">${T("Boletim Pitstop", "Pitstop newsletter")}</p>
         <h2 id="nl-title">${T("A bandeirada no seu e-mail", "The chequered flag in your inbox")}</h2>
-        <p class="nl-lede">${T("O resultado de cada corrida assim que ela termina, com a classificação atualizada, e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só.",
-          "Every race result as soon as it ends, with the updated standings, and the weekend schedule every Thursday. F1, Formula E, MotoGP and WEC in a single email, written in Portuguese.")}</p>
+        <p class="nl-lede">${T("O resultado de cada corrida assim que ela termina, com a classificação atualizada, e a agenda do fim de semana toda quinta-feira. F1, MotoGP, WEC e WRC num e-mail só.",
+          "Every race result as soon as it ends, with the updated standings, and the weekend schedule every Thursday. F1, MotoGP, WEC and WRC in a single email, written in Portuguese.")}</p>
         <ul class="nl-points">
           <li><b>${T("Depois de cada corrida", "After every race")}</b><span>${T("Vencedor, top 5 e quem lidera o campeonato.", "Winner, top 5 and who leads the championship.")}</span></li>
           <li><b>${T("Toda quinta-feira", "Every Thursday")}</b><span>${T("As corridas do fim de semana, no horário de Brasília.", "The weekend's races, in Brasília time.")}</span></li>
@@ -341,8 +342,8 @@ function initNudges() {
     <div class="nlm-body">
       <p class="kicker">${T("Boletim Pitstop", "Pitstop newsletter")}</p>
       <h2 id="nlmTitle">${T("Antes de sair, leve a bandeirada com você", "Before you go, take the chequered flag with you")}</h2>
-      <p class="nlm-lede">${T("O resultado de cada corrida assim que ela termina e a agenda do fim de semana toda quinta-feira. F1, Fórmula E, MotoGP e WEC num e-mail só, grátis e sem propaganda.",
-        "Every race result as soon as it ends and the weekend schedule every Thursday. F1, Formula E, MotoGP and WEC in a single email, free and ad-free. Written in Portuguese.")}</p>
+      <p class="nlm-lede">${T("O resultado de cada corrida assim que ela termina e a agenda do fim de semana toda quinta-feira. F1, MotoGP, WEC e WRC num e-mail só, grátis e sem propaganda.",
+        "Every race result as soon as it ends and the weekend schedule every Thursday. F1, MotoGP, WEC and WRC in a single email, free and ad-free. Written in Portuguese.")}</p>
       ${n ? `<p class="nlm-next"><i></i><span>${T("Próxima largada", "Next race")}: <b>${esc(n.s.short)} · ${esc(n.r.pill || n.r.gp)}</b></span><em>${countdown(n.d)}</em></p>` : ""}
       ${nlForm("nlEmailModal")}
       <button class="nlm-no" type="button">${T("Agora não", "Not now")}</button>
@@ -565,7 +566,7 @@ function seriesCard(s) {
   const leadImg = lead.img || (lead.imgs && lead.imgs[0]);
   const tall = v.id === "front";
   return `
-    <a class="series-card${tall ? " is-tall" : ""}" href="?c=${s.id}" style="--c:${s.accent}">
+    <a class="series-card${tall ? " is-tall" : ""}${s.photo ? " is-photo" : ""}" href="?c=${s.id}" style="--c:${s.accent}">
       <div class="sc-media"><img src="${v.img}" alt="" loading="lazy"></div>
       <div class="sc-body">
         <h4>${esc(s.name)} <small>${esc(s.season)}</small></h4>
@@ -589,6 +590,7 @@ function renderSeriesChrome() {
   const L = labels();
   document.title = `Pitstop: ${S.name} ${S.season}`;
   document.documentElement.style.setProperty("--series", S.accent);
+  document.body.classList.toggle("photo-series", !!S.photo); // fotos de verdade (com fundo) em vez de recortes
   $("#garage-title").textContent = L.garage;
   $("#garage-lede").textContent = S.garageLede;
   $("#drivers-title").textContent = L.people;
@@ -607,7 +609,9 @@ function renderHero() {
   setTeamColor(hero, h.color);
   const media = h.kind === "wide"
     ? `<img class="hero-car" src="${h.img}" alt="${esc(h.alt)}" fetchpriority="high">`
-    : `<img class="hero-driver" src="${h.img}" alt="${esc(h.alt)}" fetchpriority="high">`;
+    : h.kind === "photo"
+      ? `<img class="hero-photo" src="${h.img}" alt="${esc(h.alt)}" fetchpriority="high">`
+      : `<img class="hero-driver" src="${h.img}" alt="${esc(h.alt)}" fetchpriority="high">`;
   hero.innerHTML = `
     ${h.number ? `<div class="hero-number" aria-hidden="true">${esc(h.number)}</div>` : ""}
     <div class="hero-copy">
@@ -649,7 +653,7 @@ function renderStage() {
 
   $("#viewSwitch").innerHTML = views.map(x =>
     `<button aria-pressed="${x.id === v.id}" data-v="${x.id}">${esc(x.label)}</button>`).join("");
-  const missing = ALL_ANGLES.filter(a => !views.some(x => x.label === a));
+  const missing = S.photo ? [] : ALL_ANGLES.filter(a => !views.some(x => x.label === a)); // fotos de ação não têm "ângulos"
   $("#viewNote").textContent = missing.length ? `${T("Sem foto oficial publicada", "No official photo published")}: ${missing.join(", ").toLowerCase()}.` : "";
 }
 

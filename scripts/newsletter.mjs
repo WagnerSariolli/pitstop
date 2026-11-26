@@ -19,14 +19,14 @@ const SEASON = 2026;
 const ctx = { window: {}, SERIES: {} };
 ctx.window.SERIES = ctx.SERIES;
 vm.createContext(ctx);
-for (const f of ["f1", "formulae", "motogp", "wec", "live", "circuits", "highlights"]) {
+for (const f of ["f1", "motogp", "wec", "wrc", "live", "circuits", "highlights"]) {
   const file = path.join(ROOT, "data", `${f}.js`);
   if (existsSync(file)) vm.runInContext(readFileSync(file, "utf8"), ctx);
 }
 const SERIES = ctx.SERIES, LIVE = ctx.window.LIVE || {}, VENUES = ctx.window.VENUES || {}, HL = ctx.window.HIGHLIGHTS || {};
 // o vídeo de melhores momentos da corrida, quando o canal oficial já publicou
 const raceVideo = (s, r) => (HL[s.id]?.[r.r]?.videos || []).find(v => v.kind === "race" || v.kind === "moments");
-const ORDER = ["f1", "formulae", "motogp", "wec"].filter(id => SERIES[id]);
+const ORDER = ["f1", "motogp", "wec", "wrc"].filter(id => SERIES[id]);
 for (const [id, live] of Object.entries(LIVE)) {
   const s = SERIES[id];
   if (!s || !live || typeof live !== "object") continue;
@@ -59,6 +59,8 @@ const winnersNow = () => Object.fromEntries(ORDER.map(id => [id, SERIES[id].cale
 const firstRun = !existsSync(STATE_FILE);
 const state = firstRun ? { notified: winnersNow(), agenda: [] } : JSON.parse(readFileSync(STATE_FILE, "utf8"));
 state.notified ||= {}; state.agenda ||= [];
+// campeonato que acabou de entrar no site: os resultados que ele já tem não viram e-mail
+for (const id of ORDER) if (!state.notified[id]) state.notified[id] = SERIES[id].calendar.filter(r => r.winner).map(r => r.r);
 
 /* ---------- e-mail de resultados ---------- */
 function resultsEmail(items) {

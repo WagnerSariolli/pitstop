@@ -26,7 +26,7 @@ const MAX_VIDEOS = 6, MAX_PHOTOS = 8;
 const ctx = { window: {}, SERIES: {} };
 ctx.window.SERIES = ctx.SERIES;
 vm.createContext(ctx);
-for (const f of ["f1", "formulae", "motogp", "wec", "live"]) {
+for (const f of ["f1", "motogp", "wec", "wrc", "live"]) {
   const file = path.join(ROOT, "data", `${f}.js`);
   if (existsSync(file)) vm.runInContext(readFileSync(file, "utf8"), ctx);
 }
@@ -64,13 +64,15 @@ const NAMES = {
   wec: [["Imola", "2026 6 Hours of Imola"], ["Spa", "2026 6 Hours of Spa-Francorchamps"], ["Le Mans", "2026 24 Hours of Le Mans"],
     ["S[ãa]o Paulo", "2026 6 Hours of São Paulo"], ["(?:COTA|Lone Star)", "2026 Lone Star Le Mans"], ["Fuji", "2026 6 Hours of Fuji"],
     ["Barcelona", "2026 6 Hours of Barcelona"], ["Monza", "2026 6 Hours of Monza"]],
-  // Fórmula E: [ano no título, cidade]. Rodadas duplas se separam pelo "Round N" do título.
-  formulae: [["2025", "S[ãa]o Paulo"], ["2026", "Mexico City"], ["2026", "Miami"], ["2026", "Jeddah"], ["2026", "Jeddah"], ["2026", "Madrid"],
-    ["2026", "Berlin"], ["2026", "Berlin"], ["2026", "Monaco"], ["2026", "Monaco"], ["2026", "Sanya"], ["2026", "Shanghai"], ["2026", "Shanghai"],
-    ["2026", "Tokyo"], ["2026", "Tokyo"], ["2026", "London"], ["2026", "London"]],
+  // WRC: os títulos do canal oficial terminam em "| WRC <patrocinador> <rali> 2026"
+  wrc: [["Monte-?Carlo", "2026 Rallye Automobile Monte Carlo"], ["Sweden", "2026 Rally Sweden"], ["Safari", "2026 Safari Rally"],
+    ["Croatia", "2026 Croatia Rally"], ["Canarias", "2026 Rally Islas Canarias"], ["Portugal", "2026 Rally de Portugal"],
+    ["Japan", "2026 Rally Japan"], ["Acropolis", "2026 Acropolis Rally"], ["Estonia", "2026 Rally Estonia"],
+    ["Finland", "2026 Rally Finland"], ["Paraguay", "2026 Rally del Paraguay"], ["Chile", "2026 Rally Chile"],
+    ["Sardegna|Sardinia", "2026 Rally Italia Sardegna"]],
 };
-const CHANNELS = { f1: "UCB_qr75-ydFVKSF9Dmo6izg", formulae: "UC-DuRqsBQOEk_5o1q4Ze-Fg", motogp: "UC8pYaQzbBBXg9GIOHRvTmDQ", wec: "UCwU7U7PiarcJKLjDJTnANjw" };
-const CHANNEL_NAME = { f1: "FORMULA 1", formulae: "Formula E", motogp: "MotoGP", wec: "FIA WEC" };
+const CHANNELS = { f1: "UCB_qr75-ydFVKSF9Dmo6izg", motogp: "UC8pYaQzbBBXg9GIOHRvTmDQ", wec: "UCwU7U7PiarcJKLjDJTnANjw", wrc: "UC5G6kTnHXDz0WIBC2VGBOqg" };
+const CHANNEL_NAME = { f1: "FORMULA 1", motogp: "MotoGP", wec: "FIA WEC", wrc: "WRC" };
 // o canal da F1 bloqueia a exibição dos vídeos fora do YouTube (erro 150 do player, testado em out/2026): abrem lá
 const CHANNEL_EXT = { f1: true };
 
@@ -80,6 +82,11 @@ const blockedVideo = new Set(MOD.blockVideos || []);
 
 // tipo de vídeo → prioridade (menor aparece antes). A ordem importa: o primeiro padrão que casar define o tipo.
 const KINDS = [
+  // WRC: o resumo do domingo, os de cada dia, a "ação crua" e o onboard completo de uma especial
+  ["race", /final day highlights/i, 1],
+  ["day", /\bday \d+(?:\s*[&+]\s*\d+)? highlights/i, 3],
+  ["moments", /best of raw action/i, 2],
+  ["stage", /full onboard/i, 5],
   ["react", /drivers?'? react(?! after (qualifying|sprint))/i, 8],
   ["extended", /extended highlights/i, 3],
   ["overtakes", /overtake highlights|best overtakes|overtakes and battles/i, 5],
@@ -96,34 +103,26 @@ const SKIP = {
   f1: /\b(FP[123]|practice|F2|F3|F1 Academy|preview|podcast|analysis|behind the scenes|press conference|track guide|explained|sprint qualifying|warm-up|look ahead|looks ahead|grid gigs|friday|full onboard lap)\b/i,
   motogp: /\b(Moto2|Moto3|MotoE|Rookies|Workshop|preview|press conference|what we learned)\b/i,
   wec: /\b(onboard lap|preview|free practice|FP\d|prologue|interview|press conference)\b/i,
-  formulae: /\b(preview|interview|press conference|practice|FP\d|testing)\b/i,
+  wrc: /\b(WRC2|WRC3|Junior|Masters|preview|everything you need|next stop|explains|interview|press conference|shakedown|ask me)\b/i,
 };
 
 function classify(id, title) {
   const s = SERIES[id];
   if (!s || SKIP[id].test(title)) return null;
   let round = null;
-  if (id === "formulae") {
-    const rn = title.match(/\bR(?:ound)?\s?(\d{1,2})\b/i);
-    NAMES.formulae.forEach(([year, place], i) => {
-      if (round || !title.includes(year) || !new RegExp(`${place}[^|]*E-?Prix|E-?Prix[^|]*${place}`, "i").test(title)) return;
-      const doubles = NAMES.formulae.filter(([, p]) => p === place).length > 1;
-      if (rn) { if (+rn[1] === i + 1) round = i + 1; } else if (!doubles) round = i + 1;
-    });
-  } else {
-    NAMES[id].forEach(([pat], i) => {
-      if (round) return;
-      const re = id === "wec" ? new RegExp(`\\b${pat}\\b[^|]*${SEASON}|${SEASON}[^|]*\\b${pat}\\b`, "i")
-        : id === "motogp" ? new RegExp(`${SEASON} ${pat} GP\\b`, "i")
-        : new RegExp(`${SEASON} ${pat}[^|]*(Grand Prix|GP)\\b`, "i");
-      if (re.test(title)) round = i + 1;
-    });
-  }
+  NAMES[id].forEach(([pat], i) => {
+    if (round) return;
+    const re = id === "wrc" ? new RegExp(`\\bWRC [^|]*\\b(?:${pat})\\b[^|]*${SEASON}`, "i")
+      : id === "wec" ? new RegExp(`\\b${pat}\\b[^|]*${SEASON}|${SEASON}[^|]*\\b${pat}\\b`, "i")
+      : id === "motogp" ? new RegExp(`${SEASON} ${pat} GP\\b`, "i")
+      : new RegExp(`${SEASON} ${pat}[^|]*(Grand Prix|GP)\\b`, "i");
+    if (re.test(title)) round = i + 1;
+  });
   if (!round) return null;
   const race = s.calendar.find(c => c.r === round);
   if (!race) return null;
   const [kind, , prio] = KINDS.find(([, re]) => re.test(title)) || ["epic", null, 4];
-  const clean = title.replace(/\s*\|\s*(FIA WEC|Formula E|Qatar Airways|Lenovo|Crypto\.com|Heineken|MSC Cruises|Aramco)\s*$/i, "").replace(/\s+/g, " ").trim();
+  const clean = title.replace(/\s*\|\s*(FIA WEC|Qatar Airways|Lenovo|Crypto\.com|Heineken|MSC Cruises|Aramco)\s*$/i, "").replace(/\s+/g, " ").trim();
   return { round, kind, prio, title: clean };
 }
 
@@ -194,7 +193,10 @@ async function commons(category) {
    ====================================================================== */
 const report = [];
 let changed = false;
-for (const id of ["f1", "formulae", "motogp", "wec"]) {
+// node scripts/highlights.mjs only=wrc → roda só os campeonatos pedidos (útil para preencher um campeonato novo)
+const ONLY = tsvArgs.only ? tsvArgs.only.split(",") : null;
+for (const id of ["f1", "motogp", "wec", "wrc"]) {
+  if (ONLY && !ONLY.includes(id)) continue;
   const s = SERIES[id];
   const bucket = store[id] ||= {};
   let list = fromTsv(id);
@@ -216,7 +218,7 @@ for (const id of ["f1", "formulae", "motogp", "wec"]) {
   // fotos: etapas já disputadas, consultadas de novo uma vez por dia por até 30 dias
   let photosAdded = 0;
   for (const race of s.calendar.filter(r => r.winner)) {
-    const name = id === "formulae" ? null : NAMES[id][race.r - 1]?.[1];
+    const name = NAMES[id][race.r - 1]?.[1];
     if (!name) continue;
     const b = bucket[race.r] ||= { videos: [], photos: [] };
     const checked = b.photosChecked ? Date.parse(b.photosChecked) : 0;

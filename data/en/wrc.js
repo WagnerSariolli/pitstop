@@ -1,0 +1,92 @@
+// WRC em inglês: só os textos, por cima de data/wrc.js (veja I18N.localize em i18n.js).
+// Ao mudar um texto em data/wrc.js, mude aqui também.
+EN.wrc = {
+  name: "WRC / Rally",
+  offSeason: "Season over · new era in 2027",
+  status: "Evans champion by 5 points; Toyota wins the manufacturers' title",
+  updated: "Final 2026 standings, after Rally Italia Sardegna, 4 October 2026.",
+  labels: { people: "Crews", vehicle: "car" },
+  garageLede: "The 4 teams that scored in the manufacturers' championship with Rally1 cars. Pick one to see the car, its spec sheet and its performance.",
+  peopleLede: "The standout driver and co-driver pairings, in final championship order. The third Hyundai was shared by Paddon, Lappi and Sordo, who appear in the standings.",
+  terms: {
+    "Navegador": "Co-driver", "Ralis na carreira": "Career rallies",
+    "Rali de Monte Carlo": "Rallye Monte-Carlo", "Rali da Suécia": "Rally Sweden", "Safari Rali Quênia": "Safari Rally Kenya",
+    "Rali da Croácia": "Croatia Rally", "Rali das Ilhas Canárias": "Rally Islas Canarias", "Rali de Portugal": "Rally de Portugal",
+    "Rali do Japão": "Rally Japan", "Rali Acrópole": "Acropolis Rally", "Rali da Estônia": "Rally Estonia",
+    "Rali da Finlândia": "Rally Finland", "Rali do Paraguai": "Rally del Paraguay", "Rali do Chile": "Rally Chile",
+    "Rali da Sardenha": "Rally Italia Sardegna",
+    "Gap, França · asfalto e neve": "Gap, France · tarmac and snow", "Umeå, Suécia · neve": "Umeå, Sweden · snow",
+    "Nairóbi, Quênia · terra": "Nairobi, Kenya · gravel", "Rijeka, Croácia · asfalto": "Rijeka, Croatia · tarmac",
+    "Las Palmas, Espanha · asfalto": "Las Palmas, Spain · tarmac", "Matosinhos, Portugal · terra": "Matosinhos, Portugal · gravel",
+    "Toyota, Japão · asfalto": "Toyota City, Japan · tarmac", "Loutraki, Grécia · terra": "Loutraki, Greece · gravel",
+    "Tartu, Estônia · terra": "Tartu, Estonia · gravel", "Jyväskylä, Finlândia · terra": "Jyväskylä, Finland · gravel",
+    "Encarnación, Paraguai · terra": "Encarnación, Paraguay · gravel", "Talcahuano, Chile · terra": "Talcahuano, Chile · gravel",
+    "Alghero, Itália · terra": "Alghero, Italy · gravel",
+    "Jyväskylä, Finlândia": "Jyväskylä, Finland", "Alzenau, Alemanha": "Alzenau, Germany", "Cockermouth, Reino Unido": "Cockermouth, United Kingdom",
+  },
+  hero: {
+    kicker: "2026 world champion",
+    lede: "Toyota's Welshman reached the final stage of the year one point ahead of Oliver Solberg and finished ahead of him on the Sardinia Power Stage. After five runner-up finishes, the title at last, with co-driver Scott Martin.",
+    stats: [["Points", "243"], ["Wins", "2"], ["Margin", "+5"]],
+    alt: "Elfyn Evans's Toyota GR Yaris Rally1 kicking up dust on a gravel road by the sea, at Rally Italia Sardegna",
+  },
+  team: t => {
+    const wins = t.specs[2][1];
+    return { ptsLabel: `${t.pts} pts among the manufacturers · ${wins} ${wins === 1 ? "win" : "wins"}` };
+  },
+  teams: {
+    toyota: { note: "Manufacturers' champion for the sixth year in a row, reaching ten titles to match Lancia's record. Counting the satellite team, the Yaris won 12 of the 13 rallies." },
+    hyundai: { note: "Just one win all year, with Neuville in Portugal. Fourmaux finished 5th in the championship without a win; the third car was shared by Lappi, Sordo and Paddon." },
+    toyota2: { note: "Toyota's one-car satellite team. Sami Pajari and Marko Salminen won three rallies in a row: Estonia, Finland and Paraguay." },
+    msport: { note: "Bet on two young drivers from Ireland, McErlean and Armstrong. In Monte Carlo the team failed to score for the first time in 24 years." },
+  },
+  drivers: {
+    33: { bio: "Crowned 2026 champion on the final stage of the year, after five runner-up finishes. The first British world rally champion since Richard Burns in 2001." },
+    99: { bio: "Son of 2003 champion Petter Solberg. In his first full season he won Monte Carlo, Chile and Sardinia, and missed the title by 5 points." },
+    5: { bio: "The first driver to take the first three wins of his career at three consecutive rallies: Estonia, Finland and Paraguay. Finished 6 points off the title." },
+    1: { bio: "Nine-time world champion, he carried the number 1 as the 2025 champion. Ran a part-time season of 11 rallies and still won in the Canaries and Greece." },
+    16: { bio: "Hyundai's most consistent driver: scored at all 13 rallies and finished 5th, still chasing his first win." },
+    18: { bio: "After ten years of trying, he won for the first time at the Safari in Kenya and again in Croatia, when he led the championship." },
+    11: { bio: "The 2024 champion. Gave Hyundai its only win of the year, in Portugal, but lost Croatia and Greece while leading." },
+    55: { bio: "Second season in Rally1, a graduate of Ireland's rally academy. Ford's best-placed driver in the championship." },
+    95: { bio: "Rally1 rookie who stepped up from the European championship. Took his first stage win in his debut season." },
+    22: { bio: "The Latvian contested six rallies in a third Puma, on a part-time programme." },
+  },
+  standings: [{ label: "Drivers", note: "Top 10 in the drivers' championship." }, { label: "Manufacturers" }],
+  ratingLabels: { vel: "Speed", terra: "Gravel and snow", asfalto: "Tarmac", confiab: "Reliability", duplas: "Crew strength" },
+  commonSpecs: [
+    ["Engine", "1.6 L turbo, 4 cylinders"], ["Hybrid", "Dropped in 2025 (used from 2022 to 2024)"],
+    ["Drive", "All-wheel"], ["Gearbox", "5-speed sequential"], ["Structure", "Safety spaceframe chassis, shaped like a road car"],
+    ["Tyres", "Hankook"], ["Crew", "Driver and co-driver"],
+  ],
+  calendarNote: "13 rallies on four continents, from January to October. Rally Saudi Arabia, scheduled for November, was dropped and Sardinia became the finale.",
+  rules: {
+    title: "Rally1 bows out; 2027 brings a new car",
+    lede: "2026 was the last year of Rally1 cars as they were created in 2022. From 2027 new rules come in, designed to make the cars cheaper and attract more manufacturers.",
+    compare: {
+      head: ["Item", "Rally1 (2022–2026)", "2027 rules"],
+      rows: [
+        ["Chassis", "Each manufacturer's own", "Standard, supplied by the FIA"],
+        ["Mechanicals", "Each brand's 1.6 turbo engine", "Parts based on Rally2"],
+        ["Bodywork", "Shaped like a road car", "Can be a bespoke design"],
+        ["Hybrid", "From 2022 to 2024", "No"],
+      ],
+    },
+    cards: [
+      ["Points", "The top ten score (25, 17, 15, 12, 10, 8, 6, 4, 2, 1). There are also bonuses of 5 to 1 points for the fastest on Sunday and on the Power Stage."],
+      ["Power Stage", "The final stage of each rally gives extra points to the five fastest. That's where Evans took the title from Solberg in Sardinia."],
+      ["Against the clock", "Cars start one at a time on closed roads called special stages. The lowest total time wins; the co-driver calls out every corner from the pace notes."],
+    ],
+  },
+  facts: [
+    { big: "5 pts", text: "The gap between Evans and Solberg at the end of the championship. Pajari, in third, was 6 back." },
+    { big: "2001", text: "The last British title before Evans, won by Richard Burns." },
+    { big: "10", text: "Toyota's manufacturers' titles, matching Lancia's record. It was the sixth in a row." },
+    { big: "3 in 3", text: "Sami Pajari took the first three wins of his career at three consecutive rallies, a first." },
+    { big: "69", text: "Wins for Sébastien Ogier, the nine-time champion, who contested 11 of the 13 rallies in 2026." },
+    { big: "20 of 20", text: "Stages of Rally Japan won by Toyota, racing on home soil." },
+    { big: "12 of 13", text: "Rallies won by a Toyota GR Yaris in 2026. Only Hyundai, in Portugal, broke the streak." },
+    { big: "10 h", text: "The minimum rest that became mandatory on every rally weekend in 2026." },
+  ],
+  footer: "Data from the FIA, wrc.com and Wikipedia. Photos from Wikimedia Commons: Antti Leppänen, Geonich and AnDr0 Gr0zNy (CC BY 4.0); Cardoesvroom and TTTNIS (CC0).",
+};
