@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:02.892Z"
+   "photosChecked": "2026-11-27T08:33:12.543Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:03.484Z"
+   "photosChecked": "2026-11-27T08:33:13.010Z"
   },
   "21": {
    "videos": [
@@ -1691,7 +1691,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:04.094Z"
+   "photosChecked": "2026-11-27T08:33:13.484Z"
   }
  },
  "motogp": {
@@ -2724,7 +2724,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:04.812Z"
+   "photosChecked": "2026-11-27T08:33:13.963Z"
   },
   "21": {
    "videos": [
@@ -2772,7 +2772,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:05.416Z"
+   "photosChecked": "2026-11-27T08:33:14.434Z"
   },
   "22": {
    "videos": [
@@ -3284,7 +3284,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T05:04:06.136Z"
+   "photosChecked": "2026-11-27T08:33:15.008Z"
   }
  },
  "wrc": {
