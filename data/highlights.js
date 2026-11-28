@@ -2676,7 +2676,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-26T23:53:45.841Z"
+   "photosChecked": "2026-11-28T01:59:44.514Z"
   },
   "20": {
    "videos": [
@@ -2781,6 +2781,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Pedro, Jorge & Fabio face 1000cc era quiz 🧠 | 2026 Valencia GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "dm-Utl0e23A",
+     "kind": "epic",
+     "prio": 4,
+     "title": "Riders React to Marc's Retirement 🥺 | 2026 Valencia GP",
      "ch": "MotoGP"
     }
    ],
