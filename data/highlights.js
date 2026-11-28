@@ -1583,7 +1583,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:12.543Z"
+   "photosChecked": "2026-11-28T10:27:15.918Z"
   },
   "20": {
    "videos": [
@@ -1637,7 +1637,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:13.010Z"
+   "photosChecked": "2026-11-28T10:27:16.420Z"
   },
   "21": {
    "videos": [
@@ -1691,7 +1691,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:13.484Z"
+   "photosChecked": "2026-11-28T10:27:16.918Z"
   }
  },
  "motogp": {
@@ -2724,7 +2724,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:13.963Z"
+   "photosChecked": "2026-11-28T10:27:17.495Z"
   },
   "21": {
    "videos": [
@@ -2772,7 +2772,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:14.434Z"
+   "photosChecked": "2026-11-28T10:27:17.992Z"
   },
   "22": {
    "videos": [
@@ -2788,6 +2788,13 @@ window.HIGHLIGHTS = {
      "kind": "epic",
      "prio": 4,
      "title": "Riders React to Marc's Retirement 🥺 | 2026 Valencia GP",
+     "ch": "MotoGP"
+    },
+    {
+     "id": "mRl3BI3LJ8s",
+     "kind": "qualifying",
+     "prio": 9,
+     "title": "Marc Marquez breaks lap record in the last 5 minutes of MotoGP Practice | 2026 Valencia GP",
      "ch": "MotoGP"
     }
    ],
@@ -3291,7 +3298,7 @@ window.HIGHLIGHTS = {
     }
    ],
    "photos": [],
-   "photosChecked": "2026-11-27T08:33:15.008Z"
+   "photosChecked": "2026-11-28T10:27:18.580Z"
   }
  },
  "wrc": {
